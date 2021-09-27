@@ -115,10 +115,30 @@ namespace Homework_Ivanyshyn
             //}
             //13.Create enum type for TV channels(5 is enough). Write a switch statement that provides channel avarage rating.
             //Dont clearly understood
-         
+            var channel = TVChannels.ICTV;
+            
            
-        }
+            Console.WriteLine(GetRating(channel));
 
+        }
+        private static double GetRating(TVChannels channel)
+        {
+            switch (channel)
+            {
+                case TVChannels.QTV:
+                    return 14;
+                case TVChannels.NLO:
+                    return 12.5;
+                case TVChannels.RADA:
+                    return 55;
+                case TVChannels.ICTV:
+                    return 12;
+                case TVChannels.TRK:
+                    return 555;
+                default:
+                    return 0;
+            }
+        }
         private static void PrintTable(int n)
         {
             for (int i = 1; i <= n; i++)
