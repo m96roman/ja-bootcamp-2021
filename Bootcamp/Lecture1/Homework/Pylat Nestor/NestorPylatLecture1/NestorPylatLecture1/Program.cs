@@ -192,6 +192,58 @@ namespace NestorPylatLecture1
               }
  
               Console.WriteLine(count);*/
+
+            // 13 ////////////////////////////////////////
+
+
+            /*Chanels chanel = Chanels.tv1;
+            switch (chanel)
+            {
+                case Chanels.tv1:
+                    { 
+                        Console.WriteLine("Rate 1");
+                        break;
+                    }
+                  
+                case Chanels.tv2:
+                    {
+                        Console.WriteLine("Rate 2");
+                        break;
+
+                    }
+                    case Chanels.tv3:
+                    {
+                        Console.WriteLine("Rate 3");
+                        break;
+
+                    }
+                case Chanels.tv4:
+                    {
+                        Console.WriteLine("Rate 3");
+                        break;
+
+                    }
+                case Chanels.tv5:
+                    {
+                        Console.WriteLine("Rate 3");
+                        break;
+
+                    }
+                default:
+                    {
+                        Console.WriteLine("No Rate");
+                        break;
+                    }
+            }*/
         }
     }
-}
+
+   /* enum Chanels
+    {
+        tv1,
+        tv2,
+        tv3,
+        tv4,
+        tv5
+    }*/
+    }
