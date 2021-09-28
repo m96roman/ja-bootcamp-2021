@@ -6,7 +6,7 @@ namespace AntonDvgHomework
     {
         static void Main(string[] args)
         {
-            Task12();
+            Task13();
         }
 
         static void Task1()
@@ -187,41 +187,38 @@ namespace AntonDvgHomework
 
         static void Task13()
         {
-            string str = "";
             Console.WriteLine("enter number of chanel:");
             int chanel = int.Parse(Console.ReadLine());
+            var rating = 0;
 
-            switch ((TvChanelsEnum)chanel)
+            switch (chanel)
             {
-                case TvChanelsEnum.ChanelOne:
-                    str = "Chanel One rating is 85%";
+                case 1:
+                    rating = (int) TvChanelsEnum.ChanelOne;
                     break;
-                case TvChanelsEnum.ChanelTwo:
-                    str = "Chanel Two rating is 90%";
+                case 2:
+                    rating = (int)TvChanelsEnum.ChanelTwo;
                     break;
-                case TvChanelsEnum.ChanelThree:
-                    str = "Chanel Three rating is 95%";
+                case 3:
+                    rating = (int)TvChanelsEnum.ChanelThree;
                     break;
-                case TvChanelsEnum.ChanelFour:
-                    str = "Chanel Four rating is 70%";
+                case 4:
+                    rating = (int)TvChanelsEnum.ChanelFour;
                     break;
-                case TvChanelsEnum.ChanelFive:
-                    str = "Chanel Five rating is 80%";
-                    break;
-                default:
-                    str = "There is not such chanel";
+                case 5:
+                    rating = (int)TvChanelsEnum.ChanelFive;
                     break;
             }
 
-            Console.WriteLine(str);
+            Console.WriteLine($"Chanel {chanel} average rating: {rating}");
         }
         enum TvChanelsEnum
         {
-            ChanelOne = 1,
-            ChanelTwo = 2,
-            ChanelThree = 3,
-            ChanelFour = 4,
-            ChanelFive = 5
+            ChanelOne = 70,
+            ChanelTwo = 75,
+            ChanelThree = 80,
+            ChanelFour = 90,
+            ChanelFive = 95
         }
     }
 }
