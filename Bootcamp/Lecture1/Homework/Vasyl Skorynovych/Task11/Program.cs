@@ -17,8 +17,6 @@ namespace Task11
                 {
                     if (j <= number - 1)
                         Console.Write("{0} * {1} = {2}, ", i, j, i * j);
-                    else
-                        Console.Write("{0} * {1} = {2}, ", i, j, i * j);
                 }
                 Console.Write("\n");
             }

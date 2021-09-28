@@ -11,11 +11,7 @@ namespace Task3
 
             char[] ch = entredString.ToCharArray();
 
-            char temp = ch[0];
-            ch[0] = ch[ch.Length - 1];
-            ch[ch.Length - 1] = temp;
-
-            Console.WriteLine(ch);
+            Console.WriteLine(entredString[entredString.Length - 1] + entredString.Substring(1, entredString.Length - 2) + entredString[0].ToString());
         }
     }
 }

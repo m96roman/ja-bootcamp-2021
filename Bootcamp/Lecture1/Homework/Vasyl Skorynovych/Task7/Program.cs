@@ -9,10 +9,7 @@ namespace Task7
             Console.Write("Enter number: ");
             int number = Convert.ToInt32(Console.ReadLine());
 
-            if (number % 3 == 0 || number % 7 == 0)
-                Console.WriteLine("true");
-            else
-                Console.WriteLine("false");
+            Console.WriteLine(number % 3 == 0 || number % 7 == 0);
         }
     }
 }
