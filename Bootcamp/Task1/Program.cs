@@ -64,7 +64,6 @@ namespace Task1
             Channel channel = Channel.TV1;
             TvAvarageRating(channel);
         }
-
         public static void NameOfAndInterpolation()
         {
             var number = 10;
@@ -72,7 +71,6 @@ namespace Task1
             Console.WriteLine($"Variable {nameof(number)} and it`s value  {number}");
             Console.WriteLine($"Variable {nameof(word)} and it`s value {word}");
         }
-
         public static double Multiplication(double[] numbers)
         {
             double result = 1;
@@ -82,13 +80,11 @@ namespace Task1
             }
             return result;
         }
-
         public static string Swap(string str)
         {
             var length = str.Length;
             return str[length - 1] + str.Substring(1, length - 2) + str[0];
         }
-
         public static void SumOfNumbersIfEqual(decimal[] numbers)
         {
             var sum = numbers[0] + numbers[1];
