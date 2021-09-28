@@ -2,8 +2,10 @@
 
 namespace HelperMethods
 {
+
     public static class Reader
     {
+
         /// <summary>
         /// Reads number
         /// </summary>
@@ -16,8 +18,10 @@ namespace HelperMethods
             {
                 Console.WriteLine("Write valid number!");
             }
+
             return num;
         }
+
         public static double ReadDouble()
         {
             double num = 0;
@@ -26,8 +30,10 @@ namespace HelperMethods
             {
                 Console.WriteLine("Write valid number!");
             }
+
             return num;
         }
+
         public static string ReadString()
         {
             string val = default;
@@ -36,6 +42,7 @@ namespace HelperMethods
             {
                 Console.WriteLine("Write valid string!");
             }
+
             return val;
         }
     }

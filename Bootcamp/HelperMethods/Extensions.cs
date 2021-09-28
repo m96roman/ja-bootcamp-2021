@@ -15,7 +15,7 @@ namespace HelperMethods
         /// <returns>New string with swapped chars</returns>
         /// <exception cref="IndexOutOfRangeException">If indexes are out range</exception>
         /// 
-        public static string swap(this string var, int index1, int index2)
+        public static string Swap(this string var, int index1, int index2)
         {
 
             StringBuilder sb = new StringBuilder(var);
