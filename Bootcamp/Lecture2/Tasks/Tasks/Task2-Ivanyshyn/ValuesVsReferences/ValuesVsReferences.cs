@@ -5,7 +5,7 @@ namespace Task2_Ivanyshyn.ValuesTasks
 {
     internal class ValuesVsReferences
     {
-        public static void doTasks()
+        public static void DoTasks()
         {
             //            1.Create a structure `Marker` which have
             //    -a `color` filed of string type

@@ -19,6 +19,7 @@ namespace Task2_Ivanyshyn.Helpers
             {
                 array[i] = ReadNumber(name: "element -" + i);
             }
+
             return array;
         }
 
@@ -37,6 +38,7 @@ namespace Task2_Ivanyshyn.Helpers
 
             return num;
         }
+
         /// <summary>
         /// Reads double
         /// </summary>
@@ -52,6 +54,7 @@ namespace Task2_Ivanyshyn.Helpers
 
             return num;
         }
+
         /// <summary>
         /// Reads string
         /// </summary>

@@ -7,7 +7,7 @@ namespace Task2_Ivanyshyn.MethodTasks
     internal class MethodsTasks
     {
 
-        internal static void doTasks()
+        internal static void DoTasks()
         {
             //1.Write a program to create a function to swap the values of two integer numbers.
             //Test Data :
@@ -36,8 +36,10 @@ namespace Task2_Ivanyshyn.MethodTasks
         {
             Console.WriteLine("Enter point:");
             var str = Console.ReadLine();
-            Point point;
-            Console.WriteLine($"Result of parse is {Point.TryParsePoint(str, out point)} Point= {point}");
+            Point? point;
+            bool parseResult = Point.TryParsePoint(str, out point);
+            string pointStr = point.HasValue ? point.ToString() : "undefined";
+            Console.WriteLine($"Result of parse is {parseResult} Point= {pointStr}");
 
 
         }

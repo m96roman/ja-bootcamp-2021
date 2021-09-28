@@ -6,7 +6,7 @@ namespace Task2_Ivanyshyn.ArraysTasks
 {
     public class ArraysTasks
     {
-        public static void doTasks()
+        public static void DoTasks()
         {
             //1.Write a program to read n number of values in an array and display it in reverse order.
             //Test Data :

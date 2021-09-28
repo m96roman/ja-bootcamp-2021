@@ -16,7 +16,7 @@
             return $"({X},{Y})";
         }
 
-        public static bool TryParsePoint(string stringToParse, out Point point)
+        public static bool TryParsePoint(string stringToParse, out Point? point)
         {
             if (!string.IsNullOrWhiteSpace(stringToParse) && stringToParse.Contains(','))
             {
@@ -33,7 +33,7 @@
 
 
             }
-            point = default;
+            point = null;
             return false;
         }
 
