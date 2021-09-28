@@ -33,9 +33,9 @@ namespace Task1
             //Console.WriteLine("Write a string");
             //FiveUpperChar(Console.ReadLine());
            
-            Print("7");
-            Console.WriteLine("Write a number");
-            Multiple3Or7(Int32.Parse(Console.ReadLine()));
+            //Print("7");
+            //Console.WriteLine("Write a number");
+            //Multiple3Or7(Int32.Parse(Console.ReadLine()));
           
             Print("8");
             Console.WriteLine("Write a string");
@@ -116,22 +116,15 @@ namespace Task1
         }
         public static void StartWithCSharp(string str)
         {
-            bool first = false;
+           
             if (string.IsNullOrEmpty(str))
             {
                 Console.WriteLine("The string is empty!");
             }
-            var array = str.Split(new string[] { " " }, StringSplitOptions.None);
-            if (array[0].Substring(0, 2).ToLower() == "c#")
-            {
-                first = true;
-                Console.WriteLine($"{first}");
-            }
-            else
-            {
-                first = false;
-                Console.WriteLine($"{first}");
-            }
+            str=str.ToUpper();
+            bool first= str.StartsWith("C#");
+            Console.WriteLine(first);
+            
         }
         public static void CirclePerimeterAndArea(double radius)
         {
