@@ -37,18 +37,18 @@ namespace Task1
             //Console.WriteLine("Write a number");
             //Multiple3Or7(Int32.Parse(Console.ReadLine()));
           
-            Print("8");
-            Console.WriteLine("Write a string");
-            StartWithCSharp(Console.ReadLine());
+            //Print("8");
+            //Console.WriteLine("Write a string");
+            //StartWithCSharp(Console.ReadLine());
           
-            Print("9");
-            Console.WriteLine("Input the radius of the circle : ");
-            CirclePerimeterAndArea(Double.Parse(Console.ReadLine()));
+            //Print("9");
+            //Console.WriteLine("Input the radius of the circle : ");
+            //CirclePerimeterAndArea(Double.Parse(Console.ReadLine()));
           
-            Print("10");
-            Console.WriteLine("Write 10 integers trought space");
-            var numbersSumAndAvg = Array.ConvertAll(Console.ReadLine().Split(" "), Int32.Parse);
-            SumAndAvg(numbersSumAndAvg);
+            //Print("10");
+            //Console.WriteLine("Write 10 integers trought space");
+            //var numbersSumAndAvg = Array.ConvertAll(Console.ReadLine().Split(" "), Int32.Parse);
+            //SumAndAvg(numbersSumAndAvg);
           
             Print("11");
             Console.WriteLine("Write a program to display multiplication table from 1 to n \n Write n :");
@@ -153,12 +153,7 @@ namespace Task1
             {
                 for (int j = 1; j <= number; j++)
                 {
-                    if (j <= number - 1)
                         Console.Write($"{i}x{j}={i * j} ");
-
-                    else
-                        Console.Write($"{i}x{j}={i * j} ");
-
                 }
                 Console.WriteLine("");
             }
