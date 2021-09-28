@@ -8,6 +8,7 @@ namespace Home
     {
         static void Main(string[] args)
         {
+            //Program.OperatorInterpolation();
             //Program.Multiplicator();
             //Program.SwapFirstandLastCharacters();
             //Program.CalcNumbers();
@@ -23,6 +24,15 @@ namespace Home
 
         /// <summary>
         /// Create variable and initialize it with any value. Write into console variable name and it's value using nameof operator and interpolation.
+        /// </summary>
+        static void OperatorInterpolation()
+        {
+            int number = 50;
+            Console.WriteLine($"Variable name is {nameof(number)}");
+        }
+
+        /// <summary>
+        /// Read three numbers from console and print their multiplication.
         /// </summary>
         static void Multiplicator()
         {
@@ -47,9 +57,9 @@ namespace Home
 
             StringBuilder sb = new StringBuilder(inputValue);
             sb.Remove(0, 1)
-                .Insert(0, "m")
+                .Insert(0, inputValue[inputValue.Length - 1])
                 .Remove(inputValue.Length -1, 1)
-                .Insert(inputValue.Length - 1, "p");
+                .Insert(inputValue.Length - 1, inputValue[0]);
 
             inputValue = sb.ToString();
 
@@ -67,18 +77,13 @@ namespace Home
             Console.WriteLine("Enter your second number");
             int secondNumber = Int32.Parse(Console.ReadLine());
 
-            int sumOfNumbers = firstNumber + secondNumber;
+            double sumOfNumbers = firstNumber + secondNumber;
+            int result = 0;
 
             if(firstNumber == secondNumber)
             {
-                int multiplier = 3;
-                int result = 0;
+                result = (int)(sumOfNumbers * 3);
                 
-                for(int i = 0; i < multiplier; i++)
-                {
-                    result = sumOfNumbers * multiplier;
-                }
-
                 Console.WriteLine($"Statment when sum should be tripled is: {result}");
             } else
             {
@@ -118,14 +123,23 @@ namespace Home
             char[] array = input.ToCharArray();
             char[] convertedArray = new char[input.Length];
 
-            for (int i = 0; i <= array.Length - 1 ; i++)
+            if (input.Length < 5)
             {
-                if (i <= 5)
+                Console.WriteLine(input);
+            }
+            else
+            {
+
+                for (int i = 0; i <= array.Length - 1; i++)
                 {
-                    convertedArray[i] = Char.Parse(array[i].ToString().ToUpper());
-                } else
-                {
-                    convertedArray[i] = Char.Parse(array[i].ToString());
+                    if (i <= 5)
+                    {
+                        convertedArray[i] = Char.ToUpper(array[i]);
+                    }
+                    else
+                    {
+                        convertedArray[i] = Char.ToUpper(array[i]);
+                    }
                 }
             }
 
@@ -140,13 +154,9 @@ namespace Home
             Console.WriteLine("Enter your number");
             int number = Int32.Parse(Console.ReadLine());
 
-            if (number % 3 == 0 | number % 7 == 0)
-            {
-                Console.WriteLine("True");
-            } else
-            {
-                Console.WriteLine("False");
-            }
+            bool result = number % 3 == 0 || number % 7 == 0 ? true :  false;
+
+            Console.Write(result);
         }
 
         /// <summary>
@@ -158,7 +168,7 @@ namespace Home
             Console.WriteLine("Enter your string");
             string input = Console.ReadLine().ToLower();
 
-            if (input.StartsWith("C#")){
+            if (input.StartsWith("с#")){
 
                 Console.WriteLine("Ture");
             } else
@@ -174,14 +184,13 @@ namespace Home
         {
             double radius;
             double perimeter;
-            double PI = 3.14;
             double area;
 
             Console.WriteLine("Input the radius of the circle : ");
             radius = Convert.ToDouble(Console.ReadLine());
            
-            perimeter = 2 * PI * radius;
-            area = (3.14) * radius * radius;
+            perimeter = 2 * Math.PI * radius;
+            area = Math.PI * radius * radius;
 
             Console.WriteLine($"The Perimeter of the circle is: {perimeter} \n And Area is {area}");
         }
@@ -207,14 +216,14 @@ namespace Home
         /// </summary>
         static void Calculator()
         {
-            int j, i, n;
+            int n;
 
             Console.Write("Input upto the table number starting from 1 : ");
             n = Convert.ToInt32(Console.ReadLine());
             Console.Write("Multiplication table from 1 to {0} \n", n);
-            for (i = 1; i <= 10; i++)
+            for (int i = 1; i <= 10; i++)
             {
-                for (j = 1; j <= n; j++)
+                for (int j = 1; j <= n; j++)
                 {
                     if (j <= n - 1)
                         Console.Write("{0}x{1} = {2}, ", j, i, i * j);
@@ -236,11 +245,16 @@ namespace Home
             Console.WriteLine("Enter your second number");
             int secondNumber = Int32.Parse(Console.ReadLine());
 
-            int[] range = Enumerable.Range(firstNumber, secondNumber - firstNumber).ToArray();
+            if(firstNumber > secondNumber)
+            {
+                throw new Exception("The range is wrong firstNumber is gretter than secondNumber");
+            }
+
+            int[] range = Enumerable.Range(firstNumber, secondNumber - firstNumber + 1).ToArray();
 
             int count = 0;
             
-            for (int i = 0; i < range.Length; i++)
+            for (int i = 1; i < range.Length; i++)
             {
 
                 if (range[i] % 8 == 0)
