@@ -8,10 +8,12 @@ namespace Task1
         {
             Print("1");
             NameOfAndInterpolation();
+
             Print("2");
             Console.WriteLine("Write three numbers trought ,");
             var numbers = Array.ConvertAll(Console.ReadLine().Split(","), Double.Parse);
             Console.WriteLine($" The result of multiplication {Multiplication(numbers)}");
+
             Print("3");
             Console.WriteLine("Write word");
             var word = Console.ReadLine();
@@ -57,8 +59,8 @@ namespace Task1
         {
             var number = 10;
             var word = "dog";
-            Console.WriteLine($"Variable number and it`s value  {number}");
-            Console.WriteLine($"Variable word and it`s value {word}");
+            Console.WriteLine($"Variable {nameof(number)} and it`s value  {number}");
+            Console.WriteLine($"Variable {nameof(word)} and it`s value {word}");
         }
         public static double Multiplication(double[] numbers)
         {
