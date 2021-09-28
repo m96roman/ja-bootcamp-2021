@@ -6,62 +6,63 @@ namespace Task1
     {
         static void Main(string[] args)
         {
-            //Print("1");
-            //NameOfAndInterpolation();
+            Print("1");
+            NameOfAndInterpolation();
 
-            //Print("2");
-            //Console.WriteLine("Write three numbers trought ,");
-            //var numbers = Array.ConvertAll(Console.ReadLine().Split(","), Double.Parse);
-            //Console.WriteLine($" The result of multiplication {Multiplication(numbers)}");
+            Print("2");
+            Console.WriteLine("Write three numbers trought ,");
+            var numbers = Array.ConvertAll(Console.ReadLine().Split(","), Double.Parse);
+            Console.WriteLine($" The result of multiplication {Multiplication(numbers)}");
 
-            //Print("3");
-            //Console.WriteLine("Write word");
-            //var word = Console.ReadLine();
-            //Console.WriteLine($"Swap letters in word :{word} => {Swap(word)}");
-          
-            //Print("4");
-            //Console.WriteLine("Write two integers trought ,");
-            //var numbersToSum = Array.ConvertAll(Console.ReadLine().Split(","), decimal.Parse);
-            //SumOfNumbersIfEqual(numbersToSum);
-            
-            //Print("5");
-            //Console.WriteLine("Write three integers trought ,");
-            //var numbersMaxAndMin = Array.ConvertAll(Console.ReadLine().Split(","), Int32.Parse);
-            //MaxAndMinInt(numbersMaxAndMin);
-           
-            //Print("6");
-            //Console.WriteLine("Write a string");
-            //FiveUpperChar(Console.ReadLine());
-           
-            //Print("7");
-            //Console.WriteLine("Write a number");
-            //Multiple3Or7(Int32.Parse(Console.ReadLine()));
-          
-            //Print("8");
-            //Console.WriteLine("Write a string");
-            //StartWithCSharp(Console.ReadLine());
-          
-            //Print("9");
-            //Console.WriteLine("Input the radius of the circle : ");
-            //CirclePerimeterAndArea(Double.Parse(Console.ReadLine()));
-          
-            //Print("10");
-            //Console.WriteLine("Write 10 integers trought space");
-            //var numbersSumAndAvg = Array.ConvertAll(Console.ReadLine().Split(" "), Int32.Parse);
-            //SumAndAvg(numbersSumAndAvg);
-          
-            //Print("11");
-            //Console.WriteLine("Write a program to display multiplication table from 1 to n \n Write n :");
-            //MultiplicationTable(Int32.Parse(Console.ReadLine()));
-          
+            Print("3");
+            Console.WriteLine("Write word");
+            var word = Console.ReadLine();
+            Console.WriteLine($"Swap letters in word :{word} => {Swap(word)}");
+
+            Print("4");
+            Console.WriteLine("Write two integers trought ,");
+            var numbersToSum = Array.ConvertAll(Console.ReadLine().Split(","), decimal.Parse);
+            SumOfNumbersIfEqual(numbersToSum);
+
+            Print("5");
+            Console.WriteLine("Write three integers trought ,");
+            var numbersMaxAndMin = Array.ConvertAll(Console.ReadLine().Split(","), Int32.Parse);
+            MaxAndMinInt(numbersMaxAndMin);
+
+            Print("6");
+            Console.WriteLine("Write a string");
+            FiveUpperChar(Console.ReadLine());
+
+            Print("7");
+            Console.WriteLine("Write a number");
+            Multiple3Or7(Int32.Parse(Console.ReadLine()));
+
+            Print("8");
+            Console.WriteLine("Write a string");
+            StartWithCSharp(Console.ReadLine());
+
+            Print("9");
+            Console.WriteLine("Input the radius of the circle : ");
+            CirclePerimeterAndArea(Double.Parse(Console.ReadLine()));
+
+            Print("10");
+            Console.WriteLine("Write 10 integers trought space");
+            var numbersSumAndAvg = Array.ConvertAll(Console.ReadLine().Split(" "), Int32.Parse);
+            SumAndAvg(numbersSumAndAvg);
+
+            Print("11");
+            Console.WriteLine("Write a program to display multiplication table from 1 to n \n Write n :");
+            MultiplicationTable(Int32.Parse(Console.ReadLine()));
+
             Print("12");
             Console.WriteLine("Write two integers trought space");
             var numbersDivideBy8 = Array.ConvertAll(Console.ReadLine().Split(" "), Int32.Parse);
             NumbersDivisibleBy8(numbersDivideBy8);
 
-
-
-
+            Print("13");
+            Console.WriteLine();
+            Channel channel = Channel.TV1;
+            TvAvarageRating(channel);
         }
 
         public static void NameOfAndInterpolation()
@@ -172,5 +173,34 @@ namespace Task1
 
             }
         }
+        public static void TvAvarageRating( Channel e) {
+            switch (e)
+            {
+                case Channel.TV1:
+                    Console.WriteLine("The TV1 is cool!");
+                    break;
+                case Channel.TV2:
+                    Console.WriteLine("The TV2 is cool!");
+                    break;
+                case Channel.TV3:
+                    Console.WriteLine("The TV3 is cool!");
+                    break;
+                case Channel.TV4:
+                    Console.WriteLine("The TV4 is cool!");
+                    break;
+                case Channel.TV5:
+                    Console.WriteLine("The TV5 is cool!");
+                    break;
+            }
+
+        }
     }
+    enum Channel
+    {
+        TV1,
+        TV2,
+        TV3,
+        TV4,
+        TV5
+    };
 }
