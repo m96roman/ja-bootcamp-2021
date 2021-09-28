@@ -6,19 +6,19 @@ namespace myfirstproject
     {
         static void Main(string[] args)
         {
-            task13();
+            Task8();
 
         }
-        static void task2()
+        static void Task2()
         {
             int number1 = Convert.ToInt32(Console.ReadLine());
             int number2 = Convert.ToInt32(Console.ReadLine());
             int number3 = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine(number1 * number2 * number3);
         }
-        static void task3()
+        static void Task3()
         {
-            string str = Convert.ToString(Console.ReadLine());
+            string str = Console.ReadLine();
             char[] chars = str.ToCharArray();
             char swap = chars[0];
             chars[0] = chars[chars.Length - 1];
@@ -27,7 +27,7 @@ namespace myfirstproject
             Console.WriteLine(str1);
 
         }
-        static void task4()
+        static void Task4()
         {
             int number1 = Convert.ToInt32(Console.ReadLine());
             int number2 = Convert.ToInt32(Console.ReadLine());
@@ -43,7 +43,7 @@ namespace myfirstproject
             }
 
         }
-        static void task5()
+        static void Task5()
         {
 
             int numbers1 = Convert.ToInt32(Console.ReadLine());
@@ -56,32 +56,28 @@ namespace myfirstproject
             {
                 maxvalue = numbers2;
             }
-            else
-            {
-                if (numbers3 > maxvalue)
+            else if (numbers3 > maxvalue)
                 {
                     maxvalue = numbers3;
 
                 }
-            }
+            
             if (numbers2 < minvalue)
             {
                 minvalue = numbers2;
             }
-            else
-            {
-                if (numbers3 < minvalue)
+            else if (numbers3 < minvalue)
                 {
                     minvalue = numbers3;
                 }
-            }
+            
 
             Console.WriteLine("Largest value = " + maxvalue.ToString());
             Console.WriteLine("Lowest value = " + minvalue.ToString());
 
 
         }
-        static void task6()
+        static void Task6()
         {
             string str = Convert.ToString(Console.ReadLine());
 
@@ -102,7 +98,7 @@ namespace myfirstproject
 
             }
         }
-        static void task7()
+        static void Task7()
         {
             int number = Convert.ToInt32(Console.ReadLine());
             if (number % 3 == 0 || number % 7 == 0)
@@ -114,11 +110,12 @@ namespace myfirstproject
                 Console.WriteLine(false);
             }
         }
-        static void task8()
+        static void Task8()
         {
             string str = Convert.ToString(Console.ReadLine());
-            if (str.Substring(0, 2) == "C#")
+            if (str.StartsWith("C#"))
             {
+                
                 Console.WriteLine(true);
             }
             else
@@ -126,24 +123,24 @@ namespace myfirstproject
                 Console.WriteLine(false);
             }
         }
-        static void task9()
+        static void Task9()
         {
             double radius = Convert.ToDouble(Console.ReadLine());
             Console.WriteLine("perimetr=" + Math.PI * 2 * radius);
             Console.WriteLine("area=" + Math.PI * radius * radius);
         }
-        static void task10()
+        static void Task10()
         {
-            double[] numbers = new double[10];
+           
             double sum = 0;
             for (int i = 0; i < 10; i++)
             {
-                numbers[i] = Convert.ToDouble(Console.ReadLine());
-                sum += numbers[i];
+                sum += Convert.ToDouble(Console.ReadLine());
+                
             }
-            Console.WriteLine("Sum=" + sum + "    avg=" + sum / 10);
+            Console.WriteLine($"Sum={sum}, avg={sum / 10}");
         }
-        static void task11() {
+        static void Task11() {
             int number = Convert.ToInt32(Console.ReadLine());
             for (int i = 1; i <= number; i++)
             {
@@ -154,7 +151,7 @@ namespace myfirstproject
                 }
             }
         }
-        static void task12()
+        static void Task12()
         {
 
             int number1= Convert.ToInt32(Console.ReadLine());
@@ -175,7 +172,7 @@ namespace myfirstproject
             }
             Console.WriteLine("Count = " + count);
         }
-        static void task13()
+        static void Task13()
         {
             int selectedChanel = Convert.ToInt32(Console.ReadLine());
             switch ((EmpTypeEnum)selectedChanel)
