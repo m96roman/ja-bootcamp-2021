@@ -107,7 +107,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Homework", "Homework", "{DF
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shyptur", "shyptur", "{636356C9-AEC2-4C25-B050-6BE91A211621}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "myfirstproject", "Lecture1\Homework\shyptur\myfirstproject\myfirstproject.csproj", "{5F3FC4F7-907A-43B4-BD38-CAD202A8D4EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "myfirstproject", "Lecture1\Homework\shyptur\myfirstproject\myfirstproject.csproj", "{5F3FC4F7-907A-43B4-BD38-CAD202A8D4EC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ShypturHomeWork", "ShypturHomeWork", "{5519911C-A905-43F1-A96B-DC0A5B4B0A6F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task2=)", "Lecture2\Tasks\ShypturHomeWork\Task2=)\Task2=).csproj", "{60BF4031-AFC7-44E7-9084-DE6E9CB2AA80}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -239,6 +243,10 @@ Global
 		{5F3FC4F7-907A-43B4-BD38-CAD202A8D4EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F3FC4F7-907A-43B4-BD38-CAD202A8D4EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F3FC4F7-907A-43B4-BD38-CAD202A8D4EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60BF4031-AFC7-44E7-9084-DE6E9CB2AA80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60BF4031-AFC7-44E7-9084-DE6E9CB2AA80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60BF4031-AFC7-44E7-9084-DE6E9CB2AA80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60BF4031-AFC7-44E7-9084-DE6E9CB2AA80}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -282,6 +290,8 @@ Global
 		{DFAE0DC3-3081-44A7-ABA6-481639D0382A} = {700639AA-72D7-4015-8B2C-6EA4DAA0FD54}
 		{636356C9-AEC2-4C25-B050-6BE91A211621} = {39E37D91-F7B7-4669-9A3D-06F80DB83687}
 		{5F3FC4F7-907A-43B4-BD38-CAD202A8D4EC} = {636356C9-AEC2-4C25-B050-6BE91A211621}
+		{5519911C-A905-43F1-A96B-DC0A5B4B0A6F} = {AAE99CB6-04E4-4B88-9AF5-20ABBA1F1B0B}
+		{60BF4031-AFC7-44E7-9084-DE6E9CB2AA80} = {5519911C-A905-43F1-A96B-DC0A5B4B0A6F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EDF9F64D-8CE1-4567-A599-F6C8CF7B91E0}
