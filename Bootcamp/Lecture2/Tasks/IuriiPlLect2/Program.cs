@@ -55,6 +55,7 @@ namespace IuriiPlLect2
             {
                 return null;
             }
+
             return new Marker { color = color };
         }
 
@@ -86,7 +87,8 @@ namespace IuriiPlLect2
                 Console.Write(item);
             }
 
-            testArray = testArray.Reverse().ToArray();
+            // testArray = testArray.Reverse().ToArray();
+             Array.Reverse(testArray);
 
             Console.WriteLine("The values store into the array in reverse are");
             foreach (var item in testArray)
@@ -148,7 +150,7 @@ namespace IuriiPlLect2
         {
             Console.WriteLine(this.color + index);
         }
-        public void PrintMarker(Marker marker)
+        public static void PrintMarker(Marker marker)
         {
             Console.WriteLine(marker.color);
         }
@@ -186,7 +188,7 @@ namespace IuriiPlLect2
                 return false;
             }
 
-           string[] container = text.Split(',');
+            string[] container = text.Split(',');
             if (container.Length != 2)
             {
                 point = null;
