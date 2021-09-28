@@ -128,21 +128,19 @@ namespace Task1
         }
         public static void CirclePerimeterAndArea(double radius)
         {
-            double per_cir, area;
-            per_cir = 2 * Math.PI * radius;
-            area = Math.PI * radius * radius;
+            double per_cir = 2 * Math.PI * radius;
+            double area = Math.PI * radius * radius;
             Console.WriteLine($"Perimeter of Circle {per_cir}");
             Console.WriteLine($"Area of circle: {area}");
         }
         public static void SumAndAvg(int[] numbers)
         {
-            int sum = 0;
-            double avg = 0;
+            int sum=0;
             foreach (var number in numbers)
             {
                 sum += number;
             }
-            avg = sum / 10.00;
+           double  avg = sum / 10.00;
             Console.WriteLine($"The sum of 10 no is : {sum}\nThe Average is : {avg}\n");
 
         }
