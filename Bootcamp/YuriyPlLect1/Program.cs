@@ -101,7 +101,7 @@ namespace YuriyPlLect1
                 return;
             }
 
-            double result = firstValue == secondValue ? firstValue + secondValue : (firstValue + secondValue) / 8;
+            var result = firstValue == secondValue ? firstValue + secondValue : (double)(firstValue + secondValue) / 8;
 
             Console.WriteLine(result);
         }
