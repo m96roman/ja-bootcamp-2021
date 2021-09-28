@@ -18,7 +18,7 @@ namespace Task2_Ivanyshyn.ValuesTasks
             //    - create a constructor for `Marker` struct which takes color as an argument.Use it in the `InitMaker` method
             //    - if `InitMaker` is called with `null` argument `Nullable<Marker>` type should be returned.
             //    - Print marker created using `InitMaker` method: if null is returned use `??` operator to create `new Marker("default")` instead
-            //Task2();
+            Task2();
             //3. Write a program to insert the information of two books. (Book struct should be created)
             //Test Data :
 
@@ -38,7 +38,7 @@ namespace Task2_Ivanyshyn.ValuesTasks
 
             //2: Title = C+,  Author = G.RTRTG
 
-            Task3();
+            //Task3();
         }
 
         private static void Task3()

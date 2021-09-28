@@ -29,7 +29,7 @@ namespace Task2_Ivanyshyn.ValuesTasks
         {
             if (string.IsNullOrWhiteSpace(color))
             {
-                return new Marker?();
+                return null;
             }
             return new Marker(color);
         }
