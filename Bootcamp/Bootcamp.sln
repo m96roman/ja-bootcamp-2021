@@ -90,20 +90,24 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinqUsingEnumerable", "Lect
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lecture5", "Lecture5", "{700639AA-72D7-4015-8B2C-6EA4DAA0FD54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerGenericMethodExample", "Lecture5\CustomerGenericMethodExample\CustomerGenericMethodExample.csproj", "{441058B0-9E57-41C4-82AE-3B808BE1832F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerGenericMethodExample", "Lecture5\CustomerGenericMethodExample\CustomerGenericMethodExample.csproj", "{441058B0-9E57-41C4-82AE-3B808BE1832F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollectionInitializationExample", "Lecture5\CollectionInitializationExample\CollectionInitializationExample.csproj", "{5CA5F301-293C-4206-8653-883AE4971CB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CollectionInitializationExample", "Lecture5\CollectionInitializationExample\CollectionInitializationExample.csproj", "{5CA5F301-293C-4206-8653-883AE4971CB3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IssueWithNonGenericCollectionExample", "Lecture5\IssueWithNonGenericCollectionExample\IssueWithNonGenericCollectionExample.csproj", "{73136A05-B7A9-4257-9C41-E4368A18E1C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IssueWithNonGenericCollectionExample", "Lecture5\IssueWithNonGenericCollectionExample\IssueWithNonGenericCollectionExample.csproj", "{73136A05-B7A9-4257-9C41-E4368A18E1C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericPointExample", "Lecture5\GenericPointExample\GenericPointExample.csproj", "{1819EA7C-CB74-423F-B6F5-A3412D59D44E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenericPointExample", "Lecture5\GenericPointExample\GenericPointExample.csproj", "{1819EA7C-CB74-423F-B6F5-A3412D59D44E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericCollectionExample", "Lecture5\GenericCollectionExample\GenericCollectionExample.csproj", "{90E38273-7A46-4ADE-A55E-AFA0017722B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenericCollectionExample", "Lecture5\GenericCollectionExample\GenericCollectionExample.csproj", "{90E38273-7A46-4ADE-A55E-AFA0017722B3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Homework", "Homework", "{DFAE0DC3-3081-44A7-ABA6-481639D0382A}"
 	ProjectSection(SolutionItems) = preProject
 		Lecture5\Homework\Tasks.txt = Lecture5\Homework\Tasks.txt
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ivanyshyn", "Ivanyshyn", "{05B8C7B9-DB75-4E34-B335-155DEB02287F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task2-Ivanyshyn", "Task2-Ivanyshyn\Task2-Ivanyshyn.csproj", "{95E67B4C-E673-4751-83A4-3EA3A009C6DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -231,6 +235,10 @@ Global
 		{90E38273-7A46-4ADE-A55E-AFA0017722B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90E38273-7A46-4ADE-A55E-AFA0017722B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{90E38273-7A46-4ADE-A55E-AFA0017722B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95E67B4C-E673-4751-83A4-3EA3A009C6DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95E67B4C-E673-4751-83A4-3EA3A009C6DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95E67B4C-E673-4751-83A4-3EA3A009C6DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95E67B4C-E673-4751-83A4-3EA3A009C6DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -272,6 +280,8 @@ Global
 		{1819EA7C-CB74-423F-B6F5-A3412D59D44E} = {700639AA-72D7-4015-8B2C-6EA4DAA0FD54}
 		{90E38273-7A46-4ADE-A55E-AFA0017722B3} = {700639AA-72D7-4015-8B2C-6EA4DAA0FD54}
 		{DFAE0DC3-3081-44A7-ABA6-481639D0382A} = {700639AA-72D7-4015-8B2C-6EA4DAA0FD54}
+		{05B8C7B9-DB75-4E34-B335-155DEB02287F} = {AAE99CB6-04E4-4B88-9AF5-20ABBA1F1B0B}
+		{95E67B4C-E673-4751-83A4-3EA3A009C6DB} = {05B8C7B9-DB75-4E34-B335-155DEB02287F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EDF9F64D-8CE1-4567-A599-F6C8CF7B91E0}
