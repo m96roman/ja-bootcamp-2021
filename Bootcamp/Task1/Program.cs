@@ -50,9 +50,9 @@ namespace Task1
             //var numbersSumAndAvg = Array.ConvertAll(Console.ReadLine().Split(" "), Int32.Parse);
             //SumAndAvg(numbersSumAndAvg);
           
-            Print("11");
-            Console.WriteLine("Write a program to display multiplication table from 1 to n \n Write n :");
-            MultiplicationTable(Int32.Parse(Console.ReadLine()));
+            //Print("11");
+            //Console.WriteLine("Write a program to display multiplication table from 1 to n \n Write n :");
+            //MultiplicationTable(Int32.Parse(Console.ReadLine()));
           
             Print("12");
             Console.WriteLine("Write two integers trought space");
@@ -148,7 +148,6 @@ namespace Task1
         }
         public static void MultiplicationTable(int number)
         {
-
             for (int i = 1; i <= number; i++)
             {
                 for (int j = 1; j <= number; j++)
@@ -161,23 +160,19 @@ namespace Task1
         public static void NumbersDivisibleBy8(int[] numbers)
         {
             int count = 0;
-            int x = numbers[0];
-            for (int i = numbers[0]; i < numbers[1]; i++)
+            if (numbers[0] > numbers[1])
             {
-                if (i % 8 == 0)
+                Console.WriteLine("The range is invalid");
+            }
+            else
+            {
+                for (int i = numbers[0]; i < numbers[1]; i += 8)
                 {
-                    count++;
-                    x = i;
+                        count++;
                 }
-                else if (numbers[0] <= x && x <= numbers[1])
-                {
-                    Console.WriteLine("Range is Invalid");
-                    break;
-                }
+                Console.WriteLine(count);
 
             }
-
-            Console.WriteLine(count);
         }
     }
 }
