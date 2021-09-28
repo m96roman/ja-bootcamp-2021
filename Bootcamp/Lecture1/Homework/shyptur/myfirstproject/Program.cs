@@ -6,7 +6,7 @@ namespace myfirstproject
     {
         static void Main(string[] args)
         {
-            task10();
+            task13();
 
         }
         static void task2()
@@ -142,6 +142,71 @@ namespace myfirstproject
                 sum += numbers[i];
             }
             Console.WriteLine("Sum=" + sum + "    avg=" + sum / 10);
+        }
+        static void task11() {
+            int number = Convert.ToInt32(Console.ReadLine());
+            for (int i = 1; i <= number; i++)
+            {
+                Console.WriteLine();
+                for (int j = 1; j <= number; j++)
+                {
+                    Console.Write(i + "x" + j + "=" + i * j+" ");
+                }
+            }
+        }
+        static void task12()
+        {
+
+            int number1= Convert.ToInt32(Console.ReadLine());
+            int number2= Convert.ToInt32(Console.ReadLine());
+            if (number1>number2)
+            {
+                Console.WriteLine("Exception: number 1 < number 2");
+                Console.ReadLine();
+            }
+            int count = 0;
+            for (int i = number1; i <= number2; i++)
+            {
+                if (i%8==0)
+                {
+                    Console.WriteLine(i);
+                    count += 1;
+                }
+            }
+            Console.WriteLine("Count = " + count);
+        }
+        static void task13()
+        {
+            int selectedChanel = Convert.ToInt32(Console.ReadLine());
+            switch ((EmpTypeEnum)selectedChanel)
+            {
+                case EmpTypeEnum.chanel1:
+                    Console.WriteLine("Chanel rating 81%");
+                    break;
+                case EmpTypeEnum.chanel2:
+                    Console.WriteLine("Chanel rating 82%");
+                    break;
+                case EmpTypeEnum.chanel3:
+                    Console.WriteLine("Chanel rating 83%");
+                    break;
+                case EmpTypeEnum.chanel4:
+                    Console.WriteLine("Chanel rating 84%");
+                    break;
+                case EmpTypeEnum.chanel5:
+                    Console.WriteLine("Chanel rating 85%");
+                    break;
+                default:
+                    Console.WriteLine("Chanel not exist");
+                    break;
+            }
+        }
+        enum EmpTypeEnum  
+        {
+            chanel1 = 1,
+            chanel2 = 2,
+            chanel3 = 3,
+            chanel4 = 4,
+            chanel5=5
         }
     }
 }
