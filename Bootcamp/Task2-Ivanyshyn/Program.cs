@@ -1,5 +1,7 @@
 ﻿using System;
 using Task2_Ivanyshyn.MethodTasks;
+using Task2_Ivanyshyn.ArraysTasks;
+using Task2_Ivanyshyn.ValuesTasks;
 
 namespace Task2_Ivanyshyn
 {
@@ -8,13 +10,13 @@ namespace Task2_Ivanyshyn
         static void Main(string[] args)
         {
             #region Value vs Reference types
-          //  ValuesVsReferences.doTasks();
+            ValuesVsReferences.doTasks();
             #endregion
             #region Arrays
-           // ArraysTasks.doTasks();
+            // ArraysTasks.ArraysTasks.doTasks();
             #endregion
             #region Methods
-            MethodsTasks.doTasks();
+            //MethodsTasks.doTasks();
             #endregion
         }
     }
