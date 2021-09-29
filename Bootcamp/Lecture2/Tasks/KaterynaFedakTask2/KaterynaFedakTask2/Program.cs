@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace KaterynaFedakTask2
@@ -12,23 +11,23 @@ namespace KaterynaFedakTask2
         {
             Color = _color;
         }
-        public Marker(string _color,int _id)
+        public Marker(string _color, int _id)
         {
             Color = _color;
             Index = _id;
         }
-       
+
         public static Nullable<Marker> InitMarker(string _color)
         {
             if (_color != null)
             {
-               return new Marker(_color);
+                return new Marker(_color);
             }
             else
             {
                 return null;
             }
-   
+
         }
         public void PrintMarker()
         {
@@ -36,18 +35,19 @@ namespace KaterynaFedakTask2
         }
         public void Print()
         {
-            Marker? marker= InitMarker(Color);
+            Marker? marker = InitMarker(Color);
             marker ??= InitMarker("default");
             Console.WriteLine($"The color is {marker.Value.Color} ");
 
         }
     };
-    struct Book {
+    struct Book
+    {
 
         public string Name;
         public string Author;
         public int Id;
-        public Book(string _name,string _author, int _id)
+        public Book(string _name, string _author, int _id)
         {
             Name = _name;
             Author = _author;
@@ -60,18 +60,19 @@ namespace KaterynaFedakTask2
         }
 
     };
-    struct Point {
+    struct Point
+    {
 
         public object X;
         public object Y;
-        public bool TryParsePoint(object o,out object x,out object y)
+        public bool TryParsePoint(object o, out object x, out object y)
         {
             string pattern = @"^([0-9]+,)\s[0-9]+$";
             Regex rg = new Regex(pattern);
-            bool flag= rg.Match(o.ToString()).Success;
+            bool flag = rg.Match(o.ToString()).Success;
             if (flag)
             {
-                var st=o.ToString().Split(",");
+                var st = o.ToString().Split(",");
                 x = st[0];
                 y = st[1];
             }
@@ -185,7 +186,6 @@ namespace KaterynaFedakTask2
             n1 = n2;
             n2 = tempInt;
         }
-
 
     }
 }
