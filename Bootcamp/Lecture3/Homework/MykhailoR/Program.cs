@@ -1,0 +1,12 @@
+﻿using System;
+
+namespace MykhailoR
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello World!");
+        }
+    }
+}
