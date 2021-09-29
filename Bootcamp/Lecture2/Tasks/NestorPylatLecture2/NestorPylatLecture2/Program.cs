@@ -16,7 +16,7 @@ namespace NestorPylatLecture2
             //_4_Task.doTask4();
             //_5_Task.doTask5();
             //_6_Task.doTask6();
-            //_7_Task.doTask7();
+            _7_Task.doTask7();
 
 
 
