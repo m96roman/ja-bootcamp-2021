@@ -7,10 +7,12 @@ namespace KaterynaFedakTask2
     {
         public string Color;
         public static int Index;
+
         public Marker(string color)
         {
             Color = color;
         }
+
         public Marker(string color, int id)
         {
             Color = color;
@@ -21,32 +23,35 @@ namespace KaterynaFedakTask2
         {
             if (_color != null)
             {
-                return new Marker(_color);
+                return new Marker(_color, Index);
             }
             else
             {
                 return null;
             }
-
         }
+
         public void PrintMarker()
         {
-            Console.WriteLine($"The color is {Color} and index is {Index}");
-        }
-        public void Print()
-        {
-            Marker? marker = InitMarker(Color);
-            marker ??= InitMarker("default");
-            Console.WriteLine($"The color is {marker.Value.Color} ");
-
+            if (Color != null)
+            {
+                Console.WriteLine($"The color is {Color}");
+            }
+            else
+            {
+                Marker? marker = InitMarker(Color);
+                marker ??= InitMarker("default");
+                Console.WriteLine($"The color is {marker.Value.Color}");
+            }
         }
     };
+
     struct Book
     {
-
         public string Name;
         public string Author;
         public int Id;
+
         public Book(string _name, string _author, int _id)
         {
             Name = _name;
@@ -60,16 +65,19 @@ namespace KaterynaFedakTask2
         }
 
     };
+
     struct Point
     {
 
         public object X;
         public object Y;
+
         public bool TryParsePoint(object o, out object x, out object y)
         {
             string pattern = @"^([0-9]+,)\s[0-9]+$";
             Regex rg = new Regex(pattern);
             bool flag = rg.Match(o.ToString()).Success;
+
             if (flag)
             {
                 var st = o.ToString().Split(",");
@@ -84,6 +92,7 @@ namespace KaterynaFedakTask2
             return flag;
         }
     };
+
     class Program
     {
         static void Main(string[] args)
@@ -95,22 +104,18 @@ namespace KaterynaFedakTask2
             {
                 mark.PrintMarker();
             }
-
             Console.WriteLine("***** Task 2 *****\n");
-            Marker[] markers2 = { new Marker(null, 1), new Marker("Blue", 2) };
+            Marker[] markers2 = { new Marker(null) };
             foreach (var mark in markers2)
             {
-                mark.Print();
+                mark.PrintMarker();
             }
-
             Console.WriteLine("**** Task 3 ****\n");
             Book[] books = { new Book("BASIC", "S.TROELSTRA", 1), new Book("C+", "G.RTRTG", 2) };
             foreach (var book in books)
             {
                 book.Print();
             }
-
-
             Console.WriteLine("**** Task 4 ****\n");
             Console.WriteLine("Input n - number of elements");
             int n = Int32.Parse(Console.ReadLine());
@@ -131,7 +136,6 @@ namespace KaterynaFedakTask2
             {
                 Console.Write(element + " ");
             }
-
             Console.WriteLine("**** Task 5 ****\n");
             Console.WriteLine("Input n - number of elements");
             int nDublicates = Int32.Parse(Console.ReadLine());
@@ -154,8 +158,6 @@ namespace KaterynaFedakTask2
                 }
             }
             Console.WriteLine($"Total number of duplicate elements found in the array is : {count} ");
-
-
             Console.WriteLine("**** Task 6 ****\n");
             Console.WriteLine("Enter a number:");
             int n1 = Int32.Parse(Console.ReadLine());
@@ -164,7 +166,6 @@ namespace KaterynaFedakTask2
             SwapIntegers(ref n1, ref n2);
             Console.WriteLine($"Now the 1st number is : {n1} , and the 2nd number is : {n2}");
             Console.WriteLine();
-
             Console.WriteLine("**** Task 7 ****\n");
             Console.WriteLine(" Input your point: ");
             Point point = new Point();
@@ -180,6 +181,7 @@ namespace KaterynaFedakTask2
             }
 
         }
+
         static void SwapIntegers(ref int n1, ref int n2)
         {
             int tempInt = n1;
