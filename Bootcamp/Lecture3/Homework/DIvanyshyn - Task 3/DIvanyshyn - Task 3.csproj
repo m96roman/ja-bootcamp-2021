@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <RootNamespace>DIvanyshyn___Task_3</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Lecture2\Tasks\Task2-Ivanyshyn\Task2-Ivanyshyn.csproj" />
+  </ItemGroup>
+
+</Project>
