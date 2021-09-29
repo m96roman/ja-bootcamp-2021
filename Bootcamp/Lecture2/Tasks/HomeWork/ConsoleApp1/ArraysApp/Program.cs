@@ -19,14 +19,14 @@ namespace ArraysApp
         static int[] ReadNumbers()
         {
             Console.WriteLine("Please enter the count of elements in the Array:");
-            int count = Int32.Parse(Console.ReadLine());
+            int count = int.Parse(Console.ReadLine());
             
             int[] array = new int[count];
 
             for(int i = 0; i < count; i++)
             {
                 Console.WriteLine($"Please enter value for index {i} of {count}");
-                int consoleNumber = Int32.Parse(Console.ReadLine());
+                int consoleNumber = int.Parse(Console.ReadLine());
                 array[i] = consoleNumber;
             }
 
@@ -45,8 +45,8 @@ namespace ArraysApp
                 Array.Reverse(array);
                 string arrayToPrint = string.Join(", ", array);
                 Console.WriteLine($"The values store into the array in reverse are : {arrayToPrint} ");
-
-            } else if (method == "")
+            }
+            else if (method == "")
             {
                 string arrayToPrintNotReverse = string.Join(", ", array);
 
@@ -65,12 +65,10 @@ namespace ArraysApp
             for (int i = 0; i < array.Length; i++)
             {
 
-                bool isDuplicate = false;
                 for (int j = 0; j < i; j++)
                 {
                     if (array[i] == array[j])
                     {
-                        isDuplicate = true;
                         count++;
                         break;
                     }
@@ -80,9 +78,9 @@ namespace ArraysApp
             if (count > 0)
             {
                 Console.WriteLine($"The count of unique values in the arrays is: {count}");
-
-            } else if (count < 0) {
-
+            } 
+            else if (count < 0) 
+            {
                 Console.WriteLine($"The count is no unique values");
             }
 
