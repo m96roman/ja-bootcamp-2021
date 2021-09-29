@@ -121,6 +121,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MykhailoR", "Lecture3\Homew
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Task2-Ivanyshyn", "Lecture2\Tasks\Task2-Ivanyshyn\Task2-Ivanyshyn.csproj", "{3C15F2C3-FCCE-447B-94E7-6E0C54F112B6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shyptur - Task3", "Shyptur - Task3", "{A4E743E7-9100-428D-B16D-CD7854670FB8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shyptur - Task3 HW", "Lecture3\Homework\Shyptur - Task3\Shyptur - Task3 HW\Shyptur - Task3 HW.csproj", "{4F32C35A-8BB5-433D-95BA-55CDC4360E3A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -271,6 +275,10 @@ Global
 		{3C15F2C3-FCCE-447B-94E7-6E0C54F112B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C15F2C3-FCCE-447B-94E7-6E0C54F112B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C15F2C3-FCCE-447B-94E7-6E0C54F112B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F32C35A-8BB5-433D-95BA-55CDC4360E3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F32C35A-8BB5-433D-95BA-55CDC4360E3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F32C35A-8BB5-433D-95BA-55CDC4360E3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F32C35A-8BB5-433D-95BA-55CDC4360E3A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -320,6 +328,8 @@ Global
 		{7CB405E2-F61F-4567-B8F7-1080C1B2A544} = {DE2D5B22-4275-416E-8F06-4E8C206FB49A}
 		{25E42E6A-DDD5-4ECE-917C-74E6F45AE06A} = {DE2D5B22-4275-416E-8F06-4E8C206FB49A}
 		{3C15F2C3-FCCE-447B-94E7-6E0C54F112B6} = {AAE99CB6-04E4-4B88-9AF5-20ABBA1F1B0B}
+		{A4E743E7-9100-428D-B16D-CD7854670FB8} = {DE2D5B22-4275-416E-8F06-4E8C206FB49A}
+		{4F32C35A-8BB5-433D-95BA-55CDC4360E3A} = {A4E743E7-9100-428D-B16D-CD7854670FB8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EDF9F64D-8CE1-4567-A599-F6C8CF7B91E0}
