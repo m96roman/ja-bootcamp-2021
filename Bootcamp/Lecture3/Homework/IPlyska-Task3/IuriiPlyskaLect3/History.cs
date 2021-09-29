@@ -21,11 +21,14 @@ namespace IuriiPlyskaLect3
         public string C { get; set; }
         public string D { get; set; }
 
-        //public static void Print(History history)
-        //{
-        //    Console.WriteLine("History test" + history.Question);
-        //}
+        public void ChangeConsole()
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
 
+            Console.WriteLine(Question);
+
+            Console.ResetColor();
+        }
         public virtual string Print()
         {
             return string.Empty;
@@ -36,9 +39,11 @@ namespace IuriiPlyskaLect3
     {
         public override string Print()
         {
-            Console.WriteLine(Question);
+ 
+            Console.WriteLine("Please choose correct an answer. Type only A, or B, or C, or D and press Enter button." +
+                " If was inputed something else an answer will be not correct. There is no case sensitive for an answer...");
 
-            Console.WriteLine("Please choose correct an answer. Type only A, or B, or C, or D. If was inputed something else an answer will be not correct");
+            base.ChangeConsole();
 
             Console.WriteLine($"A: {A}  B:{B}");
 
@@ -51,8 +56,10 @@ namespace IuriiPlyskaLect3
     public class HistoryJUST_STRQuestion : History
     {
         public override string Print()
-        {
-            Console.WriteLine("Please input the right an answer. There is no case sensitive for an answer...");
+        {         
+            Console.WriteLine("Please input the right an answer and press Enter button. There is no case sensitive for an answer...");
+
+            base.ChangeConsole();
 
             return Console.ReadLine();
         } 

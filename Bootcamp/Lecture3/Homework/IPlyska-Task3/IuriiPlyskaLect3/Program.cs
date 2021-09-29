@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace IuriiPlyskaLect3
 {
@@ -66,15 +67,58 @@ namespace IuriiPlyskaLect3
 
             History test3 = new HistoryCaseQuestion()
             {
-                Id = 2,
-                Question = "In which country is the Bay of Pigs?",
-                A = "USA",
-                B = "Cuba",
-                C = "Mexico",
-                D = "Spain",
+                Id = 3,
+                Question = "Who built the first car in America??",
+                A = "Ilon Mask",
+                B = "Henry Ford",
+                C = "Thomas B. Jeffery",
+                D = "Carl Benz",
                 CorrectAnswer = "B"
             };
 
+            History test4 = new HistoryCaseQuestion()
+            {
+                Id = 4,
+                Question = "How many years did the 100 years war last?",
+                A = "116",
+                B = "100",
+                C = "101",
+                D = "115",
+                CorrectAnswer = "A"
+            };
+
+            History test5 = new HistoryJUST_STRQuestion()
+            {
+                Id = 5,
+                Question = "How many days in a week were there in ancient Roman times?",
+                CorrectAnswer = "8"
+            };
+
+            History test6 = new HistoryJUST_STRQuestion()
+            {
+                Id = 6,
+                Question = "Greenland was a colony of which country until 1981?",
+                CorrectAnswer = "DENMARK"
+            };
+
+
+            History[] tests = { test1, test6, test5, test4, test2, test3 };
+            int counter = 0;
+            foreach (var item in tests)
+            {
+                string reult = item.Print().Trim().ToUpper();
+                if (reult == item.CorrectAnswer)
+                {
+                    counter++;
+                }
+            }
+
+            Console.WriteLine($"You have answered correctly on {counter} questions from {tests.Length}");
+            Console.WriteLine($"Correct answers are");
+            for (int x = 0; x < tests.Length; x++)
+            {
+                Console.WriteLine($"For {x + 1} is {tests[x].CorrectAnswer}");
+            }
         }
     }
 
