@@ -6,15 +6,16 @@ namespace Task2__
     {
         static void Main(string[] args)
         {
-            TaskPart3Ex2();
+            TaskPart2Ex1();
 
 
         }
         /// <summary>
         /// ====Value vs Reference types====
         /// </summary>
-        static void TaskPart1() {
-
+        
+        static void TaskPart1() 
+        {
             //task 1.2
             Marker marker1 = new Marker("blue", 1);
             Marker marker2 = new Marker("red", 2);
@@ -23,33 +24,32 @@ namespace Task2__
             marker2.PrintMarker();
             marker3 ??= Marker.InitMarker("default");
             marker3.Value.PrintMarker();
+           
             //task3
-            Book book1;
+          
             Console.WriteLine();
             Console.WriteLine("Information of book 1");
-            Console.Write("Input name of the book : ");
-            book1.NameOfTheBook = Console.ReadLine();
-            Console.Write("Input the author : ");
-            book1.Author = Console.ReadLine();
+            Book book1 ;
+            book1= Book.Redbook();
 
-            Book book2;
             Console.WriteLine();
             Console.WriteLine("Information of book 2");
-            Console.Write("Input name of the book : ");
-            book2.NameOfTheBook = Console.ReadLine();
-            Console.Write("Input the author : ");
-            book2.Author = Console.ReadLine();
+            Book book2;
+            book2 = Book.Redbook();
 
             book1.PrintBookInfo();
             book2.PrintBookInfo();
         }
+    
         /// <summary>
         /// ==== Arrays ====
         /// </summary>
-        static void TaskPart2Ex1() {
+        static void TaskPart2Ex1() 
+        {
             Console.Write("Input the number of elements to store in the array : ");
             int NumberElementsArray = Convert.ToInt32(Console.ReadLine());
             double[] array = new double[NumberElementsArray];
+           
             Console.WriteLine($"Input {NumberElementsArray} number of elements in the array :");
             for (int i = 0; i < NumberElementsArray; i++)
             {
@@ -57,23 +57,24 @@ namespace Task2__
                 array[i] = Convert.ToDouble(Console.ReadLine());
 
             }
+
             Console.WriteLine("The values store into the array are:");
             for (int i = 0; i < NumberElementsArray; i++)
             {
                 Console.Write($"{array[i]} ");
             }
+
             Console.WriteLine();
             Array.Reverse(array);
-            Console.WriteLine("The values store into the array in reverse are: ");
-            for (int i = 0; i < array.Length; i++)
-            {
-                Console.Write($"{array[i]} ");
-            }
+            Console.WriteLine("The values store into the array in reverse are: " +string.Join(" ",array ));
+
+         
         }
         static void TaskPart2Ex2() {
             Console.Write("Input the number of elements to store in the array : ");
             int NumberElementsArray = Convert.ToInt32(Console.ReadLine());
             double[] array = new double[NumberElementsArray];
+
             Console.WriteLine($"Input {NumberElementsArray} number of elements in the array :");
             for (int i = 0; i < NumberElementsArray; i++)
             {
@@ -82,29 +83,27 @@ namespace Task2__
 
             }
             Array.Sort(array);
+
             int count = 0;
             for (int i = 0; i < array.Length; i++)
             {
                 if (i == array.Length - 1)
                 {
                     break;
-
                 }
                 else if (array[i] - array[i + 1]==0)
                 {
                     count += 1;
-                }
-                
-
+                }               
             }
             Console.WriteLine("Total number of duplicate elements found in the array is : " + count) ;
-
         }
 
         /// <summary>
         /// ==== Methods =====
         /// </summary>
-        static void TaskPart3Ex1() {
+        static void TaskPart3Ex1() 
+        {
             Console.Write("Enter a number: ");
             int number1 = Convert.ToInt32(Console.ReadLine());
             Console.Write("Enter another number: ");
@@ -119,15 +118,16 @@ namespace Task2__
             num2 = tempInt;
         }
 
-        static void TaskPart3Ex2() {
+        static void TaskPart3Ex2() 
+        {
             Console.WriteLine("Input your point: ");
             string pointdata = Console.ReadLine();
             Point? point;
             bool result = Point.TryParsePoint(pointdata,out point);
-
             if (result)
             {
-                Console.Write(result+", "); point.Value.PrintPoint();
+                Console.Write(result+", ");
+                point.Value.PrintPoint();
             }
             else
             {
@@ -159,11 +159,8 @@ namespace Task2__
 
 
             public void PrintMarker( )
-            {
-                
-                    Console.WriteLine($"Color:{Color} , Index:{Index}");
-                
-                
+            {              
+                    Console.WriteLine($"Color:{Color} , Index:{Index}");                       
             }
         }
         struct Book {
@@ -174,10 +171,22 @@ namespace Task2__
                 NameOfTheBook = name;
                 Author = author;
             }
+
+            public static Book Redbook()
+            {
+                Book book;
+                Console.Write("Input name of the book : ");
+                book.NameOfTheBook = Console.ReadLine();
+                Console.Write("Input the author : ");
+                book.Author = Console.ReadLine();
+                return book;
+            }
+
             public void PrintBookInfo() {
                 Console.WriteLine($"Title = {NameOfTheBook},  Author = {Author} ");
             }
         }
+       
         struct Point {
             public double X;
             public double Y;
@@ -190,6 +199,7 @@ namespace Task2__
             {
                 result = null;
                 string[] data = pointData.Split(",");
+
                 if (data.Length!=2)
                 {
                     return false;
@@ -201,7 +211,10 @@ namespace Task2__
                 return true;
             
             }
-            public void PrintPoint() { Console.Write($"Point = ({X}, {Y})"); }
+            public void PrintPoint() 
+            { 
+                Console.Write($"Point = ({X}, {Y})"); 
+            }
         }
         
     }
