@@ -19,19 +19,11 @@ namespace Task1_Arrays
                 values[i] = Convert.ToInt32(Console.ReadLine());
             }
 
-            Console.WriteLine("The values store into the array are: ");
-            for (int i = 0; i < n; i++)
-            {
-                Console.Write(values[i] + " ");
-            }
+            Console.WriteLine(String.Join(" ", values));
 
             Array.Reverse(values);
 
-            Console.WriteLine("The values store into the array in reverse are :");
-            for (int i = 0; i < n; i++)
-            {
-                Console.Write(values[i] + " ");
-            }
+            Console.WriteLine(String.Join(" ", values));
         }
     }
 }

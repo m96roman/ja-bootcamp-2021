@@ -6,7 +6,8 @@ namespace Task2_Methods
     {
         static void Main(string[] args)
         {
-            bool validPoint1, validPoint2 = false;
+            bool validPoint1 = false;
+            bool validPoint2 = false;
 
             Console.WriteLine("Input your point: ");
             string pointInputed = Console.ReadLine();
@@ -18,7 +19,7 @@ namespace Task2_Methods
             
             if(validPoint1)
             {
-                Console.WriteLine($"- Result of parsing: true,{point1.Value.ToString()}");
+                Console.WriteLine($"- Result of parsing: true,{point1.Value}");
             }
             else
             {
@@ -26,7 +27,7 @@ namespace Task2_Methods
             }
             if (validPoint2)
             {
-                Console.WriteLine($"- Result of parsing: true,{point2.Value.ToString()}");
+                Console.WriteLine($"- Result of parsing: true,{point2.Value}");
             }
             else
             {

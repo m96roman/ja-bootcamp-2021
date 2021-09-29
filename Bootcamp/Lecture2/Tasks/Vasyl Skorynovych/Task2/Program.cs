@@ -37,13 +37,6 @@ namespace Task2
             public string Title;
             public string Author;
 
-            public Book(int id, string title, string author)
-            {
-                Id = id;
-                Title = title;
-                Author = author;
-            }
-
             public void PrintBook()
             {
                 Console.WriteLine($"{Id}: Title = {Title}, Author = {Author}");

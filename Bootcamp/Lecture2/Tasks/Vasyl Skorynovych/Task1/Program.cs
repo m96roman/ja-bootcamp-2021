@@ -15,7 +15,7 @@ namespace Task1
             secondColor.PrintMarker();
 
 
-            Marker newColor = InitMarker("greenAndYellow");
+            Marker? newColor = InitMarker("greenAndYellow");
 
             Marker? newColorNullable = InitMarker(null);
             newColorNullable = newColorNullable ?? new Marker("default");            
@@ -48,7 +48,7 @@ namespace Task1
 
         // Created a static method `InitMarker(string color)` 
         // which takes color as an argument and returns created `Marker` instance with that color
-        static Marker InitMarker(string color)
+        static Marker? InitMarker(string color)
         {
             return new Marker(color);
         }
