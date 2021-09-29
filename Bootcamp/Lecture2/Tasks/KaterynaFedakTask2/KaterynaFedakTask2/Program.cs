@@ -17,7 +17,7 @@ namespace KaterynaFedakTask2
             Index = id;
         }
 
-        public static Nullable<Marker> InitMarker(string _color)
+        public static Marker? InitMarker(string _color)
         {
             if (_color != null)
             {
