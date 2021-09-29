@@ -21,22 +21,19 @@ namespace KFedakTask3
             secondMethode.Print();
         }
 
-        public static void TaskOne() {
-            Vehicle car = new Car();
+        public static void TaskOne() 
+        {
             List<Vehicle> vehicles = new List<Vehicle>();
             vehicles.Add(CreateAirPlane());
             vehicles.Add(CreateCar());
+
             foreach (var vehicle in vehicles)
             {
-                ///<summary>
-                /// any child class MUST give their own version of this method, it`s why it abstract method
-                /// because car move on the road and the plane takes off
-                ///</summary>
+                //any child class MUST give their own version of this method, it`s why it abstract method
+                //because car move on the road and the plane takes off
                 vehicle.Start();
-                ///<summary>
-                ///virtual method means that may or may not be good enough for the child class.
-                ///So if it is good for car but not enought for airplane ,so then override Star in airplane 
-                ///</summary>
+                //virtual method means that may or may not be good enough for the child class.
+                //So if it is good for car but not enought for airplane ,so then override Star in airplane 
                 vehicle.Move();
                 Console.WriteLine($"The vehicle is {vehicle.GetType().Name} and the mark is {vehicle.Name} and he has {vehicle.Wheels} wheels");
                 Console.WriteLine("\n\n\n");
@@ -45,16 +42,16 @@ namespace KFedakTask3
 
         public static Airplane CreateAirPlane()
         {
-            Vehicle airplane = new Airplane();
+            var airplane = new Airplane();
             airplane.Wheels = 9;// set properties
-            return (Airplane)airplane;
+            return airplane;
         }
 
         public static Car CreateCar()
         {
-            Vehicle car = new Car();
+            var car = new Car();
             car.Wheels = 4;
-            return (Car)car;
+            return car;
         }
     }
 }

@@ -18,7 +18,6 @@ namespace KFedakTask3
         public override void Move()
         {
             Console.WriteLine("The plane took off");
-
         }
 
         public override void Start()
@@ -26,7 +25,6 @@ namespace KFedakTask3
             base.Start();
             Console.WriteLine("The turbines are also started");
             Console.WriteLine(DisplayStatus());
-
         }
     }
 }

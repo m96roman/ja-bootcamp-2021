@@ -8,7 +8,7 @@ namespace KFedakTask3
 {
    public class Question
     {
-        public string _question;
+        public string Questions;
         public string answear;
     }
 }

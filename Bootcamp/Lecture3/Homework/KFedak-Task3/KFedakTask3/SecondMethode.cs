@@ -12,21 +12,20 @@ namespace KFedakTask3
 
         public SecondMethode(string question, string answear, string[] answears) : base(question, answear)
         {
-            foreach (var ans in answears)
-            {
-                this.answears.Add(ans);
-            }
+            this.answears.AddRange(answears);
         }
 
         public override void Print()
         {
             base.Print();
+            
             for (int i = 0; i < answears.Count; i++)
             {
                 Console.WriteLine($"{i + 1}. {answears[i]}");
             }
             Console.WriteLine("Write the number of answear:");
             var userAnswear = answears[int.Parse(Console.ReadLine())-1];
+        
             if (userAnswear == Answear)
             {
                 Console.WriteLine("Correct!!!");
