@@ -115,7 +115,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shyptur", "shyptur", "{6363
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "myfirstproject", "Lecture1\Homework\shyptur\myfirstproject\myfirstproject.csproj", "{5F3FC4F7-907A-43B4-BD38-CAD202A8D4EC}"
 EndProject
+<<<<<<< HEAD
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HWTask", "Lecture3\Homework\OKrutii-Task3\HWTask\HWTask.csproj", "{7CB405E2-F61F-4567-B8F7-1080C1B2A544}"
+=======
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MykhailoR", "Lecture3\Homework\MykhailoR\MykhailoR.csproj", "{25E42E6A-DDD5-4ECE-917C-74E6F45AE06A}"
+>>>>>>> main
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -255,10 +259,17 @@ Global
 		{5F3FC4F7-907A-43B4-BD38-CAD202A8D4EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F3FC4F7-907A-43B4-BD38-CAD202A8D4EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F3FC4F7-907A-43B4-BD38-CAD202A8D4EC}.Release|Any CPU.Build.0 = Release|Any CPU
+<<<<<<< HEAD
+		{7CB405E2-F61F-4567-B8F7-1080C1B2A544}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CB405E2-F61F-4567-B8F7-1080C1B2A544}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CB405E2-F61F-4567-B8F7-1080C1B2A544}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CB405E2-F61F-4567-B8F7-1080C1B2A544}.Release|Any CPU.Build.0 = Release|Any CPU
+=======
 		{25E42E6A-DDD5-4ECE-917C-74E6F45AE06A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{25E42E6A-DDD5-4ECE-917C-74E6F45AE06A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{25E42E6A-DDD5-4ECE-917C-74E6F45AE06A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{25E42E6A-DDD5-4ECE-917C-74E6F45AE06A}.Release|Any CPU.Build.0 = Release|Any CPU
+>>>>>>> main
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -305,7 +316,11 @@ Global
 		{7BCB9135-CB34-456D-93C7-AC3243B06EA5} = {F9374AB9-72AD-4209-B4C2-B3EDAC7B6C2D}
 		{636356C9-AEC2-4C25-B050-6BE91A211621} = {39E37D91-F7B7-4669-9A3D-06F80DB83687}
 		{5F3FC4F7-907A-43B4-BD38-CAD202A8D4EC} = {636356C9-AEC2-4C25-B050-6BE91A211621}
+<<<<<<< HEAD
+		{7CB405E2-F61F-4567-B8F7-1080C1B2A544} = {DE2D5B22-4275-416E-8F06-4E8C206FB49A}
+=======
 		{25E42E6A-DDD5-4ECE-917C-74E6F45AE06A} = {DE2D5B22-4275-416E-8F06-4E8C206FB49A}
+>>>>>>> main
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EDF9F64D-8CE1-4567-A599-F6C8CF7B91E0}
