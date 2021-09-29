@@ -10,7 +10,6 @@
         /// 
         /// </summary>
         /// <param name="testAnswers">answers</param>
-        /// <param name="rightAnswer"> index of correct answer</param>
         /// <param name="questionString">Question itself</param>
         public CaseTestQuestion(CaseAnswer[] testAnswers, string questionString) : base(questionString)
         {

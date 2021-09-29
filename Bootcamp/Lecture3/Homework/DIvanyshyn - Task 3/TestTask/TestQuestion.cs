@@ -20,6 +20,7 @@ namespace DIvanyshyn___Task_3
         /// <param name="questionIndex">number of Question</param>
         /// <returns>result of question</returns>
         internal abstract bool AskHimself(int questionIndex);
+
         public static int ReadNumber(Predicate<int> condition, string name = "integer number")
         {
             int num = 0;

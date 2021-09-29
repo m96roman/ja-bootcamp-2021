@@ -18,7 +18,6 @@ namespace DIvanyshyn___Task_3
 
         internal override bool AskHimself(int questionIndex)
         {
-
             base.PrintQuestionName(questionIndex);
             Console.WriteLine("Enter answer:");
             string input = Console.ReadLine();

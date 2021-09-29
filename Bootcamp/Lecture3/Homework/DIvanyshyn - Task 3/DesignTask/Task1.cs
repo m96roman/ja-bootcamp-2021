@@ -19,7 +19,6 @@
         /// </summary>
         internal static void DoExample()
         {
-
             using (MusicInstrument guitar = new Guitar(1))
             {
                 MusicInstrument.DoPlay(guitar);
@@ -28,7 +27,6 @@
             {
                 MusicInstrument.DoPlay(trembita);
             }
-
         }
     }
 }

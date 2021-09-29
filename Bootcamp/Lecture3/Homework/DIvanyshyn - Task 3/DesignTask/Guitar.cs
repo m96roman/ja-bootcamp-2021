@@ -2,9 +2,7 @@
 {
     public class Guitar : MusicInstrument
     {
-        public Guitar(int loudness) : base(loudness)
-        {
-        }
+        public Guitar(int loudness) : base(loudness) { }
 
         public override void Play()
         {

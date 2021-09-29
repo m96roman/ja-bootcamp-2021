@@ -6,7 +6,4 @@
         void Pause();
         void Play();
     }
-
-
-
 }
