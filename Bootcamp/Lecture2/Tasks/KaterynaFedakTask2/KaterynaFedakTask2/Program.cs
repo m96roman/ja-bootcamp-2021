@@ -7,14 +7,14 @@ namespace KaterynaFedakTask2
     {
         public string Color;
         public static int Index;
-        public Marker(string _color)
+        public Marker(string color)
         {
-            Color = _color;
+            Color = color;
         }
-        public Marker(string _color, int _id)
+        public Marker(string color, int id)
         {
-            Color = _color;
-            Index = _id;
+            Color = color;
+            Index = id;
         }
 
         public static Nullable<Marker> InitMarker(string _color)
