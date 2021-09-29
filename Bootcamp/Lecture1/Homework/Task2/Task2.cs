@@ -1,10 +1,17 @@
-﻿using System;
-
-namespace HomeWork1
+﻿namespace HomeWork1
 {
-    class Task2
+    using System;
+
+    /// <summary>
+    /// Defines the <see cref="Task2" />.
+    /// </summary>
+    internal class Task2
     {
-        static void Main(string[] args)
+        /// <summary>
+        /// The Main.
+        /// </summary>
+        /// <param name="args">The args<see cref="string[]"/>.</param>
+        internal static void Main(string[] args)
         {
             int countOfNumbers = 3;
             int [] inputValue= new int[countOfNumbers];
@@ -16,10 +23,14 @@ namespace HomeWork1
             }
 
             multiplication(inputValue);
-
         }
 
-        static void multiplication(int [] arr ) {
+        /// <summary>
+        /// The multiplication.
+        /// </summary>
+        /// <param name="arr">The arr<see cref="int []"/>.</param>
+        internal static void multiplication(int [] arr ) 
+        {
             int length = arr.Length;
             int result = 1;
             for (int i = 0;i < length; i++) {
