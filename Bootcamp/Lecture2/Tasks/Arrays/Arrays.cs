@@ -7,26 +7,28 @@ namespace Arrays
     {
         static void Main(string[] args)
         {
-             Task1();
-           // Task2();
+            Task1();
+            // Task2();
         }
 
-        static void Task2() {
+        static void Task2()
+        {
             int[] inputArr = FillAnArray();
             var dict = new Dictionary<int, int>();
 
-            Array.Sort(inputArr);
             foreach (var value in inputArr)
             {
                 dict.TryGetValue(value, out int count);
                 dict[value] = count + 1;
             }
-            foreach (var pair in dict) {
+            foreach (var pair in dict)
+            {
                 Console.WriteLine($"Value {pair.Key} occurred {pair.Value} times.");
             }
         }
 
-        static void Task1() {
+        static void Task1()
+        {
 
             int[] inputArr = FillAnArray();
 
@@ -36,7 +38,9 @@ namespace Arrays
             Array.Reverse(inputArr);
             PrintArray(in inputArr);
         }
-        static int[] FillAnArray() {
+
+        static int[] FillAnArray()
+        {
             Console.Write("Input the number of elements to store in the array :");
             int.TryParse(Console.ReadLine(), out int result);
             int arraySize = result;
@@ -48,12 +52,14 @@ namespace Arrays
                 int.TryParse(Console.ReadLine(), out int numbers);
                 array[i] = numbers;
             }
+
             return array;
+
         }
-        static void PrintArray(in int[] array) {
-            for (int i = 0; i < array.Length; i ++) {
-                Console.Write($"{array[i]} ");
-            }
+
+        static void PrintArray(in int[] array)
+        {
+            Console.WriteLine(string.Join(" ", array));
             Console.Write("\n");
         }
 

@@ -8,15 +8,19 @@ namespace Methods
         {
             //Task1();
             Task2();
-           
+
         }
-        public static void Task2() {
+
+        public static void Task2()
+        {
             Point newPoint;
-            newPoint.s_X = Console.ReadLine();
+            newPoint._X = Console.ReadLine();
             newPoint.TryParsePoint();
-         
+
         }
-        public static void Task1() {
+
+        public static void Task1()
+        {
             int firstNumber;
             int secondNumber;
             try
@@ -32,29 +36,34 @@ namespace Methods
 
             SwapNumbers(ref firstNumber, ref secondNumber);
         }
-        public struct Point {
-        
-            public string s_X;
-           
 
-             public Point(string point1 ) {
-                s_X = point1;
-              
-               
-             }
-            public void TryParsePoint() {
+        public struct Point
+        {
 
-                if (double.TryParse(s_X, out double result))
+            public string _X;
+
+            public Point(string point1)
+            {
+                _X = point1;
+            }
+
+            public void TryParsePoint()
+            {
+
+                if (double.TryParse(_X, out double result))
                 {
-                    Console.WriteLine($"Result of parsing: true, Point = ({s_X})");
+                    Console.WriteLine($"Result of parsing: true, Point = ({_X})");
                 }
-                else {
+                else
+                {
                     Console.WriteLine($"Result of parsing: false, Point = undefined");
                 }
-              
+
             }
         }
-        static void SwapNumbers(ref int firstNumber, ref int secondNumber) {
+
+        static void SwapNumbers(ref int firstNumber, ref int secondNumber)
+        {
             firstNumber = firstNumber + secondNumber;
             secondNumber = firstNumber - secondNumber;
             firstNumber = firstNumber - secondNumber;
