@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace DIvanyshyn___Task_3
 {
@@ -22,7 +23,7 @@ namespace DIvanyshyn___Task_3
         {
             //Sorry for this but that is just a test example
             Test test1 = new Test(
-                new System.Collections.Generic.List<TestQuestion> {
+                new List<TestQuestion> {
                           new CaseTestQuestion(
                                 new CaseAnswer[]{
                                     new CaseAnswer("One",true),
