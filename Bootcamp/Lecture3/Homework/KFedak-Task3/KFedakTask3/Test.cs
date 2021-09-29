@@ -9,16 +9,18 @@ namespace KFedakTask3
     class Test
     {
         public readonly string Id= Guid.NewGuid().ToString("N");
-        public List<string> Question { get; set; }
+        public string Question;
+        public string Answear;
 
-        public Test(List<string> question)
+        public Test(string question, string answer)
         {
-            Question = new List<string>();
             Question = question;
+            Answear = answer;
         }
 
         public virtual void Print()
         {
+            Console.WriteLine(Question);
         }
     }
 }

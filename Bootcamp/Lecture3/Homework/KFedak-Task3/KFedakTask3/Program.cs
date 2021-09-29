@@ -7,6 +7,21 @@ namespace KFedakTask3
     {
         static void Main(string[] args)
         {
+            TaskOne();
+            TaskTwo();
+        }
+
+        public static void TaskTwo()
+        {
+            Test test = new Test("Kyiv is a capital city of Ukraine&", "Yes");
+            FirstMethodOfTest firstMethodOfTest = new FirstMethodOfTest(test.Question,test.Answear);
+            firstMethodOfTest.Print();
+            var optionToAnswear = "Yes No".Split(" ");
+            SecondMethode secondMethode = new SecondMethode(test.Question, test.Answear, optionToAnswear);
+            secondMethode.Print();
+        }
+
+        public static void TaskOne() {
             Vehicle car = new Car();
             List<Vehicle> vehicles = new List<Vehicle>();
             vehicles.Add(CreateAirPlane());
