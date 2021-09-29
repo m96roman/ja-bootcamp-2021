@@ -28,7 +28,7 @@ namespace KFedakTask3
         /// </summary>
         protected string DisplayStatus()
         {
-           return "I am in a perfect condition for be useing";
+            return "I am in a perfect condition for be useing";
         }
     }
 }

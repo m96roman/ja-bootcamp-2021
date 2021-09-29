@@ -10,7 +10,7 @@ namespace KFedakTask3
     {
         private static readonly string Name = "SkyUp";
 
-        public Airplane():base(Name)
+        public Airplane() : base(Name)
         {
 
         }
@@ -18,10 +18,11 @@ namespace KFedakTask3
         public override void Move()
         {
             Console.WriteLine("The plane took off");
-           
+
         }
 
-        public override void Start() {
+        public override void Start()
+        {
             base.Start();
             Console.WriteLine("The turbines are also started");
             Console.WriteLine(DisplayStatus());

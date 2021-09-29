@@ -11,7 +11,7 @@ namespace KFedakTask3
             List<Vehicle> vehicles = new List<Vehicle>();
             vehicles.Add(CreateAirPlane());
             vehicles.Add(CreateCar());
-            foreach(var vehicle in vehicles)
+            foreach (var vehicle in vehicles)
             {
                 ///<summary>
                 /// any child class MUST give their own version of this method, it`s why it abstract method
@@ -32,7 +32,6 @@ namespace KFedakTask3
         {
             Vehicle airplane = new Airplane();
             airplane.Wheels = 9;// set properties
-           
             return (Airplane)airplane;
         }
 
