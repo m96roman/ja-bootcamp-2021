@@ -5,25 +5,19 @@ namespace KaterynaFedakTask2
 {
     struct Marker
     {
-        public string Color;
-        public static int Index;
+        public string color;
+        public static int index;
 
         public Marker(string color)
         {
-            Color = color;
-        }
-
-        public Marker(string color, int id)
-        {
-            Color = color;
-            Index = id;
+            this.color = color;
         }
 
         public static Marker? InitMarker(string _color)
         {
             if (_color != null)
             {
-                return new Marker(_color, Index);
+                return new Marker(_color);
             }
             else
             {
@@ -33,16 +27,12 @@ namespace KaterynaFedakTask2
 
         public void PrintMarker()
         {
-            if (Color != null)
-            {
-                Console.WriteLine($"The color is {Color}");
-            }
-            else
-            {
-                Marker? marker = InitMarker(Color);
-                marker ??= InitMarker("default");
-                Console.WriteLine($"The color is {marker.Value.Color}");
-            }
+            Console.WriteLine($"The color is {color} and index is {index}");
+        }
+
+        public static void PrintMarker(Marker marker)
+        {
+            Console.WriteLine($"The color is {marker.color}");
         }
     };
 
@@ -68,26 +58,23 @@ namespace KaterynaFedakTask2
 
     struct Point
     {
+        public double X;
+        public double Y;
 
-        public object X;
-        public object Y;
-
-        public bool TryParsePoint(object o, out object x, out object y)
+        public bool TryParsePoint(string str, out Point? point)
         {
             string pattern = @"^([0-9]+,)\s[0-9]+$";
             Regex rg = new Regex(pattern);
-            bool flag = rg.Match(o.ToString()).Success;
+            bool flag = rg.Match(str).Success;
 
             if (flag)
             {
-                var st = o.ToString().Split(",");
-                x = st[0];
-                y = st[1];
+                var st = str.Split(",");
+                point = new Point { X = Convert.ToDouble(st[0]),Y= Convert.ToDouble(st[1])};
             }
             else
             {
-                x = null;
-                y = null;
+                point = null;
             }
             return flag;
         }
@@ -99,17 +86,16 @@ namespace KaterynaFedakTask2
         {
 
             Console.WriteLine("***** Task 1 *****\n");
-            Marker[] markers = { new Marker("Red", 1), new Marker("Blue", 2) };
-            foreach (var mark in markers)
-            {
-                mark.PrintMarker();
-            }
+            Marker markerOne = new Marker("Red");
+            Marker.index = 1;
+            markerOne.PrintMarker();
+            Marker markerTwo = new Marker("Blue");
+            Marker.index = 2;
+            markerTwo.PrintMarker();
             Console.WriteLine("***** Task 2 *****\n");
-            Marker[] markers2 = { new Marker(null) };
-            foreach (var mark in markers2)
-            {
-                mark.PrintMarker();
-            }
+            Marker ? marker = Marker.InitMarker(null);
+            marker = marker ?? new Marker("default");
+            Marker.PrintMarker(marker.Value);
             Console.WriteLine("**** Task 3 ****\n");
             Book[] books = { new Book("BASIC", "S.TROELSTRA", 1), new Book("C+", "G.RTRTG", 2) };
             foreach (var book in books)
@@ -118,7 +104,7 @@ namespace KaterynaFedakTask2
             }
             Console.WriteLine("**** Task 4 ****\n");
             Console.WriteLine("Input n - number of elements");
-            int n = Int32.Parse(Console.ReadLine());
+            int n = int.Parse(Console.ReadLine());
             int[] arrayOfElements = new int[n];
             for (int i = 0; i < n; i++)
             {
@@ -170,16 +156,15 @@ namespace KaterynaFedakTask2
             Console.WriteLine(" Input your point: ");
             Point point = new Point();
             var ob = Console.ReadLine();
-            var ifParsing = point.TryParsePoint(ob, out object x, out object y);
+            var ifParsing = point.TryParsePoint(ob, out Point? point1);
             if (ifParsing)
             {
-                Console.WriteLine($"Result of parsing: {ifParsing}, Point = ({x},{y})");
+                Console.WriteLine($"Result of parsing: {ifParsing}, Point = ({point1.Value.X},{point1.Value.Y})");
             }
             else
             {
                 Console.WriteLine($"Result of parsing: {ifParsing}, Point =undefined");
             }
-
         }
 
         static void SwapIntegers(ref int n1, ref int n2)
