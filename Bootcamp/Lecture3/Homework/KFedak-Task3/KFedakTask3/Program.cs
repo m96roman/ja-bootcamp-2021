@@ -5,20 +5,26 @@ namespace KFedakTask3
 {
     class Program
     {
+       
         static void Main(string[] args)
         {
             TaskOne();
-           // TaskTwo();
+            TaskTwo();
         }
 
         public static void TaskTwo()
         {
-            Test test = new Test("Kyiv is a capital city of Ukraine&", "Yes");
-            FirstMethodOfTest firstMethodOfTest = new FirstMethodOfTest(test.Question,test.Answear);
-            firstMethodOfTest.Print();
             var optionToAnswear = "Yes No".Split(" ");
-            SecondMethode secondMethode = new SecondMethode(test.Question, test.Answear, optionToAnswear);
-            secondMethode.Print();
+            Test[] tests = 
+              { 
+                new FirstMethodOfTest(new Question("Kyiv is a capital city of Ukraine?", "Yes")) ,
+                new SecondMethode(new Question("Lviv is a capital city of Ukraine?", "No"),optionToAnswear)
+              };
+
+            foreach (var test in tests)
+            {
+                test.Print();
+            }
         }
 
         public static void TaskOne() 
