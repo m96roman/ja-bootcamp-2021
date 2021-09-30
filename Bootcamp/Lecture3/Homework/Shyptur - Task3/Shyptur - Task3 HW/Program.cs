@@ -79,13 +79,13 @@ namespace Shyptur___Task3_HW
             public Volswagen(string numberofcar, string capacity) : base(numberofcar,capacity)
             {            
             }
-            protected override string Brand
-            {
-                get
-                {
-                    return "Volswagen";
-                }
-            }
+            protected override string Brand => "Volswagen";
+            //{
+            //    get
+            //    {
+            //        return "Volswagen";
+            //    }
+            //}
 
         }
 
