@@ -1,0 +1,23 @@
+tree e5874bae88c55b318bbf1ec3cc3389d7abc7730b
+parent 2039225c5ab5a8172a6f129a68e271a3546a7b0a
+author CyberVS <39273097+CyberVS@users.noreply.github.com> 1632844356 +0300
+committer GitHub <noreply@github.com> 1632844356 +0300
+gpgsig -----BEGIN PGP SIGNATURE-----
+ 
+ wsBcBAABCAAQBQJhUzpECRBK7hj4Ov3rIwAAXkUIAEC9EiQEW1LR4ltGSYnr7Ud6
+ +ilPSJd9TGY3ffkwyuALvqWpwLmhHSQI1GeRzUq3BEWok3Oa3vasBLilbbJ7E8/J
+ AunoA+4EX0H6QFpZdde4Ky1GkUh6WZihyB00qFjRX5Gq3DXJbpIo/hlTnUoHx69Q
+ QSFw7KRSSeMem5i0nX0dB+1lucTtA4Ps8LaUpzXQw9NEP3jF9pYyr5j6k2H/DToD
+ uLdntIGMBT/MRxwt22CRlsLqFDdnDfirsVkMvZQ0d1UElLF/0jUK0KwQ96DcO5L/
+ Xol8Srkf97SCLaOXPOYtmxFzFjAqhlREigvCGrYYc3LKvnfyZG41X4gsWYmDetM=
+ =Wdcf
+ -----END PGP SIGNATURE-----
+ 
+
+VSkorynovych - Task 1 (#9)
+
+* Skorynovych Home work Lecture 1
+
+* Fix comments
+
+Co-authored-by: Vasyl Skorynovych <vasyl.skorynovych@justanswer.com>

@@ -157,7 +157,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ValueVsReference", "Lecture
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Arrays", "Lecture2\Tasks\MRoshko-Task2\Arrays\Arrays.csproj", "{DBABE1B7-4B73-47D8-93DF-9871BF792A0D}"
 EndProject
+<<<<<<< HEAD
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MRoshko-Task3", "Lecture3\Homework\MRoshko-Task3\MRoshko-Task3.csproj", "{0F16A598-D508-4ED8-805F-1C53415D5FF8}"
+=======
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DIvanyshyn - Task 3", "Lecture3\Homework\DIvanyshyn - Task 3\DIvanyshyn - Task 3.csproj", "{01C51CA4-3FAD-462E-B4EB-D26A77C59F3E}"
+>>>>>>> main
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -373,10 +377,17 @@ Global
 		{DBABE1B7-4B73-47D8-93DF-9871BF792A0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBABE1B7-4B73-47D8-93DF-9871BF792A0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBABE1B7-4B73-47D8-93DF-9871BF792A0D}.Release|Any CPU.Build.0 = Release|Any CPU
+<<<<<<< HEAD
 		{0F16A598-D508-4ED8-805F-1C53415D5FF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0F16A598-D508-4ED8-805F-1C53415D5FF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F16A598-D508-4ED8-805F-1C53415D5FF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F16A598-D508-4ED8-805F-1C53415D5FF8}.Release|Any CPU.Build.0 = Release|Any CPU
+=======
+		{01C51CA4-3FAD-462E-B4EB-D26A77C59F3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01C51CA4-3FAD-462E-B4EB-D26A77C59F3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01C51CA4-3FAD-462E-B4EB-D26A77C59F3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01C51CA4-3FAD-462E-B4EB-D26A77C59F3E}.Release|Any CPU.Build.0 = Release|Any CPU
+>>>>>>> main
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -444,7 +455,11 @@ Global
 		{89CB075D-485E-4DBB-B54D-D66DB1089CBB} = {4D05E57A-716E-43E0-83DF-9623F509464C}
 		{CCCBF372-0C3E-43A8-A592-AC106900259E} = {4D05E57A-716E-43E0-83DF-9623F509464C}
 		{DBABE1B7-4B73-47D8-93DF-9871BF792A0D} = {4D05E57A-716E-43E0-83DF-9623F509464C}
+<<<<<<< HEAD
 		{0F16A598-D508-4ED8-805F-1C53415D5FF8} = {DE2D5B22-4275-416E-8F06-4E8C206FB49A}
+=======
+		{01C51CA4-3FAD-462E-B4EB-D26A77C59F3E} = {DE2D5B22-4275-416E-8F06-4E8C206FB49A}
+>>>>>>> main
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EDF9F64D-8CE1-4567-A599-F6C8CF7B91E0}
