@@ -20,7 +20,7 @@ namespace CustomEnumerator
 
         // Return the array object's IEnumerator.
         //Use explicit interface implementation to hide the method from callers
-        IEnumerator IEnumerable.GetEnumerator() 
+        IEnumerator IEnumerable.GetEnumerator()
             => carArray.GetEnumerator();
     }
 }

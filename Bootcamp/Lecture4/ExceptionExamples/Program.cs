@@ -9,8 +9,8 @@ using System;
 
 try
 {
-    FirstLevelTest();
-    //TestCupExample();
+ //   FirstLevelTest();
+    TestCupExample();
 }
 catch (Exception ex)
 {
