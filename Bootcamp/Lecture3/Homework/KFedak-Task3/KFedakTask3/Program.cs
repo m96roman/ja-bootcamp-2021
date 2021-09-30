@@ -8,7 +8,7 @@ namespace KFedakTask3
         static void Main(string[] args)
         {
             TaskOne();
-            TaskTwo();
+           // TaskTwo();
         }
 
         public static void TaskTwo()
@@ -42,15 +42,13 @@ namespace KFedakTask3
 
         public static Airplane CreateAirPlane()
         {
-            var airplane = new Airplane();
-            airplane.Wheels = 9;// set properties
+            var airplane = new Airplane { Wheels=9};
             return airplane;
         }
 
         public static Car CreateCar()
         {
-            var car = new Car();
-            car.Wheels = 4;
+            var car = new Car { Wheels = 4};
             return car;
         }
     }

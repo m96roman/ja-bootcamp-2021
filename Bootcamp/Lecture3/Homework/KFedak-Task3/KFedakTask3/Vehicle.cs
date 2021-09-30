@@ -8,7 +8,7 @@ namespace KFedakTask3
 {
     abstract class Vehicle
     {
-        public string Name;
+        public string Name { get; set; }
         public int Wheels { get; set; }
 
         public Vehicle(string name)

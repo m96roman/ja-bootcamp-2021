@@ -10,10 +10,7 @@ namespace KFedakTask3
     {
         private static readonly string Name = "SkyUp";
 
-        public Airplane() : base(Name)
-        {
-
-        }
+        public Airplane() : base(Name) { }
 
         public override void Move()
         {

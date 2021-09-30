@@ -11,6 +11,7 @@ namespace KFedakTask3
         private static readonly string Name = "Infiniti";
         protected const int MaxSpeed = 220;
 
+
         public Car() : base(Name) { }//create costructor on the base class Vehicle
 
         public override void Move()

@@ -9,8 +9,8 @@ namespace KFedakTask3
     class Test
     {
         public readonly string Id= Guid.NewGuid().ToString("N");
-        public string Question;
-        public string Answear;
+        public string Question { get; set; }
+        public string Answear { get; set; }
 
         public Test(string question, string answer)
         {
