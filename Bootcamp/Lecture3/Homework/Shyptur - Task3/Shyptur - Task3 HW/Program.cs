@@ -16,28 +16,26 @@ namespace Shyptur___Task3_HW
             bool IsOnGaranty = NewCar[0].IsOnGaranty();
             Console.WriteLine(NewCar[0].GetInformation()+" and Garanty is "+ IsOnGaranty);
         }
+
         abstract class Car
         {
             public string Number { get; set; }
             public string Capacity { get; set; }
+
             private readonly DateTime EndOfDataGaranty;
             protected abstract string Brand { get; }
 
-            protected Car(string number) : this(number, DateTime.UtcNow)
+            protected Car(string number,string capacity) : this(number, DateTime.UtcNow, capacity)
             {
             }
-            private Car(string number, DateTime endOfDataGaranty)
+            private Car(string number, DateTime endOfDataGaranty, string capacity)
             {
                 this.Number = number;
                 EndOfDataGaranty = endOfDataGaranty;
-            }         
-            protected virtual bool IsElectric
-            {
-                get
-                {
-                    return false;
-                }
+                this.Capacity = capacity;
             }
+            protected virtual bool IsElectric => false;
+       
             public string GetInformation()
             {
                 return $"It's {Brand} with number {Number} and capacity {Capacity}; Is Electric: {IsElectric}";
@@ -56,9 +54,9 @@ namespace Shyptur___Task3_HW
         }
         class BMW : Car
         {
-            public BMW(string number, string capacity) : base(number)
+            public BMW(string number, string capacity) : base(number,capacity)
             {
-                Capacity = capacity;
+               
 
             }
             protected override string Brand
@@ -78,9 +76,8 @@ namespace Shyptur___Task3_HW
         }
         class Volswagen : Car
         {
-            public Volswagen(string numberofcar, string capacity) : base(numberofcar)
-            {
-                Capacity = capacity;
+            public Volswagen(string numberofcar, string capacity) : base(numberofcar,capacity)
+            {            
             }
             protected override string Brand
             {
