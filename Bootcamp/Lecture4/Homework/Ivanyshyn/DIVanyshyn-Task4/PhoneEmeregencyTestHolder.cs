@@ -46,6 +46,7 @@ namespace DIVanyshyn_Task4
         /// - In the end to the method call ChargeABit() method on every phone in PhoneEmergencyTestHolder, even when exception was re-thrown.
         /// </summary>
         /// <param name="holder"><paramref name="holder"/> for operating</param>
+        /// <exception cref="BatteryIsDeadException">Rethrows from <see cref="Nokia"/></exception>
         internal static void TestEmeregency(PhoneEmeregencyTestHolder holder)
         {
             foreach (var item in holder)
