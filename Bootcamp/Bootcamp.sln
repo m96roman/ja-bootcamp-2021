@@ -159,6 +159,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ValueVsReference", "Lecture
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Arrays", "Lecture2\Tasks\MRoshko-Task2\Arrays\Arrays.csproj", "{DBABE1B7-4B73-47D8-93DF-9871BF792A0D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADovhanych_Task4", "Lecture4\Homework\ADovhanych_Task4\ADovhanych_Task4\ADovhanych_Task4.csproj", "{12D55779-8720-4304-9184-986790D10FE7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -377,6 +379,10 @@ Global
 		{DBABE1B7-4B73-47D8-93DF-9871BF792A0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBABE1B7-4B73-47D8-93DF-9871BF792A0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBABE1B7-4B73-47D8-93DF-9871BF792A0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12D55779-8720-4304-9184-986790D10FE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12D55779-8720-4304-9184-986790D10FE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12D55779-8720-4304-9184-986790D10FE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12D55779-8720-4304-9184-986790D10FE7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -445,6 +451,7 @@ Global
 		{89CB075D-485E-4DBB-B54D-D66DB1089CBB} = {4D05E57A-716E-43E0-83DF-9623F509464C}
 		{CCCBF372-0C3E-43A8-A592-AC106900259E} = {4D05E57A-716E-43E0-83DF-9623F509464C}
 		{DBABE1B7-4B73-47D8-93DF-9871BF792A0D} = {4D05E57A-716E-43E0-83DF-9623F509464C}
+		{12D55779-8720-4304-9184-986790D10FE7} = {F1AC00AC-A479-4735-9B6C-C7EB89EF4CFB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EDF9F64D-8CE1-4567-A599-F6C8CF7B91E0}
