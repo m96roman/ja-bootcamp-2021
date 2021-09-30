@@ -25,16 +25,15 @@ namespace KFedakTask4
                 try
                 {
                     phone.CallAmbulance();
-                    if (phone.GetType() == typeof(Nokia))
-                    {
-                        var p = phone as Nokia;
-                        p.PrayForBattery();
-                        phone.CallAmbulance();
-                    }
                 }
                 catch (BatteryIsDeadException)
                 {
-                   // throw;
+                    if (phone.GetType() != typeof(Nokia))
+                    {
+                        throw;
+                    }
+                    var p = phone as Nokia;
+                    p.PrayForBattery();
                 }
                 finally
                 {

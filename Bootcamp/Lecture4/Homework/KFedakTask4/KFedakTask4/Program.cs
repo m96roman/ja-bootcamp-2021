@@ -11,14 +11,11 @@ namespace KFedakTask4
             {
                 try
                 {
-                        phone.TestEmergency();
+                    phone.TestEmergency();
                 }
-                catch (BatteryIsDeadException)
+                catch (BatteryIsDeadException be)
                 {
-
-                }
-                finally
-                {
+                    be.telephone.Charge();
                 }
             }
         }

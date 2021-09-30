@@ -9,11 +9,16 @@ namespace KFedakTask4
 {
     class BatteryIsDeadException : ApplicationException
     {
-        private string _messageDetails = String.Empty;
+        public ITelephone telephone { get; set; }
         public DateTime ErrorTimeStamp { get; set; }
         public string CauseOfError { get; set; }
 
         public BatteryIsDeadException() { }
+
+        public BatteryIsDeadException(ITelephone telephone)
+        {
+            this.telephone = telephone;
+        }
 
         public BatteryIsDeadException(string cause)
         {
