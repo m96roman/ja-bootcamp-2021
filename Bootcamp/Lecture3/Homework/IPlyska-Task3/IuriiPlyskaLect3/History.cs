@@ -16,6 +16,10 @@ namespace IuriiPlyskaLect3
 
         public string CorrectAnswer { get; set; }
 
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
         public string A { get; set; }
         public string B { get; set; }
         public string C { get; set; }
@@ -32,6 +36,52 @@ namespace IuriiPlyskaLect3
         public virtual string Print()
         {
             return string.Empty;
+        }
+
+        public  List<History> Participate(List<History> container, string firstName, string lastName, out int counter)
+        {
+
+            counter = 0;
+            if (container is null || container.Count == 0)
+            {
+                Console.WriteLine($"{nameof(container)} can not be null or empty");
+                return null;
+            }
+            
+            if (string.IsNullOrEmpty(lastName) || string.IsNullOrEmpty(firstName))
+            {
+                Console.WriteLine($"first and last name can not be null or empty");
+                return null;
+            }
+
+            FirstName = firstName;
+            LastName = lastName;
+
+            foreach (var item in container)
+            {
+                string reult = item.Print().Trim().ToUpper();
+                if (reult == item.CorrectAnswer)
+                {
+                    counter++;
+                }
+            }
+            return container; 
+        }
+
+        public void ShowResult(List<History> container, int counter)
+        {
+            if (container is null || container.Count == 0)
+            {
+                Console.WriteLine($"{nameof(container)} can not be null or empty");
+                return;
+            }
+
+            Console.WriteLine($"You have answered correctly on {counter} questions from {container.Count}");
+            Console.WriteLine($"Correct answers are");
+            for (int x = 0; x < container.Count; x++)
+            {
+                Console.WriteLine($"For {x + 1} is {container[x].CorrectAnswer}");
+            }
         }
     }
 
@@ -53,7 +103,7 @@ namespace IuriiPlyskaLect3
         }  
     }
 
-    public class HistoryJUST_STRQuestion : History
+    public class HistoryJustStrQuestion : History
     {
         public override string Print()
         {         

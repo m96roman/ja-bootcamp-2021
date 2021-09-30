@@ -87,38 +87,35 @@ namespace IuriiPlyskaLect3
                 CorrectAnswer = "A"
             };
 
-            History test5 = new HistoryJUST_STRQuestion()
+            History test5 = new HistoryJustStrQuestion()
             {
                 Id = 5,
                 Question = "How many days in a week were there in ancient Roman times?",
                 CorrectAnswer = "8"
             };
 
-            History test6 = new HistoryJUST_STRQuestion()
+            History test6 = new HistoryJustStrQuestion()
             {
                 Id = 6,
                 Question = "Greenland was a colony of which country until 1981?",
                 CorrectAnswer = "DENMARK"
             };
 
+            Console.WriteLine("To start quiz please type your first name");
 
-            History[] tests = { test1, test6, test5, test4, test2, test3 };
-            int counter = 0;
-            foreach (var item in tests)
-            {
-                string reult = item.Print().Trim().ToUpper();
-                if (reult == item.CorrectAnswer)
-                {
-                    counter++;
-                }
-            }
+            string firstName = Console.ReadLine();
 
-            Console.WriteLine($"You have answered correctly on {counter} questions from {tests.Length}");
-            Console.WriteLine($"Correct answers are");
-            for (int x = 0; x < tests.Length; x++)
-            {
-                Console.WriteLine($"For {x + 1} is {tests[x].CorrectAnswer}");
-            }
+            Console.WriteLine("Please also type your last name");
+
+            string lastName = Console.ReadLine();
+
+            History history = new History();
+
+            int counter;
+
+            List<History> container =  history.Participate(new List<History> { test1, test6, test5, test4, test2, test3 }, firstName, lastName, out counter);
+
+            history.ShowResult(container, counter);
         }
     }
 
@@ -164,13 +161,11 @@ namespace IuriiPlyskaLect3
         {
             Console.WriteLine("Test");
         }
-
     }
 
     class Nokia : Phone
     {
         public override double Inch { get; set; }
-
 
         public override void GetManufacturer()
         {
