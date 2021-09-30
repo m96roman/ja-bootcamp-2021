@@ -20,11 +20,7 @@ namespace IuriiPlyskaLect3
 
         public string LastName { get; set; }
 
-        public string A { get; set; }
-        public string B { get; set; }
-        public string C { get; set; }
-        public string D { get; set; }
-
+      
         public void ChangeConsole()
         {
             Console.ForegroundColor = ConsoleColor.Green;
@@ -40,7 +36,6 @@ namespace IuriiPlyskaLect3
 
         public  List<History> Participate(List<History> container, string firstName, string lastName, out int counter)
         {
-
             counter = 0;
             if (container is null || container.Count == 0)
             {
@@ -87,9 +82,13 @@ namespace IuriiPlyskaLect3
 
     public class HistoryCaseQuestion : History
     {
+        public string A { get; set; }
+        public string B { get; set; }
+        public string C { get; set; }
+        public string D { get; set; }
+
         public override string Print()
         {
- 
             Console.WriteLine("Please choose correct an answer. Type only A, or B, or C, or D and press Enter button." +
                 " If was inputed something else an answer will be not correct. There is no case sensitive for an answer...");
 

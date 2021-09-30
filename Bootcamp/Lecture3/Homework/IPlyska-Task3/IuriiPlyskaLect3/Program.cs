@@ -10,13 +10,13 @@ namespace IuriiPlyskaLect3
             #region Show Abstract class works
             //Phone nokia = new Nokia();
             //nokia.Test();
-            //Console.WriteLine($"Serial number for {nameof(nokia)} is {nokia.SerialNumber}, color is {nokia.color}, and size of display is {nokia.Inch = 2} inch");
+            //Console.WriteLine($"Serial number for {nameof(nokia)} is {nokia.SerialNumber}, color is {nokia.Color}, and size of display is {nokia.Inch = 2} inch");
             //nokia.PrintModel();
             //nokia.GetManufacturer();
 
             //Phone samsung = new Samsung();
             //samsung.Test();
-            //Console.WriteLine($"Serial number for {nameof(samsung)} is {samsung.SerialNumber = "19M2345KZ"}, color is {samsung.color}, and size of display is {samsung.Inch = 5.9} inch"); ///can not change color due to readonly
+            //Console.WriteLine($"Serial number for {nameof(samsung)} is {samsung.SerialNumber = "19M2345KZ"}, color is {samsung.Color}, and size of display is {samsung.Inch = 5.9} inch"); ///can not change color due to readonly
             //samsung.PrintModel();
             //samsung.GetManufacturer();
 
@@ -129,7 +129,7 @@ namespace IuriiPlyskaLect3
         /// <summary>
         /// Color of phone
         /// </summary>
-        public readonly string color;
+        public string Color { get; set; }
 
         /// <summary>
         /// Inch of display
@@ -141,7 +141,7 @@ namespace IuriiPlyskaLect3
         {
             SerialNumber = "Default";
             Inch = 6;
-            color = "Black";
+            Color = "Black";
         }
 
         /// <summary>
@@ -195,7 +195,7 @@ namespace IuriiPlyskaLect3
         /// <summary>
         /// Hide base Method
         /// </summary>
-        new public void Test()
+        public new void Test()
         {
             Console.WriteLine("Test for samsung");
         }
@@ -247,10 +247,10 @@ namespace IuriiPlyskaLect3
         }
         public virtual void GetSound()
         {
-            Console.WriteLine("Gav - Gav");
+            Console.WriteLine("Give some sound");
         }
 
-        protected static void GetName(string name)
+        protected void GetName(string name)
         {
             Console.WriteLine("Base neme is" + name);
         }
@@ -272,12 +272,12 @@ namespace IuriiPlyskaLect3
 
         public override void GetSound()
         {
-            base.GetSound();
+            Console.WriteLine("Gav - Gav");
         }
 
         public void SetArrea(string area)
         {
-            Console.WriteLine(this.AreaOfLiving = area); 
+            Console.WriteLine(this.AreaOfLiving = area);           
         }
 
     }
