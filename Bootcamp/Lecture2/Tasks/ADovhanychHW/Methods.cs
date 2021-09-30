@@ -33,7 +33,7 @@ public static class Methods
             Y = newY;
         }
 
-        public static bool TryParsePoint(out Point point)
+        public static bool TryParsePoint(out Point? point)
         {
             Console.WriteLine("Enter two coordinates ");
             string[] input = Console.ReadLine().Replace(" ", "").Split(",");
@@ -43,22 +43,23 @@ public static class Methods
                 if (int.TryParse(input[0], out int newX) && int.TryParse(input[1], out int newY))
                 {
                     point = new Point(newX, newY);
+
                     return true;
                 }
             }
             point = default;
+
             return false;
         }
         public bool Print()
         {
-            if (Point.TryParsePoint(out Point point))
+            if (Point.TryParsePoint(out Point? point))
             {
                 return true;
             }
             else
             {
                 return false;
-
             }
         }
     }

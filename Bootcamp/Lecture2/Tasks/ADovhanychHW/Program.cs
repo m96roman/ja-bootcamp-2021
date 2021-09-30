@@ -9,9 +9,9 @@ namespace ADovhanychHW
     {
         static void Main(string[] args)
         {
-            //ReversArr();
+            ReversArr();
             //WriteLine();
-            //Duplicate();
+            /*Duplicate()*/;
             //Console.WriteLine();
             //MarkerTask();
             //BookInfo();
