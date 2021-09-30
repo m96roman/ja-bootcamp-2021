@@ -17,23 +17,22 @@ namespace Herasymenko
                 {
                     FirstName = "Ivan",
                     LastName = "Ivanov",
+                    CodeSkills = new CodeSkills("Coding as a monster"),
                 },
                 new Manager
                 {
                     FirstName = "Manager",
                     LastName = "Managerov",
+                    SoftSkills = new SoftSkills("Encouraging persons"),
                 }
             };
 
             foreach(var person in persons)
             {
-                if (person is Manager)
-                {
-                    person.SoftSkills.Skills = "soft";
-                    person.SoftSkills.PrintSkills();
-                }
                 person.PrintFullName();
                 person.PrintPersonAge();
+                person.CodeSkills.PrintSkills();
+                person.SoftSkills.PrintSkills();
 
             }
         }
@@ -52,7 +51,7 @@ namespace Herasymenko
         public string LastName { get; set; }
         private readonly int _age;
         public SoftSkills SoftSkills { get; set; } = new SoftSkills();
-        public CodeSkills CodeSkills { get; set; }
+        public CodeSkills CodeSkills { get; set; } = new CodeSkills();
 
         public Person(string firstName, string lastName, int age)
         {
@@ -127,7 +126,10 @@ namespace Herasymenko
 
         public override void PrintSkills()
         {
-            Console.WriteLine($"This person has {Skills} skill");
+            if (Skills != null)
+            {
+                Console.WriteLine($"This person has such {Skills} soft skill");
+            }
         }
     }
 
@@ -141,7 +143,10 @@ namespace Herasymenko
 
         public override void PrintSkills()
         {
-            Console.WriteLine($"This person has {Skills} skill");
+            if (Skills != null)
+            {
+                Console.WriteLine($"This person has such {Skills} code skill");
+            }
         }
     }
 }
