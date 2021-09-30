@@ -2,9 +2,22 @@
 {
     using System;
 
+
     internal class Program
     {
         internal static void Main(string[] args)
+        {
+            Task3_2();
+            //Task3_1();
+        }
+
+        static public void Task3_2()
+        {
+            Task3_2 task3_2 = new Task3_2(1);
+            //Task3_2 task3_2 = new Task3_2(2);
+
+        }
+        static public void Task3_1()
         {
             Cars[] Garage = new Cars[] { new Ferrari(4), new Mercedes(4, "Black"), new Lada() };
 
@@ -16,7 +29,6 @@
             Garage[0].colour = "Red";
             Garage[0].PrintInfo();
         }
-
         internal abstract class Headlights
         {
             public abstract void XenonHeadlights();
