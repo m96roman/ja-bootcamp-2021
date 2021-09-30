@@ -6,7 +6,7 @@ namespace AntonDvgHomework
     {
         static void Main(string[] args)
         {
-            Task13();
+            Task1();
         }
 
         static void Task1()
@@ -36,7 +36,9 @@ namespace AntonDvgHomework
             char[] strArr = str.ToCharArray();
             strArr[0] = last;
             strArr[strArr.Length - 1] = first;
-            string result = "";
+
+            string result = string.Join("", strArr);
+
             for (int i = 0; i < strArr.Length; i++)
             {
                 result += strArr[i];
@@ -80,11 +82,14 @@ namespace AntonDvgHomework
             Console.WriteLine("Enter a string: ");
             string str = Console.ReadLine();
             int length = str.Length;
+            
             if (length < 5)
             {
-                return;
+                Console.WriteLine($"{length}");
             }
+
             string res = "";
+
             for (int i = 0; i < length; i++)
             {
                 if (i < 5)
@@ -111,8 +116,8 @@ namespace AntonDvgHomework
         {
             Console.WriteLine("Enter a string: ");
             string str = Console.ReadLine();
-            char[] strArr = str.ToCharArray();
-            if (strArr[0] != 'C' && strArr[1] != '#')
+
+            if (str.StartsWith("C#"))
             {
                 Console.WriteLine(false);
             }
@@ -138,6 +143,7 @@ namespace AntonDvgHomework
             double sum = 0;
             int length = 10;
             Console.WriteLine($"Enter {length} numbers from keyboard");
+
             for (int i = 0; i < length; i++)
             {
                 sum += int.Parse(Console.ReadLine());
@@ -151,6 +157,7 @@ namespace AntonDvgHomework
         static void Task11()
         {
             int n = int.Parse(Console.ReadLine());
+
             for (int i = 1; i < n + 1; i++)
             {
                 for (int j = 1; j < n + 1; j++)
@@ -165,6 +172,7 @@ namespace AntonDvgHomework
             int numA = int.Parse(Console.ReadLine());
             int numB = int.Parse(Console.ReadLine());
             int counter = 0;
+
             if (numA < numB)
             {
                 for (int i = numA; i < numB; i++)
@@ -193,20 +201,20 @@ namespace AntonDvgHomework
 
             switch (chanel)
             {
-                case 1:
-                    rating = (int) TvChanelsEnum.ChanelOne;
+                case (int) TvChanelsEnum.ChanelOne:
+                    rating = 68;
                     break;
-                case 2:
-                    rating = (int)TvChanelsEnum.ChanelTwo;
+                case (int) TvChanelsEnum.ChanelTwo:
+                    rating = 90;
                     break;
-                case 3:
-                    rating = (int)TvChanelsEnum.ChanelThree;
+                case (int) TvChanelsEnum.ChanelThree:
+                    rating = 85;
                     break;
-                case 4:
-                    rating = (int)TvChanelsEnum.ChanelFour;
+                case (int) TvChanelsEnum.ChanelFour:
+                    rating = 70;
                     break;
-                case 5:
-                    rating = (int)TvChanelsEnum.ChanelFive;
+                case (int) TvChanelsEnum.ChanelFive:
+                    rating = 80;
                     break;
             }
 
@@ -214,11 +222,11 @@ namespace AntonDvgHomework
         }
         enum TvChanelsEnum
         {
-            ChanelOne = 70,
-            ChanelTwo = 75,
-            ChanelThree = 80,
-            ChanelFour = 90,
-            ChanelFive = 95
+            ChanelOne,
+            ChanelTwo,
+            ChanelThree,
+            ChanelFour,
+            ChanelFive
         }
     }
 }
