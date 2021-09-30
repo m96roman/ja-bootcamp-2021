@@ -6,8 +6,8 @@ namespace Pylat___Task_3
     {
         static void Main(string[] args)
         {
-            // Task1.doTask1();
-            Task2.doTask2();
+            Task1.DoTask1();
+            //Task2.doTask2();
         }
     }
 }

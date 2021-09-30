@@ -6,7 +6,7 @@ namespace Pylat___Task_3
 {
     class Task1
     {
-        public static void doTask1()
+        public static void DoTask1()
         {
             Nike nike = new Nike("2", "3", 4, "5");
             nike.NameOfSneakers();
@@ -25,95 +25,94 @@ namespace Pylat___Task_3
 
         public abstract class Sneakers
         {
-            public string firm { get; set; }
-            public string model { get; set; }
-            public int size { get; set; }
+            public string Firm { get; set; }
+            public string Model { get; set; }
+            public int Size { get; set; }
 
             protected Sneakers(string firm, string model, int size)
             {
-                this.firm = firm;
-                this.model = model;
-                this.size = size;
+                this.Firm = firm;
+                this.Model = model;
+                this.Size = size;
             }
 
             public abstract void NameOfSneakers();
-
         }
+
         public class Nike : Sneakers
         {
             public Nike(string firm, string model, int size, string jpnSize) : base(firm, model, size)
             {
-                this.JPNSize = jpnSize;
+               JPNSize = jpnSize;
             }
 
             public string JPNSize { get; set; }
 
             public override void NameOfSneakers()
             {
-                Console.WriteLine($"Firm is - {firm}, model is - {model}, size is -{size}, jpnsize is -{JPNSize}");
+                Console.WriteLine($"Firm is - {Firm}, Model is - {Model}, Size is -{Size}, jpnSize is -{JPNSize}");
             }
         }
+
         public class Adidas : Sneakers
         {
-
             public Adidas(string firm, string model, int size) : base(firm, model, size)
             {
 
             }
+
             public override void NameOfSneakers()
             {
                 PrivateMethod(3);
-                Console.WriteLine($"Firm is - {firm}, model is - {model}, size is -{size}");
+                Console.WriteLine($"Firm is - {Firm}, Model is - {Model}, Size is -{Size}");
             }
+
             private void PrivateMethod(int priv)
             {
-
                 Console.WriteLine($"number = {priv + 1}");
 
             }
-            protected void ProtectedMethod(int prot)
-            {
-                Console.WriteLine($"Protected Method Output = {prot}");
-            }
+
+            
         }
         public class Puma : Sneakers
         {
             public const int constNumber = 10;
-            public int rate { get; set; }
+            public int Rate { get; set; }
             public Puma(string firm, string model, int size, int rate) : base(firm, model, size)
             {
-                this.rate = rate;
+                this.Rate = rate;
             }
+
             public override void NameOfSneakers()
             {
-                Console.WriteLine($"Firm is - {firm}, model is - {model}, size is -{size}, rate - {rate}, const variable = {constNumber}");
+                Console.WriteLine($"Firm is - {Firm}, Model is - {Model}, Size is -{Size}, rate - {Rate}, const variable = {constNumber}");
             }
 
 
         }
         public class Something : Adidas
         {
-            public readonly int readOnlyVariable;
-            public string x;
+            public readonly int ReadOnlyVariable;
+            public string X;
             public Something(string firm, string model, int size) : base(firm, model, size)
             {
-                readOnlyVariable = 3;
+                ReadOnlyVariable = 3;
 
             }
+
             public Something(string x) : this("xxx", "dsfd", 4)
             {
-                this.x = x;
-
-
+                this.X= x;
             }
 
             public void ProtectM()
             {
-                x = "10";
+                X = "10";
 
-                Console.WriteLine($@"Result of protected method: { x + readOnlyVariable}
-readonly variable = {readOnlyVariable}
-this() inherits firm, model, size from Something ctor");
+                Console.WriteLine($@"Result of protected method: { X + ReadOnlyVariable}
+readonly variable = {ReadOnlyVariable}
+this() inherits Firm, Model, Size from Something ctor");
             }
         }
     }

@@ -66,14 +66,14 @@ yes? or no?");
     {
         public static void doTask2()
         {
-            // 1 class /////////////////////////
+            // 1 case /////////////////////////
 
             /* Case case1 = new Case();
             case1.Question();
             case1.answer = Console.ReadLine();
             case1.Answer();*/
 
-            // 2 class /////////////////////////
+            // 2 case /////////////////////////
 
             Just_Str just_str = new Just_Str();
             just_str.Question();
