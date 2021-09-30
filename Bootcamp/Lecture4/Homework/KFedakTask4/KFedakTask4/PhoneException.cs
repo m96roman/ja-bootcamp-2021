@@ -15,7 +15,7 @@ namespace KFedakTask4
 
         public BatteryIsDeadException() { }
 
-        public BatteryIsDeadException(ITelephone telephone)
+        public BatteryIsDeadException(ITelephone telephone) : this($"Phone failed to call an ambulance: {telephone.PhoneName} ")
         {
             this.telephone = telephone;
         }
