@@ -161,6 +161,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Arrays", "Lecture2\Tasks\MR
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DIvanyshyn - Task 3", "Lecture3\Homework\DIvanyshyn - Task 3\DIvanyshyn - Task 3.csproj", "{01C51CA4-3FAD-462E-B4EB-D26A77C59F3E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IPlyskaLect4", "Lecture4\Homework\IPlyska-Task4\IPlyskaLect4\IPlyskaLect4.csproj", "{5640CE76-2AAB-45C5-9846-C8131249CA73}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -383,6 +385,10 @@ Global
 		{01C51CA4-3FAD-462E-B4EB-D26A77C59F3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01C51CA4-3FAD-462E-B4EB-D26A77C59F3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{01C51CA4-3FAD-462E-B4EB-D26A77C59F3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5640CE76-2AAB-45C5-9846-C8131249CA73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5640CE76-2AAB-45C5-9846-C8131249CA73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5640CE76-2AAB-45C5-9846-C8131249CA73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5640CE76-2AAB-45C5-9846-C8131249CA73}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -452,6 +458,7 @@ Global
 		{CCCBF372-0C3E-43A8-A592-AC106900259E} = {4D05E57A-716E-43E0-83DF-9623F509464C}
 		{DBABE1B7-4B73-47D8-93DF-9871BF792A0D} = {4D05E57A-716E-43E0-83DF-9623F509464C}
 		{01C51CA4-3FAD-462E-B4EB-D26A77C59F3E} = {DE2D5B22-4275-416E-8F06-4E8C206FB49A}
+		{5640CE76-2AAB-45C5-9846-C8131249CA73} = {F1AC00AC-A479-4735-9B6C-C7EB89EF4CFB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EDF9F64D-8CE1-4567-A599-F6C8CF7B91E0}
