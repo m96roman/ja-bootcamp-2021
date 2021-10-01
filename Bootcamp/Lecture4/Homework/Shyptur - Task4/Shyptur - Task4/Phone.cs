@@ -28,21 +28,16 @@ namespace Shyptur___Task4
             }
         }
 
-      //  public abstract void PrayForBattery();
-
         public void Charge()
         {
             BateryLevel = 100;
             Console.WriteLine($"Charging {this.GetType().Name} to 100%");
         }
 
-
         public void ChargeaBit()
         {
             BateryLevel += 1;
             Console.WriteLine($"Charging {this.GetType().Name} by 1%");
         }
-
-
     }
 }
