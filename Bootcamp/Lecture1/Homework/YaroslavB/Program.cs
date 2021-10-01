@@ -11,40 +11,40 @@ namespace HomeWork
             ShowNameAndValue();
 
             //2. Read three numbers from console and print their multiplication.
-            //PrintMultiplication(3);
+            PrintMultiplication(3);
 
             //3. Swap first and last characters of a given string. Write result to console.
-            //SwapCharacters();
+            SwapCharacters();
 
             //4. Read two integers from console. Calculate their sum. If values were equal print triple of their sum, otherwise print sum dividev by 8.
-            //PrintSum();
+            PrintSum();
 
             //5. Find largest and lowest value from three integers.
-            //FindMinMaxValue();
+            FindMinMaxValue();
 
             //6. Read string from console. Create new string where first 5 characters will be in upper case. If string is less then 5 characters do nothing. Print it.
-            //ToUpperSubstring();
+            ToUpperSubstring();
 
             //7. Check if given integer is a multiple of 3 or a multiple of 7.
-            //CheckOnMultiple();
+            CheckOnMultiple();
 
             //8. Check if given string starts from 'C#'.
-            //CheckStartString();
+            CheckStartString();
 
             //9. Read circle radius from console. Calculate it's perimeter and area.
-            //ShowCirclePerimeterArea();
+            ShowCirclePerimeterArea();
 
             //10. In a loop read 10 numbers from keyboard. Find their sum and average.
-            //CalcSumAverage();
+            CalcSumAverage();
 
             //11. Write a program to display multiplication table from 1 to n.
-            //ShowMatrix();
+            ShowMatrix();
 
             //12. Read two integers. Print all numbers in range between first and second number that are divisible by 8. If range is invalid print error message.
-            //PrintNumbersInRAnge();
+            PrintNumbersInRAnge();
 
             //13. Create enum type for TV channels (5 is enough). Write a switch statement that provides channel avarage rating.
-            //TVChannelsRating();
+            TVChannelsRating();
 
 
 
@@ -131,7 +131,7 @@ namespace HomeWork
 
             Console.WriteLine("Enter two numbers through \'Enter\'");
 
-            if(IsNumber(Console.ReadLine(), out int firstNumber) != true)
+            if(!IsNumber(Console.ReadLine(), out int firstNumber))
             {
                 Console.WriteLine(ERROR);
                 return;
@@ -139,7 +139,7 @@ namespace HomeWork
 
             Console.WriteLine("Good! Type next number");
 
-            if(IsNumber(Console.ReadLine(), out int secondNumber) != true)
+            if(!IsNumber(Console.ReadLine(), out int secondNumber))
             {
                 Console.WriteLine(ERROR);
                 return;
@@ -149,7 +149,7 @@ namespace HomeWork
 
             if (firstNumber == secondNumber)
             {
-                Console.WriteLine($"Triple of sum: {Math.Pow(sum, 3)}");
+                Console.WriteLine($"Triple of sum: {sum * 3}");
             }
 
             else
@@ -243,7 +243,7 @@ namespace HomeWork
 
             var inputStr = Console.ReadLine();
 
-            Console.WriteLine($"{inputStr.StartsWith(keyString)}");
+            Console.WriteLine(inputStr.StartsWith(keyString));
         }
 
 
@@ -415,7 +415,7 @@ namespace HomeWork
 
         static bool IsNumber(string inputString, out int number)
         {
-            bool status = Int32.TryParse(inputString, out int result);
+            bool status = int.TryParse(inputString, out int result);
             number = result;
             return status;
         }
