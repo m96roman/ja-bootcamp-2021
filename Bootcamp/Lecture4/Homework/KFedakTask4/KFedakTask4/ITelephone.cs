@@ -8,9 +8,9 @@ namespace KFedakTask4
 {
     interface ITelephone
     {
-        public string PhoneName { get; set; }
+        string PhoneName { get; set; }
 
-        public byte BatteryLevel { get; set; }
+        byte BatteryLevel { get; set; }
 
         void CallAmbulance();
 

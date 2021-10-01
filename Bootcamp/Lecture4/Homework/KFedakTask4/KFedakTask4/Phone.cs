@@ -11,16 +11,16 @@ namespace KFedakTask4
         public string PhoneName { get; set; }
         public byte BatteryLevel { get; set; }
 
-        public Phone(byte betteryLevel, string phoneName)
+        public Phone(byte batteryLevel, string phoneName)
         {
             this.PhoneName = phoneName;
-            if (betteryLevel < 0 || betteryLevel > 100)
+            if (batteryLevel < 0 || batteryLevel > 100)
             {
-                throw new ArgumentOutOfRangeException(nameof(betteryLevel), "Invalid value!");
+                throw new ArgumentOutOfRangeException(nameof(batteryLevel), "Invalid value!");
             }
             else
             {
-                this.BatteryLevel = betteryLevel;
+                this.BatteryLevel = batteryLevel;
             }
         }
 
@@ -29,7 +29,7 @@ namespace KFedakTask4
             if (this.BatteryLevel >= 5)
             {
                 this.BatteryLevel -= 5;
-                Console.WriteLine($"calling an ambulance from {PhoneName}, remaining charge: {BatteryLevel}%");
+                Console.WriteLine($"Calling an ambulance from {PhoneName}, remaining charge: {BatteryLevel}%");
             }
             else
             {

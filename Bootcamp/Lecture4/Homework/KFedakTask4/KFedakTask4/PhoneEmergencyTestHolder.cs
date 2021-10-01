@@ -11,16 +11,9 @@ namespace KFedakTask4
     {
         public List<ITelephone> telephones = new List<ITelephone>();
 
-        public PhoneEmergencyTestHolder()
+        public static void TestEmergency(PhoneEmergencyTestHolder phoneEmergency)
         {
-            telephones.Add(new IPhone(4, "Iphone13"));
-            telephones.Add(new Nokia(8, "345"));
-            telephones.Add(new IPhone(25, "Iphone7"));
-        }
-
-        public void TestEmergency()
-        {
-            foreach (var phone in telephones)
+            foreach (var phone in phoneEmergency.telephones)
             {
                 try
                 {
@@ -28,12 +21,12 @@ namespace KFedakTask4
                 }
                 catch (BatteryIsDeadException)
                 {
-                    if (phone.GetType() != typeof(Nokia))
+                    if ( phone is not Nokia nokia)
                     {
                         throw;
                     }
-                    var p = phone as Nokia;
-                    p.PrayForBattery();
+
+                    nokia.PrayForBattery();
                 }
                 finally
                 {
