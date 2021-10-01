@@ -10,7 +10,7 @@ using System;
 try
 {
     FirstLevelTest();
-    //TestCupExample();
+    TestCupExample();
 }
 catch (Exception ex)
 {
