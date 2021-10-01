@@ -1,0 +1,55 @@
+=============== Theory ===============
+1. Go through lecture material. Read additional material.
+
+
+=============== Practice ===============
+0. Go through examples, play with code
+
+1. Create generic method that accepts collection of drawable objects.
+   Drawable object can be Point, Rectangle, Circle.   
+   You should be able to call function with different set of arguments like List<Point>, Rectangle[]
+   Show at least two examples of usage of this function.
+
+
+2. You need to calculate how many people leave in each city.
+   In a loop read home city of each person, at least 10. Expect that cities are not unique.
+   Use best optimized collection for storing city names.
+   As an output program should print statistic of population in each city.
+   Example:
+      * Lviv - 8
+      * Uzhgorod - 3
+      * Kyiv - 17
+
+3.  Create class DbResult. It should have properties:
+	- IsSucceded, which indicates whether operation succeded
+	- Value, which stores operation result
+    Create class DataReader with two methods:
+	- GetCityNames() - to get collection of city names
+	- GetMagicNumber() - to get one random value
+    Both methods should return DbResult object with appropriately populated properties.
+    By strange reason GetMagicNumber fails from time to time. (class Random can be used). 
+    In case of failure method should not throw exception but indicate this in IsSucceded property of DbResult.
+    Call both method and print result status and data.
+
+4. Create class Package with properties:
+	- Size
+	- Title
+	- Recipient
+   There should be two derived classes ForeignPackage and DomesticPackage.
+   ForeignPackage additionally contains SenderCountry property. DomesticPackage has DepartmentId.
+  
+   Create generic class Delivery, which can deliver any type of Package. There should be two types of deliveries NovaPoshta and MeestExpress.
+   NovaPoshta delivers DomesticPackage, MeestExpress - ForeignPackage.
+      
+   Delivery should have method DeliverPackage. Method should do two things, notify recipient (write "Hi, {recipient}. We have {title} with size = {size} for you.")
+   Also based on type it should write:
+	- ForeignPackage - "SMS from MeestExprees: Delivered package from {senderCountry}"
+	- DomesticPackage - "Pop-up notification from NP: You can pick up you package at {departmentId} department."
+
+   Create instances of NovaPoshta and MeestExpress. Create instances of packages. 
+   Use both types of deliveries to sent package they can sent.
+	
+    
+    
+
+
