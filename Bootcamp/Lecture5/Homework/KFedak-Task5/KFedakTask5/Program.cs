@@ -21,6 +21,12 @@ namespace KFedakTask5
             Console.WriteLine("************************************\n");
 
             TaskThree();
+
+            Console.WriteLine("************************************\n");
+
+            TaskFour();
+
+            Console.WriteLine("************************************\n");
         }
 
         public static void TaskOne()
@@ -66,6 +72,18 @@ namespace KFedakTask5
             Console.WriteLine($"Data is : \n{lines}\nStatus :{stringOption.IsSuccede}");
         }
 
+        public static void TaskFour() 
+        {
+            DomesticPackage domesticPackage = new DomesticPackage(1,20,"Cleaner things","Oleh");
+            ForeignPackage foreignPackage = new ForeignPackage("London", 45, "Something cool", "Iolanta");
+
+            var deliveryNovaPoshta = new DomesticDelivery();
+            var deliveryMeets = new ForeignDelivery();
+
+            deliveryNovaPoshta.DeliverPackage(domesticPackage);
+
+            deliveryMeets.DeliverPackage(foreignPackage);
+        }
         public static void CreatePerson()
         {
             peopleList.Add(new Person("Oleh", "Lviv"));
