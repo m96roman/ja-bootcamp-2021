@@ -15,10 +15,10 @@ namespace Shyptur___Task4
                 }
                 catch (BatteryIsDeadException)
                 {
-                    if (phone is Nokia)
-                    {
-                        phone.PrayForBattery();
-                        phone.CallAmbulance();
+                    if (phone is Nokia nokiaPhone)
+                    {                       
+                        nokiaPhone.PrayForBattery();
+                        nokiaPhone.CallAmbulance();
                     }
                     else
                     {

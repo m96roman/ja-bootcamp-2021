@@ -28,7 +28,7 @@ namespace Shyptur___Task4
             }
         }
 
-        public abstract void PrayForBattery();
+      //  public abstract void PrayForBattery();
 
         public void Charge()
         {

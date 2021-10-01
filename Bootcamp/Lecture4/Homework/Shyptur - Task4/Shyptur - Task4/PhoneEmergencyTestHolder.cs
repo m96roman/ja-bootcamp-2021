@@ -9,7 +9,7 @@ namespace Shyptur___Task4
 {
     class PhoneEmergencyTestHolder : IEnumerable
     {
-        private Phone[] Phones;
+         Phone[] Phones;
 
         public PhoneEmergencyTestHolder(Phone[] phones)
         {
