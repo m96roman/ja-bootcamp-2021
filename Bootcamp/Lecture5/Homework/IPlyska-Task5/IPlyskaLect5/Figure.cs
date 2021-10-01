@@ -16,34 +16,16 @@ namespace IPlyskaLect5
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="figures"></param>
-        public void FigureInfo<T>(List<T> figures) where T: Figure
+        public void FigureInfo<T>(IEnumerable<T> figures) where T: Figure
         {
-            if (figures is null || figures.Count == 0 )
+            if (figures is null || figures.Count() == 0 )
             {
                 throw new ArgumentNullException(nameof(figures), "Agument can not be a null or an empty");
             }
 
             foreach (var item in figures) 
-            {
-                if (item is Point point)
-                {
-                    point.Draw();
-                }
-
-                if (item is Circle circle)
-                {
-                    circle.Draw();
-                }
-                if (item is Rectangle rectangle)
-                {
-                    rectangle.Draw();
-                }
-                else
-                {
-                    item.Draw();
-                }
-
-                
+            {  
+                item.Draw();
             }
         }
 
@@ -58,7 +40,7 @@ namespace IPlyskaLect5
             figure2.Draw();
         }
 
-        public void Draw()
+        public virtual void Draw()
         {
             Console.WriteLine($"Figure {this.GetType().Name} was drawn");
         }
@@ -75,7 +57,7 @@ namespace IPlyskaLect5
             this.x = x;
             this.y = y;
         }
-        new public void Draw()
+        public override void Draw()
         {
             Console.WriteLine($"Point {this.GetType().Name} was drawn with coordinates {x}, {y}");
         }
@@ -90,7 +72,7 @@ namespace IPlyskaLect5
             this.b = b;
         }
 
-        new public void Draw()
+        public override void Draw()
         {
             Console.WriteLine($"Rectangle {this.GetType().Name} was drawn with sides {a}, {b}");
         }
@@ -104,7 +86,7 @@ namespace IPlyskaLect5
         {
             this.radius = radius;
         }
-        new public void Draw()
+        public override void Draw()
         {
             Console.WriteLine($"Circle {this.GetType().Name} was drawn with radius {radius}");
         }
