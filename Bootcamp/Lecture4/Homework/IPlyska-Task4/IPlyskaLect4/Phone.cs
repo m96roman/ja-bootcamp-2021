@@ -8,32 +8,45 @@ namespace IPlyskaLect4
 {
     public class Phone
     {
-        public int BatteryLevel { get; set; }
+        private int batteryLevel;
+        public int BatteryLevel 
+        {
+            get 
+            {
+                return batteryLevel;
+            }
+            set 
+            {
+                if (value < 0 || value > 100)
+                {
+                    throw new InappropriateBatteryLevelValueException("Charging of battery can not be less than 0 or more 100");
+                }
+
+                batteryLevel = value;
+            }    
+        }
 
         public void Charge()
         {
             BatteryLevel = 100;
-            Console.WriteLine($"Charging {this} to 100%");
+            Console.WriteLine($"Charging {this.GetType().Name} to 100%");
         }
+
         public void ChargeABit()
         {
             BatteryLevel += 1;
-            Console.WriteLine($"Charging {this} by 1%");
+            Console.WriteLine($"Charging {this.GetType().Name} by 1%");
         }
+
         public void CallAmbulance()
         {
-            if (BatteryLevel < 0 || BatteryLevel > 100)
-            {
-                throw new InappropriateBatteryLevelValueException("Charging of battery can not be less than 0 or more 100");
-            }
 
             if (BatteryLevel >= 5)
             {
                 BatteryLevel -= 5;
-                Console.WriteLine($"calling an ambulance from {this}, remaining charge: {BatteryLevel}%");
+                Console.WriteLine($"calling an ambulance from {this.GetType().Name}, remaining charge: {BatteryLevel}%");
             }
-            
-            if (BatteryLevel < 5)
+            else
             {
                 BatteryLevel = 0;
                 throw new BatteryIsDeadException(this.ToString());

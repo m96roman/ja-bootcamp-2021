@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace IPlyskaLect4
 {
@@ -6,7 +7,16 @@ namespace IPlyskaLect4
     {
         static void Main(string[] args)
         {
-            PhoneEmergencyTestHolder phone = new PhoneEmergencyTestHolder();
+            List<Phone> container = new List<Phone>()
+            {
+                new Nokia{BatteryLevel = 5},
+                new IPhone13{BatteryLevel = 10},
+                new Nokia{BatteryLevel = 25},
+                new IPhone13{BatteryLevel = 8},
+                new Nokia{BatteryLevel = 12}
+            };
+
+            PhoneEmergencyTestHolder phone = new PhoneEmergencyTestHolder(container);
             int counter = 1;
             while (counter != 10)
             {
@@ -16,7 +26,7 @@ namespace IPlyskaLect4
                 }
                 catch (BatteryIsDeadException ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    ex.phone.Charge(); 
                 }
 
                counter++;

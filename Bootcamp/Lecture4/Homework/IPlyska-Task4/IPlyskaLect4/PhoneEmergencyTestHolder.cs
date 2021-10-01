@@ -9,15 +9,16 @@ namespace IPlyskaLect4
 {
     public class PhoneEmergencyTestHolder : IEnumerable
     {
-        private Phone[] phones = new Phone[5];
+        private List<Phone> phones = new List<Phone>();
 
-        public PhoneEmergencyTestHolder()
+        public PhoneEmergencyTestHolder(List<Phone> phones)
         {
-            phones[0] = new Nokia() { BatteryLevel = 8 };
-            phones[1] = new Nokia() { BatteryLevel = 12};
-            phones[2] = new IPhone13() { BatteryLevel = 10 };
-            phones[3] = new Nokia() { BatteryLevel = 25};
-            phones[4] = new IPhone13() { BatteryLevel = 9};
+            if (phones is null || phones.Count == 0)
+            {
+                throw new ArgumentNullException("phones", "Parameter can not be null or an empty");
+            }
+
+            this.phones = phones;
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -39,22 +40,19 @@ namespace IPlyskaLect4
                     {
                         nokia.PrayForBattery();
                     }
-                   // phone.Charge();
 
+                    ex.phone = phone;
                     Console.WriteLine($"Phone failed to call an ambulance: {phone.GetType()}");
 
                     throw;
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    Console.WriteLine(ex.Message); 
                 }
                 finally
                 {
-                    foreach (Phone phone1 in phones)
-                    {
-                        phone1.ChargeABit();
-                    }
+                    phone.ChargeABit();
                 }
             }
          

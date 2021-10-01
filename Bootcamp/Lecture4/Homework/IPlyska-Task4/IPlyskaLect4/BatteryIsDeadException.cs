@@ -9,20 +9,19 @@ namespace IPlyskaLect4
 {
     public class BatteryIsDeadException : Exception
     {
+        public Phone phone { get; set; }
+
         public BatteryIsDeadException()
         {
         }
 
         public BatteryIsDeadException(string message) : base(message)
-        {
+        { 
         }
-
+        
         public BatteryIsDeadException(string message, Exception innerException) : base(message, innerException)
         {
         }
 
-        protected BatteryIsDeadException(SerializationInfo info, StreamingContext context) : base(info, context)
-        {
-        }
     }
 }
