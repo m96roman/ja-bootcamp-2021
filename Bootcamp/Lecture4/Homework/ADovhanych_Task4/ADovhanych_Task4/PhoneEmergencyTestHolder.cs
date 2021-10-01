@@ -9,9 +9,16 @@ namespace ADovhanych_Task4
 
         public PhoneEmergencyTestHolder()
         {
-            phoneInstance[0] = new Iphone() { BatteryLvl = 4, PhoneName = "iPhone1" };
-            phoneInstance[1] = new Nokia() { BatteryLvl = 8, PhoneName = "Nokia10" };
-            phoneInstance[2] = new Iphone() { BatteryLvl = 25, PhoneName = "Iphone2" };
+            try
+            {
+                phoneInstance[0] = new Iphone() { BatteryLvl = 4, PhoneName = "iPhone1" };
+                phoneInstance[1] = new Nokia() { BatteryLvl = 8, PhoneName = "Nokia10" };
+                phoneInstance[2] = new Iphone() { BatteryLvl = 25, PhoneName = "Iphone2" };
+            }
+            catch (InvalidPhoneChargeException)
+            {
+                throw new InvalidPhoneChargeException();
+            }
 
         }
 

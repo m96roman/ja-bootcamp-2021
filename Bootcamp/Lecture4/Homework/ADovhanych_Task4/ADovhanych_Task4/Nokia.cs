@@ -23,25 +23,20 @@ namespace ADovhanych_Task4
             Console.WriteLine($"Charging {PhoneName}");
         }
 
-        void ICharge.Charge()
+        public void Charge()
         {
             BatteryLvl = 100;
             Console.WriteLine($"Charging {PhoneName} to 100%");
         }
 
-        void ICharge.ChargeABit()
+        public void ChargeABit()
         {
             BatteryLvl += 1;
             Console.WriteLine($"Charging {PhoneName} by 1%");
         }
 
         public override void CallAmbulance()
-        {
-            if (BatteryLvl > 100 || BatteryLvl < 0)
-            {
-                throw new InvalidPhoneChargeException("invalid charge value");
-            }
-
+        { 
             if (BatteryLvl >= 5)
             {
                 BatteryLvl -= 5;

@@ -29,12 +29,7 @@ namespace ADovhanych_Task4
         }
 
         public override void CallAmbulance()
-        {
-            if (BatteryLvl > 100 || BatteryLvl < 0)
-            {
-                throw new InvalidPhoneChargeException();
-            }
-
+        {   
             if (BatteryLvl >= 5)
             {
                 BatteryLvl -= 5;

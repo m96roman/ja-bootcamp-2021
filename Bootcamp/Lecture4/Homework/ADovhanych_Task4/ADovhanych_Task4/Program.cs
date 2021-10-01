@@ -6,7 +6,7 @@ namespace ADovhanych_Task4
     {
         static void Main(string[] args)
         {
-            PhoneEmergencyTestHolder phones = new PhoneEmergencyTestHolder();
+            PhoneEmergencyTestHolder phones = new PhoneEmergencyTestHolder(); 
             int times = 1;
 
             while (times != 10)
@@ -15,9 +15,9 @@ namespace ADovhanych_Task4
                 {
                     PhoneEmergencyTestHolder.TestEmergency(phones);
                 }
-                catch (BatteryIsDeadException ex)
+                catch (BatteryIsDeadException)
                 {
-                    Console.WriteLine(ex);
+                    throw new BatteryIsDeadException($"Failed to call ambulance");
                 }
 
                 times++;
