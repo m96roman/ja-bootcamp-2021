@@ -48,9 +48,9 @@ namespace IPlyskaLect5
 
     public class Point : Figure
     {
-        private int x;
+        private readonly int x;
 
-        private int y;
+        private readonly int y;
 
         public Point(int x, int y)
         {
@@ -64,8 +64,8 @@ namespace IPlyskaLect5
     }
     public class Rectangle : Figure
     {
-        private int a;
-        private int b;
+        private readonly int a;
+        private readonly int b;
         public Rectangle(int a, int b)
         {
             this.a = a;
@@ -80,7 +80,7 @@ namespace IPlyskaLect5
     }
     public class Circle : Figure
     {
-        private int radius;
+        private readonly int radius;
 
         public Circle(int radius)
         {
