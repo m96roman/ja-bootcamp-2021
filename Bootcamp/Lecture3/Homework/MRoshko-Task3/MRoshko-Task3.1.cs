@@ -7,53 +7,59 @@
     {
         internal static void Main(string[] args)
         {
-            Task3_2();
-            //Task3_1();
+            Task2();
+
+            //Task1();
         }
 
-        static public void Task3_2()
+        static public void Task2()
         {
-            Task3_2 task3_2 = new Task3_2(1);
-            //Task3_2 task3_2 = new Task3_2(2);
+            //Task2 task2 = new Task2(1);
+
+            Task2 task2 = new Task2(2);
 
         }
-        static public void Task3_1()
-        {
-            Cars[] Garage = new Cars[] { new Ferrari(4), new Mercedes(4, "Black"), new Lada() };
 
-            foreach (Cars car in Garage)
+        static public void Task1()
+        {
+            Car[] Garage = new Car[] { new Ferrari(4), new Mercedes(4, "Black"), new Lada() };
+
+            foreach (Car car in Garage)
             {
-                car.price = "1 000 000" + "$";
+                car.Price = "1 000 000" + "$";
             }
 
-            Garage[0].colour = "Red";
+            Garage[0].Colour = "Red";
+
             Garage[0].PrintInfo();
         }
+
         internal abstract class Headlights
         {
             public abstract void XenonHeadlights();
         }
 
-        internal class Cars
+        internal class Car
         {
             protected int wheels;
 
-            public string colour { get; set; }
+            public string Colour { get; set; }
 
-            public string price { get; set; }
+            public string Price { get; set; }
 
             public virtual void Sell(string price)
             {
+                Price = price;
                 Console.WriteLine($"Your car was sell");
             }
 
             public void PrintInfo()
             {
-                Console.WriteLine($"Wheels : {wheels}\nColor : {colour}\nPrice : {price}");
+                Console.WriteLine($"Wheels : {wheels}\nColor : {Colour}\nPrice : {Price}");
             }
         }
 
-        internal class Ferrari : Cars
+        internal class Ferrari : Car
         {
             public Ferrari(int wheels)
             {
@@ -66,12 +72,12 @@
             }
         }
 
-        internal class Mercedes : Cars
+        internal class Mercedes : Car
         {
             public Mercedes(int wheels, string colour) : base()
             {
                 this.wheels = wheels;
-                this.colour = colour;
+                this.Colour = colour;
             }
 
             public override void Sell(string price)

@@ -3,9 +3,9 @@
     using System;
     using System.Collections.Generic;
 
-    public class Task3_2
+    public class Task2
     {
-        public Task3_2(int numberOfTest)
+        public Task2(int numberOfTest)
         {
             if (numberOfTest == 1)
             {
@@ -19,7 +19,7 @@
             }
         }
 
-        public class Test
+        public interface Test
         {
 
             public virtual void Print()
@@ -42,7 +42,7 @@
                 caseTest[3] = new string[] { "Bananas are ?", "a)Blue", "b)Yellow", "c)Green", "b" };
             }
 
-            public override void Print()
+            public void Print()
             {
                 for (int i = 0; i < testCount; i++)
                 {
@@ -64,25 +64,38 @@
 
         public class JUST_STR : Test
         {
-
+            private int correctAnswer = 0;
             private Dictionary<int, string> justStr = new Dictionary<int, string>();
             private Dictionary<int, string> justStrAnswer = new Dictionary<int, string>();
+            private Dictionary<int, string> justTrueStrAnswer = new Dictionary<int, string>();
 
             public JUST_STR()
             {
-                justStr.Add(1, "What is your name");
+                justStr.Add(1, "What is the best programing language?");
                 justStr.Add(2, "What is the capital of Great Britain");
                 justStr.Add(3, "Who was the fifth president of Ukraine");
-                justStr.Add(4, "Tell Me About Yourself");
+                justStr.Add(4, "The biggest river in the world");
+
+                justTrueStrAnswer.Add(1,"C#");
+                justTrueStrAnswer.Add(2, "london");
+                justTrueStrAnswer.Add(3, "poroshenko");
+                justTrueStrAnswer.Add(4, "nil");
             }
 
-            public override void Print()
+            public void Print()
             {
                 foreach (KeyValuePair<int, string> test in justStr)
                 {
                     Console.Write($"{test.Key}){test.Value}?\nYour answer : ");
                     justStrAnswer.Add(test.Key, Console.ReadLine());
+
+                    justTrueStrAnswer.TryGetValue(test.Key, out string param);
+                    justStrAnswer.TryGetValue(test.Key, out string value);
+                    if (param.Equals(value, StringComparison.InvariantCultureIgnoreCase)) {
+                        correctAnswer++;
+                    }
                 }
+                Console.WriteLine($"Count of correct answer was : {correctAnswer}");
             }
         }
 
