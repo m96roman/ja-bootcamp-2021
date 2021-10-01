@@ -8,6 +8,7 @@ namespace KFedakTask5
         public static List<Point> listPoint = new List<Point>();
         public static Circle[] circles;
         public static List<Person> peopleList = new List<Person>();
+        public static Dictionary<string, int> population = new Dictionary<string, int>();
 
         static void Main(string[] args)
         {
@@ -16,6 +17,10 @@ namespace KFedakTask5
             Console.WriteLine("************************************\n");
 
             TaskTwo();
+
+            Console.WriteLine("************************************\n");
+
+            TaskThree();
         }
 
         public static void TaskOne()
@@ -27,8 +32,6 @@ namespace KFedakTask5
 
         public static void TaskTwo()
         {
-            Dictionary<string, int> population = new Dictionary<string, int>();
-
             CreatePerson();
 
             foreach (var person in peopleList)
@@ -47,6 +50,20 @@ namespace KFedakTask5
             {
                 Console.WriteLine($" *{pair.Key} - {pair.Value}");
             }
+        }
+
+        public static void TaskThree()
+        {
+            DataReader dataReader1 = new DataReader();
+            var intOption = dataReader1.GetMagicNumber();
+
+            Console.WriteLine($"Data is : {intOption.Value}\nStatus :{intOption.IsSuccede}");
+
+            DataReader dataReader2 = new DataReader();
+            var stringOption = dataReader2.GetCityNames(population);
+            string lines = string.Join(Environment.NewLine, stringOption.Value);
+
+            Console.WriteLine($"Data is : \n{lines}\nStatus :{stringOption.IsSuccede}");
         }
 
         public static void CreatePerson()
