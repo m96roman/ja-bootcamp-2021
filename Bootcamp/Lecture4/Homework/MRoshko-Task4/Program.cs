@@ -31,7 +31,7 @@ namespace MRoshko_Task4
                 }
                 catch (BatteryIsDeadException ex)
                 {
-                    ex.instance.Charge();
+                    ex.Instance.Charge();
                 }
             }
         }

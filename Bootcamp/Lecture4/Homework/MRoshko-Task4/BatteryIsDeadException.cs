@@ -8,14 +8,16 @@ namespace MRoshko_Task4
 {
     class BatteryIsDeadException : Exception
     {
-        public Phone instance;
+
+        public Phone Instance { get; set; }
+
         public BatteryIsDeadException()
         {
         }
 
         public BatteryIsDeadException(Phone phone, string message) : base(message)
         {
-            instance = phone;
+            Instance = phone;
         }
     }
 }

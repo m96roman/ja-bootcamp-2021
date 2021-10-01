@@ -13,16 +13,7 @@ namespace MRoshko_Task4
         public Phone(int batteryLevel)
         {
 
-            try
-            {
-                SetBatteryLevel(batteryLevel);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-
-                throw;
-            }
+            SetBatteryLevel(batteryLevel);
 
         }
 
@@ -40,26 +31,18 @@ namespace MRoshko_Task4
 
         public void CallAmbulance()
         {
-            try
+            if (this.batteryLevel >= 5)
             {
-                if (this.batteryLevel >= 5)
-                {
-                    this.batteryLevel -= 5;
+                this.batteryLevel -= 5;
 
-                    Console.WriteLine($"calling an ambulance from {GetType()}, remaining charge: {this.batteryLevel} % ");
-                }
-                else
-                {
-                    this.batteryLevel = 0;
-
-                    throw new BatteryIsDeadException(this, $"BatteryIsDeadException {GetType()}");
-                }
+                Console.WriteLine($"calling an ambulance from {GetType()}, remaining charge: {this.batteryLevel} % ");
             }
-            catch (BatteryIsDeadException ex)
+            else
             {
-                throw;
-            }
+                this.batteryLevel = 0;
 
+                throw new BatteryIsDeadException(this, $"BatteryIsDeadException {GetType()}");
+            }
         }
 
         public void Charge()
@@ -71,7 +54,7 @@ namespace MRoshko_Task4
 
         public void ChargeABit()
         {
-            this.batteryLevel = 1;
+            this.batteryLevel += 1;
 
             Console.WriteLine($"Charging {GetType()} by 1%");
         }
@@ -80,7 +63,5 @@ namespace MRoshko_Task4
         {
             Console.WriteLine($"{this.batteryLevel}");
         }
-
-
     }
 }

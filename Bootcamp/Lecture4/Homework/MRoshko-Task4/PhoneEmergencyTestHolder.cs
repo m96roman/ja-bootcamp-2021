@@ -9,25 +9,21 @@ namespace MRoshko_Task4
 {
     public class PhoneEmergencyTestHolder : IEnumerable
     {
-        private Phone[] phoneNumbers;
+        private Phone[] phones;
 
         public PhoneEmergencyTestHolder()
         {
         }
 
-        public PhoneEmergencyTestHolder(Phone[] pArray)
+        public PhoneEmergencyTestHolder(Phone[] phones)
         {
-            phoneNumbers = new Phone[pArray.Length];
+            this.phones = phones;
 
-            for (int i = 0; i < pArray.Length; i++)
-            {
-                phoneNumbers[i] = pArray[i];
-            }
         }
 
         public IEnumerator GetEnumerator()
         {
-            foreach (Phone phone in phoneNumbers)
+            foreach (Phone phone in phones)
             {
                 yield return phone;
             }
