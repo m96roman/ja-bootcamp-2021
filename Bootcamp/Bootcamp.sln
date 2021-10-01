@@ -161,11 +161,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DIvanyshyn - Task 3", "Lect
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ivanyshyn", "ivanyshyn", "{92FD9E08-7E60-4599-A96E-64B8958DE287}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DIVanyshyn-Task4", "Lecture4\Homework\Ivanyshyn\DIVanyshyn-Task4\DIVanyshyn-Task4.csproj", "{547A89F7-215F-4098-BC63-902E1B355029}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DIVanyshyn-Task4", "Lecture4\Homework\Ivanyshyn\DIVanyshyn-Task4\DIVanyshyn-Task4.csproj", "{547A89F7-215F-4098-BC63-902E1B355029}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MRoshko-Task3", "Lecture3\Homework\MRoshko-Task3\MRoshko-Task3.csproj", "{0F16A598-D508-4ED8-805F-1C53415D5FF8}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ivanyshyn", "ivanyshyn", "{94BA8916-95DF-4DB7-8830-1D9115C23D29}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ivanyshyn", "ivanyshyn", "{4517F514-B2EC-426B-B7C1-CF58C5D80602}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ivanyshyn (2)", "ivanyshyn (2)", "{94BA8916-95DF-4DB7-8830-1D9115C23D29}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
