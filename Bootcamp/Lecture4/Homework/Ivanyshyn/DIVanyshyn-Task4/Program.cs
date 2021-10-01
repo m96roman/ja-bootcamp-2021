@@ -8,7 +8,7 @@ namespace DIVanyshyn_Task4
         static void Main(string[] args)
         {
             int[] batteryLevels = new[] { 4, 8, 25 };
-            PhoneEmeregencyTestHolder holder = new(new Phone[0]);
+            PhoneEmeregencyTestHolder holder = new();
 
             for (int i = 0; i < batteryLevels.Length; i++)
             {
@@ -23,8 +23,8 @@ namespace DIVanyshyn_Task4
                 }
             }
 
-            int count = 10;
-            while (count != 0)
+
+            for (int i = 0; i < 10; i++)
             {
                 try
                 {
@@ -40,7 +40,6 @@ namespace DIVanyshyn_Task4
                     bs.Phone.Status();
                     Console.WriteLine(new string('~', 20));
                 }
-                count--;
             }
         }
     }

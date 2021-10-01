@@ -11,13 +11,18 @@ namespace DIVanyshyn_Task4
     ///  - It can hold any number of phones
     ///- It also should be possible to use this type in foreach loop
     /// </summary>
-    class PhoneEmeregencyTestHolder : IEnumerable<Phone>
+    internal class PhoneEmeregencyTestHolder : IEnumerable<Phone>
     {
         private List<Phone> phones;
 
-        public PhoneEmeregencyTestHolder(IEnumerable<Phone> phones)
+        public PhoneEmeregencyTestHolder()
         {
-            this.phones = phones.ToList();
+            phones = new List<Phone>();
+        }
+
+        public PhoneEmeregencyTestHolder(IEnumerable<Phone> phones) : base()
+        {
+            this.phones.AddRange(phones.ToList());
         }
 
         /// <summary>
@@ -60,11 +65,13 @@ namespace DIVanyshyn_Task4
                     if (bs.Phone is not Nokia nokia)
                     {
                         Console.WriteLine($"Phone failed to call an ambulance: {bs.Phone.GetType().Name}");
-                        //It is not the same logic like return right?
+                        
                         throw;
                     }
+
                     Console.WriteLine(new string('[', 20));
                     nokia.PrayForBattery();
+                    nokia.CallForAmbulance();
                     Console.WriteLine(new string(']', 20));
                 }
                 finally
