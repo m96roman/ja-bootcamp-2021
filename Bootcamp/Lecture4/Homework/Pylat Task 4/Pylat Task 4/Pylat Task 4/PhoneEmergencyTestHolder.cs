@@ -5,43 +5,32 @@ using System.Text;
 
 namespace Pylat_Task_4
 {
-    
-    class PhoneEmergencyTestHolder: IEnumerable // inherit ienumerable
+
+    class PhoneEmergencyTestHolder : IEnumerable<PhoneBase>
     {
-       
-
-        public PhoneBase[] _items;
-
-        int freeIndex = 0;
-
-        public void TestEmergency(PhoneEmergencyTestHolder phone)
-        {
-           
-            
-        }
+        private List<PhoneBase> _phones;
 
         public PhoneEmergencyTestHolder()
         {
-            _items = new PhoneBase[1000];
+            _phones = new List<PhoneBase>();
         }
-
-
+    
         public void Add(PhoneBase item)
         {
-            _items[freeIndex] = item;
-            freeIndex++;
+            _phones.Add(item);
         }
 
-        public IEnumerator GetEnumerator()
+        public IEnumerator<PhoneBase> GetEnumerator()
         {
-            foreach (object o in _items)
+            foreach (var item in _phones)
             {
-                if (o == null)
-                {
-                    break;
-                }
-                yield return o;
+                yield return item;
             }
-        }       
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
     }
 }

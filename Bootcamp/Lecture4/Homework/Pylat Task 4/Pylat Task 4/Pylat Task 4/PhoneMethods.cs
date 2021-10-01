@@ -2,8 +2,6 @@
 {
     interface IPhoneMethods
     {
-        void CheckingBateryLevel();
-
         void CallAmbulance();
 
         void Charge();
