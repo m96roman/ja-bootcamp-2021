@@ -167,6 +167,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DIVanyshyn-Task4", "Lecture
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveCode", "Lecture5\LiveCode\LiveCode.csproj", "{3136D8E7-FA25-4288-B8F0-365E1212DAFB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DIvanyshyn-5", "Lecture5\Homework\ivanyshyn\DIvanyshyn-5\DIvanyshyn-5.csproj", "{15F8B4FF-83A7-4A83-8251-338591EB9775}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
