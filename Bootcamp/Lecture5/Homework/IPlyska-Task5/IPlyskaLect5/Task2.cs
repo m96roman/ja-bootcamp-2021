@@ -29,7 +29,6 @@ namespace IPlyskaLect5
         {          
             List<Person> people = new List<Person>();
             Random random = new Random();
-            int temp;
             int counter = 1;
             while (counter != 20)
             {
@@ -40,7 +39,7 @@ namespace IPlyskaLect5
 
             foreach (var item in people)
             {
-                if (countedCities.TryGetValue(item.City, out temp))
+                if (countedCities.TryGetValue(item.City, out _))
                 {
                     countedCities[item.City] += 1;
                 }

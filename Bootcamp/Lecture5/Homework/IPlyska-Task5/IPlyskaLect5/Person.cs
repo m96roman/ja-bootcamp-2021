@@ -8,8 +8,8 @@ namespace IPlyskaLect5
 {
     public class Person
     {
-        public string City { get; set; }
-        public string Name { get; set; }
+        public string City { get; }
+        public string Name { get; }
 
         public Person(string city, string name)
         {
