@@ -171,9 +171,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lecture6", "Lecture6", "{48
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExtensionMethods", "ExtensionMethods", "{A49641C3-147F-4018-A9C8-B828A966A16F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtensionExamples", "Lecture6\ExtensionExamples\ExtensionExamples.csproj", "{71091BA6-A5D4-43A7-9B83-D140BBE99EE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExtensionExamples", "Lecture6\ExtensionExamples\ExtensionExamples.csproj", "{71091BA6-A5D4-43A7-9B83-D140BBE99EE2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterfaceExtensions", "Lecture6\InterfaceExtensions\InterfaceExtensions.csproj", "{5C216E1A-3583-44FF-A256-DA56D4D1B74B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InterfaceExtensions", "Lecture6\InterfaceExtensions\InterfaceExtensions.csproj", "{5C216E1A-3583-44FF-A256-DA56D4D1B74B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Delegates", "Delegates", "{6BFB01F4-9796-491F-A49A-981667459724}"
 EndProject
@@ -195,7 +195,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PublicDelegateProblem", "Le
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleDelegate", "Lecture6\SimpleDelegate\SimpleDelegate.csproj", "{E71066AE-C3FA-479F-855E-7E686D424E5B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveCoding", "Lecture6\LiveCoding\LiveCoding.csproj", "{F225B9DA-D230-48AA-8200-FEB2CCC2C645}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveCoding", "Lecture6\LiveCoding\LiveCoding.csproj", "{F225B9DA-D230-48AA-8200-FEB2CCC2C645}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ADovhanych_Task5.1", "Lecture5\Homework\ADovhanych-Task5\ADovhanych_Task5.1\ADovhanych_Task5.1.csproj", "{4E5B68A9-0589-4494-BD18-0E99C448DB90}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ADovhanych_Task5.2", "Lecture5\Homework\ADovhanych-Task5\ADovhanych_Task5.2\ADovhanych_Task5.2.csproj", "{48092A75-8180-4B6D-81A2-00627136BA22}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADovhanych_task5.3", "Lecture5\Homework\ADovhanych-Task5\ADovhanych_task5.3\ADovhanych_task5.3.csproj", "{DD2D08E4-652F-4048-9082-FE10077043CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADovhanych_task5.4", "Lecture5\Homework\ADovhanych-Task5\ADovhanych_task5.4\ADovhanych_task5.4.csproj", "{474214B2-F486-4B7B-A191-04B9D70C7582}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -475,6 +483,22 @@ Global
 		{F225B9DA-D230-48AA-8200-FEB2CCC2C645}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F225B9DA-D230-48AA-8200-FEB2CCC2C645}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F225B9DA-D230-48AA-8200-FEB2CCC2C645}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E5B68A9-0589-4494-BD18-0E99C448DB90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E5B68A9-0589-4494-BD18-0E99C448DB90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E5B68A9-0589-4494-BD18-0E99C448DB90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E5B68A9-0589-4494-BD18-0E99C448DB90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48092A75-8180-4B6D-81A2-00627136BA22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48092A75-8180-4B6D-81A2-00627136BA22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48092A75-8180-4B6D-81A2-00627136BA22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48092A75-8180-4B6D-81A2-00627136BA22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD2D08E4-652F-4048-9082-FE10077043CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD2D08E4-652F-4048-9082-FE10077043CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD2D08E4-652F-4048-9082-FE10077043CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD2D08E4-652F-4048-9082-FE10077043CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{474214B2-F486-4B7B-A191-04B9D70C7582}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{474214B2-F486-4B7B-A191-04B9D70C7582}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{474214B2-F486-4B7B-A191-04B9D70C7582}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{474214B2-F486-4B7B-A191-04B9D70C7582}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -561,6 +585,10 @@ Global
 		{2C70875F-DB77-4D6B-AB7C-698A7649DFA8} = {6BFB01F4-9796-491F-A49A-981667459724}
 		{E71066AE-C3FA-479F-855E-7E686D424E5B} = {6BFB01F4-9796-491F-A49A-981667459724}
 		{F225B9DA-D230-48AA-8200-FEB2CCC2C645} = {48C38C35-4C06-4C99-9D14-CE129D00D6C5}
+		{4E5B68A9-0589-4494-BD18-0E99C448DB90} = {DFAE0DC3-3081-44A7-ABA6-481639D0382A}
+		{48092A75-8180-4B6D-81A2-00627136BA22} = {DFAE0DC3-3081-44A7-ABA6-481639D0382A}
+		{DD2D08E4-652F-4048-9082-FE10077043CF} = {DFAE0DC3-3081-44A7-ABA6-481639D0382A}
+		{474214B2-F486-4B7B-A191-04B9D70C7582} = {DFAE0DC3-3081-44A7-ABA6-481639D0382A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EDF9F64D-8CE1-4567-A599-F6C8CF7B91E0}
