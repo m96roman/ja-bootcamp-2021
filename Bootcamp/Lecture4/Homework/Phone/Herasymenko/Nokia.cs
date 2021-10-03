@@ -6,47 +6,19 @@ using System.Threading.Tasks;
 
 namespace Herasymenko
 {
-    public class Nokia : IMobile
+    public class Nokia : PhoneBaseClass
     {
-        public int BatteryLevel { get; set; }
-        public string PhoneModel { get; set; }
-        public void CallAmbulance()
-        {
-            if (BatteryLevel >= 5)
-            {
-                BatteryLevel -= 5;
-                Console.WriteLine($"calling an ambulance from {PhoneModel}, remaining charge: {BatteryLevel}");
-            }
-            else
-            {
-                BatteryLevel = 0;
-                throw new BatteryIsDeadException(PhoneModel);
-            }
-        }
-
-        public void Charge()
-        {
-            BatteryLevel = 100;
-            Console.WriteLine($"Charging {PhoneModel} to 100%");
-        }
-
-        public void ChargeBit()
-        {
-            if (BatteryLevel == 100)
-            {
-                Console.WriteLine($"The Battery is fully charged for {PhoneModel}");
-            }
-            else
-            {
-                BatteryLevel += 1;
-                Console.WriteLine($"Charging {PhoneModel} by 1%");
-            }
-        }
-
         public void PrayForBattery()
         {
-            BatteryLevel += 8;
-            Console.WriteLine("Ppraying for the battery");
+            if(BatteryLevel > 92)
+            {
+                Console.WriteLine("Your phone is not nedded in charge right now, try do it later.");
+            }
+            else
+            {
+                BatteryLevel += 8;
+                Console.WriteLine("Ppraying for the battery");
+            }
         }
     }
 }

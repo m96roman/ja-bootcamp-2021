@@ -8,13 +8,6 @@ namespace Herasymenko
 {
     public class BatteryIsDeadException : Exception
     {
-        public BatteryIsDeadException(IMobile phone)
-        {
-            Console.WriteLine($"Bettery is dead you can't call from {phone.PhoneModel}");
-        }
-
-        public BatteryIsDeadException(string message) : base(message)
-        {
-        }
+        public BatteryIsDeadException(string message) : base($"Battery is dead you can't call from {message}") { }
     }
 }

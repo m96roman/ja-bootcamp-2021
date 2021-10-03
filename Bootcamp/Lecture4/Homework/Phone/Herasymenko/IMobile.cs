@@ -8,14 +8,13 @@ namespace Herasymenko
 {
     public interface IMobile
     {
-        public int BatteryLevel { get; set; }
-        public string PhoneModel { get; set; }
+        int BatteryLevel { get; set; }
+        string PhoneModel { get; set; }
 
         void CallAmbulance();
 
         void Charge();
 
         void ChargeBit();
-
     }
 }

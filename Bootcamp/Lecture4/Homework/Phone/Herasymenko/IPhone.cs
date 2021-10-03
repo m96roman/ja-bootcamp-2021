@@ -6,35 +6,8 @@ using System.Threading.Tasks;
 
 namespace Herasymenko
 {
-    public class IPhone : IMobile
+    public class IPhone : PhoneBaseClass
     {
-        public int BatteryLevel { get; set; }
-        public string PhoneModel { get; set; }
-        public void CallAmbulance() {
-
-            if(BatteryLevel >= 5)
-            {
-                BatteryLevel -= 5;
-                Console.WriteLine($"calling an ambulance from {PhoneModel}, remaining charge: {BatteryLevel}");
-            }
-            else
-            {
-                BatteryLevel = 0;
-                throw new BatteryIsDeadException(PhoneModel);
-            }
-        }
-
-        public void Charge()
-        {
-            BatteryLevel = 100;
-            Console.WriteLine($"Charging {PhoneModel} to 100%");
-        }
-
-        public void ChargeBit()
-        {
-            BatteryLevel += 1;
-            Console.WriteLine($"Charging {PhoneModel} by 1%");
-        }
-
+        public IPhone() : base() { }
     }
 }

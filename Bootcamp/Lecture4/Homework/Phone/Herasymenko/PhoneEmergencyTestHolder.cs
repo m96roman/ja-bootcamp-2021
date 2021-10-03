@@ -22,8 +22,9 @@ namespace Herasymenko
                 }
 
             }
-            catch (BatteryIsDeadException)
+            catch (BatteryIsDeadException ex)
             {
+                Console.WriteLine(ex.Message);
                 phone.Charge();
             }
             finally
