@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29306.81
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Task 5 p3", "Pylat Homework Lecture 5\Task 5 p3.csproj", "{94485F36-11EF-40CA-AF88-C276AAFA5850}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{94485F36-11EF-40CA-AF88-C276AAFA5850}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94485F36-11EF-40CA-AF88-C276AAFA5850}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94485F36-11EF-40CA-AF88-C276AAFA5850}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94485F36-11EF-40CA-AF88-C276AAFA5850}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8A01C9E7-854B-4166-B329-4375D1E215AD}
+	EndGlobalSection
+EndGlobal
