@@ -25,10 +25,12 @@ namespace IPlyskaLect5
             
             Random random = new Random();
             int x = random.Next(0, 3);
+
             if (x == 0)
             {
                 return new DbResult<int>(false, -1);
             }
+
             return new DbResult<int>(true, x);
         }
     }
