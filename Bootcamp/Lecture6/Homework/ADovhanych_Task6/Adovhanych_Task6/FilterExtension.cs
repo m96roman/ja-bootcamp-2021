@@ -10,7 +10,19 @@ namespace Adovhanych_Task6
     {
         public static bool FilterFunction(string str)
         {
-            if (char.IsUpper(str[0]))
+            if (str.Length > 0 && char.IsUpper(str[0]))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public static bool GenFilterFunction(string str)
+        {
+            if (str.Length > 3)
             {
                 return true;
             }
@@ -34,9 +46,19 @@ namespace Adovhanych_Task6
             return strList;
         }
 
-        //public static ICollection<T> GenFilter<T>(this ICollection<string> itemsCollection, Func<T, T> filter)
-        //{
-        //    var someList = new List<string>();
-        //}
+        public static ICollection<T> GenFilter<T>(this ICollection<T> itemsCollection, Func<T, bool> filter)
+        {
+            var someList = new List<T>();
+
+            foreach (var item in itemsCollection)
+            {
+                if (filter(item))
+                {
+                    someList.Add(item);
+                }
+            }
+
+            return someList;
+        }
     }
 }

@@ -20,12 +20,15 @@ namespace Adovhanych_Task6
 
             Console.WriteLine("___________________________");
 
-            List<string> testList = new List<string>() { "Abc", "Def", "ghjkl" };
+            List<string> testList = new List<string>() { "Abc", "Def", "ghjkl", "" };
+            List<int> intList = new List<int>() { 3, 5, 6 };
 
             var testFilter = testList.Filter(FilterExtension.FilterFunction);
             var testMap = testList.Map(MapExtension.MapFilter);
+            var testGenFilter = testList.GenFilter(FilterExtension.GenFilterFunction);
+            ICollection<int> testGenMap = intList.GenMap(MapExtension.GenMapFilter);
 
-            foreach (var item in testFilter)
+            foreach (var item in testGenMap)
             {
                 Console.WriteLine(item);
             }
