@@ -12,6 +12,7 @@ namespace Task_1_Lecture_6
             // var integer = Convert.ToInt32(str);
             //  Console.WriteLine(integer);
             var list = new List<T1>();
+
             foreach (var item in collection)
             {
                 list.Add(Mapper(item));
@@ -22,6 +23,7 @@ namespace Task_1_Lecture_6
         static public void MapMain()
         {
            var list = new List<string>() { "2", "4", "6" };
+
             list.Map((str)=>{
                 var converted = Convert.ToInt32(str);
                 Console.WriteLine(converted);
