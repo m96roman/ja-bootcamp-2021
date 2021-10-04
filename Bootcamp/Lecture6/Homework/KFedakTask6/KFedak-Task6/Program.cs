@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KFedakTask6
+namespace KFedak_Task6
 {
     class Program
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KFedakTask6
+namespace KFedak_Task6
 {
     public static class ExtensionMethod
     {
