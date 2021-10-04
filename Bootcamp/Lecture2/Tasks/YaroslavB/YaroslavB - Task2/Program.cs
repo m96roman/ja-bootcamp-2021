@@ -73,7 +73,7 @@ namespace Task2
 
             Console.WriteLine(new Book("BASIC", "S.TROELSTRA"));
 
-            Console.WriteLine(new Book("C+", "S.G.RTRTG"));
+            Console.WriteLine(new Book("C++", "S.G.RTRTG"));
 
             Console.WriteLine("Press \'Enter\' to continue");
 
@@ -293,73 +293,5 @@ namespace Task2
             return new Marker(color);
         }
 
-    }
-
-
-
-    /// <summary>
-    /// Task 1, Task 2
-    /// </summary>
-    struct Marker
-    {
-        private string _color;
-
-        public static int Index { get; set; }
-
-        public Marker(string color)
-        {
-            _color = color;
-        }
-
-        public void Printmarker()
-        {
-            Console.WriteLine($" color: {_color}\n" +
-                              $" index: {Index}");
-        }
-    }
-
-    /// <summary>
-    /// Task 3
-    /// </summary>
-    struct Book
-    {
-        private string _bookName;
-
-        private string _bookAutor;
-
-        public Book(string name, string autor)
-        {
-            _bookName = name;
-            _bookAutor = autor;
-        }
-
-        public override string ToString()
-        {
-            return $"Title = {_bookName}, Autor = {_bookAutor}";
-        }
-
-    }
-
-    /// <summary>
-    /// ==== Methods =====
-    /// Task 2
-    /// </summary>
-    struct Point
-    {
-        public int X { get; }
-
-        public int Y { get; }
-
-        public Point(int x, int y)
-        {
-            X = x;
-
-            Y = y;
-        }
-
-        public override string ToString()
-        {
-            return $"Point = ({X}, {Y})";
-        }
     }
 }
