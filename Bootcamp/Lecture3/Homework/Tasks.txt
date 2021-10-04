@@ -1,0 +1,33 @@
+=============== Theory ===============
+1. Go through lecture material. Read additional material.
+
+
+=============== Practice ===============
+0. Go through examples, play with code
+
+1. Design own class hierarchy. Display how it works by calling methods as in examples.
+Requirements:
+	- should have abstract and virtual methods
+	- should have constructors chaining (this(), base())
+	- at least one method with use of "base" keyword
+	- should have private/protected/public methods
+	- use object inializer
+	- classes should have properties and fields
+	- use static/readonly/const keywords
+	- NOT LIMITED BY ABOVE STATEMENTS
+
+Example: 
+Cars, Musical instruments, Shapes
+
+2.	* Create types for storing tests. 
+	  Test should contain unique identifier and test question.
+	  There should be two types of tests: 
+		- CASE - select one correct answer from multiple cases.
+		- JUST_STR - input correct answer
+	  Test should contain correct answer.
+	  Test should have method that returns if user answer is correct or not.
+
+	* Store all tests in one container.
+	
+	* Print tests one by one and let user to type answer.
+	Calculate amount of correct answers.
