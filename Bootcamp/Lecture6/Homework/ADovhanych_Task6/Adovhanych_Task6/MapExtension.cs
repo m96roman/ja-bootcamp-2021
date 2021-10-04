@@ -8,16 +8,6 @@ namespace Adovhanych_Task6
 {
     public static class MapExtension
     { 
-        public static int MapFilter(string str)
-        {
-            return str.Length;
-        }
-        
-        public static int GenMapFilter(int number)
-        {
-            return number * number;
-        }
-
         public static ICollection<int> Map(this ICollection<string> itemsCollection, Func<string, int> mapFilter)
         {
             var list = new List<int>();
@@ -30,13 +20,13 @@ namespace Adovhanych_Task6
             return list;
         }
 
-        public static ICollection<T> GenMap<T>(this ICollection<T> itemsCollection, Func<T, int> filter)
+        public static ICollection<T> GenMap<T>(this ICollection<T> itemsCollection, Func<T, bool> filter)
         {
             var mapList = new List<T>();
 
             foreach (var item in itemsCollection)
             {
-                if (filter(item) > 0)
+                if (filter(item))
                 {
                     mapList.Add(item);
                 }
