@@ -42,7 +42,7 @@ namespace LiveCode
 
         public TValue Valu { get; set; }
     }
-    
+
     public abstract class CreditCard
     {
         public string Number { get; set; }
@@ -58,7 +58,7 @@ namespace LiveCode
         public string CVV { get; set; }
     }
 
-    public abstract class PaymentProcessor<T> where T: CreditCard
+    public abstract class PaymentProcessor<T> where T : CreditCard
     {
         public void PayWithCard(T card)
         {
