@@ -1,4 +1,5 @@
-﻿using DIvanyshyn_6.FilterTask;
+﻿using DIvanyshyn_6.Auctioneer;
+using DIvanyshyn_6.FilterTask;
 using System;
 
 namespace DIvanyshyn_6
