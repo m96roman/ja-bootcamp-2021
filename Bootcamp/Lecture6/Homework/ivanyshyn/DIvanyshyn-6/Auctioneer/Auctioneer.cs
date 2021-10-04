@@ -33,7 +33,6 @@ namespace DIvanyshyn_6.Auctioneer
             var oldBid = CurrentBid;
             CurrentBid = newBid;
             OnBidChanged?.Invoke(newBid);
-
         }
     }
 }

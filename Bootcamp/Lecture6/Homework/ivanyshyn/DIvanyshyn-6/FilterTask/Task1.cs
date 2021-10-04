@@ -17,10 +17,12 @@
         {
             var arr = new[] { "This", "example", "string", "is", "not", "so", "cool", "(" };
             System.Console.WriteLine(arr.ConvertToString(separator: " "));
-            var filtered = arr.Filter(x => !char.IsUpper(x[0]));
-            System.Console.WriteLine(filtered.ConvertToString(separator: " "));
-            System.Console.WriteLine(filtered.Map(s => s.Length).ConvertToString(separator: " "));
 
+            var filtered = arr.Filter(x => !char.IsUpper(x[0]));
+
+            System.Console.WriteLine(filtered.ConvertToString(separator: " "));
+
+            System.Console.WriteLine(filtered.Map(s => s.Length).ConvertToString(separator: " "));
         }
     }
 }
