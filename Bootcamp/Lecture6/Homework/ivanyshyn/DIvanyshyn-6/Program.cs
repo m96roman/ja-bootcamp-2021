@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DIvanyshyn_6.FilterTask;
+using System;
 
 namespace DIvanyshyn_6
 {
@@ -6,7 +7,9 @@ namespace DIvanyshyn_6
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            //Task1.Execute();
+
+            Task2.Execute();
         }
     }
 }
