@@ -8,6 +8,6 @@ namespace KFedakTask4
 {
     class IPhone : Phone
     {
-        public IPhone(byte battery, string name) : base(battery, name) { }
+        public IPhone(int battery, string name) : base(battery, name) { }
     }
 }

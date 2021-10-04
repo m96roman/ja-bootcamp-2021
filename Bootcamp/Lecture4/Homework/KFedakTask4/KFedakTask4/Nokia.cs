@@ -8,7 +8,7 @@ namespace KFedakTask4
 {
     class Nokia : Phone, ITelephone
     {
-        public Nokia(byte battery, string name) : base(battery, name) { }
+        public Nokia(int battery, string name) : base(battery, name) { }
 
         public void PrayForBattery()
         {

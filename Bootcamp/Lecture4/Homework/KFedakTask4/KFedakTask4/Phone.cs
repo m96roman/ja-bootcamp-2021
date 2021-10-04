@@ -9,9 +9,9 @@ namespace KFedakTask4
     public abstract class Phone : ITelephone
     {
         public string PhoneName { get; set; }
-        public byte BatteryLevel { get; set; }
+        public int BatteryLevel { get; set; }
 
-        public Phone(byte batteryLevel, string phoneName)
+        public Phone(int batteryLevel, string phoneName)
         {
             this.PhoneName = phoneName;
             if (batteryLevel < 0 || batteryLevel > 100)

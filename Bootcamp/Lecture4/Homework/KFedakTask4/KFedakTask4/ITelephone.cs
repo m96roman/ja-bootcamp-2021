@@ -10,7 +10,7 @@ namespace KFedakTask4
     {
         string PhoneName { get; set; }
 
-        byte BatteryLevel { get; set; }
+        int BatteryLevel { get; set; }
 
         void CallAmbulance();
 

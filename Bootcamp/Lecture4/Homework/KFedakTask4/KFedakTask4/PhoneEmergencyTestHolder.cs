@@ -13,7 +13,7 @@ namespace KFedakTask4
 
         public static void TestEmergency(PhoneEmergencyTestHolder phoneEmergency)
         {
-            foreach (var phone in phoneEmergency.telephones)
+            foreach (Phone phone in phoneEmergency)
             {
                 try
                 {
