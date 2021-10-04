@@ -1,0 +1,33 @@
+=============== Theory ===============
+1. Go through lecture material. Read additional material.
+
+
+=============== Practice ===============
+0. Go through examples, play with code
+
+1. 
+	* Write extension method "Filter" for type ICollection<string>, which
+accepts filter function as an argument and returns collection of items which
+match filter criteria.
+
+   	* Write extension method "Map" for type ICollection<string>, which 
+accepts map function, that transforms string to int. Result should be ICollection<int>
+
+	* Create collection of strings.
+	  Call "Filter" method (to filter elements which start from uppercase)
+	  Then call "Map" function to get those elements length
+
+	** Make Filter/Map as generic methods. Add own example of usage.
+
+
+2. 	* Create class Auctioneer
+	  Class should have OnBidChanged event member
+	  Class should have SetNewBid method with int argument
+	  Once new value for bid is set, OnBidChanged event should be fired with new bid value
+	  
+	* Create instance of class Auctioneer
+	  Attach three event handlers. (Bidders which are constantly monitoring auction)
+		1. if bidValue > 100,  print "Ohhh they really want to by this car for {bidValue}?", else do nothing
+	  	2. if bidValue < 300 print "I can give more, {bidValue} is nothing.", else do nothing
+		3. if bidValue < 200 print "I will wait a bit. I think that {bidValue} is not the last price.", else do nothing
+	  
