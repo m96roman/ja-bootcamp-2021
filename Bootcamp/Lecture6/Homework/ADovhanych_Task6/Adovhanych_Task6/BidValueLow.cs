@@ -10,7 +10,10 @@ namespace Adovhanych_Task6
     {
         public void Message(int bidValue)
         {
-            Console.WriteLine($"Ohhh they really want to by this car for {bidValue}?");
+            if (bidValue > 100)
+            {
+                Console.WriteLine($"Ohhh they really want to by this car for {bidValue}?");
+            }
         }
     }
 }

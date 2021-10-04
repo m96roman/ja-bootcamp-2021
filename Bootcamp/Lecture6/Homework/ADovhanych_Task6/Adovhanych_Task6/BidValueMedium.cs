@@ -10,7 +10,10 @@ namespace Adovhanych_Task6
     {
         public void Message(int bidValue)
         {
-            Console.WriteLine($"I will wait a bit.I think that { bidValue} is not the last price.");
+            if (bidValue < 200)
+            {
+                Console.WriteLine($"I will wait a bit.I think that { bidValue} is not the last price.");
+            }
         }
     }
 }

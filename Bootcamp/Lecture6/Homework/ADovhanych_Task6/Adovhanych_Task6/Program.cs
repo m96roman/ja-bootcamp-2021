@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Adovhanych_Task6
 {
@@ -15,8 +16,19 @@ namespace Adovhanych_Task6
             auctioneer.OnBidChanged += mediumValue.Message;
             auctioneer.OnBidChanged += highValue.Message;
 
-            auctioneer.SetNewBid(20);
-            
+            auctioneer.SetNewBid(250);
+
+            Console.WriteLine("___________________________");
+
+            List<string> testList = new List<string>() { "Abc", "Def", "ghjkl" };
+
+            var testFilter = testList.Filter(FilterExtension.FilterFunction);
+            var testMap = testList.Map(MapExtension.MapFilter);
+
+            foreach (var item in testFilter)
+            {
+                Console.WriteLine(item);
+            }
         }
     }
 }

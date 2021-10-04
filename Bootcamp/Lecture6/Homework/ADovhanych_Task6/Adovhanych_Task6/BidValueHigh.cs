@@ -10,7 +10,10 @@ namespace Adovhanych_Task6
     {
         public void Message(int bidValue)
         {
-            Console.WriteLine($"I can give more, {bidValue} is nothing.");
+            if (bidValue < 300)
+            {
+                Console.WriteLine($"I can give more, {bidValue} is nothing.");
+            }
         } 
     }
 }

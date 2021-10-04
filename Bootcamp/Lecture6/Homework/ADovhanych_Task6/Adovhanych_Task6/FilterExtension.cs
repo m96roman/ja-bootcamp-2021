@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Adovhanych_Task6
 {
-    class FilterExtension
+    public static class FilterExtension
     {
-        public static bool FilterCollection(string str)
+        public static bool FilterFunction(string str)
         {
             if (char.IsUpper(str[0]))
             {
@@ -20,14 +20,23 @@ namespace Adovhanych_Task6
             }
         }
 
-        public static ICollection<string> Filter(this ICollection<string> collection, FilterFunction filterFunction)
+        public static ICollection<string> Filter(this ICollection<string> itemsCollection, Func<string, bool> filter)
         {
-            
+            var strList = new List<string>();
+
+            foreach (var list in itemsCollection)
+            {
+                if (filter(list))
+                {
+                    strList.Add(list);
+                }
+            }
+            return strList;
         }
 
-    //    public static icollection<string> map(this icollection<string> map)
-    //    {
-
-    //    }
+        //public static ICollection<T> GenFilter<T>(this ICollection<string> itemsCollection, Func<T, T> filter)
+        //{
+        //    var someList = new List<string>();
+        //}
     }
 }
