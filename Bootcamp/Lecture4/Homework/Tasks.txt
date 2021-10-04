@@ -1,0 +1,22 @@
+==== Exceptions & Interfaces & Enumerable ====
+1. Create a phones hierarchy with requested functionality:
+    - Every phone is created with a battery level (valid values - from 0 to 100), throw an exception when invalid value is provided
+    - There are two types of Phones: IPhone13 and Nokia
+    - Every phone have a method CallAmbulance():
+        - when battery level is >= 5%, decrease charge by 5%, print "calling an ambulance from {phoneName}, remaining charge: x%";
+        - when battery level is bellow 5%, set battery level to 0 and throw an BatteryIsDeadException passing Phone instance as an info
+    - Nokia has an extra method called PrayForBattery() which increases battery level by 8% and prints message "praying for the battery"
+    - Every phone have a method Charge(): should increase battery level up to 100%, print "Charging {phoneName} to 100%"
+    - Every phone have a method ChargeABit(): should increase battery level by 1%, print "Charging {phoneName} by 1%"
+Create a PhoneEmergencyTestHolder type:
+    - It can hold any number of phones
+    - It also should be possible to use this type in foreach loop\
+There should be a method TestEmergency() which takes a PhoneEmergencyTestHolder:
+    - when called it goes through every phone and trying to call an ambulance
+    - When BatteryIsDeadException is thrown write that "Phone failed to call an ambulance: phoneType", exception is re-thrown.
+        - when type of the Phone is Nokia than use PrayForBattery() method and call ambulance again, loop is not interrupted.
+    - In the end to the method call ChargeABit() method on every phone in PhoneEmergencyTestHolder, even when exception was re-thrown.
+
+Create several phones(each type) with different level of batteries: 4%, 8%, 25%, store them store them in PhoneEmergencyTestHolder:
+    - Call a TestEmergency() at least 10 times
+        - catch BatteryIsDeadException, get instance of the phone and call Charge method on it, loop is not interrupted.
