@@ -220,7 +220,7 @@ namespace HomeWork
 
             Console.WriteLine("Enter some number to check if it is multiple of 3 or 7");
 
-            if (IsNumber(Console.ReadLine(), out int number) != true)
+            if (!IsNumber(Console.ReadLine(), out int number))
             {
                 Console.WriteLine(ERROR);
                 return;
@@ -256,7 +256,7 @@ namespace HomeWork
 
             Console.WriteLine("Enter circle radius to calculate it's perimeter and area");
 
-            if (IsNumber(Console.ReadLine(), out double radius) != true)
+            if (!IsNumber(Console.ReadLine(), out double radius))
             {
                 Console.WriteLine(ERROR);
                 return;
@@ -288,7 +288,7 @@ namespace HomeWork
                     break;
                 }
 
-                if(IsNumber(Console.ReadLine(), out int number) != true)
+                if(!IsNumber(Console.ReadLine(), out int number))
                 {
                     Console.WriteLine(ERROR);
                     return;
@@ -312,7 +312,7 @@ namespace HomeWork
 
             Console.WriteLine("Enter dimention of required matrix");
 
-            if(IsNumber(Console.ReadLine(), out int dim) != true)
+            if(!IsNumber(Console.ReadLine(), out int dim))
             {
                 Console.WriteLine(ERROR);
                 return;
@@ -340,13 +340,13 @@ namespace HomeWork
 
             Console.WriteLine($"Enter two numbers (min and max) of range to dispaly all numbers in range between first and second number that are divisible by \'{divuder}\'");
 
-            if (IsNumber(Console.ReadLine(), out int firstNum) != true)
+            if (!IsNumber(Console.ReadLine(), out int firstNum))
             {
                 Console.WriteLine(ERROR);
                 return;
             }
 
-            if (IsNumber(Console.ReadLine(), out int secondNum) != true)
+            if (!IsNumber(Console.ReadLine(), out int secondNum))
             {
                 Console.WriteLine(ERROR);
                 return;
@@ -380,7 +380,7 @@ namespace HomeWork
             Console.WriteLine($"Enter channel num to see it's rating \nChannels: \n1: {TVChannels.Discovery} \n2: {TVChannels.FirstNational} \n3: " +
                 $"{TVChannels.STB} \n4: {TVChannels.TV1000} \n5: {TVChannels.TVbox}");
             
-            if(IsNumber(Console.ReadLine(), out int num) != true)
+            if(!IsNumber(Console.ReadLine(), out int num))
             {
                 Console.WriteLine(ERROR);
                 return;
