@@ -9,30 +9,11 @@ namespace KFedakTask4
 {
     class PhoneEmergencyTestHolder : IEnumerable
     {
-        public List<ITelephone> telephones = new List<ITelephone>();
+        public List<Phone> telephones = new List<Phone>();
 
-        public static void TestEmergency(PhoneEmergencyTestHolder phoneEmergency)
+        public PhoneEmergencyTestHolder(List<Phone> phones)
         {
-            foreach (Phone phone in phoneEmergency)
-            {
-                try
-                {
-                    phone.CallAmbulance();
-                }
-                catch (BatteryIsDeadException)
-                {
-                    if ( phone is not Nokia nokia)
-                    {
-                        throw;
-                    }
-
-                    nokia.PrayForBattery();
-                }
-                finally
-                {
-                    phone.ChargeABit();
-                }
-            }
+            this.telephones = phones;
         }
 
         IEnumerator IEnumerable.GetEnumerator()

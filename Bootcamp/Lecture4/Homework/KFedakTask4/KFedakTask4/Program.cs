@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace KFedakTask4
 {
@@ -8,15 +9,14 @@ namespace KFedakTask4
 
         static void Main(string[] args)
         {
-            PhoneEmergencyTestHolder phone = new PhoneEmergencyTestHolder();
-
-            CreatePhones(phone);
+            List<Phone> phones = CreatePhones();
+            var holder = new PhoneEmergencyTestHolder(phones);
 
             for (int i = 0; i < iteration; i++)
             {
                 try
                 {
-                    PhoneEmergencyTestHolder.TestEmergency(phone);
+                    TestEmergency(holder);
                 }
                 catch (BatteryIsDeadException ex)
                 {
@@ -25,11 +25,39 @@ namespace KFedakTask4
             }
         }
 
-        public static void CreatePhones(PhoneEmergencyTestHolder testHolder)
+        public static void TestEmergency(PhoneEmergencyTestHolder phoneEmergency)
         {
-            testHolder.telephones.Add(new IPhone(4, "Iphone13"));
-            testHolder.telephones.Add(new Nokia(8, "345"));
-            testHolder.telephones.Add(new IPhone(25, "Iphone7"));
+            foreach (Phone phone in phoneEmergency)
+            {
+                try
+                {
+                    phone.CallAmbulance();
+                }
+                catch (BatteryIsDeadException ex)
+                {
+                    if (phone is not Nokia nokia)
+                    {
+                        Console.WriteLine(ex.Message);
+                        throw;
+                    }
+
+                    nokia.PrayForBattery();
+                }
+                finally
+                {
+                    phone.ChargeABit();
+                }
+            }
+        }
+
+        public static List<Phone> CreatePhones()
+        {
+            var holder = new List<Phone>();
+            holder.Add(new IPhone(4, "Iphone13"));
+            holder.Add(new Nokia(8, "345"));
+            holder.Add(new IPhone(25, "Iphone7"));
+
+            return holder;
         }
     }
 }

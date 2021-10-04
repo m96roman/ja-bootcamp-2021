@@ -9,13 +9,13 @@ namespace KFedakTask4
 {
     class BatteryIsDeadException : ApplicationException
     {
-        public ITelephone Telephone { get; set; }
+        public Phone Telephone { get; set; }
         public DateTime ErrorTimeStamp { get; set; }
         public string CauseOfError { get; set; }
 
         public BatteryIsDeadException() { }
 
-        public BatteryIsDeadException(ITelephone telephone) : this($"Phone failed to call an ambulance: {telephone.PhoneName} ")
+        public BatteryIsDeadException(Phone telephone,string cause) : base(cause)
         {
             this.Telephone = telephone;
         }

@@ -34,7 +34,7 @@ namespace KFedakTask4
             else
             {
                 this.BatteryLevel = 0;
-                throw new BatteryIsDeadException(this);
+                throw new BatteryIsDeadException(this, $"Phone failed to call an ambulance: {this.PhoneName} ");
             }
         }
 
