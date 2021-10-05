@@ -23,22 +23,21 @@ namespace KFedak_T7
     public static class Linq
     {
         private static IReadOnlyCollection<Student> Students { get; } = new List<Student>
-    {
-        new Student() { StudentID = 1, StudentName = "John", AverageGrade = 4, FacultyID = 1 },
-        new Student() { StudentID = 2, StudentName = "John",  AverageGrade = 3, FacultyID = 1 },
-        new Student() { StudentID = 3, StudentName = "Bill",  AverageGrade = 5, FacultyID = 2 },
-        new Student() { StudentID = 4, StudentName = "Ron" , AverageGrade = 5, FacultyID = 3 },
-        new Student() { StudentID = 5, StudentName = "Ron" , AverageGrade = 5, FacultyID = 3 },
-        new Student() { StudentID = 6, StudentName = "Oleg" , AverageGrade = 5, FacultyID = 3 }
-
-    };
+        {
+            new Student() { StudentID = 1, StudentName = "John", AverageGrade = 4, FacultyID = 1 },
+            new Student() { StudentID = 2, StudentName = "John",  AverageGrade = 3, FacultyID = 1 },
+            new Student() { StudentID = 3, StudentName = "Bill",  AverageGrade = 5, FacultyID = 2 },
+            new Student() { StudentID = 4, StudentName = "Ron" , AverageGrade = 5, FacultyID = 3 },
+            new Student() { StudentID = 5, StudentName = "Ron" , AverageGrade = 5, FacultyID = 3 },
+            new Student() { StudentID = 6, StudentName = "Oleg" , AverageGrade = 5, FacultyID = 3 }
+        };
 
         private static IReadOnlyCollection<Faculty> Facultys { get; } = new List<Faculty>
-    {
-        new Faculty(){ FacultyID = 1, FacultyName="Faculty 1"},
-        new Faculty(){ FacultyID = 2, FacultyName="Faculty 2"},
-        new Faculty(){ FacultyID = 3, FacultyName="Faculty 3"}
-    };
+        {
+            new Faculty(){ FacultyID = 1, FacultyName="Faculty 1"},
+            new Faculty(){ FacultyID = 2, FacultyName="Faculty 2"},
+            new Faculty(){ FacultyID = 3, FacultyName="Faculty 3"}
+        };
 
         public static void StudentsWithMaxGradePerFaculty()
         {
