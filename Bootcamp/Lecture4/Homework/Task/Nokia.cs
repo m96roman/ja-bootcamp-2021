@@ -16,7 +16,7 @@ namespace Task
             get => _batteryLevel;
             set
             {
-                if(Enumerable.Range(0, 100).Contains(value))
+                if(Enumerable.Range(0, 101).Contains(value))
                 {
                     _batteryLevel = value;
                 }
@@ -56,7 +56,7 @@ namespace Task
 
         public void ChargeABit()
         {
-            BatteryLevel = 1;
+            BatteryLevel += 1;
             Console.WriteLine($"Charging {PhoneName} by 1%");
         }
 

@@ -50,19 +50,16 @@ namespace Task
 
             PhoneEmergencyTestHolder tests = new PhoneEmergencyTestHolder(phones);
 
-            int countCallsEmergency = 0;
-            while (countCallsEmergency < 10)
+            for(int i = 0; i < 10; i++)
             {
                 try
                 {
                     PhoneEmergencyTestHolder.TestEmergency(tests);
                 }
-                catch(BatteryIsDeadException ex)
+                catch (BatteryIsDeadException ex)
                 {
                     ex.Phone.Charge();
                 }
-
-                countCallsEmergency++;
             }
         }
     }

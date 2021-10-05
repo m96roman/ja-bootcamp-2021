@@ -53,7 +53,7 @@ namespace Task
 
         public void ChargeABit()
         {
-            BatteryLevel = 1;
+            BatteryLevel += 1;
             Console.WriteLine($"Charging {PhoneName} by 1%");
         }
     }
