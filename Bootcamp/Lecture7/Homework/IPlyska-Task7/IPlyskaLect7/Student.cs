@@ -12,6 +12,5 @@ namespace IPlyskaLect7
         public int FacultyId { get; set; }
         public string FirstName { get; set; }
         public decimal AverageGrade { get; set; }
-        public int Quantity { get; set; }
     }
 }

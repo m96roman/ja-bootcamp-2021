@@ -34,14 +34,26 @@ namespace IPlyskaLect7
 
             try
             {
-                new Task1().FindSquareNumber(array).PrintObjects();
+                //new Task1().FindSquareNumber(array).PrintObjects();
 
-                CountChar("Milkki");
+                //CountChar("Milkki");
 
-                Console.WriteLine(ConvertSrtArray(str));
+                //Console.WriteLine(ConvertSrtArray(str));
 
-                var result = CountStudent(students);
-                var result2 = SameNamePerFaculty(students);
+                Console.WriteLine("Students with the same name is {0}", CountStudentWithTheSameName(students));
+
+                Console.WriteLine("=======================");
+
+                AverageGradePerFaculty(students, faculties);
+
+                Console.WriteLine("=======================");
+
+                MaxGradePerFaculty(students, faculties);
+
+                Console.WriteLine("=======================");
+
+                SameNamePerFaculty(students, faculties);
+
 
             }
             catch (ArgumentNullException ex)
@@ -73,13 +85,15 @@ namespace IPlyskaLect7
             {
                 throw new ArgumentNullException("Argument can not be null or an empty", nameof(container));
             }
-         
-            return container.Aggregate((x ,y) => y + "," + x);
+
+            return container.Aggregate((x, y) => y + "," + x);
         }
 
-        public static void InnerJoin(IEnumerable<Student> students, IEnumerable<Faculty> faculties)
+        public static void MaxGradePerFaculty(IEnumerable<Student> students, IEnumerable<Faculty> faculties)
         {
-            var result = students.Join
+           var result =  students.GroupBy(x => x.FacultyId)
+                 .Select(y => new Student { FacultyId = y.Key, FirstName = y.OrderBy(avr => avr.AverageGrade).Last().FirstName })
+                 .Join
                 (
                     faculties,
                     student => student.FacultyId,
@@ -92,27 +106,71 @@ namespace IPlyskaLect7
                         AverageGrade = student.AverageGrade,
                         FacultyId = faculty.FacultyId
                     }
-                );   
+                );
+
+            foreach (var item in result)
+            {
+                Console.WriteLine($"All students with max grade per Faculty - {item.FacultyName} is {item.FirstName}");
+            };
         }
-
-        //public static List<Student> MaxGradePerFaculty(IEnumerable<Student> students)
-        //{
-        //    var result = students.GroupBy(x => x.FacultyId).Select(y => y.Where(x => x.AverageGrade > x.AverageGrade));
-        //}
-
-        public static IEnumerable<Student> SameNamePerFaculty(IEnumerable<Student> students)
+      
+        public static void SameNamePerFaculty(IEnumerable<Student> students, IEnumerable<Faculty> faculties)
         {
-            return students.GroupBy(x => x.FacultyId).Select(y => new Student { FacultyId = y.Key, Quantity = y.Select(m => m).Count() - y.Select(x => x.FirstName).Distinct().Count()});
-        }
+           
+            var result =  students.Select(y => y)
+                                .Join
+                                (
+                                    faculties,
+                                    student => student.FacultyId,
+                                    faculty => faculty.FacultyId,
+                                    (student, faculty) => new
+                                    {
+                                        StudentId = student.StudentId,
+                                        FirstName = student.FirstName ,
+                                        FacultyName = faculty.Name,
+                                        AverageGrade = student.AverageGrade,
+                                        FacultyId = faculty.FacultyId  
+                                    }
+                                ).GroupBy(x => x.FacultyId).Select(t => new { FacultyName = t.First().FacultyName, 
+                                    Qty = t.Select(x => x).Count() - t.Select(x => x.FirstName).Distinct().Count()});
 
-        public static IEnumerable<Student> AverageGradePerFaculty(IEnumerable<Student> students)
+            foreach (var item in result)
+            {
+                Console.WriteLine($"For faculty {item.FacultyName} the sme name is {item.Qty}");
+            }
+
+        }
+            
+        
+        public static void AverageGradePerFaculty(IEnumerable<Student> students, IEnumerable<Faculty> faculties)
         {
-            return (IEnumerable<Student>)students.GroupBy(x  => x.FacultyId).Select(y => y.Select(x => new Student {FacultyId = y.Key, AverageGrade = y.Average(x => x.AverageGrade)}));
+           var result =  students.GroupBy(x => x.FacultyId)
+                .Select(y => new Student { FacultyId = y.Key, AverageGrade = y.Average(avr => avr.AverageGrade) })
+                .Join
+                (
+                    faculties,
+                    student => student.FacultyId,
+                    faculty => faculty.FacultyId,
+                    (student, faculty) => new
+                    {
+                        StudentId = student.StudentId,
+                        FirstName = student.FirstName,
+                        FacultyName = faculty.Name,
+                        AverageGrade = student.AverageGrade,
+                        FacultyId = faculty.FacultyId
+                    }
+                );
+
+            foreach (var item in result)
+            {
+                Console.WriteLine($"Average grade per faculty - {item.FacultyName} is {item.AverageGrade}");
+            }
+
         }
 
-        public static int CountStudent(IEnumerable<Student> students) 
+        public static int CountStudentWithTheSameName(IEnumerable<Student> students) 
 
-            => students.Select(x => x.FirstName).Distinct().Count(); 
+            => students.Select(x => x).Count() - students.Select(x => x.FirstName).Distinct().Count(); 
    
     }
 }
