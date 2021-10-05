@@ -1,0 +1,34 @@
+1.  Write a program in C# Sharp to find the number of an array and the square of each number.
+Expected Output :
+{ Number = 9, SqrNo = 81 }
+{ Number = 8, SqrNo = 64 }
+{ Number = 6, SqrNo = 36 }
+{ Number = 5, SqrNo = 25 }
+
+2.  Write a program in C# Sharp to display the characters and frequency of character from giving string.
+Test Data:
+Input the string: apple
+Expected Output:
+The frequency of the characters are :
+Character a: 1 times
+Character p: 2 times
+Character l: 1 times
+Character e: 1 times
+
+3. Write a program in C# Sharp to convert a string array to a string.
+Test Data :
+Input number of strings to store in the array :3
+Input 3 strings for the array :
+Element[0] : cat
+Element[1] : dog
+Element[2] : rat
+Expected Output:
+Here is the string below created with elements of the above array :
+cat, dog, rat
+
+4. Given the following data structure:
+    - Student (StudentId, FacultyId, FirstName, AverageGrade)
+    - Faculty (FacultyId, Name)
+Print All students with max grade per Faculty like: {FacultyName, StudentName}
+How many students with the same name? how many students with the same name per faculty?
+Find average grade per faculty
