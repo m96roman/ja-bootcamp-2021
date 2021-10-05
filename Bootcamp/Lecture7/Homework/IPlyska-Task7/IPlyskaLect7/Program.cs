@@ -41,6 +41,7 @@ namespace IPlyskaLect7
                 Console.WriteLine(ConvertSrtArray(str));
 
                 var result = CountStudent(students);
+                var result2 = SameNamePerFaculty(students);
 
             }
             catch (ArgumentNullException ex)
@@ -96,12 +97,12 @@ namespace IPlyskaLect7
 
         //public static List<Student> MaxGradePerFaculty(IEnumerable<Student> students)
         //{
-        //   var result = students.GroupBy(x => x.FacultyId).Select(y => y.Where(x => x.AverageGrade > x.AverageGrade));
+        //    var result = students.GroupBy(x => x.FacultyId).Select(y => y.Where(x => x.AverageGrade > x.AverageGrade));
         //}
 
         public static IEnumerable<Student> SameNamePerFaculty(IEnumerable<Student> students)
         {
-            return students.GroupBy(x => x.FacultyId).Select(y => new Student { FacultyId = y.Key, Quantity = y.Where(n => n.FirstName == n.FirstName).Count()});
+            return students.GroupBy(x => x.FacultyId).Select(y => new Student { FacultyId = y.Key, Quantity = y.Select(m => m).Count() - y.Select(x => x.FirstName).Distinct().Count()});
         }
 
         public static IEnumerable<Student> AverageGradePerFaculty(IEnumerable<Student> students)
@@ -109,12 +110,10 @@ namespace IPlyskaLect7
             return (IEnumerable<Student>)students.GroupBy(x  => x.FacultyId).Select(y => y.Select(x => new Student {FacultyId = y.Key, AverageGrade = y.Average(x => x.AverageGrade)}));
         }
 
-        public static int CountStudent(IEnumerable<Student> students)
-        {
-            return students.Where(x => x.FirstName == x.FirstName).Count();
-        }
+        public static int CountStudent(IEnumerable<Student> students) 
 
-
+            => students.Select(x => x.FirstName).Distinct().Count(); 
+   
     }
 }
 
