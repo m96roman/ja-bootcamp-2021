@@ -93,42 +93,28 @@ namespace KFedak_T7
 
         public static void SameNamePerFaculty()
         {
-            //var innerJoin = Students.Join(// outer sequence 
-            //          Facultys,  // inner sequence 
-            //          student => student.FacultyID,    // outerKeySelector
-            //          standard => standard.FacultyID,  // innerKeySelector
-            //          (student, standard) => new  // result selector
-            //          {
-            //              StudentName = student.StudentName,
-            //              FacultyName = standard.FacultyName,
-            //              FacultyID = standard.FacultyID,
-            //              AverageGrade = student.AverageGrade
-            //          }).ToList();
+            var students = Students.GroupBy(s => s.FacultyID).
+            Select(group =>
+                 new
+                 {
+                     FacultyID = group.Key,
+                     Count = group.GroupBy(s => s.StudentName).Where(s => s.Count() > 1).Sum(s => s.Count())
+                 }).
+            Join(Facultys, count => count.FacultyID, f => f.FacultyID,
+                   (count, f) =>
+                         new
+                         {
+                             FacultyName = f.FacultyName,
+                             Count = count.Count
+                         }).ToList();
 
-            //var students = (from e in innerJoin
-            //                group e by e.StudentName into sgrp
-            //                let count = sgrp.Count()
-            //                orderby count descending
-            //                select new
-            //                {
-            //                    StudentName = sgrp.Key,
-            //                    Count = count
-            //                }).ToList();
-
-            //var query = (from c in Facultys
-            //                     join o in Students on  c.FacultyID equals o.FacultyID
-            //                     group o by o.FacultyID into g
-            //                     select new
-            //                     {
-            //                         FacultyID = g.Key,
-            //                         Count = g.Where(z=>z.FacultyID==g.Key).Select(x => x.StudentName).Distinct().Count(),
-            //                     }).OrderByDescending(y => y.Count);
-
-            //foreach (var st in query)
-            //{
-            //    Console.WriteLine("Faculty {0} - count:{1}", st.FacultyID, st.Count);
-            //}
+            foreach (var st in students)
+            {
+                Console.WriteLine(" {0} - count:{1}", st.FacultyName, st.Count);
+            }
         }
+
+
 
         public static void PrintObjects(this IEnumerable<object> students)
     => students.ToList().ForEach(s => Console.WriteLine(s));
