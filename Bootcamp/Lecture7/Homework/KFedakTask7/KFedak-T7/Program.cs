@@ -18,7 +18,7 @@ namespace KFedak_T7
         {
             Console.WriteLine("Task1\n");
 
-            var result = new List<int>() { 6, 7, 8 }.Select(n => new { number = n, squera = n * n }).ToList();
+            var result = new List<int>() { 6, 7, 8 }.Select(n => new { number = n, squera = n * n });
 
             foreach (var el in result)
             {
@@ -55,6 +55,11 @@ namespace KFedak_T7
             Console.WriteLine("\nStudents with the same name per faculty\n");
 
             Linq.SameNamePerFaculty();
+
+            Console.WriteLine("\nAverafe grade per faculty\n");
+
+            Linq.Average();
+
         }
     }
 }

@@ -12,9 +12,6 @@ namespace KFedak_T7
         public string StudentName { get; set; }
         public double AverageGrade { get; set; }
         public int FacultyID { get; set; }
-
-        public override string ToString()
-            => (StudentID, StudentName, AverageGrade, FacultyID).ToString();
     }
 
     public class Faculty
@@ -27,11 +24,13 @@ namespace KFedak_T7
     {
         private static IReadOnlyCollection<Student> Students { get; } = new List<Student>
     {
-        new Student() { StudentID = 1, StudentName = "John", AverageGrade = 4, FacultyID = 1 } ,
-        new Student() { StudentID = 2, StudentName = "John",  AverageGrade = 3, FacultyID = 1 } ,
-        new Student() { StudentID = 3, StudentName = "Bill",  AverageGrade = 5, FacultyID = 2 } ,
-        new Student() { StudentID = 4, StudentName = "Ram" , AverageGrade = 5, FacultyID = 3 } ,
-        new Student() { StudentID = 5, StudentName = "Ron" , AverageGrade = 5, FacultyID = 3 }
+        new Student() { StudentID = 1, StudentName = "John", AverageGrade = 4, FacultyID = 1 },
+        new Student() { StudentID = 2, StudentName = "John",  AverageGrade = 3, FacultyID = 1 },
+        new Student() { StudentID = 3, StudentName = "Bill",  AverageGrade = 5, FacultyID = 2 },
+        new Student() { StudentID = 4, StudentName = "Ron" , AverageGrade = 5, FacultyID = 3 },
+        new Student() { StudentID = 5, StudentName = "Ron" , AverageGrade = 5, FacultyID = 3 },
+        new Student() { StudentID = 6, StudentName = "Oleg" , AverageGrade = 5, FacultyID = 3 }
+
     };
 
         private static IReadOnlyCollection<Faculty> Facultys { get; } = new List<Faculty>
@@ -43,31 +42,29 @@ namespace KFedak_T7
 
         public static void StudentsWithMaxGradePerFaculty()
         {
-            var innerJoin = Students.Join(// outer sequence 
-                      Facultys,  // inner sequence 
-                      student => student.FacultyID,    // outerKeySelector
-                      standard => standard.FacultyID,  // innerKeySelector
-                      (student, standard) => new  // result selector
+            var innerJoin = Students.Join(Facultys,
+                student => student.FacultyID,
+                      standard => standard.FacultyID,
+                      (student, standard) => new
                       {
                           StudentName = student.StudentName,
                           FacultyName = standard.FacultyName,
                           FacultyID = standard.FacultyID,
                           AverageGrade = student.AverageGrade
-                      }).ToList();
+                      });
 
-            var students = (from e in innerJoin
-                            group e by e.FacultyID into sgrp
-                            let max = sgrp.Max(score => score.AverageGrade)
-                            select new
-                            {
-                                FacultyID = sgrp.Key,
-                                StudentName = string.Join(",", sgrp.Where(y => y.AverageGrade == max).Select(z => z.StudentName).ToList()),
-                                Score = string.Join(",", sgrp.Where(y => y.AverageGrade == max).Select(z => z.AverageGrade).ToList()),
-                                FacultyName = sgrp.First(y => y.AverageGrade == max).FacultyName,
+            var students1 = innerJoin.GroupBy(f => f.FacultyID)
+                .Select(s =>
+                new
+                {
+                    max = string.Join(",", s.Where(y => y.AverageGrade == s.Max(mark => mark.AverageGrade)).Select(z => z.AverageGrade)),
+                    facultyID = s.Key,
+                    FacultyName = s.First(y => y.AverageGrade == s.Max(mark => mark.AverageGrade)).FacultyName,
+                    StudentName = string.Join(",", s.Where(y => y.AverageGrade == s.Max(mark => mark.AverageGrade)).Select(z => z.StudentName))
 
-                            }).ToList();
+                });
 
-            foreach (var st in students)
+            foreach (var st in students1)
             {
                 Console.WriteLine("Student {0} and {1}", st.StudentName, st.FacultyName);
             }
@@ -75,15 +72,10 @@ namespace KFedak_T7
 
         public static void SameName()
         {
-            var students = (from e in Students
-                            group e by e.StudentName into sgrp
-                            let count = sgrp.Count()
-                            orderby count descending
-                            select new
-                            {
-                                StudentName = sgrp.Key,
-                                Count = count
-                            }).ToList();
+            var students = Students.GroupBy(s => s.StudentName)
+                .Select(s => new { count = s.Count(), studentName = s.Key })
+                .OrderByDescending(s => s.count)
+                .Select(s => new { StudentName = s.studentName, Count = s.count });
 
             foreach (var st in students)
             {
@@ -93,31 +85,45 @@ namespace KFedak_T7
 
         public static void SameNamePerFaculty()
         {
-            var students = Students.GroupBy(s => s.FacultyID).
-            Select(group =>
-                 new
-                 {
-                     FacultyID = group.Key,
-                     Count = group.GroupBy(s => s.StudentName).Where(s => s.Count() > 1).Sum(s => s.Count())
-                 }).
-            Join(Facultys, count => count.FacultyID, f => f.FacultyID,
-                   (count, f) =>
-                         new
-                         {
-                             FacultyName = f.FacultyName,
-                             Count = count.Count
-                         }).ToList();
+            var students = Students.GroupBy(s => s.FacultyID)
+                .Select(group =>
+                new
+                {
+                    FacultyID = group.Key,
+                    Count = group.GroupBy(s => s.StudentName).Where(s => s.Count() > 1).Sum(s => s.Count())
+                })
+                .Join(Facultys,
+                count => count.FacultyID,
+                f => f.FacultyID,
+                    (count, f) =>
+                    new
+                    {
+                        FacultyName = f.FacultyName,
+                        Count = count.Count,
+                    });
 
             foreach (var st in students)
             {
                 Console.WriteLine(" {0} - count:{1}", st.FacultyName, st.Count);
             }
         }
+        public static void Average()
+        {
+            var averagesOfStudents = Students.GroupBy(s => s.FacultyID)
+                .Join(Facultys,
+                s => s.Key,
+                f => f.FacultyID,
+                (student, faculty) =>
+                new
+                {
+                    FacultyName = faculty.FacultyName,
+                    AverageGrade = student.Average(s => s.AverageGrade)
+                });
 
-
-
-        public static void PrintObjects(this IEnumerable<object> students)
-    => students.ToList().ForEach(s => Console.WriteLine(s));
-
+            foreach (var st in averagesOfStudents)
+            {
+                Console.WriteLine(" {0} - Average:{1}", st.FacultyName, st.AverageGrade);
+            }
+        }
     }
 }
