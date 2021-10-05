@@ -6,15 +6,16 @@ using System.Threading.Tasks;
 
 namespace KFedakTask5
 {
-    public abstract class Shape
+    public interface IShape
     {
-        public static void Draw<T>(ICollection<T> drawableList) where T : class
+        public static void Draw<T>(ICollection<T> drawableList) where T : IShape
         {
             foreach (T item in drawableList)
             {
-                Console.WriteLine($"{item.GetType().Name} was drawn!");
+                item.Draw();
             }
         }
 
+        public void Draw();
     }
 }

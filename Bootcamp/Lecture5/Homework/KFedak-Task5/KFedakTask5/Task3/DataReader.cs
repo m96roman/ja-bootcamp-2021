@@ -17,9 +17,12 @@ namespace KFedakTask5
                 city.Add(element.Key);
             }
 
-            var dbResult = new DbResult<List<string>>();
-            dbResult.IsSuccede = true;
-            dbResult.Value = city;
+            var dbResult = new DbResult<List<string>>()
+            {
+                IsSuccede = true,
+                Value = city
+            };
+
             return dbResult;
         }
 
@@ -27,9 +30,12 @@ namespace KFedakTask5
         {
             Random r = new Random();
             var i = r.Next(10, 50);
-            var dbResult = new DbResult<int>();
-            dbResult.Value = i;
-            dbResult.IsSuccede = false;
+            var dbResult = new DbResult<int>()
+            {
+                IsSuccede = false,
+                Value = i
+            };
+
             return dbResult;
         }
     }

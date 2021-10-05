@@ -5,9 +5,6 @@ namespace KFedakTask5
 {
     class Program
     {
-        public static List<Point> listPoint = new List<Point>();
-        public static Circle[] circles;
-        public static List<Person> peopleList = new List<Person>();
         public static Dictionary<string, int> population = new Dictionary<string, int>();
 
         static void Main(string[] args)
@@ -31,14 +28,13 @@ namespace KFedakTask5
 
         public static void TaskOne()
         {
-            CreateObjects();
-            Shape.Draw<Point>(listPoint);
-            Shape.Draw<Circle>(circles);
+            var objectList = CreateObjects();
+            IShape.Draw(objectList);
         }
 
         public static void TaskTwo()
         {
-            CreatePerson();
+            var peopleList = CreatePerson();
 
             foreach (var person in peopleList)
             {
@@ -72,9 +68,9 @@ namespace KFedakTask5
             Console.WriteLine($"Data is : \n{lines}\nStatus :{stringOption.IsSuccede}");
         }
 
-        public static void TaskFour() 
+        public static void TaskFour()
         {
-            DomesticPackage domesticPackage = new DomesticPackage(1,20,"Cleaner things","Oleh");
+            DomesticPackage domesticPackage = new DomesticPackage(1, 20, "Cleaner things", "Oleh");
             ForeignPackage foreignPackage = new ForeignPackage("London", 45, "Something cool", "Iolanta");
 
             var deliveryNovaPoshta = new DomesticDelivery();
@@ -83,25 +79,21 @@ namespace KFedakTask5
             deliveryNovaPoshta.DeliverPackage(domesticPackage);
 
             deliveryMeets.DeliverPackage(foreignPackage);
+
         }
-        public static void CreatePerson()
+        public static List<Person> CreatePerson()
         {
-            peopleList.Add(new Person("Oleh", "Lviv"));
-            peopleList.Add(new Person("Katya", "Lviv"));
-            peopleList.Add(new Person("Anna", "Kyiv"));
-            peopleList.Add(new Person("Orest", "Lviv"));
-            peopleList.Add(new Person("Yura", "Kyiv"));
-            peopleList.Add(new Person("Petro", "Odessa"));
-            peopleList.Add(new Person("Oleh", "Kyiv"));
-            peopleList.Add(new Person("Oleh", "Lviv"));
-            peopleList.Add(new Person("Oleh", "Odessa"));
+            var list = new List<Person> { new Person("Oleh", "Lviv"), new Person("Katya", "Lviv"), new Person("Anna", "Kyiv"), new Person("Orest", "Lviv"), new Person("Yura", "Kyiv"),
+                new Person("Petro", "Odessa"),new Person("Oleh", "Kyiv"),new Person("Oleh", "Lviv"), new Person("Oleh", "Odessa")};
+
+            return list;
         }
 
-        public static void CreateObjects()
+        public static List<IShape> CreateObjects()
         {
-            listPoint.Add(new Point(2.5, 4.3));
-            listPoint.Add(new Point(3, 8));
-            circles = new Circle[] { new Circle(5), new Circle(10) };
+            var list = new List<IShape> { new Point(2.5, 4.3), new Point(3, 8), new Circle(5), new Circle(10), new Rectangle(new double[] { 2, 5, 6, 8 }) };
+
+            return list;
         }
     }
 }

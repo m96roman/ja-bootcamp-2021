@@ -6,13 +6,18 @@ using System.Threading.Tasks;
 
 namespace KFedakTask5
 {
-    public class Circle : Shape
+    public class Circle : IShape
     {
         public double Radius { get; set; }
 
         public Circle(double radius)
         {
             Radius = radius;
+        }
+
+        public void Draw()
+        {
+            Console.WriteLine($"{this.GetType().Name} was drawn! His radius is {this.Radius}");
         }
     }
 }
