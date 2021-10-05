@@ -170,6 +170,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveCode", "Lecture5\LiveCode\LiveCode.csproj", "{3136D8E7-FA25-4288-B8F0-365E1212DAFB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lecture6", "Lecture6", "{48C38C35-4C06-4C99-9D14-CE129D00D6C5}"
+	ProjectSection(SolutionItems) = preProject
+		Lecture6\Homework\Tasks.txt = Lecture6\Homework\Tasks.txt
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExtensionMethods", "ExtensionMethods", "{A49641C3-147F-4018-A9C8-B828A966A16F}"
 EndProject
@@ -203,6 +206,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Homework", "Homework", "{1D
 	ProjectSection(SolutionItems) = preProject
 		Lecture6\Homework\Tasks.txt = Lecture6\Homework\Tasks.txt
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DIvanyshyn-6", "Lecture6\Homework\ivanyshyn\DIvanyshyn-6\DIvanyshyn-6.csproj", "{1C43B4EE-9CCE-43DC-B7AC-8D4F3A45E1F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -486,6 +491,10 @@ Global
 		{F225B9DA-D230-48AA-8200-FEB2CCC2C645}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F225B9DA-D230-48AA-8200-FEB2CCC2C645}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F225B9DA-D230-48AA-8200-FEB2CCC2C645}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C43B4EE-9CCE-43DC-B7AC-8D4F3A45E1F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C43B4EE-9CCE-43DC-B7AC-8D4F3A45E1F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C43B4EE-9CCE-43DC-B7AC-8D4F3A45E1F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C43B4EE-9CCE-43DC-B7AC-8D4F3A45E1F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -574,6 +583,7 @@ Global
 		{E71066AE-C3FA-479F-855E-7E686D424E5B} = {6BFB01F4-9796-491F-A49A-981667459724}
 		{F225B9DA-D230-48AA-8200-FEB2CCC2C645} = {48C38C35-4C06-4C99-9D14-CE129D00D6C5}
 		{1D472F8B-C4FF-4D3D-95CF-DA20C3DBB63F} = {48C38C35-4C06-4C99-9D14-CE129D00D6C5}
+		{1C43B4EE-9CCE-43DC-B7AC-8D4F3A45E1F4} = {1D472F8B-C4FF-4D3D-95CF-DA20C3DBB63F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EDF9F64D-8CE1-4567-A599-F6C8CF7B91E0}
