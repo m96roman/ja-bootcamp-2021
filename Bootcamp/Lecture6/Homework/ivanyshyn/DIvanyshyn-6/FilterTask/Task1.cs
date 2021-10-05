@@ -1,4 +1,6 @@
-﻿namespace DIvanyshyn_6.FilterTask
+﻿using System;
+
+namespace DIvanyshyn_6.FilterTask
 {
     internal class Task1
     {
@@ -18,11 +20,18 @@
             var arr = new[] { "This", "example", "string", "is", "not", "so", "cool", "(" };
             System.Console.WriteLine(arr.ConvertToString(separator: " "));
 
-            var filtered = arr.Filter(x => !char.IsUpper(x[0]));
+            try
+            {
+                var filtered = arr.Filter(str => str != null && char.IsLower(str[0]));
 
-            System.Console.WriteLine(filtered.ConvertToString(separator: " "));
+                System.Console.WriteLine(filtered.ConvertToString(separator: " "));
 
-            System.Console.WriteLine(filtered.Map(s => s.Length).ConvertToString(separator: " "));
+                System.Console.WriteLine(filtered.Map(s => s.Length).ConvertToString(separator: " "));
+            }
+            catch (ArgumentNullException args)
+            {
+                Console.WriteLine(args);
+            }
         }
     }
 }

@@ -15,9 +15,19 @@ namespace DIvanyshyn_6.FilterTask
         /// <param name="filter"><see cref="Func{T, TResult}"/> that filters collection </param>
         /// <exception cref="ArgumentNullException">When <paramref name="filter"/> is null</exception>
         /// <returns>new filtered <see cref="ICollection{T}"/></returns>
-        public static ICollection<T> Filter<T>(this ICollection<T> collection, Func<T, bool> filter)
+        public static ICollection<T> Filter<T>(this ICollection<T> collection, Predicate<T> filter)
         {
-            return collection.Where(filter).ToList();
+            if (collection is null)
+            {
+                throw new ArgumentNullException(nameof(collection));
+            }
+
+            if (filter is null)
+            {
+                throw new ArgumentNullException(nameof(filter));
+            }
+
+            return collection.Where(c => filter(c)).ToList();
         }
 
         /// <summary>
@@ -30,7 +40,7 @@ namespace DIvanyshyn_6.FilterTask
         /// <returns>new string </returns>
         public static string ConvertToString<T>(this IEnumerable<T> collection, string separator = ",")
         {
-            return String.Join(separator, collection);
+            return string.Join(separator, collection);
         }
 
         /// <summary>

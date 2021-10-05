@@ -30,7 +30,6 @@ namespace DIvanyshyn_6.Auctioneer
         /// <param name="newBid"></param>
         public void SetNewBid(double newBid)
         {
-            var oldBid = CurrentBid;
             CurrentBid = newBid;
             OnBidChanged?.Invoke(newBid);
         }
