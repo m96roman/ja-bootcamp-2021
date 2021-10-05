@@ -18,7 +18,7 @@ namespace KFedak_Task6
 
             Console.WriteLine(string.Join(" ", countOfWord));
 
-            Console.WriteLine("Task2\n");
+            Console.WriteLine("\nTask2\n");
 
             Auctioneer auctioneer = new Auctioneer(25);
 

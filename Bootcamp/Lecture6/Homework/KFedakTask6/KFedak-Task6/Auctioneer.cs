@@ -11,13 +11,14 @@ namespace KFedak_Task6
         public int Bid { get; set; }
 
         public event Action<int> OnBidChanged;
+
         public Auctioneer(int bid)
         {
             this.Bid = bid;
         }
+
         public void SetNewBid(int number)
         {
-            var oldBid = Bid;
             Bid = number;
             OnBidChanged?.Invoke(number);
         }
