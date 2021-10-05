@@ -145,6 +145,14 @@ namespace Linq
             var studetsTable = studentList.AsQueryable();
             var filteredStudentsByAge = studetsTable.Where(s => s.Age > 21).ToList();
             var moreFilteringOnTable = filteredStudentsByAge.First(s => s.StudentName == "John"); // bad, build more specific query above.
+
+            Console.WriteLine("====Contains or Except====");
+            var words = new[] { "sun", "moon", "C# is bad", "mars", "JAVA" };
+            var forbiddenWords = new[] { "C# is bad", "JAVA" };
+            
+            var allowedWords = words.Except(forbiddenWords);
+            // or
+            allowedWords = words.Where(w => !forbiddenWords.Contains(w));
         }
 
         public static void PrintStudent(IEnumerable<Student> students)
@@ -157,5 +165,7 @@ namespace Linq
 
         public static void PrintObjects(this IEnumerable<object> students)
         => students.ToList().ForEach(s => Console.WriteLine(s));
+
+
     }
 }
