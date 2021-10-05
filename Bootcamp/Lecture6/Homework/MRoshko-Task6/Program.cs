@@ -52,6 +52,10 @@ namespace MRoshko_Task6
         {
             var auctioneer = new Auctioneer();
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e92dafdf43536c7a7bbcc48e848e61c9cdb615cc
 
             auctioneer.OnBidChanged += MyNewBid1;
             auctioneer.OnBidChanged += MyNewBid2;
@@ -64,23 +68,54 @@ namespace MRoshko_Task6
 
         public static void MyNewBid1(object arg, int bidValue)
         {
+<<<<<<< HEAD
+=======
+=======
+           
+            auctioneer.OnBidChanged += MyNewBid;
+            auctioneer.SetNewBid(23);
+            auctioneer.SetNewBid(122);
+
+        }
+
+        public static void MyNewBid(object arg, int bidValue)
+        {
+
+>>>>>>> 9842b7f6a46584dba7fb2eed38eb20138e2b7481
+>>>>>>> e92dafdf43536c7a7bbcc48e848e61c9cdb615cc
             if (bidValue > 100)
             {
                 Console.WriteLine($"Ohhh they really want to by this car for {bidValue}?");
             }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e92dafdf43536c7a7bbcc48e848e61c9cdb615cc
         }
         public static void MyNewBid2(object arg, int bidValue)
         {
             if (bidValue < 300)
+<<<<<<< HEAD
+=======
+=======
+
+            if (bidValue < 300) 
+>>>>>>> 9842b7f6a46584dba7fb2eed38eb20138e2b7481
+>>>>>>> e92dafdf43536c7a7bbcc48e848e61c9cdb615cc
             {
                 Console.WriteLine($"I can give more, { bidValue} is nothing.");
             }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e92dafdf43536c7a7bbcc48e848e61c9cdb615cc
         }
         public static void MyNewBid3(object arg, int bidValue)
         {
 
             if (bidValue < 200)
+<<<<<<< HEAD
             {
                 Console.WriteLine($"I will wait a bit. I think that {bidValue} is not the last price.");
             }
@@ -100,6 +135,11 @@ namespace MRoshko_Task6
             }
 
             if (bidValue < 200) 
+=======
+=======
+            if (bidValue < 200) 
+>>>>>>> 9842b7f6a46584dba7fb2eed38eb20138e2b7481
+>>>>>>> e92dafdf43536c7a7bbcc48e848e61c9cdb615cc
             {
                 Console.WriteLine($"I will wait a bit. I think that {bidValue} is not the last price.");
             }
