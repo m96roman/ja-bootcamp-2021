@@ -8,8 +8,9 @@ namespace MRoshko_Task6
     {
         static void Main(string[] args)
         {
-            Task1();
+            //Task1();
 
+            Task2();
 
         }
         public static void Task1()
@@ -46,6 +47,36 @@ namespace MRoshko_Task6
             }
         }
 
+        public static void Task2()
+        {
+            var auctioneer = new Auctioneer();
+
+           
+            auctioneer.OnBidChanged += MyNewBid;
+            auctioneer.SetNewBid(23);
+            auctioneer.SetNewBid(122);
+
+        }
+
+        public static void MyNewBid(object arg, int bidValue)
+        {
+
+            if (bidValue > 100)
+            {
+                Console.WriteLine($"Ohhh they really want to by this car for {bidValue}?");
+            }
+
+            if (bidValue < 300) 
+            {
+                Console.WriteLine($"I can give more, { bidValue} is nothing.");
+            }
+
+            if (bidValue < 200) 
+            {
+                Console.WriteLine($"I will wait a bit. I think that {bidValue} is not the last price.");
+            }
+        }
+
         public static bool MyFilter<T>(T filter)
         {
 
@@ -55,8 +86,8 @@ namespace MRoshko_Task6
 
         public static bool MyMap<T>(T param)
         {
-            var result = int.TryParse(param.ToString(),out var r);
-            return result; 
+            var result = int.TryParse(param.ToString(), out var r);
+            return result;
         }
 
         public static ICollection<T> Filter<T>(this ICollection<T> collection, MyFilterDelegate<T> myFilterDelegat)
@@ -80,7 +111,8 @@ namespace MRoshko_Task6
 
             foreach (var iteam in collection)
             {
-                if (MyMapDeledate(iteam)) {
+                if (MyMapDeledate(iteam))
+                {
                     result.Add(iteam);
                 }
             }
@@ -89,6 +121,7 @@ namespace MRoshko_Task6
         }
 
         public delegate bool MyFilterDelegate<T>(T filter);
+
         public delegate bool MyMapDeledate<T>(T map);
     }
 
