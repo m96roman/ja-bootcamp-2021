@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,61 +12,62 @@ namespace IPlyskaLect6
     {
         public static ICollection<string> Filter(this ICollection<string> container, Func<string, bool> func )
         {
+            if (func is null)
+            {
+                throw new ArgumentException("Argument can not be null", nameof(func));
+            }
+
             if (container is null || container.Count == 0)
             {
-                return null;
+                return  new Collection<string>();
             }
 
-            var result = new List<string>();
-
-            foreach (var item in container)
-            {
-                if ((func?.Invoke(item)).HasValue && (func?.Invoke(item)).Value)
-                {
-                    result.Add(item);
-                }  
-            }
-
-            return result;
-            //return container.Select(x => x.Trim()).Where(x => char.IsUpper(x.First())).ToList();
+            return container.Where(x => func(x)).ToList();
         }
 
         public static ICollection<int> Map(this ICollection<string> mapper, Func<string, int> func)
         {
+            if (func is null)
+            {
+                throw new ArgumentException("Argument can not be null", nameof(func));
+            }
+
             if (mapper is null || mapper.Count == 0)
             {
-                return null;
+                return new Collection<int>();
             }
 
-            var result = new List<int>();
-
-            foreach (var item in mapper)
-            {
-                result.Add((func?.Invoke(item)).Value);
-            }
-
-            return result;
-            //return mapper.Where(x => !string.IsNullOrEmpty(x)).Select(x => Convert.ToInt32(x.Length)).ToList();
+            return mapper.Select(x => func(x)).ToList();
         }
 
-        public static ICollection<T> Filter<T>(this ICollection<T> container, Func<T,T> action) where T : struct
+        public static ICollection<T> Filter<T>(this ICollection<T> container, Func<T, bool> action) 
         {
+            if (action is null)
+            {
+                throw new ArgumentException("Argument can not be null", nameof(action));
+            }
+
             if (container is null || container.Count == 0)
             {
-                return null;
+                return new Collection<T>();
             }
            
-           return container.Select(x => (action?.Invoke(x)).Value).ToList();
+           return container.Where(x => action(x)).ToList();
         }
 
         public static ICollection<T> Map<T>(this ICollection<T> mapper, Func<T, T> action) 
         {
-            if (mapper is null || mapper.Count == 0)
+            if (action is null)
             {
-                return null;
+                throw new ArgumentException("Argument can not be null", nameof(action));
             }
 
-            return mapper.Select(x => (action.Invoke(x))).ToList();
+            if (mapper is null || mapper.Count == 0)
+            {
+                return new Collection<T>();
+            }
+
+            return mapper.Select(x => action(x)).ToList();
         }
     }
 }
