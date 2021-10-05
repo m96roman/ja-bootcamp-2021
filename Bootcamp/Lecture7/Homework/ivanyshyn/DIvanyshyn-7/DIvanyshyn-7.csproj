@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>DIvanyshyn_7</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Lecture2\Tasks\Task2-Ivanyshyn\Task2-Ivanyshyn.csproj" />
+  </ItemGroup>
+
+</Project>
