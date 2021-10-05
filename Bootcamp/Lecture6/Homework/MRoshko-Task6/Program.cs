@@ -51,6 +51,7 @@ namespace MRoshko_Task6
         {
             var auctioneer = new Auctioneer();
 
+<<<<<<< HEAD
 
             auctioneer.OnBidChanged += MyNewBid1;
             auctioneer.OnBidChanged += MyNewBid2;
@@ -63,23 +64,44 @@ namespace MRoshko_Task6
 
         public static void MyNewBid1(object arg, int bidValue)
         {
+=======
+           
+            auctioneer.OnBidChanged += MyNewBid;
+            auctioneer.SetNewBid(23);
+            auctioneer.SetNewBid(122);
+
+        }
+
+        public static void MyNewBid(object arg, int bidValue)
+        {
+
+>>>>>>> 9842b7f6a46584dba7fb2eed38eb20138e2b7481
             if (bidValue > 100)
             {
                 Console.WriteLine($"Ohhh they really want to by this car for {bidValue}?");
             }
+<<<<<<< HEAD
         }
         public static void MyNewBid2(object arg, int bidValue)
         {
             if (bidValue < 300)
+=======
+
+            if (bidValue < 300) 
+>>>>>>> 9842b7f6a46584dba7fb2eed38eb20138e2b7481
             {
                 Console.WriteLine($"I can give more, { bidValue} is nothing.");
             }
 
+<<<<<<< HEAD
         }
         public static void MyNewBid3(object arg, int bidValue)
         {
 
             if (bidValue < 200)
+=======
+            if (bidValue < 200) 
+>>>>>>> 9842b7f6a46584dba7fb2eed38eb20138e2b7481
             {
                 Console.WriteLine($"I will wait a bit. I think that {bidValue} is not the last price.");
             }
