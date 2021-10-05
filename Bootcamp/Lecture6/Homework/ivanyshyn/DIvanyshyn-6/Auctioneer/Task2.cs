@@ -12,7 +12,6 @@ namespace DIvanyshyn_6.Auctioneer
         {
             Auctioneer auctioneer = new Auctioneer(50);
 
-
             auctioneer.OnBidChanged += Auctioneer_OnBidChanged;
             auctioneer.OnBidChanged += Auctioneer_OnBidChanged1;
             auctioneer.OnBidChanged += Auctioneer_OnBidChanged2;
