@@ -46,19 +46,17 @@ namespace MRoshko_Task6
                 Console.Write($"{iteam}\n");
             }
         }
-   
+
 
         public static void Task2()
         {
             var auctioneer = new Auctioneer();
-
 
             auctioneer.OnBidChanged += MyNewBid1;
             auctioneer.OnBidChanged += MyNewBid2;
             auctioneer.OnBidChanged += MyNewBid3;
             auctioneer.SetNewBid(122);
             auctioneer.SetNewBid(228);
-           
 
         }
 
@@ -68,9 +66,12 @@ namespace MRoshko_Task6
             {
                 Console.WriteLine($"Ohhh they really want to by this car for {bidValue}?");
             }
+
         }
+
         public static void MyNewBid2(object arg, int bidValue)
         {
+
             if (bidValue < 300)
             {
                 Console.WriteLine($"I can give more, { bidValue} is nothing.");
@@ -86,24 +87,6 @@ namespace MRoshko_Task6
             }
         }
 
-        public static void MyNewBid(object arg, int bidValue)
-        {
-
-            if (bidValue > 100)
-            {
-                Console.WriteLine($"Ohhh they really want to by this car for {bidValue}?");
-            }
-
-            if (bidValue < 300) 
-            {
-                Console.WriteLine($"I can give more, { bidValue} is nothing.");
-            }
-
-            if (bidValue < 200) 
-            {
-                Console.WriteLine($"I will wait a bit. I think that {bidValue} is not the last price.");
-            }
-        }
 
         public static bool MyFilter<T>(T filter)
         {
