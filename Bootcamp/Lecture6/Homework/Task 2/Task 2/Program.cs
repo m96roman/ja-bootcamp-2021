@@ -7,29 +7,30 @@ namespace Task_2
         static void Main(string[] args)
         {
             Auctioneer auctioneer = new Auctioneer();
-            auctioneer.OnBidChanged += Auctioneer_OnBidChanged;
+            auctioneer.OnBidChanged += Auctioneer_OnBidChanged_1;
+            auctioneer.OnBidChanged += Auctioneer_OnBidChanged_2;
+            auctioneer.OnBidChanged += Auctioneer_OnBidChanged_3;
             auctioneer.SetNewBid(123);
-            
         }
 
-        private static void Auctioneer_OnBidChanged(int obj)
+        private static void Auctioneer_OnBidChanged_1(int obj)
         {
-            // 1 
-
             if (obj > 100)
             {
                 Console.WriteLine($"Ohhh they really want to by this car for { obj}?");
             }
+        }
 
-            // 2
-
+        private static void Auctioneer_OnBidChanged_2(int obj)
+        {
             if (obj < 300)
             {
                 Console.WriteLine($"I can give more, {obj} is nothing.");
             }
-
-            // 3
-
+        }
+        
+        private static void Auctioneer_OnBidChanged_3(int obj)
+        { 
             if(obj<200)
             {
                 Console.WriteLine($"I will wait a bit.I think that { obj } is not the last price.");
