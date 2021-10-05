@@ -6,29 +6,36 @@ namespace Task2
     {
         static void Main(string[] args)
         {
-            Book book1;
-            Book book2;
+            Book[] books = AddInfo();
 
-            Console.WriteLine("Insert the information of two books: ");
+            foreach(var item in books)
+            {
+                item.PrintBook();
+            }
+        }
+
+        static Book[] AddInfo()
+        {
+            Console.WriteLine("Insert the information of books: ");
             Console.WriteLine("-------------------------------------");
 
-            Console.WriteLine("Information of book 1 : ");
-            Console.Write("Input name of the book: ");
-            book1.Id = 1;
-            book1.Title = Console.ReadLine();
-            Console.Write("Input the author: ");
-            book1.Author = Console.ReadLine();
+            Console.Write("Enter amount books collection: ");
+            int amount = Convert.ToInt32(Console.ReadLine());
 
-            Console.WriteLine("Information of book 2 : ");
-            Console.Write("Input name of the book: ");
-            book2.Id = 2;
-            book2.Title = Console.ReadLine();
-            Console.Write("Input the author: ");
-            book2.Author = Console.ReadLine();
+            Book[] books = new Book[amount];
 
-            book1.PrintBook();
-            book2.PrintBook();
+            for(int i = 0; i < amount; i++)
+            {
+                Console.WriteLine($"Information of book {i+1} : ");
+                Console.Write("Input name of the book: ");
+                string bookTitle = Console.ReadLine();
+                Console.Write("Input the author: ");
+                string bookAuthor = Console.ReadLine();
 
+                books[i] = new Book { Title = bookTitle, Author = bookAuthor, Id = i + 1 };
+            }
+
+            return books;
         }
 
         struct Book

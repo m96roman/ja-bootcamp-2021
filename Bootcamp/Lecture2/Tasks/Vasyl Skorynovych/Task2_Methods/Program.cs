@@ -6,28 +6,19 @@ namespace Task2_Methods
     {
         static void Main(string[] args)
         {
-            bool validPoint1 = false;
-            bool validPoint2 = false;
+ 
+            bool validPoint1 = TryParsePoint(ReadPointFromConsole(), out Point? point1);
+            bool validPoint2 = TryParsePoint(ReadPointFromConsole(), out Point ? point2);
 
-            Console.WriteLine("Input your point: ");
-            string pointInputed = Console.ReadLine();
-            validPoint1 = TryParsePoint(pointInputed, out Point? point1);
+            ValidParsing(validPoint1, point1);
+            ValidParsing(validPoint2, point2);
+        }
 
-            Console.WriteLine("Input your point: ");
-            pointInputed = Console.ReadLine();
-            validPoint2 = TryParsePoint(pointInputed, out Point ? point2);
-            
-            if(validPoint1)
+        static void ValidParsing(bool validPoint, Point? point)
+        {
+            if (validPoint)
             {
-                Console.WriteLine($"- Result of parsing: true,{point1.Value}");
-            }
-            else
-            {
-                Console.WriteLine($"- Result of parsing: true, Point = undefined");
-            }
-            if (validPoint2)
-            {
-                Console.WriteLine($"- Result of parsing: true,{point2.Value}");
+                Console.WriteLine($"- Result of parsing: true,{point.Value}");
             }
             else
             {
@@ -35,22 +26,10 @@ namespace Task2_Methods
             }
         }
 
-
-        struct Point
+        static string ReadPointFromConsole()
         {
-            public int X;
-            public int Y;
-
-            public Point(int x, int y)
-            {
-                X = x;
-                Y = y;
-            }
-
-            public override string ToString()
-            {
-                return $" Point = {X}, {Y}";
-            }
+            Console.WriteLine("Input your point: ");
+            return Console.ReadLine();
         }
 
         static bool TryParsePoint(string pointInputed, out Point? point)
