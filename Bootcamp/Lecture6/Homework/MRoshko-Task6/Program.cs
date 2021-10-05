@@ -8,39 +8,41 @@ namespace MRoshko_Task6
     {
         static void Main(string[] args)
         {
-            //Task1();
+            Task1();
 
-            Task2();
+            //Task2();
 
         }
         public static void Task1()
         {
+            MyFilterDelegate del = MyFilter;
 
-            MyFilterDelegate<string> del = MyFilter;
+            MyMapDeledate delMap = MyMap;
 
-            MyMapDeledate<string> delMap = MyMap;
+            var myColection = new List<string> { "Hello World", "hello World", "hello World", "1", "2", "3" };
 
-            var myColection = new List<string>();
-            myColection.Add("Hello World");
-            myColection.Add("hello World");
-            myColection.Add("1");
-            myColection.Add("2");
-
-
-
-            var result = myColection.Filter(del);
             var result2 = myColection.Map(delMap);
+
+            Console.WriteLine($"============Map==================");
+
             foreach (var iteam in result2)
             {
                 Console.Write($"{iteam}\n");
             }
-            foreach (var iteam in result)
+
+            Console.WriteLine($"============Filter==================");
+
+            foreach (var iteam in myColection.Filter(str => char.IsLower(str[0])))
             {
                 Console.Write($"{iteam}\n");
             }
 
-            MyMapDeledate<int> delMap2 = MyMap;
-            var myColection1 = new List<int>() { 1, 2, 3, 4, 5, 6, 213 };
+            MyMapDeledate delMap2 = MyMap;
+
+            var myColection1 = new List<string>() { "234","23423asd","asdsdasdsd" };
+
+            Console.WriteLine($"============Map2==================");
+
             foreach (var iteam in myColection1.Map(delMap2))
             {
                 Console.Write($"{iteam}\n");
@@ -53,11 +55,14 @@ namespace MRoshko_Task6
             var auctioneer = new Auctioneer();
 
             auctioneer.OnBidChanged += MyNewBid1;
-            auctioneer.OnBidChanged += MyNewBid2;
-            auctioneer.OnBidChanged += MyNewBid3;
-            auctioneer.SetNewBid(122);
-            auctioneer.SetNewBid(228);
 
+            auctioneer.OnBidChanged += MyNewBid2;
+
+            auctioneer.OnBidChanged += MyNewBid3;
+
+            auctioneer.SetNewBid(122);
+
+            auctioneer.SetNewBid(228);
         }
 
         public static void MyNewBid1(object arg, int bidValue)
@@ -78,6 +83,7 @@ namespace MRoshko_Task6
             }
 
         }
+
         public static void MyNewBid3(object arg, int bidValue)
         {
 
@@ -87,23 +93,22 @@ namespace MRoshko_Task6
             }
         }
 
-
-        public static bool MyFilter<T>(T filter)
+        public static bool MyFilter(string filter)
         {
 
-            return Char.IsLower(filter.ToString(), 0);
+            return Char.IsUpper(filter, 0);
 
         }
 
-        public static bool MyMap<T>(T param)
+        public static int MyMap(string param)
         {
-            var result = int.TryParse(param.ToString(), out var r);
-            return result;
+
+            return param.Length;
         }
 
-        public static ICollection<T> Filter<T>(this ICollection<T> collection, MyFilterDelegate<T> myFilterDelegat)
+        public static ICollection Filter(this ICollection<string> collection, MyFilterDelegate myFilterDelegat)
         {
-            var result = new List<T>();
+            var result = new List<string>();
 
             foreach (var iteam in collection)
             {
@@ -116,24 +121,22 @@ namespace MRoshko_Task6
 
             return result;
         }
-        public static ICollection<T> Map<T>(this ICollection<T> collection, MyMapDeledate<T> MyMapDeledate)
+
+        public static ICollection Map(this ICollection<string> collection, MyMapDeledate myMapDeledate)
         {
-            var result = new List<T>();
+            var result = new List<int>();
 
             foreach (var iteam in collection)
             {
-                if (MyMapDeledate(iteam))
-                {
-                    result.Add(iteam);
-                }
+                result.Add(myMapDeledate(iteam));
             }
 
             return result;
         }
 
-        public delegate bool MyFilterDelegate<T>(T filter);
+        public delegate bool MyFilterDelegate (string filter);
 
-        public delegate bool MyMapDeledate<T>(T map);
+        public delegate int MyMapDeledate(string map);
     }
 
 }
