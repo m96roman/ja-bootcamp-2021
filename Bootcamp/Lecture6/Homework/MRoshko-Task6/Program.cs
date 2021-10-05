@@ -46,6 +46,7 @@ namespace MRoshko_Task6
                 Console.Write($"{iteam}\n");
             }
         }
+   
 
         public static void Task2()
         {
@@ -80,6 +81,25 @@ namespace MRoshko_Task6
         {
 
             if (bidValue < 200)
+            {
+                Console.WriteLine($"I will wait a bit. I think that {bidValue} is not the last price.");
+            }
+        }
+
+        public static void MyNewBid(object arg, int bidValue)
+        {
+
+            if (bidValue > 100)
+            {
+                Console.WriteLine($"Ohhh they really want to by this car for {bidValue}?");
+            }
+
+            if (bidValue < 300) 
+            {
+                Console.WriteLine($"I can give more, { bidValue} is nothing.");
+            }
+
+            if (bidValue < 200) 
             {
                 Console.WriteLine($"I will wait a bit. I think that {bidValue} is not the last price.");
             }
