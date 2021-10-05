@@ -17,7 +17,7 @@ namespace Task1
         public override void PrintVehicleDetails()
         {
             base.PrintVehicleDetails();
-            Console.WriteLine($"The position of this person is: { Type }");
+            Console.WriteLine($"Type of the track is: { Type }");
         }
     }
 }

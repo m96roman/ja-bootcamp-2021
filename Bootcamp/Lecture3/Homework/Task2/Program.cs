@@ -6,25 +6,20 @@ namespace Task2
     {
         static void Main(string[] args)
         {
-            var YesNoAnswers = "Yes No".Split(" ");
-
-            //created tests
-            Test test1 = new Test(1, "Can you see Mars from your window?", "No");
-            Test test2 = new Test(1, "Does coffee grow in Brazil?", "Yes");
-            Test test3 = new Test(1, "Google it is product company?", "Yes");
+            var yesNoAnswers = new string[] { "Yes", "No" };
 
             // first type of questions
-            JustTest test1Just = new JustTest(1, test1.Question, test1.Answer, YesNoAnswers);
-            JustTest test2Just = new JustTest(1, test2.Question, test2.Answer, YesNoAnswers);
-            JustTest test3Just = new JustTest(1, test3.Question, test3.Answer, YesNoAnswers);
+            CaseTest test1Just = new CaseTest(1, "Can you see Mars from your window?", "No", yesNoAnswers);
+            CaseTest test2Just = new CaseTest(1, "Does coffee grow in Brazil?", "Yes", yesNoAnswers);
+            CaseTest test3Just = new CaseTest(1, "Google it is product company?", "Yes", yesNoAnswers);
             test1Just.Print();
             test2Just.Print();
             test3Just.Print();
 
             //second type of questions
-            CaseTest test1Case = new CaseTest(1, test1.Question, test1.Answer);
-            CaseTest test2Case = new CaseTest(1, test2.Question, test2.Answer);
-            CaseTest test3Case = new CaseTest(1, test3.Question, test3.Answer);
+            JustTest test1Case = new JustTest(1, "Can you see Mars from your window?", "No");
+            JustTest test2Case = new JustTest(1, "Does coffee grow in Brazil?", "Yes");
+            JustTest test3Case = new JustTest(1, "Google it is product company?", "Yes");
             test1Case.Print();
             test2Case.Print();
             test3Case.Print();

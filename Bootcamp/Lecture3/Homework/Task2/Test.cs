@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Task2
 {
-    class Test
+    public abstract class Test
     {
         public int Id { get; set; }
         public string Question { get; set; }
