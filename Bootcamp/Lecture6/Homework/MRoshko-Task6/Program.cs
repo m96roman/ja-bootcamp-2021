@@ -57,7 +57,6 @@ namespace MRoshko_Task6
             auctioneer.OnBidChanged += MyNewBid3;
             auctioneer.SetNewBid(122);
             auctioneer.SetNewBid(228);
-
         }
 
         public static void MyNewBid1(object arg, int bidValue)
@@ -71,7 +70,7 @@ namespace MRoshko_Task6
 
         public static void MyNewBid2(object arg, int bidValue)
         {
-
+       
             if (bidValue < 300)
             {
                 Console.WriteLine($"I can give more, { bidValue} is nothing.");
@@ -86,7 +85,6 @@ namespace MRoshko_Task6
                 Console.WriteLine($"I will wait a bit. I think that {bidValue} is not the last price.");
             }
         }
-
 
         public static bool MyFilter<T>(T filter)
         {
