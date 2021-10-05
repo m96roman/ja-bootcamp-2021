@@ -27,33 +27,13 @@ namespace IPlyskaLect6
 
             try
             {
-                var result = container.Filter(StringToUpper);
+                container.Filter(StringToUpper).Print<string>();
 
-                foreach (var item in result)
-                {
-                    Console.WriteLine(item);
-                }
+                container.Map(x => x.Length).Print<int>();
 
-                var result2 = container.Map(x => x.Length);
+                charContainer.Filter<char>(IsCharDigit).Print<char>();
 
-                foreach (var item in result2)
-                {
-                    Console.WriteLine(item);
-                }
-
-                var result3 = charContainer.Filter<char>(IsCharDigit);
-
-                foreach (var item in result3)
-                {
-                    Console.WriteLine(item);
-                }
-
-                var result4 = container.Map<string>(StringLowerCase);
-
-                foreach (var item in result4)
-                {
-                    Console.WriteLine(item);
-                }
+                container.Map<string>(StringLowerCase).Print<string>();             
             }
             catch (ArgumentNullException ex)
             {
@@ -95,6 +75,18 @@ namespace IPlyskaLect6
         {
             return  string.IsNullOrEmpty(input) ? string.Empty : input.ToLower();
         }
-      
+
+    }
+
+    public static class ExtentionIcollection
+    {
+        public static void Print<T>(this ICollection<T> collection)
+        {
+
+            foreach (var item in collection)
+            {
+                Console.WriteLine(item);
+            }
+        }
     }
 }
