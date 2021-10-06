@@ -12,7 +12,7 @@ namespace Task_1
             int[] numbers = new int[]
                {1,2,3,4,54,5,6,7,78};
 
-            var res = numbers.Select(n => new { num = n, sqrt = Math.Pow(n, 2) }).ToList();
+            var res = numbers.Select(n => new { num = n, sqrt = Math.Pow(n, 2) });
             Console.WriteLine(string.Join(", ", res));
         }
     }

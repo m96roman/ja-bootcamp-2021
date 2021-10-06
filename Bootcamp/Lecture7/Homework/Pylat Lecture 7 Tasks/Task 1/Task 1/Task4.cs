@@ -51,21 +51,36 @@ namespace Task_1
                     StudentName = student,
                     FacultyName = faculty.Name
 
-                });
+                }).ToList();
 
-            var joiningToListed = joining.GroupBy(e =>e.FacultyName).Select(e => new { faculty = e.Key, MaxGrades = e.GroupBy(a => a.StudentName.AverageGrade).OrderByDescending(y => y.Key).First() }).SelectMany(e => e.MaxGrades, (faculty, student)=> new { FacultyName = faculty.faculty, student = student.StudentName.FirstName }).ToList();
+            var joiningToListed = joining.GroupBy(e =>e.FacultyName)
+                .Select(e => new { faculty = e.Key, MaxGrades = e
+                .GroupBy(a => a.StudentName.AverageGrade)
+                .OrderByDescending(y => y.Key).First() })
+                .SelectMany(e => e.MaxGrades, (faculty, student)=> new { FacultyName = faculty.faculty, student = student.StudentName.FirstName })
+                .ToList();
+
             joiningToListed.ForEach(v => { Console.WriteLine($"{v.FacultyName} - {v.student}"); }); 
             Console.WriteLine("\n========================================\n");
 
-            var theSameName = joining.GroupBy(e => e.StudentName.FirstName).ToDictionary(e => e.Key, e => e.Count()).ToList();
+            var theSameName = joining.GroupBy(e => e.StudentName.FirstName)
+                .ToDictionary(e => e.Key, e => e
+                .Count()).ToList();
+
             theSameName.ForEach(v => { Console.WriteLine($"{v.Key}'s count is: {v.Value}"); });
             Console.WriteLine("\n========================================\n");
 
-            var theSameFaculty = joining.GroupBy(e => e.FacultyName).ToDictionary(e => e.Key, e => e.Count()).ToList();
+            var theSameFaculty = joining.GroupBy(e => e.FacultyName)
+                .ToDictionary(e => e.Key, e => e
+                .Count()).ToList();
+
             theSameFaculty.ForEach(v => { Console.WriteLine($"{v.Key}'s count is: {v.Value}"); });
             Console.WriteLine("\n========================================\n");
 
-            var averageGrade = joining.GroupBy(joined => joined.FacultyName).Select(group => new { Faculty = group.Key, Avg = group.Average(student => student.StudentName.AverageGrade) }).ToList();
+            var averageGrade = joining.GroupBy(joined => joined.FacultyName)
+                .Select(group => new { Faculty = group.Key, Avg = group
+                .Average(student => student.StudentName.AverageGrade) }).ToList();
+
             averageGrade.ForEach(e => { Console.WriteLine($"{e.Faculty} average grade = {e.Avg}"); });
             Console.WriteLine("\n========================================\n");
         }

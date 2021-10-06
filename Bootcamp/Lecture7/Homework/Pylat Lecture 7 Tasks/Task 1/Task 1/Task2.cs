@@ -10,7 +10,7 @@ namespace Task_1
         public static void FindCountOfSymbols()
         {
             var words = "aaavvavfnfn";
-            var res = string.Join(", ", words.GroupBy(c => c).ToDictionary(c => c.Key, c => c.Count()).ToList());
+            var res = string.Join(", ", words.GroupBy(c => c).ToDictionary(c => c.Key, c => c.Count()));
             Console.WriteLine(res);
         }
     }
