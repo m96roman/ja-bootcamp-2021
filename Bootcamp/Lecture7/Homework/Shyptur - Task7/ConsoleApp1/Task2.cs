@@ -13,6 +13,7 @@ namespace ConsoleApp1
             Console.Write("Input the string:");
             var input = (Console.ReadLine()).ToCharArray();
             var solution = input.GroupBy(str => str);
+
             foreach (var item in solution)
             {
                 Console.WriteLine($"Character {item.Key}: {item.Count()} times");
