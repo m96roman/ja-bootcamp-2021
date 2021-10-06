@@ -11,6 +11,7 @@ namespace DIvanyshyn_8.AssembliesExample
             this.Intance = intance;
             this.Params = parameters;
         }
+
         public void Execute()
         {
             var returnVal = Method.Invoke(Intance, parameters: Params);
@@ -19,6 +20,7 @@ namespace DIvanyshyn_8.AssembliesExample
                 Console.WriteLine($"Method {Method.Name} return {returnVal}");
             }
         }
+
         public MethodInfo Method { get; }
 
         public object Intance { get; }

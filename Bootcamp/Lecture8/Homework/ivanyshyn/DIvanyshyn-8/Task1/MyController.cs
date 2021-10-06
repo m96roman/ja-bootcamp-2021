@@ -15,7 +15,7 @@ namespace DIvanyshyn_8.AssembliesExample
         [Route(name: "get")]
         public override int Get()
         {
-            return 50;
+            return 8;
         }
 
         [Route(name: "post")]

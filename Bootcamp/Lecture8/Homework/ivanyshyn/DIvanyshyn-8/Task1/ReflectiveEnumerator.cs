@@ -11,8 +11,6 @@ namespace DIvanyshyn_8.AssembliesExample
     /// </summary>
     public static class ReflectiveEnumerator
     {
-        static ReflectiveEnumerator() { }
-
         public static IEnumerable GetEnumerableOfType(Type T)
         {
             ArrayList objects = new ArrayList();

@@ -28,6 +28,7 @@ namespace DIvanyshyn_8.AssembliesExample
             if (regex.IsMatch(route))
             {
                 var routeAttributes = Regex.Split(route, "/").ToList();
+
                 if (string.IsNullOrWhiteSpace(routeAttributes[0]))
                 {
                     routeAttributes.RemoveAt(0);
@@ -42,7 +43,7 @@ namespace DIvanyshyn_8.AssembliesExample
                     foreach (var item in clases)
                     {
                         //Then compare route attributes of controller
-                        RouteAttribute attribute = (RouteAttribute)Attribute.GetCustomAttribute(item.GetType(), typeof(RouteAttribute));
+                        RouteAttribute attribute = item.GetType().GetCustomAttribute<RouteAttribute>();
 
                         if (attribute.Name == routeAttributes[0])
                         {
@@ -80,17 +81,7 @@ namespace DIvanyshyn_8.AssembliesExample
         /// <returns>Method or null</returns>
         private MethodInfo GetMethod(object item, string action)
         {
-            foreach (var method in item.GetType().GetMethods())
-            {
-                if (Attribute.GetCustomAttribute(method, typeof(RouteAttribute))
-                        is RouteAttribute rs &&
-                    rs.Name == action)
-                {
-                    return method;
-                }
-            }
-
-            return null;
+            return item.GetType().GetMethods().FirstOrDefault(meth => meth.GetCustomAttribute<RouteAttribute>()?.Name == action);
         }
     }
 }
