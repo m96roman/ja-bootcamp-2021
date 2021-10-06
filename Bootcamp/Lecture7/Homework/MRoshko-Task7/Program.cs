@@ -132,8 +132,15 @@ namespace MRoshko_Task7
             Console.WriteLine("\nHow many students with the same name?\n");
 
             var result1 = listOfStudents
+<<<<<<< HEAD
                 .GroupBy(student => student.FirstName)
                 .Select(sstudent => sstudent);
+=======
+                .Select(s => s)
+                .GroupBy(student => student.FirstName)
+                .OrderBy(studentName => studentName.Count())
+                .Select(sstudent => sstudent).ToList();
+>>>>>>> 05892f220c0c9a5d60ac5f4294e21b259b199e1e
 
             foreach (var item in result1)
             {
@@ -141,6 +148,7 @@ namespace MRoshko_Task7
             }
 
             Console.WriteLine("\nHow many students with the same name per faculty?\n");
+<<<<<<< HEAD
 
             var result3 = listOfStudents
                 .Join(listOfFaculty,
@@ -167,6 +175,34 @@ namespace MRoshko_Task7
                 (s, f) => new { Student = s, Faculty = f })
                 .GroupBy(f => f.Faculty.FacultyId);
 
+=======
+
+            var result3 = listOfStudents
+                .Join(listOfFaculty,
+                    s => s.FacultyId,
+                    f => f.FacultyId,
+                    (s, f) => new { Student = s, Faculty = f })
+                .GroupBy(f => f.Faculty.FacultyId);
+
+            foreach (var item in result3)
+            {
+                Console.WriteLine($"{item.First().Faculty.Name}");
+                foreach (var item2 in item.GroupBy(name => name.Student.FirstName))
+                {
+                    Console.WriteLine($"{item2.Key}{item2.Count()}");
+                }
+            }
+
+            Console.WriteLine("\nFind average grade per faculty\n");
+
+            var result4 = listOfStudents
+                .Join(listOfFaculty,
+                s => s.FacultyId,
+                f => f.FacultyId,
+                (s, f) => new { Student = s, Faculty = f })
+                .GroupBy(f => f.Faculty.FacultyId);
+
+>>>>>>> 05892f220c0c9a5d60ac5f4294e21b259b199e1e
             foreach (var item in result4)
             {
 
