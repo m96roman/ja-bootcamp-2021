@@ -1,0 +1,43 @@
+1) * Create custom attribute RouteAttribute
+	Route should have Name property of string type.
+
+     Create class Controller. 
+	Controller should have string property Name;
+ 
+	Controller should have methods:
+		- int Get()     - should return number 8
+		- void Post()   - should write in console "Post method executed in {Name} controller"
+		- void Put()    - should write in console "Put method executed in {Name} controller"
+		- void Delete() - should in console "Delete method execute in {Name} controller"
+
+	Each method should have Route attribute
+		Get    -> Route(Name = "/controller/get")
+		Post   -> Route(Name = "/controller/post")
+		Put    -> Route(Name = "/controller/put")
+		Delete -> Route(Name = "/controller/delete")
+
+     Create class Api. Api class should have:
+	- controller property of Controller type
+	- method CallEndpoint(string route)
+		- method should find correct method in Controller class by Route attribute and execute it, by passing controller instance.
+		- if found method of controller class returns any value, you should print "Method {methodName} return {value}".
+
+     Test how it works using:
+	var api = new Api();
+	api.CallEndpoint("/controller/get");
+	api.CallEndpoint("/controller/post");
+	api.CallEndpoint("/controller/post");
+	api.CallEndpoint("/controller/get");
+	api.CallEndpoint("/controller/put");
+	api.CallEndpoint("/controller/delete");	
+
+
+** Implement caching of methods, to not retrieve attributes for each call.
+
+
+2) Create class DisposableObject. Class should implement IDisposable interface.
+   In Dispose method write: "I was disposed =("
+   Class should have method DoSomething(), which writes into console "I'm doing something important."
+   If we call DoSomething after object was disposed, method should throw ObjectDisposedException (native)
+
+   Display how it works.
