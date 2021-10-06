@@ -34,11 +34,9 @@ namespace MRoshko_Task7
 
             var inputData = Console.ReadLine();
 
-            var result = inputData
-                .Select(s => s)
+            var result = inputData 
                 .GroupBy(s => s)
-                .OrderBy(s => s.Count())
-                .Select(s => s).ToList();
+                .ToList();
 
             foreach (var item in result)
             {
@@ -56,7 +54,7 @@ namespace MRoshko_Task7
                 store[i] = Console.ReadLine();
             }
 
-            Console.WriteLine($"{String.Join(',', store.Select(s => s))}");
+            Console.WriteLine($"{String.Join(',', store)}");
         }
 
         public static void Task4()
@@ -98,6 +96,7 @@ namespace MRoshko_Task7
                     AverageGrade = 5.0
                 },
             };
+
             var listOfFaculty = new List<Faculty>
             {
                 new Faculty
@@ -116,41 +115,64 @@ namespace MRoshko_Task7
                 .OrderByDescending(s => s.AverageGrade)
                 .GroupBy(s => s.FacultyId)
                 .Select(s => s.First())
+                .Join(listOfFaculty,
+                s => s.FacultyId,
+                f => f.FacultyId,
+                (s, f) => new { Student = s.FirstName, Faculty = f.Name })
                 .ToList();
 
-            var outResult = (from t in result
-                             join x in listOfFaculty
-                             on t.FacultyId equals x.FacultyId
-                             select new
-                             {
-                                 FacultyName = x.Name,
-
-                                 StudentName = t.FirstName,
-                             });
 
             Console.WriteLine("Print All students with max grade per Faculty like: {FacultyName,StudentName}\n");
 
-            foreach (var item in outResult)
+            foreach (var item in result)
             {
-                Console.WriteLine($"{item.FacultyName}:{item.StudentName}");
+                Console.WriteLine($"{item.Faculty}:{item.Student}");
             }
 
             Console.WriteLine("\nHow many students with the same name?\n");
 
             var result1 = listOfStudents
-                .Select(s => s)
-                .GroupBy(s => s.FirstName)
-                .OrderBy(s => s.Count())
-                .Select(s => s).ToList();
+                .GroupBy(student => student.FirstName)
+                .Select(sstudent => sstudent);
 
             foreach (var item in result1)
             {
                 Console.WriteLine($"{item.Key}:{item.Count()}");
             }
 
-            //Console.WriteLine("\nHow many students with the same name per faculty?\n");
+            Console.WriteLine("\nHow many students with the same name per faculty?\n");
 
-            // Console.WriteLine("\nFind average grade per faculty\n");       
+            var result3 = listOfStudents
+                .Join(listOfFaculty,
+                    s => s.FacultyId,
+                    f => f.FacultyId,
+                    (s, f) => new { Student = s, Faculty = f })
+                .GroupBy(f => f.Faculty.FacultyId);
+
+            foreach (var item in result3)
+            {
+                Console.WriteLine($"{item.First().Faculty.Name}");
+                foreach (var item2 in item.GroupBy(name => name.Student.FirstName))
+                {
+                    Console.WriteLine($"{item2.Key}{item2.Count()}");
+                }
+            }
+
+            Console.WriteLine("\nFind average grade per faculty\n");
+
+            var result4 = listOfStudents
+                .Join(listOfFaculty,
+                s => s.FacultyId,
+                f => f.FacultyId,
+                (s, f) => new { Student = s, Faculty = f })
+                .GroupBy(f => f.Faculty.FacultyId);
+
+            foreach (var item in result4)
+            {
+
+                Console.WriteLine($"{item.First().Faculty.Name} {item.Select(s => s.Student.AverageGrade).Average()}");
+
+            }
 
         }
 
