@@ -8,7 +8,7 @@ namespace DIvanyshyn_8.AssembliesExample
 {
     internal class Api
     {
-   
+        Dictionary<string, CachedAction> dict = new Dictionary<string, CachedAction>();
 
         public Type Controller => typeof(Controller);
 
@@ -16,6 +16,14 @@ namespace DIvanyshyn_8.AssembliesExample
 
         public bool CallEndpoint(string route)
         {
+            if (dict.ContainsKey(route))
+            {
+                Console.WriteLine(new string('-', 20));
+                dict[route].Execute();
+                Console.WriteLine(new string('-', 20));
+
+                return true;
+            }
             if (regex.IsMatch(route))
             {
                 var routeAttributes = Regex.Split(route, "/").ToList();
@@ -43,7 +51,8 @@ namespace DIvanyshyn_8.AssembliesExample
                             MethodBody = GetMethod(item, action: routeAttributes[1]);
                             if (MethodBody != null)
                             {
-                                CallMethod(MethodBody, item);
+                                dict[route] = new CachedAction(MethodBody, item, null);
+                                dict[route].Execute();
 
                                 return true;
                             }
@@ -60,19 +69,7 @@ namespace DIvanyshyn_8.AssembliesExample
             return false;
         }
 
-        /// <summary>
-        /// Calls a method from <paramref name="intance"/>
-        /// </summary>
-        /// <param name="methodBody">Method that need to be called</param>
-        /// <param name="intance">Intance of object</param>
-        private void CallMethod(MethodInfo methodBody, object intance)
-        {
-            var returnVal = methodBody.Invoke(intance, parameters: null);
-            if (returnVal != null)
-            {
-                Console.WriteLine($"Method {methodBody.Name} return {returnVal}");
-            }
-        }
+
 
         /// <summary>
         /// Gets method with specified route action 
