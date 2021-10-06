@@ -19,8 +19,7 @@ namespace KFedakT8
         public void CallEndpoint(string route)
         {
             var method = typeof(Controller).GetMethods()
-                .Where(it => it.GetCustomAttribute<RouteAttribute>()?.Name == route)
-                .FirstOrDefault();
+                .FirstOrDefault(it => it.GetCustomAttribute<RouteAttribute>()?.Name == route);
             var methodName = method.Name;
             var result = method.Invoke(this.Controller, null);
 
