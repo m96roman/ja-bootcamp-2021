@@ -39,7 +39,7 @@ namespace DIvanyshyn_7.Task4
                 students.Add(new Student(i + 1, random.Next(1, faculties.Count + 1), name, random.Next(0, 100)));
             }
 
-            Console.WriteLine(string.Join(Environment.NewLine, students));
+            Console.WriteLine(string.Join(Environment.NewLine, students.OrderBy(s => s.FacultyId)));
             Console.WriteLine(new string('-', 20));
 
             //Print All students with max grade per Faculty like: {FacultyName, StudentName}
@@ -119,8 +119,7 @@ namespace DIvanyshyn_7.Task4
                              {
                                  FacultyName = fc.Name,
                                  CountOfDuplicates = studentsCount.CountOfDuplicates
-                             })
-                .ToList();
+                             });
 
             Console.WriteLine(string.Join("\n", namesPerFaculty));
         }
@@ -131,8 +130,7 @@ namespace DIvanyshyn_7.Task4
                 .GroupBy(s => s.FacultyId)
                .Join(faculties, studentsGroup => studentsGroup.Key, fc => fc.FacultyId,
                    (studentsGroup, fc) =>
-                        new { FacultyName = fc.Name, AverageGrade = studentsGroup.Average(s => s.AverageGrade) })
-               .ToList();
+                        new { FacultyName = fc.Name, AverageGrade = studentsGroup.Average(s => s.AverageGrade) });
 
             Console.WriteLine(string.Join("\n", averages));
         }
