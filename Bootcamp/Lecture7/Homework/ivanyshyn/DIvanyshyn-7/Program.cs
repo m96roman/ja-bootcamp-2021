@@ -1,4 +1,4 @@
-﻿using DIvanyshyn_7.Task3;
+﻿using DIvanyshyn_7.Task4;
 using System;
 using System.Linq;
 using Task2_Ivanyshyn.Helpers;
@@ -12,7 +12,7 @@ namespace DIvanyshyn_7
             //Task1();
             //Task2();
             //Task3();
-            Task4.Execute();
+            Task4.Task4.Execute();
         }
 
         /// <summary>

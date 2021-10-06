@@ -1,4 +1,4 @@
-﻿namespace DIvanyshyn_7.Task3
+﻿namespace DIvanyshyn_7.Task4
 {
     class Student
     {

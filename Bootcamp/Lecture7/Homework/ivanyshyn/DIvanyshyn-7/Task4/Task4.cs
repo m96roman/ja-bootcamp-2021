@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DIvanyshyn_7.Task3
+namespace DIvanyshyn_7.Task4
 {
     public class Task4
     {
