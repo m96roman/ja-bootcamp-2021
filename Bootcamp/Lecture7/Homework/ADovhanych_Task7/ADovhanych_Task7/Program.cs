@@ -68,16 +68,18 @@ namespace ADovhanych_Task7
                 .OrderByDescending(avg => avg.AverageGrade)
                 .GroupBy(fid => fid.FacultyId)
                 .Select(stud => stud.First())
-                .ToList()
                 .Join(facultyList, 
-                studentList => studentList.FacultyId, 
-                facultyList => facultyList.FacultyId, 
-                (studentList, facultyList) => (facultyList.Name, StudentName: studentList.FirstName, studentList.AverageGrade));
+                    studentList => studentList.FacultyId, 
+                    facultyList => facultyList.FacultyId, 
+                    (studentList, facultyList) => (facultyList.Name, 
+                    StudentName: studentList.FirstName,
+                    studentList.AverageGrade));
 
-            var sameName = studentList.Join(facultyList,
-                studentList => studentList.FacultyId,
-                facultyList => facultyList.FacultyId,
-                (studentList, facultyList) => (Student: studentList, Faculty: facultyList))
+            var sameName = studentList
+                .Join(facultyList,
+                    studentList => studentList.FacultyId,
+                    facultyList => facultyList.FacultyId,
+                    (studentList, facultyList) => (Student: studentList, Faculty: facultyList))
                 .GroupBy(fName => fName.Faculty.Name);
 
             foreach(var item in sameName)
@@ -91,12 +93,10 @@ namespace ADovhanych_Task7
 
             var findAvg = studentList
                 .GroupBy(fid => fid.FacultyId)
-                .Select(id => new
-                {
-                    FacultyId = id.Key,
-                    Average = id
-                .Average(avg => avg.AverageGrade)
-                });
+                .Select(group => (
+                    FacultyId: group.Key,
+                    Average: group.Average(avg => avg.AverageGrade)
+                ));
 
             foreach (var item in findAvg)
             {
