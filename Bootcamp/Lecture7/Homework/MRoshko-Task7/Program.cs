@@ -132,7 +132,6 @@ namespace MRoshko_Task7
             Console.WriteLine("\nHow many students with the same name?\n");
 
             var result1 = listOfStudents
-
                 .GroupBy(student => student.FirstName)
                 .Select(sstudent => sstudent);
 
@@ -157,7 +156,7 @@ namespace MRoshko_Task7
                 {
                     Console.WriteLine($"{item2.Key}{item2.Count()}");
                 }
-            }
+            }  
 
             Console.WriteLine("\nFind average grade per faculty\n");    
 
