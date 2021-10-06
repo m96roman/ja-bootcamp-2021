@@ -20,7 +20,9 @@ namespace DIvanyshyn_8.AssembliesExample
             }
         }
         public MethodInfo Method { get; }
+
         public object Intance { get; }
+
         public object[] Params { get; }
     }
 }
