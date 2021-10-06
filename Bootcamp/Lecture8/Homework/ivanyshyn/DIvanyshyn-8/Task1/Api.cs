@@ -24,6 +24,7 @@ namespace DIvanyshyn_8.AssembliesExample
 
                 return true;
             }
+
             if (regex.IsMatch(route))
             {
                 var routeAttributes = Regex.Split(route, "/").ToList();
