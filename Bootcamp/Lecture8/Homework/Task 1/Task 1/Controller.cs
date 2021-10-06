@@ -4,7 +4,7 @@ namespace Task_1
 {
     public class Controller
     {
-        public string Name;
+        public string Name { get;set; }
 
         [Route(Name = "/controller/get")]
         public int Get()

@@ -13,7 +13,7 @@ namespace Task_1
             api.CallEndpoint("/controller/post");
             api.CallEndpoint("/controller/get");
             api.CallEndpoint("/controller/put");
-            api.CallEndpoint("/controller/delete");
+            api.CallEndpoint("/controller/delete");     
         }
     }
 }
