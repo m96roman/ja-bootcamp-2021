@@ -13,7 +13,7 @@ namespace DIvanyshyn_8.AssembliesExample
         }
         public void Execute()
         {
-            var returnVal = Method.Invoke(Intance, parameters: null);
+            var returnVal = Method.Invoke(Intance, parameters: Params);
             if (returnVal != null)
             {
                 Console.WriteLine($"Method {Method.Name} return {returnVal}");
