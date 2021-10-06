@@ -1,27 +1,31 @@
 ﻿namespace DIvanyshyn_8.AssembliesExample
 {
     [Route(name: "controllerA")]
-    class MyController2 : Controller
+    class MyControllerA : Controller
     {
         [Route(name: "delete")]
         public override void Delete()
         {
-            throw new System.NotImplementedException();
+            System.Console.WriteLine("Controller2 is unique and very good deleter");
         }
+
         [Route(name: "get")]
         public override int Get()
         {
+            System.Console.WriteLine("Controller2 is unique and very good getter");
             return 440;
         }
+
         [Route(name: "post")]
         public override void Post()
         {
-            throw new System.NotImplementedException();
+            System.Console.WriteLine("Controller2 is unique and very good poster");
         }
+
         [Route(name: "put")]
         public override void Put()
         {
-            throw new System.NotImplementedException();
+            System.Console.WriteLine("Controller2 is unique and very good putter");
         }
     }
 }

@@ -8,6 +8,7 @@ namespace DIvanyshyn_8.DisposableExample
         {
             DisposableObject obj = new();
             obj.DoSomething();
+
             try
             {
                 obj.Dispose();
