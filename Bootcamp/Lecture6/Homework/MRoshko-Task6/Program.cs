@@ -57,6 +57,7 @@ namespace MRoshko_Task6
             auctioneer.OnBidChanged += MyNewBid1;
 
             auctioneer.OnBidChanged += MyNewBid2;
+<<<<<<< HEAD
 
             auctioneer.OnBidChanged += MyNewBid3;
 
@@ -65,6 +66,13 @@ namespace MRoshko_Task6
             auctioneer.SetNewBid(228);
         }
 
+=======
+            auctioneer.OnBidChanged += MyNewBid3;
+            auctioneer.SetNewBid(122);
+            auctioneer.SetNewBid(228);
+        }
+
+>>>>>>> 1811e42d495bfdeca01513cbe9652f0c744337f1
         public static void MyNewBid1(object arg, int bidValue)
         {
             if (bidValue > 100)
@@ -76,7 +84,11 @@ namespace MRoshko_Task6
 
         public static void MyNewBid2(object arg, int bidValue)
         {
+<<<<<<< HEAD
 
+=======
+       
+>>>>>>> 1811e42d495bfdeca01513cbe9652f0c744337f1
             if (bidValue < 300)
             {
                 Console.WriteLine($"I can give more, { bidValue} is nothing.");
@@ -91,6 +103,7 @@ namespace MRoshko_Task6
             {
                 Console.WriteLine($"I will wait a bit. I think that {bidValue} is not the last price.");
             }
+<<<<<<< HEAD
         }
 
         public static bool MyFilter(string filter)
@@ -98,6 +111,8 @@ namespace MRoshko_Task6
 
             return Char.IsUpper(filter, 0);
 
+=======
+>>>>>>> 1811e42d495bfdeca01513cbe9652f0c744337f1
         }
 
         public static int MyMap(string param)
