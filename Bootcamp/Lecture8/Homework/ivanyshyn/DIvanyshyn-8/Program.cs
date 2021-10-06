@@ -9,7 +9,7 @@ namespace DIvanyshyn_8
         static void Main(string[] args)
         {
             Task1.Execute();
-            Task2.Execute();
+            //Task2.Execute();
         }
     }
 }

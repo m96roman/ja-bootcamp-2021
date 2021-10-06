@@ -2,16 +2,13 @@
 
 namespace DIvanyshyn_8.AssembliesExample
 {
-    [System.AttributeUsage(System.AttributeTargets.Class, Inherited = false, AllowMultiple = false)]
+    [System.AttributeUsage(System.AttributeTargets.Method | AttributeTargets.Class, Inherited = false, AllowMultiple = false)]
     sealed class RouteAttribute : Attribute
     {
-
-
-
-        // This is a positional argument
-        public RouteAttribute(string positionalString)
+        // This is a name argument
+        public RouteAttribute(string name)
         {
-            this.Name = positionalString;
+            this.Name = name;
         }
 
         public string Name { get; init; }
