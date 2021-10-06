@@ -9,20 +9,24 @@ namespace KFedakT8
 {
     public class Api
     {
-        public Controller controller { get; set; }
+        public Controller Controller { get; set; }
+
+        public Api()
+        {
+            this.Controller = new Controller { Name = "MyController" };
+        }
 
         public void CallEndpoint(string route)
         {
             var method = typeof(Controller).GetMethods()
-                .Where(it => it.GetCustomAttribute<RouteAttribute>() != null)
-                .Where(it => it.GetCustomAttribute<RouteAttribute>().Name == route)
+                .Where(it => it.GetCustomAttribute<RouteAttribute>()?.Name == route)
                 .FirstOrDefault();
-
-            var result = method.Invoke(new Controller(), null);
+            var methodName = method.Name;
+            var result = method.Invoke(this.Controller, null);
 
             if (result != null)
             {
-                Console.WriteLine($"Method {method.Name} return {result}");
+                Console.WriteLine($"Method {methodName} return {result}");
             }
         }
     }
