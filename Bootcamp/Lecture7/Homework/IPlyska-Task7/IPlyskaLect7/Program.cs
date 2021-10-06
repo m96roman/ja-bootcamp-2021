@@ -54,7 +54,6 @@ namespace IPlyskaLect7
 
                 SameNamePerFaculty(students, faculties);
 
-
             }
             catch (ArgumentNullException ex)
             {
@@ -69,7 +68,7 @@ namespace IPlyskaLect7
                 throw new ArgumentNullException("Argument can not be null or an empty", nameof(input));
             }
 
-            var result = input.Select(x => x).GroupBy(y => y);
+            var result = input.GroupBy(y => y);
 
             Console.WriteLine("The frequency of the characters are:");
 
@@ -117,7 +116,7 @@ namespace IPlyskaLect7
         public static void SameNamePerFaculty(IEnumerable<Student> students, IEnumerable<Faculty> faculties)
         {
            
-            var result =  students.Select(y => y)
+            var result =  students
                                 .Join
                                 (
                                     faculties,
@@ -131,17 +130,21 @@ namespace IPlyskaLect7
                                         AverageGrade = student.AverageGrade,
                                         FacultyId = faculty.FacultyId  
                                     }
-                                ).GroupBy(x => x.FacultyId).Select(t => new { FacultyName = t.First().FacultyName, 
-                                    Qty = t.Select(x => x).Count() - t.Select(x => x.FirstName).Distinct().Count()});
+                                )
+                                .GroupBy(x => x.FacultyId)
+                                .Select(t => new
+                                {
+                                    FacultyName = t.First().FacultyName, 
+                                    Qty = t.GroupBy(x => x.FirstName).Where(y => y.Count() > 1).Sum(y => y.Count())
+
+                                });
 
             foreach (var item in result)
             {
                 Console.WriteLine($"For faculty {item.FacultyName} the sme name is {item.Qty}");
             }
-
         }
             
-        
         public static void AverageGradePerFaculty(IEnumerable<Student> students, IEnumerable<Faculty> faculties)
         {
            var result =  students.GroupBy(x => x.FacultyId)
@@ -168,9 +171,11 @@ namespace IPlyskaLect7
 
         }
 
-        public static int CountStudentWithTheSameName(IEnumerable<Student> students) 
+        public static int CountStudentWithTheSameName(IEnumerable<Student> students)
 
-            => students.Select(x => x).Count() - students.Select(x => x.FirstName).Distinct().Count(); 
+            => students.GroupBy(x => x.FirstName)
+                       .Where(y => y.Count() > 1)
+                       .Sum(y => y.Count());
    
     }
 }
