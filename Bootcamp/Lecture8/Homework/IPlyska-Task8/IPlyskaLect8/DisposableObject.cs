@@ -8,7 +8,7 @@ namespace IPlyskaLect8
 {
     public class DisposableObject : IDisposable
     {
-        public bool IsDisposed { get; set; }
+        public bool IsDisposed { get; private set; }
         public void Dispose()
         {
             Console.WriteLine("I was disposed =(");
@@ -17,6 +17,11 @@ namespace IPlyskaLect8
 
         public void DoSomething()
         {
+            if (IsDisposed)
+            {
+                throw new ObjectDisposedException(this.ToString());
+            }
+
             Console.WriteLine("I'm doing something important."); 
         }
     }

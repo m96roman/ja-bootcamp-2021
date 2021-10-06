@@ -17,9 +17,13 @@ namespace IPlyskaLect8
                 obj.DoSomething();
             }
 
-            if (obj.IsDisposed)
+            try
             {
-                throw new ObjectDisposedException(obj.ToString());
+                obj.DoSomething();
+            }
+            catch (ObjectDisposedException ex)
+            {
+                Console.WriteLine(ex);
             }
         }
     }
