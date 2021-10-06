@@ -11,7 +11,6 @@ namespace Task_1
         public Api()
         {
             controller = new Controller();
-            
         }
 
         public void CallEndpoint(string route)
@@ -28,23 +27,17 @@ namespace Task_1
                 {
                     if (n.Name == route)
                     {
-                       
                         var i=item.Invoke(controller, null);
-                        if(i != null)
+
+                        if (i != null)
                         {
                             Console.WriteLine($"Method {item.Name} returns value {i}");
                         }
                        
                         Console.WriteLine("-----------------------------");
-
-                        
                     }
                 }
             }
-            /*var type = controller.GetType();
-            var colectionsAtribue = type.GetMethods().Select(s => new { method = s, atribute = s.GetCustomAttribute<RouteAttribute>() }).Where(p => p.atribute != null);
-            var currentMethod = colectionsAtribue.FirstOrDefault(atr => atr.atribute.Name == route);
-            currentMethod.method.Invoke(controller, null);*/
         }
     }
 }
