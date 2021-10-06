@@ -32,7 +32,7 @@ namespace DIvanyshyn_8.AssembliesExample
                         //Then compare route attributes of controller
                         RouteAttribute attribute = (RouteAttribute)Attribute.GetCustomAttribute(item.GetType(), typeof(RouteAttribute));
 
-                        if (attribute.Name.Replace("/", string.Empty) == routeAttributes[0])
+                        if (attribute.Name == routeAttributes[0])
                         {
                             //Found first right controller!
 
@@ -81,7 +81,7 @@ namespace DIvanyshyn_8.AssembliesExample
             {
                 if (Attribute.GetCustomAttribute(method, typeof(RouteAttribute))
                         is RouteAttribute rs &&
-                    rs.Name.Replace("/", string.Empty) == action)
+                    rs.Name == action)
                 {
                     return method;
                 }
