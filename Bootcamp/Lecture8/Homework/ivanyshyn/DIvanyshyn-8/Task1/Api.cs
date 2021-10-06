@@ -8,9 +8,12 @@ namespace DIvanyshyn_8.AssembliesExample
 {
     internal class Api
     {
+   
+
         public Type Controller => typeof(Controller);
 
         readonly Regex regex = new("[a-zA-Z]+/[a-zA-Z]+", RegexOptions.IgnoreCase);
+
         public bool CallEndpoint(string route)
         {
             if (regex.IsMatch(route))
@@ -56,6 +59,7 @@ namespace DIvanyshyn_8.AssembliesExample
             Console.WriteLine("Route does not match a pattern!");
             return false;
         }
+
         /// <summary>
         /// Calls a method from <paramref name="intance"/>
         /// </summary>
