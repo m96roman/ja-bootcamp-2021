@@ -10,7 +10,7 @@
             AverageGrade = averageGrade;
         }
 
-        public int StudentId { get; private set; }
+        public int StudentId { get; init; }
 
         public int FacultyId { get; set; }
 

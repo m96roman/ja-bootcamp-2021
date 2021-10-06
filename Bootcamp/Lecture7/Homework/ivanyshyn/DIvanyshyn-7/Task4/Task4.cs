@@ -39,7 +39,7 @@ namespace DIvanyshyn_7.Task3
                 students.Add(new Student(i + 1, random.Next(1, faculties.Count + 1), name, random.Next(0, 100)));
             }
 
-            Console.WriteLine(string.Join("\n", students));
+            Console.WriteLine(string.Join(Environment.NewLine, students));
             Console.WriteLine(new string('-', 20));
 
             //Print All students with max grade per Faculty like: {FacultyName, StudentName}
@@ -66,21 +66,34 @@ namespace DIvanyshyn_7.Task3
 
         private static void Tak1(List<Student> students, List<Faculty> faculties)
         {
-            var goodStudents = students.
-            GroupBy(s => s.FacultyId).
-            //Selects group with bigger key(AverageGrade)
-            Select(group => new { Key = group.Key, best = group.GroupBy(s => s.AverageGrade).OrderByDescending(sgroup => sgroup.Key).FirstOrDefault() }).
-            Join(faculties, besties => besties.Key, facultie => facultie.FacultyId,
-                (besties, fc) =>
-                      new { FacultyName = fc.Name, BestOnFaculty = besties.best }).
-            SelectMany(p => p.BestOnFaculty,
-                (facultie, student) =>
-                new
-                {
-                    facultie.FacultyName,
-                    student.FirstName,
-                    student.AverageGrade
-                }).ToList();
+            var goodStudents = students
+                .GroupBy(s => s.FacultyId)
+                //Selects group with bigger key(AverageGrade)
+                .Select(group =>
+                    new
+                    {
+                        Key = group.Key,
+                        best = group.GroupBy(s => s.AverageGrade)
+                                    .OrderByDescending(sgroup => sgroup.Key)
+                                    .First()
+                    })
+                .Join(faculties,
+                    besties => besties.Key,
+                    facultie => facultie.FacultyId,
+                    (besties, fc) =>
+                          new
+                          {
+                              FacultyName = fc.Name,
+                              BestOnFaculty = besties.best
+                          })
+                .SelectMany(p => p.BestOnFaculty,
+                    (facultie, student) =>
+                    new
+                    {
+                        facultie.FacultyName,
+                        student.FirstName,
+                        student.AverageGrade
+                    });
 
             Console.WriteLine(string.Join("\n", goodStudents));
         }
@@ -93,31 +106,33 @@ namespace DIvanyshyn_7.Task3
 
         private static void Task3(List<Student> students, List<Faculty> faculties)
         {
-            var namesPerFaculty = students.GroupBy(s => s.FacultyId).
-            Select(group =>
-                 new
-                 {
-                     FacultyKey = group.Key,
-                     CountOfDuplicates = group.GroupBy(s => s.FirstName).Where(s => s.Count() > 1).Sum(s => s.Count())
-                 }).
-            Join(faculties, studentsCount => studentsCount.FacultyKey, fc => fc.FacultyId,
-                   (studentsCount, fc) =>
-                         new
-                         {
-                             FacultyName = fc.Name,
-                             CountOfDuplicates = studentsCount.CountOfDuplicates
-                         }).ToList();
+            var namesPerFaculty = students.GroupBy(s => s.FacultyId)
+                .Select(group =>
+                     new
+                     {
+                         FacultyKey = group.Key,
+                         CountOfDuplicates = group.GroupBy(s => s.FirstName).Where(s => s.Count() > 1).Sum(s => s.Count())
+                     })
+                .Join(faculties, studentsCount => studentsCount.FacultyKey, fc => fc.FacultyId,
+                       (studentsCount, fc) =>
+                             new
+                             {
+                                 FacultyName = fc.Name,
+                                 CountOfDuplicates = studentsCount.CountOfDuplicates
+                             })
+                .ToList();
 
             Console.WriteLine(string.Join("\n", namesPerFaculty));
         }
 
         private static void TaskFour(List<Student> students, List<Faculty> faculties)
         {
-            var averages = students.GroupBy(s => s.FacultyId).
-               Join(faculties, studentsGroup => studentsGroup.Key, fc => fc.FacultyId,
+            var averages = students
+                .GroupBy(s => s.FacultyId)
+               .Join(faculties, studentsGroup => studentsGroup.Key, fc => fc.FacultyId,
                    (studentsGroup, fc) =>
-                        new { FacultyName = fc.Name, AverageGrade = studentsGroup.Average(s => s.AverageGrade) }
-                ).ToList();
+                        new { FacultyName = fc.Name, AverageGrade = studentsGroup.Average(s => s.AverageGrade) })
+               .ToList();
 
             Console.WriteLine(string.Join("\n", averages));
         }

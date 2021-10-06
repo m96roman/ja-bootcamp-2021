@@ -25,15 +25,11 @@ namespace DIvanyshyn_7
         /// </summary>
         private static void Task1()
         {
-            int[] numbers = new int[20];
-            for (int i = 0; i < numbers.Length; i++)
-            {
-                numbers[i] = i;
-            }
+            int[] numbers = Enumerable.Range(0, 20).ToArray();
 
             var squaresAndNumbers = numbers.Select(n => new { Number = n, Square = Math.Pow(n, 2) }).ToList();
 
-            Console.WriteLine(String.Join("\n", squaresAndNumbers));
+            Console.WriteLine(string.Join(Environment.NewLine, squaresAndNumbers));
         }
 
         ///<summary>

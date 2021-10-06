@@ -8,7 +8,7 @@
             Name = name;
         }
 
-        public int FacultyId { get; private set; }
+        public int FacultyId { get; init; }
 
         public string Name { get; set; }
     }
