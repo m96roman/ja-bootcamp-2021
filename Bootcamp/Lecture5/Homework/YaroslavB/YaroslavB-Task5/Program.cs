@@ -7,26 +7,32 @@ namespace YaroslavB_Task5
     {
         static void Main(string[] args)
         {
-
-            #region To be done
-
             //Subtask 1
             //1. Create generic method that accepts collection of drawable objects.
             Console.WriteLine("============ Subtask 1. Drawable objects ============");
 
+            var points = new List<Point>
+            {
+                new Point(3,4),
+                new Point(5,6),
+                new Point(2,3),
+                new Point(1,4),
+                new Point(4,5)
+            };
             
+            Designer.Draw<Point>(points);
 
-            //Draw<int>(new int[] { 1, 2, 3 }, 7);
+            Console.WriteLine();
+            Console.WriteLine();
 
-            //Rectangle rec = new Rectangle(new Point(2, 3), new Point(2, 3), new Point(2, 3));
-            //rec.Draw();
+            var rectangles = new Rectangle[]
+            {
+                new Rectangle(new Point(3, 4), new Point(4, 32), new Point(32, 3)),
+                new Rectangle(new Point(34, 4), new Point(4, 5), new Point(5, 34)),
+                new Rectangle(new Point(5, 23), new Point(23, 4), new Point(4, 5))
+            };
 
-            //Console.WriteLine(rec.GetType());
-            //Console.WriteLine(rec.ToString());
-            //Console.WriteLine(typeof());
-
-            #endregion
-
+            Designer.Draw<Rectangle>(rectangles);
 
 
 
@@ -92,18 +98,6 @@ namespace YaroslavB_Task5
 
             Console.ReadLine();
         }
-
-
-
-        //static void Draw<T>(IEnumerable<T> collection, T num) where T : struct
-        //{
-        //    foreach (var item in collection)
-        //    {
-        //        Console.WriteLine($"Collection: {item}");
-        //    }
-
-
-        //}
     }
 }
 
