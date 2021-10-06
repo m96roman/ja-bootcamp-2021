@@ -12,6 +12,7 @@ namespace IPlyskaLect8
             api.CallEndpoint("/controller/put");
             api.CallEndpoint("/controller/delete");
             DisposableObject obj;
+
             using (obj = new DisposableObject())
             {
                 obj.DoSomething();
