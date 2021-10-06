@@ -6,7 +6,17 @@ namespace DIvanyshyn_8.DisposableExample
     {
         internal static void Execute()
         {
-            throw new NotImplementedException();
+            DisposableObject obj = new();
+            obj.DoSomething();
+            try
+            {
+                obj.Dispose();
+                obj.DoSomething();
+            }
+            catch (ObjectDisposedException odE)
+            {
+                Console.WriteLine(odE);
+            }
         }
     }
 }
