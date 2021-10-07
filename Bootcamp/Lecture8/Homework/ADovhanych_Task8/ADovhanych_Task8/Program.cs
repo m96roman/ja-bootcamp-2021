@@ -26,7 +26,6 @@ namespace ADovhanych_Task8
             }
             catch (ObjectDisposedException)
             {
-
                 throw;
             }  
         }

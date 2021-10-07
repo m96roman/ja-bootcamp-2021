@@ -5,22 +5,22 @@ namespace ADovhanych_Task8
 {
     class DisposableObject : IDisposable
     {
-        public bool Memory { get; set; }
+        private bool isDisposed { get; set; }
 
         public DisposableObject()
         {
-            Memory = true;
+            isDisposed = true;
         }
 
         public void Dispose()
         {
-            Memory = false;
+            isDisposed = false;
             Console.WriteLine("I was disposed");
         }
 
         public void DoSomething()
         {
-            if(Memory)
+            if(isDisposed)
             {
                 Console.WriteLine("Doing something important");
             }
