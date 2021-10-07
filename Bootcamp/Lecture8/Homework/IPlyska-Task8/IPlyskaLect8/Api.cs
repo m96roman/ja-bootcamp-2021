@@ -11,8 +11,6 @@ namespace IPlyskaLect8
     {
         public Controller MyController { get; set; } = new Controller();
 
-        RouteAttribute t;
-
         public void CallEndpoint(string rout)
         {
             var personType = typeof(Controller);
@@ -21,7 +19,8 @@ namespace IPlyskaLect8
 
             foreach (var item in methods)
             {
-                t = (RouteAttribute)item.GetCustomAttribute(typeof(RouteAttribute));
+
+                var t = item.GetCustomAttribute<RouteAttribute>();
 
                 if (t.Name == rout)
                 {
