@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Reflection;
 using System.Threading.Tasks;
+using Shyptur_Task8HW;
 
 namespace Shyptur_Task8HW
 {
@@ -21,11 +22,7 @@ namespace Shyptur_Task8HW
         }
     }
 }
-[AttributeUsage(AttributeTargets.Method)]
-public class RouteAttribute : Attribute
-{
-    public string Name { get; set; }
-}
+
 public class Controller
 {
     public string Name { get; set; }
@@ -55,31 +52,4 @@ public class Controller
     }
 }
 
-public class Api
-{
-    public Controller controller { get; set; }
 
-    public Api()
-    {
-        controller = new Controller();
-    }
-
-    public void CallEndpoint(string route)
-    {
-        controller.Name = route;
-        var type = controller.GetType();
-        var colectionsAtribue = type
-            .GetMethods()
-            .Select(s => new
-            {
-                method = s,
-                atribute = s.GetCustomAttribute<RouteAttribute>()
-            })
-            .Where(p => p.atribute != null)
-            .ToList();
-
-        var currentMethod = colectionsAtribue.FirstOrDefault(atr => atr.atribute.Name == route);
-
-        Console.WriteLine(currentMethod.method.Invoke(controller, null));
-    }
-}
