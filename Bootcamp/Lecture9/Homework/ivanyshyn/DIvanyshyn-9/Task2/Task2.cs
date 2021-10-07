@@ -54,7 +54,8 @@ namespace DIvanyshyn_9.InfiniteLog
         private static void CleanUpAndMoveFiles()
         {
             var baseDirectory = Path.Combine(Directory.GetCurrentDirectory(), "temp");
-            var destinationDirectory = Path.Combine(Directory.GetCurrentDirectory(), $"Session_{DateTime.Now.ToString("yyyy'-'MM'-'dd' Time 'HH'-'mm'-'ss")}");
+            var destinationDirectory = 
+                Path.Combine(Directory.GetCurrentDirectory(), $"Session_{DateTime.Now.ToString("yyyy'-'MM'-'dd' Time 'HH'-'mm'-'ss")}");
 
             Directory.Move(baseDirectory, destinationDirectory);
 

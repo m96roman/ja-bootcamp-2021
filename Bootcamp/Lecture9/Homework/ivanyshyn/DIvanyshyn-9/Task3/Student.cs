@@ -12,8 +12,6 @@ namespace DIvanyshyn_9.StudentTracker
 
         public int LecturesAttend { get; set; }
 
-
-
         public Student(string name) : this()
         {
             Name = name;
