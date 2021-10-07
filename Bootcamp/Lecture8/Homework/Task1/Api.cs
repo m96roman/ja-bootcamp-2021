@@ -7,7 +7,7 @@ namespace Task1
 {
     public class Api
     {
-        public Controller _controller;
+        private Controller _controller;
 
         public Api()
         {
