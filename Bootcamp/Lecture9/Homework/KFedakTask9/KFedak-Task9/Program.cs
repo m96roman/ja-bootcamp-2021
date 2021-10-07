@@ -9,6 +9,7 @@ namespace KFedak_Task9
 {
     public class Program
     {
+        public const int iteration = 10;
 
         public static int indexOfFile = 1;
         static void Main(string[] args)
@@ -24,6 +25,23 @@ namespace KFedak_Task9
             Console.WriteLine("\nTask 3\n");
 
             SimulateSemestr();
+
+            List<Phone> phones = CreatePhones();
+            var holder = new PhoneEmergencyTestHolder(phones);
+
+            for (int i = 0; i < iteration; i++)
+            {
+                try
+                {
+                    TestEmergency(holder);
+                }
+                catch (BatteryIsDeadException ex)
+                {
+                    Logger.WriteLine(LogHelper.CreateExceptionString(ex));
+
+                    ex.Telephone.Charge();
+                }
+            }
         }
 
         public static string WrriteFile()
@@ -144,6 +162,43 @@ namespace KFedak_Task9
                     item.AttendedLecture();
                 }
             }
+        }
+
+        public static void TestEmergency(PhoneEmergencyTestHolder phoneEmergency)
+        {
+            foreach (Phone phone in phoneEmergency)
+            {
+                try
+                {
+                    phone.CallAmbulance();
+                }
+                catch (BatteryIsDeadException ex)
+                {
+                    Logger.WriteLine(ex.Message);
+
+                    if (phone is not Nokia nokia)
+                    {
+                        Console.WriteLine(ex.Message);
+                        throw;
+                    }
+
+                    nokia.PrayForBattery();
+                }
+                finally
+                {
+                    phone.ChargeABit();
+                }
+            }
+        }
+
+        public static List<Phone> CreatePhones()
+        {
+            var holder = new List<Phone>();
+            holder.Add(new IPhone(4, "Iphone13"));
+            holder.Add(new Nokia(5, "345"));
+            holder.Add(new IPhone(25, "Iphone7"));
+
+            return holder;
         }
     }
 }
