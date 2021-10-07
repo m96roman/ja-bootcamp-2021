@@ -6,9 +6,9 @@ namespace DIvanyshyn_9
     {
         static void Main(string[] args)
         {
-            FileCounter.Task1.Execute();
+            //FileCounter.Task1.Execute();
 
-            //Task2.Task2.Execute();
+            InfiniteLog.Task2.Execute();
 
             //Task3.Task3.Execute();
 
