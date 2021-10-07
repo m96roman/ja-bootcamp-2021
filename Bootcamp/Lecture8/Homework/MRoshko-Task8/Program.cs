@@ -11,7 +11,11 @@ namespace MRoshko_Task8
             Task2();
         }
 
+<<<<<<< HEAD
         public static void Task1()
+=======
+        public static  void Task1()
+>>>>>>> 231db2c6734621f753841c94c07249a725396bc9
         {
             var api = new Api();
 
@@ -23,6 +27,7 @@ namespace MRoshko_Task8
             api.CallEndpoint("/controller/delete");
         }
 
+<<<<<<< HEAD
         public static void Task2()
         {
             var disposableObject = new DisposableObject();
@@ -43,3 +48,27 @@ namespace MRoshko_Task8
     }
 }
 
+=======
+        public static void Task2() 
+        {
+            
+
+            using (var disposableObject = new DisposableObject()) 
+            {
+                disposableObject.Dispose();
+
+                try
+                {
+                    disposableObject.DoSomething();
+                }
+                catch (ObjectDisposedException ex)
+                {
+                    Console.WriteLine(ex);
+                }
+                
+            }     
+            
+        }
+    }
+}
+>>>>>>> 231db2c6734621f753841c94c07249a725396bc9
