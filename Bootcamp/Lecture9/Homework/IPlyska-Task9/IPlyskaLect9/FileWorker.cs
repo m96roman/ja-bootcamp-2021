@@ -25,70 +25,71 @@ namespace IPlyskaLect9
         {
             List<string> container = new List<string>();
 
+            string folderName = $"Session_{DateTime.Now:dddd dd MMMM yyyy}";
+
             Console.WriteLine("Please type some text. If you wanna quit just type quit ");
+            int counter = 1;
+            string quit;
 
-            string quit = string.Empty;
-
-            while (quit != "quit")
+            do
             {
-                container.Add(quit = Console.ReadLine());
-            }
+                quit = Console.ReadLine();
 
-            CreateFile(container);
+                if (quit != "quit")
+                {
+                    container.Add(quit);
+                }
+
+                if (container.Count == 8)
+                {
+                    CreateFile(container, counter, folderName);
+                    counter++;
+                    Move(folderName);
+                    container.Clear();
+                }
+            }
+            while(quit != "quit");
 
         }
 
-        public static void CreateFile(List<string> data)
+        public static void CreateFile(List<string> data, int index, string folderName)
         {
             if (data is null || data.Count == 0)
             {
                 throw new ArgumentNullException("Argument can not be null or an empty", nameof(data));
             }
-        
-            string folderName = $"Session_{DateTime.Now.DayOfWeek}";
 
             if (!Directory.Exists(folderName))
             {
                 Directory.CreateDirectory(folderName);
             }
- 
-            int counter = 1;
-            int counter2 = 1;
 
-            string fileName = $"inputFromVIM{counter}.txt";
+            string fileName = $"inputFromVIM{index}.txt";
 
-            if (!File.Exists(fileName))
+            if (File.Exists(fileName))
             {
                 File.Delete(fileName);
             }
 
-            for (int i = 0; i < data.Count - 1; i++)
-                {
-                    File.AppendAllText(fileName, data[i]);
- 
-                    counter2++;
+            File.WriteAllLines(fileName, data);
+        }
 
-                    if (counter2 == 7)
-                    {
-                        counter++;
-                        fileName = $"inputFromVIM{counter}.txt";
-
-                        if (!File.Exists(fileName))
-                        {
-                            File.Create(fileName);
-                        }
-                        counter2 = 1;
-                    }
-                }
+        public static void Move(string folderName)
+        {
 
             var files = Directory.GetFiles(Directory.GetCurrentDirectory(), "*.txt");
 
             foreach (var item in files)
             {
-                File.Move(item, Directory.GetCurrentDirectory() + "\\" + folderName);
-            }
-            
+                string name = Path.GetFileName(item);
 
+                if (File.Exists(Directory.GetCurrentDirectory() + "\\" + folderName + "\\" + name))
+                {
+                    File.Delete(Directory.GetCurrentDirectory() + "\\" + folderName + "\\" + name);
+                }
+
+                File.Move(item, Directory.GetCurrentDirectory() + "\\" + folderName + "\\" + name);
+            }
         }
     }
 }
