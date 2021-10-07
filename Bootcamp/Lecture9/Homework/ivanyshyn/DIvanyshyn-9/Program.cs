@@ -8,9 +8,9 @@ namespace DIvanyshyn_9
         {
             //FileCounter.Task1.Execute();
 
-            InfiniteLog.Task2.Execute();
+            //InfiniteLog.Task2.Execute();
 
-            //Task3.Task3.Execute();
+            StudentTracker.Task3.Execute();
 
             //Task4.Task4.Execute();
         }
