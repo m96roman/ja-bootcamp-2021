@@ -15,7 +15,7 @@ namespace LiveCoding9
         static void Main(string[] args)
         {
             Serialization();
-            //SimulateSimpleStateProgram();
+            SimulateSimpleStateProgram();
         }
 
         static void Files()
@@ -30,10 +30,10 @@ namespace LiveCoding9
 
             var nonExistingDirectory = new DirectoryInfo("NonExistingDirectory");
 
-            //if (!nonExistingDirectory.Exists)
-            //{
-            //    throw new DirectoryNotFoundException(nonExistingDirectory.FullName);
-            //}
+            if (!nonExistingDirectory.Exists)
+            {
+                throw new DirectoryNotFoundException(nonExistingDirectory.FullName);
+            }
 
             var bootcamp = new DirectoryInfo(@"C:\src\Bootcamp\Bootcamp");
 
@@ -44,19 +44,19 @@ namespace LiveCoding9
                 Console.WriteLine($"{item.Name} - {item.CreationTimeUtc}");
             }
 
-            //using (var fileStream = File.Create($@"{newDirectory.FullName}\lecture9.txt"))
-            //{
-            //    var message = "Let's have a look how to work with File Stream 2222";
-            //    var messageBytes = Encoding.Default.GetBytes(message);
-            //
-            //    fileStream.Write(messageBytes, 0, messageBytes.Length);
-            //}
+            using (var fileStream = File.Create($@"{newDirectory.FullName}\lecture9.txt"))
+            {
+                var message = "Let's have a look how to work with File Stream 2222";
+                var messageBytes = Encoding.Default.GetBytes(message);
 
-            //using var fileStreamForWriter = File.Create($@"{newDirectory.FullName}\lecture9.txt");
-            //using var streamWriter = new StreamWriter(fileStreamForWriter);
-            //
-            //streamWriter.WriteLine("Written from stream writer");
-            //streamWriter.Flush();
+                fileStream.Write(messageBytes, 0, messageBytes.Length);
+            }
+
+            using var fileStreamForWriter = File.Create($@"{newDirectory.FullName}\lecture9.txt");
+            using var streamWriter = new StreamWriter(fileStreamForWriter);
+
+            streamWriter.WriteLine("Written from stream writer");
+            streamWriter.Flush();
 
             File.AppendAllText($@"{newDirectory.FullName}\lecture9.txt", "from append");
             using (var streamWriter = File.CreateText($@"{newDirectory.FullName}\lecture9.txt"))
@@ -64,10 +64,10 @@ namespace LiveCoding9
                 streamWriter.WriteLine("from create text");
             }
 
-            //using (var fileStream = File.Create($@"{newDirectory.FullName}\lecture9Zip.txt"))
-            //using (var zipStream = new GZipStream(fileStream, CompressionLevel.Fastest);
-            //using var zipStreamWriter = new StreamWriter(zipStream);
-            //zipStreamWriter.WriteLine("Hello from zip");
+            using (var fileStream = File.Create($@"{newDirectory.FullName}\lecture9Zip.txt"))
+            using (var zipStream = new GZipStream(fileStream, CompressionLevel.Fastest);
+            using var zipStreamWriter = new StreamWriter(zipStream);
+            zipStreamWriter.WriteLine("Hello from zip");
 
             var userInput = @"*askj*8\/";
             var invalidChars = Path.GetInvalidFileNameChars();
@@ -79,7 +79,7 @@ namespace LiveCoding9
             var textToWrite = "aklsdfjalsdfj alsdjf al";
             var fileInfoh = new FileInfo($@"{newDirectory.FullName}\lecture9.txt");
             fileInfoh.MoveTo($@"{newDirectory.Parent.FullName}\movedLecture9.txt");
-            //Console.ReadLine();
+            Console.ReadLine();
         }
 
         static void Serialization()
@@ -101,7 +101,7 @@ namespace LiveCoding9
             File.WriteAllText("user.json", userJson);
 
             var xmlSerializer = new XmlSerializer(typeof(User));
-            
+
             using (var xmlFile = File.Create("user.xml"))
             {
                 xmlSerializer.Serialize(xmlFile, user);
