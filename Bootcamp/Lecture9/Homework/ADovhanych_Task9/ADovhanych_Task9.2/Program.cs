@@ -56,7 +56,7 @@ namespace ADovhanych_Task9._2
         public static void MoveFolder()
         {
             string newDirectory = Directory.GetCurrentDirectory();
-            string path = $@"{newDirectory}{DateTime.Now.Day}{DateTime.Now.Month}{DateTime.Now.Year}";
+            string path = $@"{newDirectory}{DateTime.Now}";
 
             try
             {
@@ -74,8 +74,8 @@ namespace ADovhanych_Task9._2
                     if (Path.GetFileName(item).Contains($"inputFromVim"))
                     {
                         var fileName = Path.GetFileName(item);
-                        var destination = Path.Combine(path, fileName);
-                        File.Move(item, destination, true);
+                        var comninedPath = Path.Combine(path, fileName);
+                        File.Move(item, comninedPath, true);
                     }
                 }
             }
