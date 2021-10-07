@@ -169,6 +169,7 @@ namespace LiveCoding8
 
     public static class EnumExtension
     {
+
         public static string ToDescription<T>(this T enumeration) where T : Enum
         {
             return enumeration
