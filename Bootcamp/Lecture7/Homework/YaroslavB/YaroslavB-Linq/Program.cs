@@ -21,8 +21,9 @@ namespace YaroslavB_Linq
 
             Console.WriteLine("\n-------------------------------------------------------------------\n");
 
-            //1.  Write a program in C# Sharp to find the number of an array and the square of each number.
-            Console.WriteLine("\n\nSubtask 2:\n");
+
+            //2.  Write a program in C# Sharp to display the characters and frequency of character from giving string.
+            Console.WriteLine("\nSubtask 2:\n");
             Console.WriteLine("Output:");
 
             string inputString = "apple";
@@ -35,9 +36,19 @@ namespace YaroslavB_Linq
                 Console.WriteLine($"Character {item.Char}: {item.Frequency} times");
             }
 
+            Console.WriteLine("\n-------------------------------------------------------------------\n");
 
 
+            //3. Write a program in C# Sharp to convert a string array to a string.
+            Console.WriteLine("\nSubtask 3:\n");
+            Console.WriteLine("Output:");
 
+            var animals = new string[] { "cat", "dog", "rat" };
+            var animalsString = animals.Aggregate((x, y) => x + ", " + y);
+
+            Console.WriteLine(animalsString);
+
+            Console.WriteLine("\n-------------------------------------------------------------------\n");
 
 
 
