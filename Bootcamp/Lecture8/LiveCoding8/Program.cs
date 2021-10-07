@@ -90,16 +90,16 @@ namespace LiveCoding8
             //    Console.WriteLine("-------------------------------");
             //}
 
-            //-----------  Get methods without specific attribute --------- 
+         //   -----------Get methods without specific attribute ---------
 
-            //var personType = typeof(Person);
-            //var methods = personType.GetMethods();
-            //var nonObsoleteMethods = methods.Where(it => it.GetCustomAttribute<ObsoleteAttribute>() == null);
+         var personType = typeof(Person);
+            var methods = personType.GetMethods();
+            var nonObsoleteMethods = methods.Where(it => it.GetCustomAttribute<ObsoleteAttribute>() == null);
 
-            //foreach (var nonObsoleteMethod in nonObsoleteMethods)
-            //{
-            //    Console.WriteLine(nonObsoleteMethod.Name);
-            //}
+            foreach (var nonObsoleteMethod in nonObsoleteMethods)
+            {
+                Console.WriteLine(nonObsoleteMethod.Name);
+            }
 
             //---------- Dispose MemoryStream --------------------
 
