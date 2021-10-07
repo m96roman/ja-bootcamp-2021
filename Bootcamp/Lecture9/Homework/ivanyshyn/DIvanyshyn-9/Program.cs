@@ -10,9 +10,9 @@ namespace DIvanyshyn_9
 
             //InfiniteLog.Task2.Execute();
 
-            StudentTracker.Task3.Execute();
+            //StudentTracker.Task3.Execute();
 
-            //Task4.Task4.Execute();
+            HereWeGoAgain.Task4.Execute();
         }
     }
 }
