@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
-using System.Linq.Expressions;
 
 namespace Task1.Extensions
 {
@@ -22,9 +20,16 @@ namespace Task1.Extensions
         }
         */
 
-        public static int Map<T>(this T[] collection)
+        public static R[] Map<T, R>(this T[] collection, Func<T, R> mapper)
         {
-            return collection.Length;
+            var result = new List<R>();
+
+            foreach(var item in collection)
+            {
+                result.Add(mapper(item));
+            }
+
+            return result.ToArray();
         }
 
         public static T[] Filter<T>(this T[] collection, Func<T, bool> funct)

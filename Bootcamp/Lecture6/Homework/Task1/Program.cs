@@ -1,7 +1,5 @@
 ﻿using System;
 using Task1.Extensions;
-using System.Collections;
-using System.Collections.Generic;
 
 namespace Task1
 {
@@ -20,7 +18,7 @@ namespace Task1
             }
 
             Console.WriteLine("Length:");
-            Console.WriteLine(words.Map());
+            Console.WriteLine(words.Map(it => it.Length));
         }
     }
 }
