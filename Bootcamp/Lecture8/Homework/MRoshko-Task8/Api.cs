@@ -30,7 +30,6 @@ namespace MRoshko_Task8
                 .FirstOrDefault(atr => atr.atribute.Name == route);
 
             Console.WriteLine(currentMethod.methods.Invoke(Controller, null));
-
         }
     }
 }
