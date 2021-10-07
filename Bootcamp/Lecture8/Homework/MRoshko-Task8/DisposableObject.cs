@@ -21,7 +21,9 @@ namespace MRoshko_Task8
         public void Dispose()
         {            
             Console.WriteLine($"I was disposed =(");
+
             dispose = true;
+
             disposableObject.Dispose();
         }
 

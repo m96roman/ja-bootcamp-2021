@@ -6,9 +6,9 @@ namespace MRoshko_Task8
     {
         static void Main(string[] args)
         {
-            //Task1();
+            Task1();
 
-            Task2();
+            //Task2();
         }
 
         public static void Task1()
@@ -37,9 +37,7 @@ namespace MRoshko_Task8
             {
                 Console.WriteLine(ex);
             }
-
         }
-
     }
 }
 
