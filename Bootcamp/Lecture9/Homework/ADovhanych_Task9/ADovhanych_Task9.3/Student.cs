@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ADovhanych_Task9._3
 {
@@ -17,15 +13,16 @@ namespace ADovhanych_Task9._3
         public Student(string name)
         {
             Name = name;
-            Random random = new();
-            int v = random.Next(0, 10);
-            FavoriteNumber = v;
+            FavoriteNumber = new Random().Next(0, 20);
             LecturesAttended = 0;
         }
 
-        public void AttendLecture()
+        public void AttendLecture(int lectureNumber)
         {
-            
+            if (FavoriteNumber != lectureNumber)
+            {
+                LecturesAttended++;
+            }
         }
     }
 }
