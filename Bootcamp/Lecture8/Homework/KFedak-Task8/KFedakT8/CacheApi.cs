@@ -12,26 +12,27 @@ namespace KFedakT8
     {
         public CacheController Controller { get; set; }
 
-        public IMemoryCache memoryCache;
+        private readonly IMemoryCache memoryCache;
 
         public CacheApi()
         {
             this.Controller = new CacheController { Name = "MyController" };
+
             memoryCache = new MemoryCache(new MemoryCacheOptions());
-
-
         }
 
         public void CallEndpoint(string route)
         {
             Object result;
             var methodName = "";
+
             if (!memoryCache.TryGetValue(route, out result))
             {
                 var method = typeof(CacheController).GetMethods()
-                .Where(it => it.GetCustomAttribute<RouteAttribute>()?.Name == route)
-                .FirstOrDefault();
+                    .FirstOrDefault(it => it.GetCustomAttribute<RouteAttribute>()?.Name == route);
+
                 methodName = method.Name;
+
                 result = method.Invoke(this.Controller, null);
 
                 memoryCache.Set(route, result);

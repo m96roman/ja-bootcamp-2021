@@ -31,7 +31,7 @@ namespace KFedakT8
 
             DisposableObject disposableObject = new DisposableObject();
             disposableObject.DoSomething();
-            disposableObject.Dispose();
+         //   disposableObject.Dispose();
             disposableObject.DoSomething();
         }
     }

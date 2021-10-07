@@ -20,12 +20,14 @@ namespace KFedakT8
         {
             var method = typeof(Controller).GetMethods()
                 .FirstOrDefault(it => it.GetCustomAttribute<RouteAttribute>()?.Name == route);
+
             var methodName = method.Name;
+
             var result = method.Invoke(this.Controller, null);
 
             if (result != null)
             {
-                Console.WriteLine($"Method {methodName} return {result}");
+                Console.WriteLine($"Method {method.Name} return {result}");
             }
         }
     }
