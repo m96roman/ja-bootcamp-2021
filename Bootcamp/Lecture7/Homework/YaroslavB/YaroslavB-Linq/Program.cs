@@ -19,6 +19,28 @@ namespace YaroslavB_Linq
                 Console.WriteLine("{" + $" {nameof(item.Number)} = {item.Number}, {nameof(item.SqrNo)} = {item.SqrNo} " + "}");
             }
 
+            Console.WriteLine("\n-------------------------------------------------------------------\n");
+
+            //1.  Write a program in C# Sharp to find the number of an array and the square of each number.
+            Console.WriteLine("\n\nSubtask 2:\n");
+            Console.WriteLine("Output:");
+
+            string inputString = "apple";
+
+            Char[] chars = inputString.ToCharArray();
+            var charsFeq = chars.GroupBy(c => c).Select(g => new { Char = g.Key, Frequency = g.Count() });
+
+            foreach (var item in charsFeq)
+            {
+                Console.WriteLine($"Character {item.Char}: {item.Frequency} times");
+            }
+
+
+
+
+
+
+
             Console.WriteLine("\n\nPress \'Enter\' to exit");
             Console.ReadLine();
         }
