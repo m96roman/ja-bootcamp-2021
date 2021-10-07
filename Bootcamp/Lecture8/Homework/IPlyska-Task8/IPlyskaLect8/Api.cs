@@ -24,8 +24,8 @@ namespace IPlyskaLect8
 
                 if (t.Name == rout)
                 {
-                   MyController.Name = t.Name;
-                   var result  =   item.Invoke(MyController, null);
+                    MyController.Name = t.Name;
+                    var result = item.Invoke(MyController, null);
 
                     if (result is not null)
                     {
