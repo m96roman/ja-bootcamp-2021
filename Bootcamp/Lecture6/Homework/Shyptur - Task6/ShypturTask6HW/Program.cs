@@ -10,12 +10,12 @@ namespace ShypturTask6HW
              Task1 task=new Task1();
              task.task1();
           
-          /*  Auctioneer auctioneer = new Auctioneer();
+    /*        Auctioneer auctioneer = new Auctioneer();
             var bid = new Bid();
 
-            auctioneer.OnBidChanged += bid.givemore;
-            auctioneer.OnBidChanged += bid.wanttoby;
-            auctioneer.OnBidChanged += bid.willwait;
+            auctioneer.OnBidChanged += bid.Givemore;
+            auctioneer.OnBidChanged += bid.Wanttoby;
+            auctioneer.OnBidChanged += bid.Willwait;
       
             auctioneer.SetNewBid(0);
 
