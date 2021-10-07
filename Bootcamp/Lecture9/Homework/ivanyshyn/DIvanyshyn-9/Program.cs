@@ -8,11 +8,11 @@ namespace DIvanyshyn_9
         {
             //FileCounter.Task1.Execute();
 
-            //InfiniteLog.Task2.Execute();
+            InfiniteLog.Task2.Execute();
 
             //StudentTracker.Task3.Execute();
 
-            HereWeGoAgain.Task4.Execute();
+            //HereWeGoAgain.Task4.Execute();
         }
     }
 }

@@ -32,7 +32,7 @@ namespace DIvanyshyn_9.InfiniteLog
                 if (counter == 8)
                 {
                     WriteToFile(indexOfFile, lines);
-
+                    indexOfFile++;
                     counter = 0;
                 }
 
@@ -54,7 +54,7 @@ namespace DIvanyshyn_9.InfiniteLog
         private static void CleanUpAndMoveFiles()
         {
             var baseDirectory = Path.Combine(Directory.GetCurrentDirectory(), "temp");
-            var destinationDirectory = 
+            var destinationDirectory =
                 Path.Combine(Directory.GetCurrentDirectory(), $"Session_{DateTime.Now.ToString("yyyy'-'MM'-'dd' Time 'HH'-'mm'-'ss")}");
 
             Directory.Move(baseDirectory, destinationDirectory);
