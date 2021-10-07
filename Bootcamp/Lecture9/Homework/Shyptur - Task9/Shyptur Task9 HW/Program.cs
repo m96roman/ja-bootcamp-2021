@@ -11,8 +11,12 @@ namespace Shyptur_Task9_HW
         static void Main(string[] args)
         {
             // Task1();
+
             // Task2();
-             Task3();
+
+            // Task3();
+
+            Task4();
         }
 
         public static void Task1()
@@ -130,6 +134,63 @@ namespace Shyptur_Task9_HW
                 }
             }
             File.WriteAllText("students.json", JsonSerializer.Serialize(students));
+        }
+
+        public static void Task4()
+        {
+            Phone[] phones = new Phone[]
+          {
+             new Nokia(4),
+                new Nokia(8),
+                new Nokia(25),
+                new IPhone13(4),
+                new IPhone13(8),
+                new IPhone13(25)
+          };
+
+            PhoneEmergencyTestHolder phoneEmergencyTestHolder = new PhoneEmergencyTestHolder(phones);
+
+            for (int i = 0; i < 9; i++)
+            {
+                try
+                {
+                    TestEmergency(phoneEmergencyTestHolder);
+                }
+                catch (BatteryIsDeadException ex)
+                {
+                    
+                    Logger log = new Logger();
+                    log.WriteLine(ex.ToString());
+                    ex.PhoneInfo.Charge();
+                }
+            }
+        }
+        public static void TestEmergency(PhoneEmergencyTestHolder phoneEmergencyTestHolder)
+        {
+            foreach (Phone phone in phoneEmergencyTestHolder)
+            {
+                try
+                {
+                    phone.CallAmbulance();
+
+                }
+                catch (BatteryIsDeadException)
+                {
+                    if (phone is Nokia nokiaPhone)
+                    {
+                        nokiaPhone.PrayForBattery();
+                        nokiaPhone.CallAmbulance();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                finally
+                {
+                    phone.ChargeaBit();
+                }
+            }
         }
     }
 }
