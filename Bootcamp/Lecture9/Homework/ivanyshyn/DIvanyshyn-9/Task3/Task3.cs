@@ -22,11 +22,11 @@ namespace DIvanyshyn_9.StudentTracker
             {
                 Console.WriteLine("We are using custom students");
                 students = new List<Student> {
-                    new("Petro"),
-                    new("Vasyl"),
-                    new("Ivan"),
-                    new("Radjeh"),
-                    new("Sviatoslav")
+                    new("Petro",0),
+                    new("Vasyl",0),
+                    new("Ivan",0),
+                    new("Radjeh",0),
+                    new("Sviatoslav",0)
                 };
             }
 

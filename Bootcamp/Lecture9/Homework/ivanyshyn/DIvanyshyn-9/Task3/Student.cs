@@ -5,23 +5,21 @@ namespace DIvanyshyn_9.StudentTracker
 {
     class Student
     {
-        public string Name { get; set; }
+        public string Name { get; private set; }
 
         [JsonIgnore]
         public int FavouriteNumber { get; private set; }
 
-        public int LecturesAttend { get; set; }
+        public int LecturesAttend { get; private set; }
 
-        public Student(string name) : this()
+        [JsonConstructor]
+        public Student(string name, int lecturesAttend)
         {
             Name = name;
-            LecturesAttend = 0;
-        }
-
-        public Student()
-        {
+            LecturesAttend = lecturesAttend;
             FavouriteNumber = new Random().Next(1, 8);
         }
+
 
         public void AttendLecture()
         {
