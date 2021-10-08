@@ -12,18 +12,11 @@ namespace Shyptur_Task10HW
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             //  Task1();
-            try
-            {
-                Task2().GetAwaiter().GetResult();
-            }
-            catch (Exception)
-            {
-                Task2().GetAwaiter().GetResult();
-                throw;
-            }
+
+            await Task2();
         }
 
         static async Task Task2()
