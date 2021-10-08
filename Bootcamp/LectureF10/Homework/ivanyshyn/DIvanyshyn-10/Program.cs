@@ -8,7 +8,7 @@ namespace DIvanyshyn_10
         {
             //GitSimulator.Task1.Execute();
 
-            Analyzer.Task2.Execute();
+            Analyzer.Task2.ExecuteAsync().GetAwaiter().GetResult();
         }
     }
 }
