@@ -15,57 +15,65 @@ namespace Shyptur_Task10HW
         static void Main(string[] args)
         {
             //  Task1();
-
-            Task2().GetAwaiter().GetResult();
-
+            try
+            {
+                Task2().GetAwaiter().GetResult();
+            }
+            catch (Exception)
+            {
+                Task2().GetAwaiter().GetResult();
+                throw;
+            }
         }
 
         static async Task Task2()
         {
             var httpClinet = new HttpClient();
             var text = await httpClinet.GetStringAsync("https://www.gutenberg.org/files/30155/30155-0.txt");
-            char[] ar = new char[] { '\n', '\r', ' ', '\"', '/', '\\', '*', '!', '?', '\t', '-', '+', '.', ',', '$', '(', ')', '{', '}', '@', '#', '%', '^', '&', '<', '>', '`' };
-            string[] a = text.Split(ar, StringSplitOptions.RemoveEmptyEntries);
-            Task22(a);
-            Task23(a);
-            Task24(a);
+            char[] charSplit = new char[] { '\n', '\r', ' ', '\"', '/', '\\', '*', '!', '?', '\t', '-', '+', '.', ',', '$', '(', ')', '{', '}', '@', '#', '%', '^', '&', '<', '>', '`' };
+            string[] a = text.Split(charSplit, StringSplitOptions.RemoveEmptyEntries);
+
+            await Task.WhenAll(Task21(text), Task22(a), Task23(a), Task24(a));
 
         }
 
-        public static void Task21(string[] array)
+        public static async Task Task21(string text)
         {
-
+            File.WriteAllTextAsync("Relativity: The Special and General Theory.txt", text);
         }
 
-        public static void Task22(string[] array)
+        public static async Task Task22(string[] array)
         {
             var longestWoerd = array
                   .Where(length => length.Length > 5)
                   .OrderBy(s => s.Length)
                   .Last();
-            Console.WriteLine(longestWoerd);
+
+            Console.WriteLine($" Find the longest word in this book, the word must be longer than 5 characters to participate in the challenge?  IS - {longestWoerd}");
         }
-        public static void Task23(string[] array)
+
+        public static async Task Task23(string[] array)
         {
             var MostCommonWordsUsed = array.GroupBy(s => s);
             MostCommonWordsUsed.OrderByDescending(s => s.Count());
             int count = 0;
             Console.WriteLine("Find top 8(obviously) most common words used.");
+
             foreach (var item in MostCommonWordsUsed)
             {
                 Console.WriteLine($"word {count} - {item.Key} "); ;
                 count += 1;
-                if (count==8)
+                if (count == 8)
                 {
                     break;
                 }
             }
         }
 
-        public static void Task24(string[] array)
+        public static async Task Task24(string[] array)
         {
-            var HowManyTimes = array.Where(s => s == "Relativity" || s== "RELATIVITY").Count();
-            Console.WriteLine(" Find how many times the word 'Relativity' is used?  - "+HowManyTimes.ToString());
+            var HowManyTimes = array.Where(s => s == "Relativity" || s == "RELATIVITY").Count();
+            Console.WriteLine(" Find how many times the word 'Relativity' is used?  - " + HowManyTimes.ToString());
         }
         static void Task1()
         {
