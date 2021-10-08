@@ -6,6 +6,7 @@ namespace YaroslavB_tsk8
     {
         static void Main(string[] args)
         {
+            //Subtask 1 - Reflection
             Console.WriteLine("CallEndpoint:\n");
 
             var api = new Api(new Controller("controller_012"));
@@ -15,6 +16,26 @@ namespace YaroslavB_tsk8
             api.CallEndpoint("/controller/get");
             api.CallEndpoint("/controller/put");
             api.CallEndpoint("/controller/delete");
+
+
+
+            //Subtask 2 - Disposing
+            Console.WriteLine("\n\nTesting DisposableObject:\n");
+
+            var obj = new DisposableObject();
+            obj.DoSomething();
+            obj.Dispose();
+            Console.WriteLine();
+
+            try
+            {
+                obj.DoSomething();
+            }
+            catch(ObjectDisposedException ex)
+            {
+                Console.WriteLine(ex);
+            }
+            
 
             Console.WriteLine("\nPress \'Enter\' to exit...");
             Console.ReadLine();
