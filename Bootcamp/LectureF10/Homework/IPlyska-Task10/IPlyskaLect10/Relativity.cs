@@ -35,8 +35,7 @@ namespace IPlyskaLect10
         {
            List<string> container = new List<string>();
 
-           var list = await Task.Run
-                                    (() => Text.Split(new char[] { '.', '?', '!', ' ', ';', ':', ',' }, StringSplitOptions.RemoveEmptyEntries).GroupBy(x => x)
+           var list = await Task.Run(() => Text.Split(new char[] { '.', '?', '!', ' ', ';', ':', ',' }, StringSplitOptions.RemoveEmptyEntries).GroupBy(x => x)
                                                  .OrderByDescending(g => g.Count())                   
                                                  .Take(8));
 
