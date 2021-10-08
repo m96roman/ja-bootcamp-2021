@@ -18,7 +18,16 @@ namespace MRoshko_Task10
 
         public static void Task2()
         {
-            Analyzer().GetAwaiter().GetResult();
+            try
+            {
+                Analyzer().GetAwaiter().GetResult();
+            }
+            catch (Exception ex) 
+            {
+                Console.WriteLine(ex);
+                Task2();
+            }
+            
         }
 
         public static void Task1()
@@ -94,6 +103,7 @@ namespace MRoshko_Task10
         public static void FindTheLongestWord(string[] file)
         {
             var finalValue = file
+                .Where(s=>s.Length>5)
                 .OrderByDescending(n => n.Length)
                 .First();
 
