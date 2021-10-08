@@ -31,21 +31,29 @@ namespace Shyptur_Task10HW
             Task24(a);
 
         }
+
+        public static void Task21(string[] array)
+        {
+
+        }
+
         public static void Task22(string[] array)
         {
             var longestWoerd = array
                   .Where(length => length.Length > 5)
-                  .OrderBy(s => s.Length).Last();
+                  .OrderBy(s => s.Length)
+                  .Last();
             Console.WriteLine(longestWoerd);
         }
         public static void Task23(string[] array)
         {
             var MostCommonWordsUsed = array.GroupBy(s => s);
-            MostCommonWordsUsed.OrderBy(s=>s.c)
+            MostCommonWordsUsed.OrderByDescending(s => s.Count());
             int count = 0;
+            Console.WriteLine("Find top 8(obviously) most common words used.");
             foreach (var item in MostCommonWordsUsed)
             {
-                Console.WriteLine(item.Key);
+                Console.WriteLine($"word {count} - {item.Key} "); ;
                 count += 1;
                 if (count==8)
                 {
