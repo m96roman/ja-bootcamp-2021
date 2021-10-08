@@ -17,16 +17,15 @@ namespace DIvanyshyn_10.Analyzer
             var client = new HttpClient();
             var response = await client.GetStringAsync(requestUri);
 
-            char[] separators = { ' ', ',', '.', ':', '\t', '\n', '\r', '\\', '/' };
+            char[] separators = { ' ', ',', '.', ':', '\t', '\n', '\r', '\\', '/', '!', '?' };
             var words = response.Split(separators).Where(w => !string.IsNullOrWhiteSpace(w));
 
-            Parallel.Invoke(() =>
-            {
-                var path = Path.Combine(Directory.GetCurrentDirectory(), "Einstein.txt");
-                File.WriteAllText(path, response);
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "Einstein.txt");
+            await File.WriteAllTextAsync(path, response);
 
-                Console.WriteLine($"File saved in {path}");
-            }, () =>
+            Console.WriteLine($"File saved in {path}");
+
+            Parallel.Invoke(() =>
             {
                 var longestWord = words.Where(w => w.Length > 5).OrderByDescending(w => w.Length).First();
 
@@ -35,10 +34,10 @@ namespace DIvanyshyn_10.Analyzer
             {
                 //Why 8? this is some code number? just curios
                 var top8 = words
-                    .GroupBy(w => w)
-                    .OrderByDescending(group => group.Count())
-                    .Take(8)
-                    .Select(w => w.Key);
+                  .GroupBy(w => w)
+                  .OrderByDescending(group => group.Count())
+                  .Take(8)
+                  .Select(w => w.Key);
 
                 Console.WriteLine($"Most common words is: {string.Join(", ", top8)}");
             }, () =>
