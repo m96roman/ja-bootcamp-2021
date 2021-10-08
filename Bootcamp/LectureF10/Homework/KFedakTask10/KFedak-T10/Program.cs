@@ -69,9 +69,10 @@ namespace KFedak_T10
 
             public static Task<string> LongestWord(string text)
             {
-                var result = Task.Run(() => text.Split(' ').OrderByDescending(x => x.Length).FirstOrDefault());
+                char[] seperators= { ' ', ',', '.', ':', '\t', '\n', '\r', '\\', '/', '!', '?' };
+                var result = Task.Run(() => text.Split(seperators).OrderByDescending(x => x.Length).FirstOrDefault());
 
-                Console.WriteLine("Find the longest word in this book");
+                Console.WriteLine($"Find the longest word in this book: {result.Result}");
 
                 return result;
             }
@@ -84,7 +85,7 @@ namespace KFedak_T10
                     .OrderByDescending(g => g.Count())
                     .Select(g => g.Key).Take(8));
 
-                Console.WriteLine("Find top 8 most common words used");
+                Console.WriteLine($"Find top 8 most common words used:\n{string.Join(Environment.NewLine, result.Result)}\n");
 
                 return result;
             }
@@ -93,7 +94,7 @@ namespace KFedak_T10
             {
                 var result = Task.Run(() => text.Split(' ').Where(g => g == "Relativity").Count());
 
-                Console.WriteLine("Find how many times the word \"Relativity\" is used");
+                Console.WriteLine($"Find how many times the word \"Relativity\" is used : {result.Result}");
 
                 return result;
             }
