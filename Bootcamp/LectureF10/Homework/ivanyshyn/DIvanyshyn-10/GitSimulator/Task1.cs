@@ -9,7 +9,7 @@ namespace DIvanyshyn_10.GitSimulator
 {
     class Task1
     {
-        public static void Execute()
+        public static async Task ExecuteAsync()
         {
             Git git = new();
             List<Task> developers = new();
@@ -19,7 +19,7 @@ namespace DIvanyshyn_10.GitSimulator
                 developers.Add(Task.Run(() => WorkDay(88, git)));
             }
 
-            Task.WaitAll(developers.ToArray());
+            await Task.WhenAll(developers.ToArray());
 
             //8*88=704
             Console.WriteLine($"Minions produced {git.Commits.Count} commits");

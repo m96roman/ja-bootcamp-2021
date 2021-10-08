@@ -1,14 +1,15 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace DIvanyshyn_10
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            //GitSimulator.Task1.Execute();
+            //await GitSimulator.Task1.ExecuteAsync();
 
-            Analyzer.Task2.ExecuteAsync().GetAwaiter().GetResult();
+            await Analyzer.Task2.ExecuteAsync();
         }
     }
 }

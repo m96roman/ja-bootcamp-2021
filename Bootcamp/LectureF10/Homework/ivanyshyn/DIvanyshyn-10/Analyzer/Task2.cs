@@ -18,7 +18,7 @@ namespace DIvanyshyn_10.Analyzer
             var response = await client.GetStringAsync(requestUri);
 
             char[] separators = { ' ', ',', '.', ':', '\t', '\n', '\r', '\\', '/', '!', '?' };
-            var words = response.Split(separators).Where(w => !string.IsNullOrWhiteSpace(w));
+            var words = response.Split(separators, StringSplitOptions.RemoveEmptyEntries);
 
             var path = Path.Combine(Directory.GetCurrentDirectory(), "Einstein.txt");
             await File.WriteAllTextAsync(path, response);
@@ -42,7 +42,7 @@ namespace DIvanyshyn_10.Analyzer
                 Console.WriteLine($"Most common words is: {string.Join(", ", top8)}");
             }, () =>
             {
-                var count = words.Count(w => w.Equals("Relativity"));
+                var count = words.Count(w => w.Equals("Relativity", StringComparison.OrdinalIgnoreCase));
 
                 Console.WriteLine($"Count of times the word 'Relativity' is used {count}");
             });
