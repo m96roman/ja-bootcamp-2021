@@ -223,7 +223,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Homework", "Homework", "{98
 		Lecture9\Homework\Tasks.txt = Lecture9\Homework\Tasks.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveCoding9", "Lecture9\LiveCoding9\LiveCoding9.csproj", "{B20BFD1C-3A07-4D59-8496-26553BA82249}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveCoding9", "Lecture9\LiveCoding9\LiveCoding9.csproj", "{B20BFD1C-3A07-4D59-8496-26553BA82249}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IPlyskaLect9", "Lecture9\Homework\IPlyska-Task9\IPlyskaLect9\IPlyskaLect9.csproj", "{24BF5C6D-DA27-4189-89AF-685D72884797}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -515,6 +517,10 @@ Global
 		{B20BFD1C-3A07-4D59-8496-26553BA82249}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B20BFD1C-3A07-4D59-8496-26553BA82249}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B20BFD1C-3A07-4D59-8496-26553BA82249}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24BF5C6D-DA27-4189-89AF-685D72884797}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24BF5C6D-DA27-4189-89AF-685D72884797}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24BF5C6D-DA27-4189-89AF-685D72884797}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24BF5C6D-DA27-4189-89AF-685D72884797}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -607,6 +613,7 @@ Global
 		{7AF38CE7-1100-4EDB-BD62-7A0BC5E09AF4} = {121B5111-96F1-4742-9738-0F7EE5FA9154}
 		{98C995B6-0C7E-421C-85FD-F9662F127929} = {EAC8777D-CAF1-423B-95B2-904E2164A888}
 		{B20BFD1C-3A07-4D59-8496-26553BA82249} = {EAC8777D-CAF1-423B-95B2-904E2164A888}
+		{24BF5C6D-DA27-4189-89AF-685D72884797} = {98C995B6-0C7E-421C-85FD-F9662F127929}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EDF9F64D-8CE1-4567-A599-F6C8CF7B91E0}
