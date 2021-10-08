@@ -6,9 +6,9 @@ namespace DIvanyshyn_10
     {
         static void Main(string[] args)
         {
-            GitSimulator.Task1.Execute();
+            //GitSimulator.Task1.Execute();
 
-            //Analyzer.Task2.Execute();
+            Analyzer.Task2.Execute();
         }
     }
 }
