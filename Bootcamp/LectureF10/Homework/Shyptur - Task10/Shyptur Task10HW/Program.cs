@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Linq;
 using System.Diagnostics;
 using System.Net.Http;
+using System.IO;
 
 namespace Shyptur_Task10HW
 {
@@ -17,7 +18,8 @@ namespace Shyptur_Task10HW
 
             var httpClinet = new HttpClient();
             var text = await httpClinet.GetStringAsync("https://www.gutenberg.org/files/30155/30155-0.txt");
-            Console.WriteLine(text);
+          
+            File.AppendAllText("Relativity: The Special and General Theory.txt", text);
         }
 
         static void Task1()
