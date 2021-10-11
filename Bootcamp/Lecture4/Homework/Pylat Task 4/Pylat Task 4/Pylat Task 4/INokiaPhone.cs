@@ -1,6 +1,6 @@
 ﻿namespace Pylat_Task_4
 {
-    interface NokiaMethods
+    interface INokiaPhone
     {
        void PrayForBattery();
     }

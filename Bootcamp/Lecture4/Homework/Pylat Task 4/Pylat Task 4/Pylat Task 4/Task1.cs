@@ -4,7 +4,6 @@ using System.Text;
 
 namespace Pylat_Task_4
 {
-
     class Task1
     {
         static public void TesmEmergency(PhoneEmergencyTestHolder phoneEmergencyTestHolder)
@@ -15,7 +14,7 @@ namespace Pylat_Task_4
                 {
                     phone.CallAmbulance();
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     Console.WriteLine($"Phone failed to call an ambulance: {phone.TypeOfPhone}");
 
@@ -35,7 +34,6 @@ namespace Pylat_Task_4
                 }
             }
         }
-        
 
         public static void DoTask1()
         {
@@ -51,12 +49,7 @@ namespace Pylat_Task_4
             //nokia.BatteryIsDeadException();
             //nokia.PrayForBattery();
             //nokia.Charge();
-
-
-
         }
-
-
     }
 }
 

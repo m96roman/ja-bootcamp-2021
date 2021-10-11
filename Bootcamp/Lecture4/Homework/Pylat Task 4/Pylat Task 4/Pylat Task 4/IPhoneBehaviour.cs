@@ -1,6 +1,6 @@
 ﻿namespace Pylat_Task_4
 {
-    interface IPhoneMethods
+    interface IPhoneBehaviour
     {
         void CallAmbulance();
 

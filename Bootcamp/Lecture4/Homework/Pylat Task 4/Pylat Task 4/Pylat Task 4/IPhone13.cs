@@ -6,9 +6,6 @@ namespace Pylat_Task_4
     {
         public IPhone13(string typeOfPhone, int bateryLevel) : base(typeOfPhone, bateryLevel)
         { }
-
-      
-        
     }
 }
 

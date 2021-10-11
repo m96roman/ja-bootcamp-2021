@@ -2,7 +2,7 @@
 
 namespace Pylat_Task_4
 {
-    public abstract class PhoneBase : IPhoneMethods
+    public abstract class PhoneBase : IPhoneBehaviour
     {
         public int BateryLevel { get; protected set; }
         public string TypeOfPhone { get; protected set; }

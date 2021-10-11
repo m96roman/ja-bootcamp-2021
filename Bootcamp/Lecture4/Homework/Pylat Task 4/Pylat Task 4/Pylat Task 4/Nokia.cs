@@ -2,9 +2,8 @@
 namespace Pylat_Task_4
 {
 
-    public class Nokia : PhoneBase, NokiaMethods
+    public class Nokia : PhoneBase, INokiaPhone
     {
-
         public Nokia(string typeOfPhone, int bateryLevel) : base(typeOfPhone, bateryLevel)
         { }      
       
@@ -18,7 +17,7 @@ namespace Pylat_Task_4
             {
                 BateryLevel = 100;
             }
-                                        
+                                       
             Console.WriteLine("Praying for the battery");
         }
     }

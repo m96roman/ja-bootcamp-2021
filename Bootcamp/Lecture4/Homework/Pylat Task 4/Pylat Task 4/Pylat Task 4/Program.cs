@@ -7,29 +7,33 @@ namespace Pylat_Task_4
     {
         static void Main(string[] args)
         {
+            // Task 1 ////////////////////
+
             //Task1.DoTask1();
 
-            PhoneEmergencyTestHolder phones = new PhoneEmergencyTestHolder();
-            
+            //  Task 2 ///////////////
 
-            phones.Add(new Nokia("Nokia", 25));
-            phones.Add(new Nokia("Nokia", 4));
-            phones.Add(new Nokia("Nokia", 8));
-            phones.Add(new IPhone13("Iphone", 25));
-            phones.Add(new IPhone13("Iphone", 4));
-            phones.Add(new IPhone13("Iphone", 8));
+            /* PhoneEmergencyTestHolder phones = new PhoneEmergencyTestHolder();
 
-            for (int i = 0 ; i < 10; i++)
-            {
-                try
-                {
-                    Task1.TesmEmergency(phones);
-                }
-                catch(PhoneExceptions ex)
-                {
-                    ex.phone.Charge();
-                }
-            }
+
+             phones.Add(new Nokia("Nokia", 25));
+             phones.Add(new Nokia("Nokia", 4));
+             phones.Add(new Nokia("Nokia", 8));
+             phones.Add(new IPhone13("Iphone", 25));
+             phones.Add(new IPhone13("Iphone", 4));
+             phones.Add(new IPhone13("Iphone", 8));
+
+             for (int i = 0 ; i < 10; i++)
+             {
+                 try
+                 {
+                     Task1.TesmEmergency(phones);
+                 }
+                 catch(PhoneExceptions ex)
+                 {
+                     ex.phone.Charge();
+                 }
+             }*/
 
         }
     }
