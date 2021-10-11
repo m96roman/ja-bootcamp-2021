@@ -16,20 +16,6 @@ namespace MRoshko_Task10
             Task2();
         }
 
-        public static void Task2()
-        {
-            try
-            {
-                Analyzer().GetAwaiter().GetResult();
-            }
-            catch (Exception ex) 
-            {
-                Console.WriteLine(ex);
-                Task2();
-            }
-            
-        }
-
         public static void Task1()
         {
             var git = new Git();
@@ -44,6 +30,11 @@ namespace MRoshko_Task10
             Console.WriteLine(git.bucketList.Count);
         }
 
+        public static void Task2()
+        {
+            Analyzer().GetAwaiter().GetResult();
+        }
+
         public static async Task Analyzer()
         {
             string url = "https://www.gutenberg.org/files/30155/30155-0.txt";
@@ -56,7 +47,7 @@ namespace MRoshko_Task10
 
             if (File.Exists($@"{Directory.GetCurrentDirectory()}\OutPut.txt"))
             {
-                File.Delete($@"{Directory.GetCurrentDirectory()}\OutPut.txt");
+                await File.WriteAllTextAsync($@"{Directory.GetCurrentDirectory()}\OutPut.txt", file);
             }
 
             var filepath = Path.Combine(Directory.GetCurrentDirectory(), "OutPut.txt");
@@ -64,18 +55,17 @@ namespace MRoshko_Task10
             await File.WriteAllTextAsync(filepath, file);
 
             string[] stringOfWords = file
-                .Split(separators)
-                .Where(s => !s.Equals(string.Empty) && !s.Equals(' '))
+                .Split(separators, StringSplitOptions.RemoveEmptyEntries)
                 .ToArray();
 
-            FindTheLongestWord(stringOfWords);
+            await  FindTheLongestWord(stringOfWords);
 
-            FindTopMostCommonWords(stringOfWords);
+            await  FindTopMostCommonWords(stringOfWords);
 
-            FindWordRepeatTimes(stringOfWords);
+            await FindWordRepeatTimes(stringOfWords);
         }
 
-        public static void FindTopMostCommonWords(string[] file)
+        public static Task FindTopMostCommonWords(string[] file)
         {
             var topWords = file
                   .GroupBy(s => s)
@@ -86,42 +76,42 @@ namespace MRoshko_Task10
 
             Console.Write($"\nTop 8 most common words is:\n");
 
-            for (int i = 0; i < topWords.Count(); i++)
+            foreach (var item in topWords)
             {
-                Console.WriteLine($"{i}){topWords[i]}");
+                Console.WriteLine($"{item}");
             }
+
+            return Task.CompletedTask;
         }
 
-        public static void FindWordRepeatTimes(string[] file)
+        public static Task FindWordRepeatTimes(string[] file)
         {
             var count = file
-                .Count(s => s.Equals("Relativity"));
+                .Count(s => s.Equals("relativity", StringComparison.OrdinalIgnoreCase));
 
             Console.WriteLine($"\n'Relativity' word is repeat {count} times.");
+
+            return Task.CompletedTask;
         }
 
-        public static void FindTheLongestWord(string[] file)
+        public static Task FindTheLongestWord(string[] file)
         {
             var finalValue = file
-                .Where(s=>s.Length>5)
+                .Where(s => s.Length > 5)
                 .OrderByDescending(n => n.Length)
                 .First();
 
             Console.WriteLine("Largest word is: " + finalValue);
-        }
 
-        private static object _lock = new object();
+            return Task.CompletedTask;
+        }
 
         public static void CommitsDay(Git git)
         {
-            lock (_lock)
+            for (int j = 0; j < 88; j++)
             {
-                for (int j = 0; j < 88; j++)
-                {
-                    git.Push($"Commit {j}");
-                }
+                git.Push($"Commit {j}");
             }
-
         }
     }
 }

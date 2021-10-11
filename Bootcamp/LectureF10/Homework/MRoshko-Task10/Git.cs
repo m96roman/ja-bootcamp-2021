@@ -10,21 +10,17 @@ namespace MRoshko_Task10
     class Git
     {
         public ConcurrentBag<string> bucketList;
-
-        private static object _lock = new object();
-
-        public Git() 
+      
+        public Git()
         {
             bucketList = new ConcurrentBag<string>();
         }
 
         public void Push(string message)
         {
-            lock(_lock)
-            {
-                Task.Run(() => bucketList.Add(message));         
-            }
-          
+
+            Task.Run(() => bucketList.Add(message));
+
             Console.WriteLine(message);
         }
     }
