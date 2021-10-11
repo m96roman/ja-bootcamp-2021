@@ -4,21 +4,24 @@ namespace Task2
 {
     public class DisposableObject : IDisposable
     {
-        bool Flag = true;
+        private bool IsDisposed = true;
 
         public void Dispose()
         {
-            Flag = false;
+            IsDisposed = false;
             Console.WriteLine("I was disposed =(");
         }
 
         public void DoSomething()
         {
-            if (Flag == true)
+            if (IsDisposed)
             {
                 Console.WriteLine("I'm doing something important.");
             }
-            else throw new ObjectDisposedException("object was disposed");
+            else
+            {
+                throw new ObjectDisposedException("object was disposed");
+            }
         }
     }
 }

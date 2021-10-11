@@ -6,7 +6,7 @@ namespace Task_1
 {
     public class Api
     {
-        Controller controller;
+        public Controller controller;
 
         public Api()
         {
@@ -27,14 +27,15 @@ namespace Task_1
                 {
                     if (n.Name == route)
                     {
-                        var i=item.Invoke(controller, null);
+                        var i = item.Invoke(controller, null);
 
                         if (i != null)
                         {
                             Console.WriteLine($"Method {item.Name} returns value {i}");
                         }
-                       
+
                         Console.WriteLine("-----------------------------");
+                        break;
                     }
                 }
             }
