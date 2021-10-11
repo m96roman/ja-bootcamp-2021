@@ -1,0 +1,14 @@
+1. Write a program to simulate Git source control:
+    - To keep it simple, Git type has a method called Push(message)
+        - When called message is stored in the internal collection of messages(commits)
+    - There are 8 developers(threads) which are simultaneously trying to push they work:
+        - each developer produces 88 commits per day.
+    - After the working day, when all developers done with work, check how many commits they produced - show the count.
+
+2. Write a program which analyzes "Relativity: The Special and General Theory" by Albert Einstein:
+    - use HttpClient to download it from https://www.gutenberg.org/files/30155/30155-0.txt (sometimes the call might crash, hit the run again)
+Do several operations in parallel:
+    - Save it to your File system, it's free after all, mb you wanna read it later :)
+    - Find the longest word in this book, the word must be longer than 5 characters to participate in the challenge
+    - Find top 8(obviously) most common words used.
+    - Find how many times the word "Relativity" is used.

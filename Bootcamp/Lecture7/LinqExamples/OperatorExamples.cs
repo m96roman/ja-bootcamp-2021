@@ -107,6 +107,7 @@ public static class OperatorExamples
 
         projected.PrintObjects();
         // Select many flattens collection of collections into single collection
+        Console.WriteLine("With Select Many");
         groupedProjected.SelectMany(group => group.ToList()).PrintObjects();
     }
 
@@ -121,6 +122,7 @@ public static class OperatorExamples
                           StudentName = student.StudentName,
                           StandardName = standard.StandardName
                       });
+
         innerJoin.PrintObjects();
     }
 
