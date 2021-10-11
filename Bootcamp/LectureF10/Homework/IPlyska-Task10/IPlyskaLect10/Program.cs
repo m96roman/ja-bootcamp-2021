@@ -8,36 +8,49 @@ namespace IPlyskaLect10
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            Git git = new Git();
+            //Git git = new Git();
 
-            List<Task> tasks = new List<Task>();
+            //List<Task> tasks = new List<Task>();
 
-            for (int i = 0; i < 8; i++)
-            {
-                tasks.Add(Task.Run(() => git.WorkWithGit(88)));
-            }
+            //for (int i = 0; i < 8; i++)
+            //{
+            //    tasks.Add(Task.Run(() => git.WorkWithGit(88)));
+            //}
 
-            Task.WaitAll(tasks.ToArray());
+            //Task.WaitAll(tasks.ToArray());
 
-            git.ShowAllCommits();
+            //git.ShowAllCommits();
 
-            Console.ReadKey();
 
-            //HttpClient client = new HttpClient();
+            HttpClient client = new HttpClient();
 
-            //Relativity relativity = new Relativity();
+            Relativity relativity = new Relativity();
 
-            //    relativity.Gettext(client).Wait();
+            await relativity.Gettext(client);
 
-            //    relativity.SaveText();
-            //    relativity.FindLongestWord();
-            //    relativity.CountOneWord("Relativity");
-            //    relativity.TopWordUsed();
+            Parallel.Invoke(
 
-            Console.ReadKey();
-            
+                () => 
+                {
+                    relativity.SaveText();
+                },
+                () =>
+                {
+                    relativity.FindLongestWord();
+                },
+                             
+                () => 
+                {
+                    relativity.TopWordUsed();
+                },
+                             
+                () =>
+                {
+                    relativity.CountOneWord("Relativity: ");
+                });
+    
         }
     }
 }
