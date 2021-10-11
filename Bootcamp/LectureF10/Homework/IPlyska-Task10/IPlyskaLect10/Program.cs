@@ -48,7 +48,7 @@ namespace IPlyskaLect10
                              
                 () =>
                 {
-                    relativity.CountOneWord("Relativity: ");
+                    relativity.CountOneWord("Relativity");
                 });
     
         }
