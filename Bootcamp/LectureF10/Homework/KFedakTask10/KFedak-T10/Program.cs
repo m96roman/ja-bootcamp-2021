@@ -28,12 +28,20 @@ namespace KFedak_T10
             {
                 var developerId = i;
 
-                listOfThreads.Add(Task.Run(() => git.Push("commit", developerId)));
+                listOfThreads.Add(Task.Run(() => CommitsPerDay(git, developerId)));
             }
 
             await Task.WhenAll(listOfThreads);
 
             Console.WriteLine($"Count of commits: {git.list.Count}");
+        }
+
+        public static void CommitsPerDay(Git git, int developer)
+        {
+            for (int i = 0; i < 88; i++)
+            {
+                git.Push($"The commit: {i + 1} was pushed by {developer}");
+            }
         }
 
         static async Task Analyzer()
@@ -50,23 +58,19 @@ namespace KFedak_T10
         {
             public ConcurrentBag<string> list = new();
 
-            public void Push(string message, int developer)
+            public void Push(string message)
             {
-                for (int i = 0; i < 88; i++)
-                {
-                    list.Add($"{message} {i} by :{developer}");
-                }
+                list.Add(message);
             }
         }
 
         public class OperationWithHttpClient
         {
-
             public static async Task SaveInFile(string text)
             {
                 var path = Path.Combine(Directory.GetCurrentDirectory(), "info.txt");
-                using var writer = new StreamWriter(File.Create(path));
-                await writer.WriteLineAsync(text);
+
+                await File.WriteAllTextAsync(path, text);
 
                 Console.WriteLine("Save in file");
             }
@@ -82,11 +86,11 @@ namespace KFedak_T10
 
             public static async Task<IEnumerable<string>> CommonWord(string[] text)
             {
-                var result =await Task.Run(() => text
-                    .GroupBy(s => s)
-                    .Where(g => g.Count() > 1)
-                    .OrderByDescending(g => g.Count())
-                    .Select(g => g.Key).Take(8));
+                var result = await Task.Run(() => text
+                     .GroupBy(s => s)
+                     .Where(g => g.Count() > 1)
+                     .OrderByDescending(g => g.Count())
+                     .Select(g => g.Key).Take(8));
 
                 Console.WriteLine($"Find top 8 most common words used:\n{string.Join(Environment.NewLine, result)}\n");
 
