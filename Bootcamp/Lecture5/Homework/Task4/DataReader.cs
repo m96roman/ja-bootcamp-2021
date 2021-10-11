@@ -11,6 +11,7 @@ namespace Task4
 
             return new DbResult<List<string>>(true, Cities);
         }
+
         public static DbResult<int> GetMagicNumber()
         {
             Random random = new Random();
