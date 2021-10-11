@@ -8,8 +8,8 @@ namespace Task1
     {
         static void Main(string[] args)
         {
-            var numbers = File.ReadLines(@"C:\Projects\Lecture 9 .Net\Task1\TestFile.txt").Count();
-            Console.WriteLine($"number of lines in a file 'TestFile.txt' -> { numbers }");
+            var numbers = File.ReadLines($@"C:\src\ja-bootcamp-2021\Bootcamp\Lecture9\Homework\Tasks.txt").Count();
+            Console.WriteLine($"number of lines in a file 'Task.txt' -> { numbers }");
         }
     }
 }

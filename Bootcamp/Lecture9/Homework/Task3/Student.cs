@@ -10,8 +10,11 @@ namespace Task3
     public class Student
     {
         public string Name { get; set; }
+
         [field: NonSerialized]
-        private int FavoriteNumber { get; set; }
+        [JsonIgnore]
+        public int FavoriteNumber { get; set; }
+
         public int LecturesAttended { get; set; }
 
         private static Random rnd = new Random();
@@ -58,18 +61,37 @@ namespace Task3
             File.WriteAllText(@"C:\Projects\Lecture 9 .Net\Task3\student.json", studentJson);
         }
 
-        public static void ReadStudentsFromFile()
+        public static List<Student> ReadStudentsFromFile()
         {
-            if(File.Exists(@"C:\Projects\Lecture 9 .Net\Task3\student.json"))
+            if (File.Exists(@"C:\Projects\Lecture 9 .Net\Task3\student.json"))
             {
                 var readJsonFromFile = File.ReadAllText(@"C:\Projects\Lecture 9 .Net\Task3\student.json");
                 var deserialixedStudents = JsonSerializer.Deserialize<List<Student>>(readJsonFromFile);
 
                 Console.WriteLine("Students: ");
-                foreach(var item in deserialixedStudents)
+                foreach (var item in deserialixedStudents)
                 {
                     Console.WriteLine($"Name -> {item.Name}, LecturesAttended -> {item.LecturesAttended}");
                 }
+                return deserialixedStudents;
+            }
+            else
+            {
+                List<Student> students = new List<Student>()
+                {
+                    new Student("Vasyl", 3),
+                    new Student("Taras", 0),
+                    new Student("Pavlo", 10),
+                    new Student("Andriy", 7),
+                    new Student("Dariya", 13),
+                    new Student("Olena", 4),
+                    new Student("Anna", 15),
+                    new Student("Olaksandra", 9),
+                    new Student("Marta", 3),
+                    new Student("Alina", 11)
+                };
+
+                return students;
             }
         }
     }

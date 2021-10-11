@@ -32,6 +32,9 @@ namespace Task2
                 }
                 else
                 {
+                    indexOfFile++;
+                    CreateFileAndWriteStrings(indexOfFile, strings);
+
                     MoveToNewDirectory(indexOfFile);
                     letMeOut = true;
                 }
@@ -48,30 +51,25 @@ namespace Task2
 
         static void CreateFileAndWriteStrings(int indexOfFile, List<string> strings )
         {
-            using (var filecreate = File.Create($@"C:\Projects\Lecture 9 .Net\Task2\inputfromvim{indexOfFile}.txt")) ;
-
-            using (StreamWriter writer = new StreamWriter($@"C:\Projects\Lecture 9 .Net\Task2\inputfromvim{indexOfFile}.txt"))
+            foreach (var item in strings)
             {
-                foreach (var item in strings)
-                {
-                    writer.WriteLine(item);
-                }
+                File.WriteAllText($@"{Directory.GetCurrentDirectory()}inputfromvim{indexOfFile}.txt", item);
             }
         }
 
         static void MoveToNewDirectory(int indexOfFile)
         {
-            bool isLastFileCreated = File.Exists($@"C:\Projects\Lecture 9 .Net\Task2\inputfromvim{indexOfFile}.txt") ? true : false;
+            bool isLastFileCreated = File.Exists($@"{Directory.GetCurrentDirectory()}inputfromvim{indexOfFile}.txt");
 
             if (isLastFileCreated)
             {
                 Console.WriteLine("Last file is created!");
 
-                var directory = Directory.CreateDirectory($@"C:\Projects\Lecture 9 .Net\Task2\Session_{DateTime.Now.ToString("dddd dd MMMM yyyy")}");
+                var directory = Directory.CreateDirectory($@"{Directory.GetCurrentDirectory()}Session_{DateTime.Now.ToString("dddd dd MMMM yyyy")}");
 
                 if (Directory.Exists(directory.FullName))
                 {
-                    foreach (var file in new DirectoryInfo(@"C:\Projects\Lecture 9 .Net\Task2").GetFiles("*.txt"))
+                    foreach (var file in new DirectoryInfo(@"{Directory.GetCurrentDirectory()}").GetFiles("*.txt"))
                     {
                         file.MoveTo($@"{directory}\{file.Name}");
                     }
