@@ -9,13 +9,10 @@ namespace KFedak_Task9
 {
     public class Logger
     {
-        public static void WriteLine(string message)
+        public static void WriteLine(Exception e)
         {
             string logFilePath = Path.Combine(Directory.GetCurrentDirectory(), "log.txt");
-            StringBuilder sb = new();
-            sb.Append($"\n{message}");
-            File.AppendAllText(logFilePath, sb.ToString());
-            sb.Clear();
+            File.AppendAllText(logFilePath, e.ToString());
         }
     }
 }

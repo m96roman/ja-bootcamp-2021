@@ -37,7 +37,7 @@ namespace KFedak_Task9
                 }
                 catch (BatteryIsDeadException ex)
                 {
-                    Logger.WriteLine(LogHelper.CreateExceptionString(ex));
+                    Logger.WriteLine((ex));
 
                     ex.Telephone.Charge();
                 }
@@ -82,14 +82,10 @@ namespace KFedak_Task9
                 string line = Console.ReadLine();
                 if (line == "LET ME OUT")
                 {
-                    if (text.Length > 0)
+                    if (!string.IsNullOrEmpty(text))
                     {
-                        using (var fileStream = File.Create($@"{Directory.GetCurrentDirectory()}\inputFromVIM{indexOfFile}.txt"))
-                        {
-                            using var writer = new StreamWriter(fileStream);
-                            writer.WriteLine(text);
-                            indexOfFile++;
-                        }
+                        File.WriteAllText($@"{Directory.GetCurrentDirectory()}\inputFromVIM{indexOfFile}.txt", text);
+                        indexOfFile++;
                     }
 
                     List<String> myFiles = Directory
@@ -101,11 +97,9 @@ namespace KFedak_Task9
                     foreach (var file in myFiles)
                     {
                         FileInfo mFile = new FileInfo(file);
-                        if (new FileInfo($@"{newDirectory}\{mFile.Name}").Exists == false)
-                        {
-                            mFile.MoveTo($@"{newDirectory}\{mFile.Name}");
-                        }
+                        mFile.MoveTo($@"{newDirectory}\{mFile.Name}");
                     }
+
                     Environment.Exit(0);
                 }
                 text = text + line + "\n";
@@ -113,12 +107,8 @@ namespace KFedak_Task9
 
             var directory = Directory.GetCurrentDirectory();
 
-            using (var fileStream = File.Create($@"{directory}\inputFromVIM{indexOfFile}.txt"))
-            {
-                using var writer = new StreamWriter(fileStream);
-                writer.WriteLine(text);
-                indexOfFile++;
-            }
+            File.WriteAllText($@"{directory}\inputFromVIM{indexOfFile}.txt", text);
+            indexOfFile++;
 
             InfinitelyLongWriter();
         }
@@ -157,6 +147,7 @@ namespace KFedak_Task9
         {
             for (int i = 0; i < 8; i++)
             {
+                students.Where(s => s.FavoriteNumber != i + 1);
                 foreach (var item in students)
                 {
                     item.AttendedLecture();
@@ -174,7 +165,7 @@ namespace KFedak_Task9
                 }
                 catch (BatteryIsDeadException ex)
                 {
-                    Logger.WriteLine(ex.Message);
+                    Logger.WriteLine(ex);
 
                     if (phone is not Nokia nokia)
                     {

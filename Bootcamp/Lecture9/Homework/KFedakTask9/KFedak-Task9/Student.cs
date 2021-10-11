@@ -23,15 +23,8 @@ namespace KFedak_Task9
 
         public void AttendedLecture()
         {
+            this.LecturesAttended++;
 
-            if (this.FavoriteNumber == this.LecturesAttended)
-            {
-                LecturesAttended--;
-            }
-            else
-            {
-                this.LecturesAttended++;
-            }
         }
     }
 }
