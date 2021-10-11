@@ -46,9 +46,9 @@ namespace KFedak_Task9
 
         public static string WrriteFile()
         {
-            var directory = Directory.GetCurrentDirectory();
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "lecture9.txt");
 
-            using (var fileStream = File.Create($@"{directory}\lecture9.txt"))
+            using (var fileStream = File.Create(path))
             {
                 using var writer = new StreamWriter(fileStream);
 
