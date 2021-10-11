@@ -1,23 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Collections.Concurrent;
 using System.Threading.Tasks;
-using System.Threading;
 
 namespace Task1
 {
     public class Git
     {
-        public List<string> commits = new List<string>();
-        private static object _lock = new object();
+        public ConcurrentBag<string> Commits
+        {
+            get
+            {
+                return new ConcurrentBag<string>();
+            }
+            set
+            {
+                Commits = value;
+            }
+        }
 
         public void Push(string message)
         {
-            lock (_lock)
-            {
-                Console.WriteLine(message);
-                commits.Add(message);
-            }
+            Console.WriteLine(message);
+            Commits.Add(message);
         }
     }
 }

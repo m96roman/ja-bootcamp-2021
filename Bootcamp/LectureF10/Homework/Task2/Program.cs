@@ -8,12 +8,13 @@ namespace Task2
 {
     class Program
     {
-        public static string pathSaveBook = $@"C:\Projects\Lecture 10 .Net\Task2\book.txt";
+        public static readonly string pathSaveBook = $@"{Directory.GetCurrentDirectory()}book.txt";
+
         static async Task Main(string[] args)
         {
             string document = await GetDocumentAsync();
 
-            string[] book = await ConvertStringIntoArray(document);
+            string[] book = ConvertStringIntoArray(document);
 
             await Task.WhenAll(SaveIntoFile(document), FindLongestWord(book), FindMostCommonWords(book), HowManyTime(book));
         }
@@ -22,7 +23,7 @@ namespace Task2
         {
             string findWord = "Relativity";
 
-            int amountHowMany = textFromFile.Where(x => x.ToLowerInvariant() == findWord.ToLowerInvariant()).Count();
+            int amountHowMany = textFromFile.Where(x => x.Equals(findWord, StringComparison.OrdinalIgnoreCase)).Count();
 
             Console.WriteLine($"How many time word {findWord} is used in book -> {amountHowMany}");
         }
@@ -45,7 +46,7 @@ namespace Task2
             Console.WriteLine($"Longest word in the book -> {word}");
         }
 
-        static async Task<string[]> ConvertStringIntoArray(string document)
+        static string[] ConvertStringIntoArray(string document)
         {
             return document.Split(
                            new[] { ' ', '\n', '\r', ',', ';', ':', '.', '!', '?', '-', '/', '\\', '—', '_' },
@@ -55,12 +56,7 @@ namespace Task2
 
         static async Task SaveIntoFile(string doc)
         {
-            using (var filecreate = File.Create(pathSaveBook));
-
-            using (StreamWriter writer = new StreamWriter(pathSaveBook))
-            {
-                await writer.WriteAsync(doc);
-            }
+            File.WriteAllTextAsync(pathSaveBook, doc);
         }
 
         static async Task<string> GetDocumentAsync()

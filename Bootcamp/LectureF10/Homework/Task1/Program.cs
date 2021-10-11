@@ -17,14 +17,14 @@ namespace Task1
                 listOfThreads.Add(Task.Run(() => SimulateWork(git)));
             }
 
-            await Task.WhenAll(listOfThreads.ToArray());
+            await Task.WhenAll(listOfThreads);
 
-            Console.WriteLine($"Developers have done {git.commits.Count}");          
+            Console.WriteLine($"Developers have done {git.Commits.Count}");          
         }
 
         static void SimulateWork(Git git)
         {
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 88; i++)
             {
                 git.Push($"Comment from developer {Task.CurrentId}");
             }
