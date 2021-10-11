@@ -13,12 +13,12 @@ namespace KFedak_T10
     {
         static async Task Main(string[] args)
         {
-            SimulateGit();
+            await SimulateGit();
 
             await Analyzer();
         }
 
-        static void SimulateGit()
+        static async Task SimulateGit()
         {
             var listOfThreads = new List<Task>();
 
@@ -31,7 +31,7 @@ namespace KFedak_T10
                 listOfThreads.Add(Task.Run(() => git.Push("commit", developerId)));
             }
 
-            Task.WaitAll(listOfThreads.ToArray());
+            await Task.WhenAll(listOfThreads);
 
             Console.WriteLine($"Count of commits: {git.list.Count}");
         }
@@ -40,7 +40,10 @@ namespace KFedak_T10
         {
             var httpClinet = new HttpClient();
             var text = await httpClinet.GetStringAsync("https://www.gutenberg.org/files/30155/30155-0.txt");
-            await Task.WhenAll(OperationWithHttpClient.SaveInFile(text), OperationWithHttpClient.LongestWord(text), OperationWithHttpClient.CommonWord(text), OperationWithHttpClient.CountOfUsedWord(text));
+            char[] seperators = { ' ', ',', '.', ':', '\t', '\n', '\r', '\\', '/', '!', '?' };
+            var wordsOfText = text.Split(seperators);
+
+            await Task.WhenAll(OperationWithHttpClient.SaveInFile(text), OperationWithHttpClient.LongestWord(wordsOfText), OperationWithHttpClient.CommonWord(wordsOfText), OperationWithHttpClient.CountOfUsedWord(wordsOfText));
         }
 
         public class Git
@@ -58,43 +61,43 @@ namespace KFedak_T10
 
         public class OperationWithHttpClient
         {
+
             public static async Task SaveInFile(string text)
             {
-                using var file = File.Create($@"{Directory.GetCurrentDirectory()}\info.txt");
-                using var writer = new StreamWriter(file);
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "info.txt");
+                using var writer = new StreamWriter(File.Create(path));
                 await writer.WriteLineAsync(text);
 
                 Console.WriteLine("Save in file");
             }
 
-            public static Task<string> LongestWord(string text)
+            public static async Task<string> LongestWord(string[] words)
             {
-                char[] seperators= { ' ', ',', '.', ':', '\t', '\n', '\r', '\\', '/', '!', '?' };
-                var result = Task.Run(() => text.Split(seperators).OrderByDescending(x => x.Length).FirstOrDefault());
+                var result = await Task.Run(() => words.OrderByDescending(x => x.Length).First());
 
-                Console.WriteLine($"Find the longest word in this book: {result.Result}");
+                Console.WriteLine($"Find the longest word in this book: {result}");
 
                 return result;
             }
 
-            public static Task<IEnumerable<string>> CommonWord(string text)
+            public static async Task<IEnumerable<string>> CommonWord(string[] text)
             {
-                var result = Task.Run(() => text.Split(' ')
+                var result =await Task.Run(() => text
                     .GroupBy(s => s)
                     .Where(g => g.Count() > 1)
                     .OrderByDescending(g => g.Count())
                     .Select(g => g.Key).Take(8));
 
-                Console.WriteLine($"Find top 8 most common words used:\n{string.Join(Environment.NewLine, result.Result)}\n");
+                Console.WriteLine($"Find top 8 most common words used:\n{string.Join(Environment.NewLine, result)}\n");
 
                 return result;
             }
 
-            public static Task<int> CountOfUsedWord(string text)
+            public static async Task<int> CountOfUsedWord(string[] text)
             {
-                var result = Task.Run(() => text.Split(' ').Where(g => g == "Relativity").Count());
+                var result = await Task.Run(() => text.Where(g => g.Equals("Relativity")).Count());
 
-                Console.WriteLine($"Find how many times the word \"Relativity\" is used : {result.Result}");
+                Console.WriteLine($"Find how many times the word \"Relativity\" is used : {result}");
 
                 return result;
             }
