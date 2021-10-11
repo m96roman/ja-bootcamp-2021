@@ -16,7 +16,7 @@ namespace Task_1_Lecture_6
         {
             var list = new List<string>() { "Fdsg", "dsfsdfsd", "dfsdfsdf" };
             list.Filter(ForFilter).Map(str => str.Length);
-            }
+        }
         }
     }
 

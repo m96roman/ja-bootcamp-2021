@@ -16,6 +16,7 @@ namespace Task_1_Lecture_6
                 {
                     list.Add(item);
                 }
+
                 Console.WriteLine(item);
             }
 
