@@ -16,7 +16,7 @@ namespace KFedak_Task9
         {
             Console.WriteLine("\nTask 1\n");
 
-            Console.WriteLine($"Count of line: {CountLineInFile(WrriteFile())}");
+            Console.WriteLine($"Count of line: {CountLineInFile(WriteInFile())}");
 
             Console.WriteLine("\nTask 2\n");
 
@@ -37,25 +37,20 @@ namespace KFedak_Task9
                 }
                 catch (BatteryIsDeadException ex)
                 {
-                    Logger.WriteLine((ex));
+                    Logger.WriteLine(ex);
 
                     ex.Telephone.Charge();
                 }
             }
         }
 
-        public static string WrriteFile()
+        public static string WriteInFile()
         {
             var path = Path.Combine(Directory.GetCurrentDirectory(), "lecture9.txt");
 
-            using (var fileStream = File.Create(path))
-            {
-                using var writer = new StreamWriter(fileStream);
+            File.WriteAllText(path, "Written from stream writer\nWritten from stream writer\nWritten from stream writer");
 
-                writer.WriteLine("Written from stream writer\nWritten from stream writer\nWritten from stream writer");
-
-                return fileStream.Name;
-            }
+            return path;
         }
 
         public static int CountLineInFile(string file)
