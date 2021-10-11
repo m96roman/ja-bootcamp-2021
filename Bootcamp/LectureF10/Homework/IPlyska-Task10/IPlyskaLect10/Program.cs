@@ -10,25 +10,31 @@ namespace IPlyskaLect10
     {
         static void Main(string[] args)
         {
+            Git git = new Git();
 
-            //for (int i = 0; i < 88; i++)
-            //{
-            //    Git.WorkWithGit(Git.CreateDevs());
-            //}
+            List<Task> tasks = new List<Task>();
 
-            //Git.ShowAllCommits();
-            //Console.ReadKey();
+            for (int i = 0; i < 8; i++)
+            {
+                tasks.Add(Task.Run(() => git.WorkWithGit(88)));
+            }
 
-            HttpClient client = new HttpClient();
+            Task.WaitAll(tasks.ToArray());
 
-            Relativity relativity = new Relativity();
+            git.ShowAllCommits();
 
-                relativity.Gettext(client).Wait();
+            Console.ReadKey();
 
-                relativity.SaveText();
-                relativity.FindLongestWord();
-                relativity.CountOneWord("Relativity");
-                relativity.TopWordUsed();
+            //HttpClient client = new HttpClient();
+
+            //Relativity relativity = new Relativity();
+
+            //    relativity.Gettext(client).Wait();
+
+            //    relativity.SaveText();
+            //    relativity.FindLongestWord();
+            //    relativity.CountOneWord("Relativity");
+            //    relativity.TopWordUsed();
 
             Console.ReadKey();
             

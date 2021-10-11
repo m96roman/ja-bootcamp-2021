@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,47 +10,30 @@ namespace IPlyskaLect10
 {
     public class Git
     {
-        static List<string> gitStoredMessage = new List<string>();
-  
-        public static object locker = new object();
+        
+        public ConcurrentBag<string> GitStoredMessage { get; private set; } 
 
-        public static  void Push(string message)
+        public Git()
         {
-            lock (locker)
+            GitStoredMessage = new ConcurrentBag<string>();
+        }
+
+        public void Push(string message)
+        {
+            GitStoredMessage.Add(message);
+        }
+
+        public  void WorkWithGit(int qty)
+        {
+            for (int i = 0; i < qty; i++)
             {
-                gitStoredMessage.Add(message);
+                Push($"dev push {Thread.CurrentThread.Name}");
             }
-
         }
 
-        public static void WorkWithGit(List<Thread> developers)
+        public  void ShowAllCommits()
         {
-          
-             foreach (var dev in developers)
-             {
-                 dev.Start();
-             }
-
-        }
-
-        public static List<Thread> CreateDevs()
-        {
-            return new List<Thread>()
-            {
-                new Thread(() => Push("dev1")),
-                new Thread(() => Push("dev2")),
-                new Thread(() => Push("dev3")),
-                new Thread(() => Push("dev4")),
-                new Thread(() => Push("dev5")),
-                new Thread(() => Push("dev6")),
-                new Thread(() => Push("dev7")),
-                new Thread(() => Push("dev8")), 
-            };
-        }
-
-        public static void ShowAllCommits()
-        {
-            Console.WriteLine($"8 developers were made {gitStoredMessage.Count} per day");
+            Console.WriteLine($"8 developers were made {GitStoredMessage.Count} per day");
         }
     }
 }
