@@ -57,7 +57,8 @@ namespace Task_1
                 .Select(e => new { faculty = e.Key, MaxGrades = e
                 .GroupBy(a => a.StudentName.AverageGrade)
                 .OrderByDescending(y => y.Key).First() })
-                .SelectMany(e => e.MaxGrades, (faculty, student)=> new { FacultyName = faculty.faculty, student = student.StudentName.FirstName })
+                .SelectMany(e => e.MaxGrades, (faculty, student)=>
+                new { FacultyName = faculty.faculty, student = student.StudentName.FirstName })
                 .ToList();
 
             joiningToListed.ForEach(v => { Console.WriteLine($"{v.FacultyName} - {v.student}"); }); 
