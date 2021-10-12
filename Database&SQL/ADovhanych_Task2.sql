@@ -27,5 +27,4 @@ From CarBrand cb
 INNER JOIN CarModel cm ON cb.Id = cm.BrandId
 INNER JOIN Car c ON cm.Id = c.ModellId
 LEFT JOIN Trip t ON t.CarId = c.Id
-WHERE c.Id NOT IN(SELECT tr.CarId FROM Trip tr)
-OR DATEDIFF(HOUR, t.StartDate, t.EndDate)<10
+WHERE t.Id IS NULL OR DATEDIFF(HOUR, t.StartDate, t.EndDate)<1
