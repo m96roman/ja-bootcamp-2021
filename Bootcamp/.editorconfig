@@ -2,3 +2,4 @@
 
 # IDE0060: Remove unused parameter
 dotnet_code_quality_unused_parameters = non_public
+dotnet_diagnostic.CA1801.severity=silent
