@@ -22,7 +22,7 @@ SELECT i.Id,i.Name FROM Ingredient as i
 
 --Get an ingredient name and Meal name where there no meals with that ingredients or time to cook less that 20 mins
 
-SELECT i.Name AS IngredientName, ISNULL(m.Name,'There are no meals with this ingredient') AS MealName FROM Ingredient as i
-LEFT JOIN Recipe as r ON r.IngredientId=i.Id
-LEFT JOIN Meal as m ON r.MealId=m.Id
+SELECT i.Name AS IngredientName, ISNULL(m.Name,'/There are no meals with this ingredient/') AS MealName FROM Ingredient as i
+LEFT OUTER JOIN Recipe as r ON r.IngredientId=i.Id
+LEFT OUTER JOIN Meal as m ON r.MealId=m.Id
 WHERE m.TimeToCookInMins<20 OR r.IngredientId IS NULL
