@@ -25,7 +25,7 @@ namespace IPlyskaLect9
         {
             List<string> container = new List<string>();
 
-            string folderName = $"Session_{DateTime.Now:dddd dd MMMM yyyy}";
+            string folderName = $"Session_{DateTime.Now:dd MMMM yyyy hh:mm tt}";
 
             Console.WriteLine("Please type some text. If you wanna quit just type quit ");
             int counter = 1;
@@ -44,15 +44,17 @@ namespace IPlyskaLect9
                 {
                     CreateFile(container, counter, folderName);
                     counter++;
-                    Move(folderName);
                     container.Clear();
                 }
             }
             while(quit != "quit");
 
-            CreateFile(container, counter, folderName);
+            if (container.Count != 0)
+            {
+                CreateFile(container, counter, folderName);
+            }
+            
             Move(folderName);
-
         }
 
         public static void CreateFile(List<string> data, int index, string folderName)
