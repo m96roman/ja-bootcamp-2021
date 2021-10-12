@@ -25,7 +25,7 @@ namespace IPlyskaLect9
 
         public void AttendLecture()
         {
-            if ((LecturesAttended += 1) != FavoriteNumber)
+            if (LecturesAttended != FavoriteNumber)
             {
                 LecturesAttended++;
             }   

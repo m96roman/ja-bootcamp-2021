@@ -50,6 +50,9 @@ namespace IPlyskaLect9
             }
             while(quit != "quit");
 
+            CreateFile(container, counter, folderName);
+            Move(folderName);
+
         }
 
         public static void CreateFile(List<string> data, int index, string folderName)
@@ -66,11 +69,6 @@ namespace IPlyskaLect9
 
             string fileName = $"inputFromVIM{index}.txt";
 
-            if (File.Exists(fileName))
-            {
-                File.Delete(fileName);
-            }
-
             File.WriteAllLines(fileName, data);
         }
 
@@ -83,12 +81,12 @@ namespace IPlyskaLect9
             {
                 string name = Path.GetFileName(item);
 
-                if (File.Exists(Directory.GetCurrentDirectory() + "\\" + folderName + "\\" + name))
+                if (File.Exists(Path.Combine(Directory.GetCurrentDirectory(), folderName, name)))
                 {
-                    File.Delete(Directory.GetCurrentDirectory() + "\\" + folderName + "\\" + name);
+                    File.Delete(Path.Combine(Directory.GetCurrentDirectory(), folderName, name));
                 }
 
-                File.Move(item, Directory.GetCurrentDirectory() + "\\" + folderName + "\\" + name);
+                File.Move(item, Path.Combine(Directory.GetCurrentDirectory(), folderName, name));
             }
         }
     }

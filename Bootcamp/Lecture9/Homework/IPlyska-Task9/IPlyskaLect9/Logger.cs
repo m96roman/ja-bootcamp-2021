@@ -11,7 +11,7 @@ namespace IPlyskaLect9
     {
         public static void WriteLine(string messege)
         {
-            File.AppendAllText("log.txt", DateTime.UtcNow + messege);
+            File.AppendAllText("log.txt", $"{DateTime.UtcNow} - {messege}");
         }
              
     }
