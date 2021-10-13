@@ -9,11 +9,11 @@ INNER JOIN Recipe as r ON m.Id=r.MealId
 GROUP BY m.Name
 
 --Get meal Name and average ingredients weight from recipe table, for meals that have less than 3 ingredients
-SELECT m.Name,Avg(r.Weight) as AverageIngredientWeight FROM Meal m
+SELECT m.Name, Avg(r.Weight) as AverageIngredientWeight FROM Meal m
 INNER JOIN Recipe as r ON m.Id=r.MealId
 GROUP BY m.Name
 HAVING COUNT(r.IngredientId)<=3
-ORDER BY COUNT(r.IngredientId)
+ORDER BY 2 DESC
 
 --Union Ingredient and Meal with result have two columns Id and Name
 SELECT m.Id,m.Name FROM Meal as m
