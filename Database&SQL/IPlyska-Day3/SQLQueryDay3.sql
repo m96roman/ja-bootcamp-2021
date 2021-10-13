@@ -36,8 +36,9 @@ create view IPlyskaView as
 			  
   return 1;
   end
+
 -----------------------------------------------------
-  create procedure sp_Add_IPlyska 'Test', 20, 100, 30, 40
+  alter procedure sp_Add_IPlyska  'Test', 20, 100, 30, 40
   @Name nvarchar(20),
   @time int,
   @mealId int,
@@ -53,6 +54,8 @@ create view IPlyskaView as
 
 					insert into Recipe(MealId, IngredientId, Weight)
 					values(@mealId, @ingId, @weight)
+
+					commit transaction
 
 				end try
 				begin catch
