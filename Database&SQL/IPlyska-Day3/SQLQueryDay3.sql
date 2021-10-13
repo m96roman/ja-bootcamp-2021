@@ -64,14 +64,14 @@ create view IPlyskaView as
 							rollback transaction 
 						end
 
-						declare @ErrMesage nvarchar(max),
-						@ErrSevr nvarchar(max)
+						declare @ErrMesage varchar(max) = ERROR_MESSAGE(),
+						@ErrSevr int = ERROR_SEVERITY()
 						 
 						 --set @ErrMesage = ERROR_SEVERITY()
 						 --set @ErrSevr = ERROR_MESSAGE()
 						
-						select @ErrMesage = ERROR_SEVERITY(), @ErrSevr = ERROR_MESSAGE()
-						--RAISEERROR(@ErrMesage, @ErrSevr,1)
+						--select @ErrMesage = ERROR_MESSAGE(), @ErrSevr = ERROR_SEVERITY()
+						RAISERROR (@ErrMesage, @ErrSevr, 1)
 
 				end catch
 
