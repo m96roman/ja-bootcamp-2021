@@ -12,7 +12,12 @@ namespace Task4
         static void Main(string[] args)
         {
             List<Faculty> facultyList = new List<Faculty>();
-            facultyList = InitFaculties(facultyList);
+
+            for (int i = 1; i <= 5; i++)
+            {
+                facultyList.Add(new Faculty { FacultyId = i, Name = $"Faculty {i}" });
+            }
+
             List<Student> studentList = new List<Student>();
             InitStudents(studentList, facultyList);
 
@@ -24,16 +29,6 @@ namespace Task4
             FindStudentsWithTheSameNamePerFaculty(studentList, facultyList);
             Console.WriteLine("--Average grade per faculty--");
             FindAverageGradePerFaculty(studentList, facultyList);
-        }
-
-        static List<Faculty> InitFaculties(List<Faculty> facultyList)
-        {
-            for (int i = 1; i <= 5; i++)
-            {
-                facultyList.Add(new Faculty { FacultyId = i, Name = $"Faculty {i}" });
-            }
-
-            return facultyList;
         }
 
         static List<Student> InitStudents(List<Student> studentList, List<Faculty> facultyList)
