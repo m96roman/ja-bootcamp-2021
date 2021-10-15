@@ -3,6 +3,6 @@ CREATE OR ALTER FUNCTION YaroslavB_IntToString(@value INT)
 AS
 BEGIN
 	DECLARE @return varchar(40)
-	SET @return = STR(@value) + ' as string'
+	SET @return = LTRIM(STR(@value)) + ' as string'
 	RETURN @return
 END
