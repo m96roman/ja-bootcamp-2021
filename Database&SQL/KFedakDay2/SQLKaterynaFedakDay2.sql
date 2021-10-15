@@ -44,7 +44,7 @@ JOIN Car c
 	ON c.ModelId=m.ID
 LEFT JOIN Trip t 
 	ON t.CarId=c.ID
-WHERE (t.StartDate IS NULL AND t.EndDate IS NULL) OR  DateDiff(HOUR, t.StartDate, t.EndDate)<1
+WHERE t.ID IS NULL OR DateDiff(HOUR, t.StartDate, t.EndDate)<1
 
 
 
