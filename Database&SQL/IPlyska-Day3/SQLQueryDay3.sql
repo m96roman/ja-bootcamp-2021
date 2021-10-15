@@ -17,18 +17,18 @@ create view IPlyskaView as
 
 	
 ----------------------Task2---------------------------------------------
-	alter function func_ConvertToString_IPlyska(@input int)
+alter function func_ConvertToString_IPlyska(@input int)
 
-	returns varchar(40)
+returns varchar(40)
 
 		begin
 			return concat(@input, ' as string')
 		end
 
  
--------------------------------------------------------------
-  create procedure sp_ConvertToChar_IPlysk
-  as begin
+------------------Task3------------------------------------
+ create procedure sp_ConvertToChar_IPlysk
+ as begin
               select
 				*,
 				dbo.func_ConvertToString_IPlyska(TimeToCookInMins) CharTimeToCook
@@ -37,15 +37,15 @@ create view IPlyskaView as
   return 1;
   end
 
------------------------------------------------------
-  alter procedure sp_Add_IPlyska  'Test', 20, 100, 30, 40
+--------------------Task4----------------------------
+ alter procedure sp_Add_IPlyska  -- for test'Test', 20, 100, 30, 40
   @Name nvarchar(20),
   @time int,
   @mealId int,
   @ingId int,
   @weight int
 
-  as begin
+ as begin
 			begin transaction
 				begin try
 
@@ -66,11 +66,6 @@ create view IPlyskaView as
 
 						declare @ErrMesage varchar(max) = ERROR_MESSAGE(),
 						@ErrSevr int = ERROR_SEVERITY()
-						 
-						 --set @ErrMesage = ERROR_SEVERITY()
-						 --set @ErrSevr = ERROR_MESSAGE()
-						
-						--select @ErrMesage = ERROR_MESSAGE(), @ErrSevr = ERROR_SEVERITY()
 						RAISERROR (@ErrMesage, @ErrSevr, 1)
 
 				end catch
