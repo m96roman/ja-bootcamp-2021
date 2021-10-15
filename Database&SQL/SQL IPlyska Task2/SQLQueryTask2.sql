@@ -8,7 +8,7 @@ use BootcampTraining;
 
 
 	select
-		sum(TimeToCookInMins) CommonTimeToCook
+		sum(TimeToCookInMins) TotalTimeToCook
 	from Meal with(nolock)
 
 -------------Task2-----------------------
@@ -23,21 +23,16 @@ use BootcampTraining;
 	group by mel.Name
 
 ----------------Task3-----------------------------
-	select
-		*
-	from(
+	
 			select
 				mel.Name mealName,
-				avg(rec.Weight) avgWeight,
-				count(rec.IngredientId) IngredientQty
+				avg(rec.Weight) avgWeight
 			from Recipe rec with(nolock)
 			join Meal mel
 				on rec.MealId = mel.Id
-			group by mel.Name
-		) res
-	where res.IngredientQty < 3
-	order by res.avgWeight desc
-
+			group by mel.Name having count(IngredientId) < 3
+			order by avgWeight desc
+	
 ------------Task4---------------------------------
 
 	select Id, Name
@@ -62,4 +57,4 @@ use BootcampTraining;
 
 --------------------------------------------------------------------------	  
 
-	  
+	  select * from Recipe
