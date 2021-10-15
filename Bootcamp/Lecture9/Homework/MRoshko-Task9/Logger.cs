@@ -17,28 +17,9 @@ namespace MRoshko_Task9
         {
             var path = $@"{Directory.GetCurrentDirectory()}\CallLog.txt";
 
-            var logMassege = $@"{DateTime.UtcNow} - {log}";
+            var logMessage = $"\n{DateTime.UtcNow} - {log}";
 
-            if (File.Exists(Path.GetFileName(path)))
-            {
-                using (StreamWriter fa = File.AppendText(path))
-                {
-                    fa.WriteLine(logMassege);
-                }
-            }
-            else
-            {
-                using (FileStream fs = File.Create(path))
-                {
-                    var text = Encoding.Default.GetBytes(logMassege);
-
-                    fs.Write(text, 0, text.Length);
-                }
-            }
-
-            Console.WriteLine($@"{DateTime.UtcNow} - {log}");
+            File.AppendAllText(path, logMessage);                      
         }
     }
-
-
 }

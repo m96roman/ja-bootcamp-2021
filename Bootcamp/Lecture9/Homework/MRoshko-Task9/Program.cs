@@ -14,11 +14,11 @@ namespace MRoshko_Task9
     {
         static void Main(string[] args)
         {
-            Task1();
+            //Task1();
 
             //Task2();
 
-            //Task3();
+            Task3();
 
             //Task4();
         }
@@ -42,7 +42,16 @@ namespace MRoshko_Task9
             do
             {
                 data = Console.ReadLine();
+
+                if (data.Equals("LET ME OUT"))
+                {
+                    WriteIntoFile(dataStorage, indexOfFile);
+
+                    MoveIntoFolder();
+                }
+
                 dataStorage += $"{data}\n";
+
                 lineCount++;
 
                 if (lineCount == 8)
@@ -52,14 +61,7 @@ namespace MRoshko_Task9
                     indexOfFile++;
                     lineCount = 0;
                     dataStorage = default;
-
-                }
-                if (data.Equals("LET ME OUT"))
-                {
-                    WriteIntoFile(dataStorage, indexOfFile);
-
-                    MoveIntoFolder();
-                }
+                }               
             }
             while (!data.Equals("LET ME OUT"));
         }
@@ -70,13 +72,10 @@ namespace MRoshko_Task9
             var group = new List<Student>();
 
             if (File.Exists(Path.GetFileName(path)))
-            {
-                using (StreamReader r = new StreamReader(path))
-                {
-                    string jsonReader = r.ReadToEnd();
+            {                               
+                string jsonReader = File.ReadAllText(path);
 
-                    group = JsonSerializer.Deserialize<List<Student>>(jsonReader);
-                }
+                group = JsonSerializer.Deserialize<List<Student>>(jsonReader);                
             }
             else
             {
@@ -145,16 +144,7 @@ namespace MRoshko_Task9
 
             try
             {
-                if (File.Exists(fileName))
-                {
-                    File.Delete(fileName);
-                }
-                using (FileStream fs = File.Create(fileName))
-                {
-                    var text = Encoding.Default.GetBytes(data);
-
-                    fs.Write(text, 0, text.Length);
-                }
+                File.WriteAllText(fileName,data);             
             }
             catch (Exception ex)
             {
@@ -176,7 +166,7 @@ namespace MRoshko_Task9
 
                 DirectoryInfo di = Directory.CreateDirectory(targetPath);
 
-                string[] files = Directory.GetFiles(directory);
+                string[] files = Directory.GetFiles(directory, "*.txt");
 
                 foreach (var f in files)
                 {

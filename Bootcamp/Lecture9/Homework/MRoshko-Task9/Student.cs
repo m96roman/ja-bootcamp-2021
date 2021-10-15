@@ -16,7 +16,7 @@ namespace MRoshko_Task9
 
         public int LecturesAttended { get; set; }
 
-        public Student(string name, int lecturesAttended)
+        public Student(string name, int lecturesAttended) : base()
         {
             Name = name;
 
