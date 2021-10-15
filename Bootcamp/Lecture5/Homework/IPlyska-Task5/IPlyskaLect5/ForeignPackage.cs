@@ -14,5 +14,6 @@ namespace IPlyskaLect5
         {
             SenderCountry = senderCountry;
         }
+
     }
 }

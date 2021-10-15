@@ -19,7 +19,6 @@ namespace IPlyskaLect5
     public class Point : Figure
     {
         private readonly int x;
-
         private readonly int y;
 
         public Point(int x, int y)
@@ -27,6 +26,7 @@ namespace IPlyskaLect5
             this.x = x;
             this.y = y;
         }
+
         public override void Draw()
         {
             Console.WriteLine($"Point {this.GetType().Name} was drawn with coordinates {x}, {y}");
@@ -36,6 +36,7 @@ namespace IPlyskaLect5
     {
         private readonly int a;
         private readonly int b;
+
         public Rectangle(int a, int b)
         {
             this.a = a;

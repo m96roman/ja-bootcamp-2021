@@ -16,15 +16,6 @@ namespace IPlyskaLect5
             }
 
             Console.WriteLine($"Hi, {package.Recipient}. We have {package.Title} with size = {package.Size} for you.");
-
-            if (package is DomesticPackage domestic)
-            {
-                Console.WriteLine($"Pop-up notification from NP: You can pick up you package at {domestic.DepartmentId} department.");
-            }
-            else if(package is ForeignPackage foreign)
-            {
-                Console.WriteLine($"SMS from MeestExprees: Delivered package from {foreign.SenderCountry}");
-            }
       }
     }
 }

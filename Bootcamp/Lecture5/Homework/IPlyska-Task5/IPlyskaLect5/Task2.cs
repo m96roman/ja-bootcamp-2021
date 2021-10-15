@@ -29,19 +29,18 @@ namespace IPlyskaLect5
         {          
             List<Person> people = new List<Person>();
             Random random = new Random();
-            int counter = 1;
-            while (counter != 20)
+
+            for (int i = 0; i < 20; i++)
             {
                 people.Add(new Person(cities[random.Next(0, cities.Count)], names[random.Next(0, names.Count)]));
-
-                counter++;
+                i++;
             }
-
+           
             foreach (var item in people)
             {
-                if (countedCities.TryGetValue(item.City, out _))
+                if (countedCities.ContainsKey(item.City))
                 {
-                    countedCities[item.City] += 1;
+                    countedCities[item.City]++;
                 }
                 else
                 {

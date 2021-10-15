@@ -22,9 +22,9 @@ namespace IPlyskaLect5
             //figure.FigureInfo<Figure>(new Point(300, 700), new Circle(789));
 
             //
-            //Task2
-            Task2 task2 = new Task2();
-            task2.Run();
+            ////Task2
+            //Task2 task2 = new Task2();
+            //task2.Run();
             //
             //Task3
 

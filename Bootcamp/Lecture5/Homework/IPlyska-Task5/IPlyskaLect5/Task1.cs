@@ -16,7 +16,7 @@ namespace IPlyskaLect5
         /// <param name="figures"></param>
         public void FigureInfo<T>(IEnumerable<T> figures) where T : Figure
         {
-            if (figures is null || figures.Count() == 0)
+            if (figures is null)
             {
                 throw new ArgumentNullException(nameof(figures), "Agument can not be a null or an empty");
             }

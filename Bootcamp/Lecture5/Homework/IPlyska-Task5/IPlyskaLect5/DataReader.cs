@@ -22,7 +22,6 @@ namespace IPlyskaLect5
 
         public DbResult<int> GetMagicNumber()
         {
-            
             Random random = new Random();
             int x = random.Next(0, 3);
 
