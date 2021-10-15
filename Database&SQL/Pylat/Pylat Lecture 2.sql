@@ -1,29 +1,29 @@
 -- 1 -------------------------
-Select sum(Distance) from Trip
+SELECT SUM(Distance) FROM Trip
 
 --2---------------------------
-Select CB.NAME, MAX(CM.MaxSpeed) from CarModel as CM
-Inner Join CarBrand AS CB on  cm.BrandId = CB.ID
+SELECT CB.Name, MAX(CM.MaxSpeed) FROM CarModel AS CM
+INNER JOIN CarBrand AS CB ON  cm.BrandId = CB.ID
 GROUP BY CB.Name
 
 --3---------------------------
-Select CB.NAME,CB.ID, MAX(CM.MaxSpeed) as MAXSPEED from CarModel as CM
-Inner Join CarBrand AS CB on  cm.BrandId = CB.ID
+SELECT CB.NAME,CB.ID, MAX(CM.MaxSpeed) AS MAXSPEED FROM CarModel AS CM
+INNER JOIN CarBrand AS CB ON  cm.BrandId = CB.ID
 GROUP BY CB.Name, CB.ID
-Having Count(CM.BrandId) > 1
+HAVING COUNT(CM.BrandId) > 1
 
 --4----------------------------
-Select ID, Name from CarBrand
-Union
-Select ID,Name from CarModel
-Order by Name
+SELECT ID, Name FROM CarBrand
+UNION
+SELECT ID,Name FROM CarModel
+ORDER BY Name
 
 --5----------------------------
-Select CB.Name, CM.NAME, DATEDIFF(MINUTE, T.StartDate, T.EndDate) as Minutes from CarBrand  as CB
-INNER Join CarModel as CM on CB.ID = CM.BrandId
-INNER Join Car as C on CM.ID = C.ModelId
-Right Join Trip as T on C.ID = T.CarId
-Where DATEDIFF(hour, T.StartDate, T.EndDate) < 1 OR StartDate IS NULL
+SELECT CB.Name, CM.NAME, DATEDIFF(MINUTE, T.StartDate, T.EndDate) AS Minutes, t.ID AS TripId FROM CarBrand  AS CB
+INNER JOIN CarModel AS CM ON CB.ID = CM.BrandId
+INNER Join Car AS C ON CM.ID = C.ModelId
+LEFT JOIN Trip AS T ON C.ID = T.CarId
+WHERE DATEDIFF(HOUR, T.StartDate, T.EndDate) < 1 OR T.ID IS NULL
 
 --select * from CarBrand
 --select * from CarModel
