@@ -8,14 +8,21 @@ namespace MRoshko_Task4
 {
     public class Nokia : Phone
     {
-        public Nokia(int batteryLevel) : base(batteryLevel)
+        public Nokia(string batteryLevel) : base(batteryLevel)
         {
 
         }
 
         public void PrayForBattery()
         {
-            this.batteryLevel += 8;
+            if (batteryLevel + 8 >= 100)
+            {
+                this.batteryLevel = 100;
+            }
+            else 
+            {
+                this.batteryLevel += 8;
+            }
 
             Console.WriteLine($"praying for the battery");
         }

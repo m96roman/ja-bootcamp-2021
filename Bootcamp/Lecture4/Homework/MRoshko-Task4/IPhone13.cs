@@ -8,7 +8,7 @@ namespace MRoshko_Task4
 {
     class IPhone13 : Phone 
     {
-        public IPhone13(int batteryLevel): base(batteryLevel) { 
+        public IPhone13(string batteryLevel): base(batteryLevel) { 
 
         }
     }

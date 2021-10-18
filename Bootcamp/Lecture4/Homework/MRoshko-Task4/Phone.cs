@@ -8,20 +8,19 @@ namespace MRoshko_Task4
 {
     public class Phone
     {
-        protected int batteryLevel;
+        internal int batteryLevel { get; set; }
 
-        public Phone(int batteryLevel)
+        public Phone(string batteryLevel)
         {
-
             SetBatteryLevel(batteryLevel);
-
         }
 
-        public void SetBatteryLevel(int batteryLevel)
+        public void SetBatteryLevel(string batteryLevel)
         {
-            if (batteryLevel >= 0 && batteryLevel <= 100)
+            bool state = int.TryParse(batteryLevel, out int numb);
+            if (numb >= 0 && numb <= 100 && state || numb == 0)
             {
-                this.batteryLevel = batteryLevel;
+                this.batteryLevel = numb;
             }
             else
             {
@@ -54,8 +53,15 @@ namespace MRoshko_Task4
 
         public void ChargeABit()
         {
-            this.batteryLevel += 1;
 
+            if (this.batteryLevel + 1 >= 100)
+            {
+                this.batteryLevel = 100;
+            }
+            else 
+            {
+                this.batteryLevel += 1;
+            }
             Console.WriteLine($"Charging {GetType()} by 1%");
         }
 

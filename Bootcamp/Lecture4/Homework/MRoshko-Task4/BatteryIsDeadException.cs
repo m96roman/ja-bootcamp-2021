@@ -8,7 +8,6 @@ namespace MRoshko_Task4
 {
     class BatteryIsDeadException : Exception
     {
-
         public Phone Instance { get; set; }
 
         public BatteryIsDeadException()
