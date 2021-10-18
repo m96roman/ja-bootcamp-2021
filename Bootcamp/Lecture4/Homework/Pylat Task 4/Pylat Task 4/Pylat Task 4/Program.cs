@@ -35,6 +35,8 @@ namespace Pylat_Task_4
                  }
              }*/
 
+            Logger logger = new Logger();
+
         }
     }
 }

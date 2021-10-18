@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29306.81
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pylat Task 4", "Pylat Task 4\Pylat Task 4.csproj", "{4BFECACD-A6E7-4FAF-949C-E2B1DB0E229E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pylat Task 4", "Pylat Task 4\Pylat Task 4.csproj", "{4BFECACD-A6E7-4FAF-949C-E2B1DB0E229E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestsForLecture1", "Pylat Test 1\TestsForLecture1\TestsForLecture1\TestsForLecture1.csproj", "{1A7761EA-EAE8-4FA3-8023-B1CBAD8F3479}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{4BFECACD-A6E7-4FAF-949C-E2B1DB0E229E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BFECACD-A6E7-4FAF-949C-E2B1DB0E229E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BFECACD-A6E7-4FAF-949C-E2B1DB0E229E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A7761EA-EAE8-4FA3-8023-B1CBAD8F3479}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A7761EA-EAE8-4FA3-8023-B1CBAD8F3479}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A7761EA-EAE8-4FA3-8023-B1CBAD8F3479}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A7761EA-EAE8-4FA3-8023-B1CBAD8F3479}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
