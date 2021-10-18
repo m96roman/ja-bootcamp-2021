@@ -8,6 +8,8 @@ namespace DIVanyshyn_Task4
 
         internal ILogger logger { get; }
 
+        public int BatteryLevel { get => batteryLevel; }
+
         protected int batteryLevel;
 
         protected Phone(int batteryLevel, string phoneName, ILogger logger)
