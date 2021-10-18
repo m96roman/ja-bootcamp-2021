@@ -6,21 +6,27 @@ namespace ADovhanych_Task4
     {
         static void Main(string[] args)
         {
-            PhoneEmergencyTestHolder phones = new PhoneEmergencyTestHolder(); 
-            int times = 1;
+            Phone[] phones = new Phone[]
+            {
+                new Nokia(4),
+                new Nokia(8),
+                new IPhone(25),
+                new IPhone(10),
+                new IPhone(3)
+            };
 
-            while (times != 10)
+            PhoneEmergencyTestHolder phoneEmergency = new PhoneEmergencyTestHolder(phones);
+
+            for (int i = 0; i < 10; i++)
             {
                 try
                 {
-                    PhoneEmergencyTestHolder.TestEmergency(phones);
+                    PhoneEmergencyTestHolder.TestEmergency(phoneEmergency);
                 }
                 catch (BatteryIsDeadException)
                 {
-                    throw new BatteryIsDeadException($"Failed to call ambulance");
+                    throw;
                 }
-
-                times++;
             }
         }
     }

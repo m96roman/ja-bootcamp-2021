@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ADovhanych_Task4
 {
-    abstract class Phone
+    public class Phone
     {
         public string PhoneName { get; set; }
         public int BatteryLvl { get; set; }
@@ -19,6 +19,23 @@ namespace ADovhanych_Task4
             BatteryLvl = batteryLvl;
         }
 
-        public abstract void CallAmbulance();
+        public void CallAmbulance()
+        {
+            if (BatteryLvl > 100 || BatteryLvl < 0)
+            {
+                throw new InvalidPhoneChargeException();
+            }
+
+            if (BatteryLvl >= 5)
+            {
+                BatteryLvl -= 5;
+                Console.WriteLine($"Calling an ambulance from {GetType().Name}, remaining charge: {BatteryLvl}");
+            }
+            else
+            {
+                BatteryLvl = 0;
+                throw new BatteryIsDeadException();
+            }
+        }
     }
 }

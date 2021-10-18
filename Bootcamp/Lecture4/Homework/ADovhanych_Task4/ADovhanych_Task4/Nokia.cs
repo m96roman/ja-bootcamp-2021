@@ -8,45 +8,27 @@ namespace ADovhanych_Task4
 {
     class Nokia : Phone, ICharge
     {
-        public Nokia()
-        { }
-
-        public Nokia(string phoneName, int batteryLvl) : base(phoneName, batteryLvl)
+        public Nokia(int batteryLvl)
         {
-            PhoneName = phoneName;
             BatteryLvl = batteryLvl;
         }
 
         public void PrayForBatery()
         {
             BatteryLvl += 8;
-            Console.WriteLine($"Charging {PhoneName}");
+            Console.WriteLine($"Charging {GetType().Name}");
         }
 
-        public void Charge()
+        void ICharge.Charge()
         {
             BatteryLvl = 100;
-            Console.WriteLine($"Charging {PhoneName} to 100%");
+            Console.WriteLine($"Charging {GetType().Name} to 100%");
         }
 
-        public void ChargeABit()
+        void ICharge.ChargeABit()
         {
             BatteryLvl += 1;
-            Console.WriteLine($"Charging {PhoneName} by 1%");
-        }
-
-        public override void CallAmbulance()
-        { 
-            if (BatteryLvl >= 5)
-            {
-                BatteryLvl -= 5;
-                Console.WriteLine($"Calling an ambulance from {PhoneName}, remaining charge: {BatteryLvl}");
-            }
-            else
-            {
-                BatteryLvl = 0;
-                throw new BatteryIsDeadException();
-            }
+            Console.WriteLine($"Charging {GetType().Name} by 1%");
         }
     }
 }

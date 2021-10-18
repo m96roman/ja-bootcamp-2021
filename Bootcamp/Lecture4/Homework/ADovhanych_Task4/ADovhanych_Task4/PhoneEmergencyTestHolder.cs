@@ -5,26 +5,12 @@ namespace ADovhanych_Task4
 {
     class PhoneEmergencyTestHolder : IEnumerable
     {
-        public Phone[] phoneInstance = new Phone[3];
+        Phone[] phones;
+        IEnumerator IEnumerable.GetEnumerator() => phones.GetEnumerator();
 
-        public PhoneEmergencyTestHolder()
+        public PhoneEmergencyTestHolder(Phone[] phones)
         {
-            try
-            {
-                phoneInstance[0] = new Iphone() { BatteryLvl = 4, PhoneName = "iPhone1" };
-                phoneInstance[1] = new Nokia() { BatteryLvl = 8, PhoneName = "Nokia10" };
-                phoneInstance[2] = new Iphone() { BatteryLvl = 25, PhoneName = "Iphone2" };
-            }
-            catch (InvalidPhoneChargeException)
-            {
-                throw new InvalidPhoneChargeException();
-            }
-
-        }
-
-        public IEnumerator GetEnumerator()
-        {
-            return phoneInstance.GetEnumerator();
+            this.phones = phones;
         }
 
         public static void TestEmergency(PhoneEmergencyTestHolder phoneInstance)
@@ -40,9 +26,10 @@ namespace ADovhanych_Task4
                     if (phone is Nokia nokiaPhone)
                     {
                         nokiaPhone.PrayForBatery();
+                        nokiaPhone.CallAmbulance();
                     }
 
-                    Console.WriteLine($"Phone failed to call an ambulance");
+                    Console.WriteLine($"Phone failed to call an ambulance {phone.GetType().Name}");
                 }
             }
         }
