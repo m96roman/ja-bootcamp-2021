@@ -41,9 +41,7 @@ GO
 
 CREATE OR ALTER PROCEDURE Test_spMartin_Procedure.[test 3. happy path]
 AS
-BEGIN
-	SELECT TOP 0 * INTO #MartinProcedureExpected FROM CarModel;
-
+BEGIN	
 	SELECT TOP 0 * INTO #Expected FROM CarModel;
 	INSERT INTO #Expected
 	VALUES (1,'Q4',400),(2,'Supra',120);
