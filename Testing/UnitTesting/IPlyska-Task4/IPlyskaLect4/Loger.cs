@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
+[assembly: InternalsVisibleTo("PhoneUnitTest")]
+
 namespace IPlyskaLect4
 {
-    class Loger
+    internal class Loger
     {
-        public static List<string> messages = new List<string>();
+        internal static List<string> messages = new List<string>();
 
         public static void Log(string message)
         {
