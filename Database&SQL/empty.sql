@@ -10,6 +10,10 @@ CREATE OR ALTER PROCEDURE Test_spMartin_Procedure.[Setup]
 AS
 BEGIN
 	EXEC tSQLt.FakeTable'CarModel' , @Identity =1;
+	EXEC tSQLt.FakeTable 'Trip',@Identity =1;
+	INSERT INTO Trip(Distance)
+	VALUES 
+	(1234);
 END
 GO
 
