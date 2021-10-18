@@ -16,7 +16,7 @@ namespace IPlyskaLect4
                 throw new InappropriateBatteryLevelValueException(BatteryLevel.ToString());
             }
 
-            Console.WriteLine("praying for the battery");
+            Loger.Log("praying for the battery");
         }
     }
 }

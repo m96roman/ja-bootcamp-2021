@@ -29,13 +29,13 @@ namespace IPlyskaLect4
         public void Charge()
         {
             BatteryLevel = 100;
-            Console.WriteLine($"Charging {this.GetType().Name} to 100%");
+            Loger.Log($"Charging {this.GetType().Name} to 100%");
         }
 
         public void ChargeABit()
         {
             BatteryLevel += 1;
-            Console.WriteLine($"Charging {this.GetType().Name} by 1%");
+            Loger.Log($"Charging {this.GetType().Name} by 1%");
         }
 
         public void CallAmbulance()
@@ -44,7 +44,7 @@ namespace IPlyskaLect4
             if (BatteryLevel >= 5)
             {
                 BatteryLevel -= 5;
-                Console.WriteLine($"calling an ambulance from {this.GetType().Name}, remaining charge: {BatteryLevel}%");
+                Loger.Log($"calling an ambulance from {this.GetType().Name}, remaining charge: {BatteryLevel}%");
             }
             else
             {

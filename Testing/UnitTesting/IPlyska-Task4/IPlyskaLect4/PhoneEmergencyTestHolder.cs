@@ -42,13 +42,13 @@ namespace IPlyskaLect4
                     }
 
                     ex.phone = phone;
-                    Console.WriteLine($"Phone failed to call an ambulance: {phone.GetType()}");
+                    Loger.Log($"Phone failed to call an ambulance: {phone.GetType()}");
 
                     throw;
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message); 
+                    Loger.Log(ex.Message); 
                 }
                 finally
                 {
