@@ -1,3 +1,5 @@
+--Just Try Testing-----------
+
 --DROP TABLE IF EXISTS Tbl_NestorTest
  
 --CREATE TABLE Tbl_NestorTest
@@ -85,7 +87,7 @@
 --EXEC tSQLt.Run 'Func_ProductTest.[Test product function]'
 
 
---------------TEST 1----------------------
+--------------TEST 1 (Works)----------------------
 
 EXEC tSQLt.DropClass 'CarTestNestor'
 GO
@@ -118,7 +120,7 @@ GO
 EXEC tSQLt.Run 'CarTestNestor'
 GO
 
---TEST 2----------------
+--TEST 2 (I'll Fix It)--------------
 
 go 
 CREATE OR ALTER PROCEDURE dbo.TaskNestor  @Model Varchar(30)
