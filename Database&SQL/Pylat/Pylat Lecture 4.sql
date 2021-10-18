@@ -1,5 +1,4 @@
---Just Try Testing-----------
-
+------Just Try Testing--------------
 --DROP TABLE IF EXISTS Tbl_NestorTest
  
 --CREATE TABLE Tbl_NestorTest
@@ -87,7 +86,7 @@
 --EXEC tSQLt.Run 'Func_ProductTest.[Test product function]'
 
 
---------------TEST 1 (Works)----------------------
+--------------TEST 1----------------------
 
 EXEC tSQLt.DropClass 'CarTestNestor'
 GO
@@ -120,23 +119,23 @@ GO
 EXEC tSQLt.Run 'CarTestNestor'
 GO
 
---TEST 2 (I'll Fix It)--------------
+--TEST 2----------------
 
 go 
 CREATE OR ALTER PROCEDURE dbo.TaskNestor  @Model Varchar(30)
 AS
 DECLARE @Brand VARCHAR(30)
-SET @Brand = 'xxx'
 BEGIN TRANSACTION
-BEGIN TRY 
-INSERT INTO CarModel (Name)
-values (@Brand)
-END TRY
-BEGIN CATCH
-SELECT ERROR_NUMBER() AS ERRORNUMBER
-INSERT INTO CarBrand(Name)
-values (@Brand)
-END CATCH
+	BEGIN TRY 
+		INSERT INTO CarModel (Name)
+		values (@Model)
+	END TRY
+	BEGIN CATCH
+		SELECT ERROR_NUMBER() AS ERRORNUMBER
+		
+		INSERT INTO CarBrand(Name)
+		values (@Model)
+	END CATCH
 COMMIT TRAN
 GO;
 
@@ -144,19 +143,17 @@ SELECT * FROM CarBrand
 EXEC dbo.TaskNestor  @Model = 'DSFS'
 
 
+
+--------------------------------------------------------
 EXEC tSQLt.DropClass 'CarTestNestor2'
 GO
-
 EXEC tSQLt.NewTestClass 'CarTestNestor2'
 GO
 
 CREATE PROCEDURE CarTestNestor2.[Setup]
 AS
 BEGIN
-EXEC tSQLt.FakeTable 'Carbrand' 
-INSERT INTO CarModel(Id, Name )
-VALUES 
-	(88 ,'xxx')
+	EXEC tSQLt.FakeTable 'CarBrand', @Identity = 1
 END
 GO
 
@@ -164,13 +161,27 @@ GO
 CREATE OR ALTER PROCEDURE CarTestNestor2.[test 1. raise error if CarModel.ID is null]
 AS
 BEGIN
-CREATE TABLE #Expected (CarBrand VARCHAR(30))
-SELECT TOP 0 * INTO #Actual FROM #Expected
-INSERT INTO #Expected (CarBrand)
-VALUES ('xxx')
-INSERT #Actual EXEC dbo.TaskNestor
+
+CREATE TABLE #Expected (ID INT, Name VARCHAR(30))
+INSERT INTO #Expected (ID, Name)
+VALUES (1, 'xxx1')
+
+
+
+
+CREATE TABLE #Temp (ID INT)
+INSERT INTO #Temp EXEC dbo.TaskNestor 'xxx1'
+
+SELECT * INTO #Actual FROM CarBrand
+
+SELECT * FROM #Actual
+SELECT * FROM #Expected
+
+
 EXEC tSQLt.AssertEqualsTable #Expected, #Actual
 END
 GO
+
 EXEC tSQLt.Run 'CarTestNestor2'
 GO
+
