@@ -64,8 +64,8 @@ namespace DIVanyshyn_Task4
                 {
                     if (bs.Phone is not Nokia nokia)
                     {
-                        Console.WriteLine($"Phone failed to call an ambulance: {bs.Phone.GetType().Name}");
-                        
+                        bs.Phone.logger.WriteLine($"Phone failed to call an ambulance: {bs.Phone.GetType().Name}", MessageType.Exception);
+
                         throw;
                     }
 

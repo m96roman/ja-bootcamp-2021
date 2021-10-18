@@ -2,12 +2,15 @@
 
 namespace DIVanyshyn_Task4
 {
-    public abstract class Phone : IChargable
+    internal abstract class Phone : IChargable
     {
         private readonly string phoneName;
+
+        internal ILogger logger { get; }
+
         protected int batteryLevel;
 
-        protected Phone(int batteryLevel, string phoneName)
+        protected Phone(int batteryLevel, string phoneName, ILogger logger)
         {
             if (batteryLevel < 0 || batteryLevel > 100)
             {
@@ -16,6 +19,7 @@ namespace DIVanyshyn_Task4
 
             this.batteryLevel = batteryLevel;
             this.phoneName = phoneName;
+            this.logger = logger;
         }
 
         /// <summary>
@@ -32,7 +36,7 @@ namespace DIVanyshyn_Task4
             }
 
             batteryLevel -= 5;
-            Console.WriteLine($"Calling an ambulance for phone {phoneName} remaining charge {batteryLevel}%");
+            logger.WriteLine($"Calling an ambulance for phone {phoneName} remaining charge {batteryLevel}%", MessageType.Message);
         }
 
         /// <summary>
@@ -41,7 +45,7 @@ namespace DIVanyshyn_Task4
         public void Charge()
         {
             batteryLevel = 100;
-            Console.WriteLine($"Charging {phoneName} to 100%");
+            logger.WriteLine($"Charging {phoneName} to 100%", MessageType.Message);
         }
 
         /// <summary>
@@ -50,7 +54,7 @@ namespace DIVanyshyn_Task4
         public void ChargeABit()
         {
             batteryLevel += 1;
-            Console.WriteLine($"Charging {phoneName} by 1%");
+            logger.WriteLine($"Charging {phoneName} by 1%", MessageType.Message);
         }
 
         /// <summary>
@@ -58,7 +62,7 @@ namespace DIVanyshyn_Task4
         /// </summary>
         public void Status()
         {
-            Console.WriteLine($"Phone {phoneName} has a battery level {batteryLevel}");
+            logger.WriteLine($"Phone {phoneName} has a battery level {batteryLevel}", MessageType.Message);
         }
     }
 }

@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
+[assembly: InternalsVisibleTo("DIvanyshyn-UnitTests-Day1")]
 namespace DIVanyshyn_Task4
 {
     class Program
     {
         static void Main(string[] args)
         {
+            ILogger logger = new OutLogger();
             int[] batteryLevels = new[] { 4, 8, 25 };
             PhoneEmeregencyTestHolder holder = new();
 
@@ -14,12 +17,12 @@ namespace DIVanyshyn_Task4
             {
                 try
                 {
-                    holder.Add(new Nokia(batteryLevels[i], $"Nokia {i}"));
-                    holder.Add(new IPhone13(batteryLevels[i], $"IPhone13 {i}"));
+                    holder.Add(new Nokia(batteryLevels[i], $"Nokia {i}", logger));
+                    holder.Add(new IPhone13(batteryLevels[i], $"IPhone13 {i}", logger));
                 }
                 catch (ArgumentException exc)
                 {
-                    Console.WriteLine($"{exc.Message} happened in constructor of type {nameof(Phone)} because of parameter {exc.ParamName}");
+                    logger.WriteLine($"{exc.Message} happened in constructor of type {nameof(Phone)} because of parameter {exc.ParamName}", MessageType.Exception);
                 }
             }
 

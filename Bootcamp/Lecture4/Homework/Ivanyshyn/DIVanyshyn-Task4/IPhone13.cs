@@ -8,7 +8,7 @@
         /// </summary>
         /// <param name="batteryLevel"></param>
         /// <exception cref="ArgumentException">When battery level is not in range from 0 to 100</exception>
-        public IPhone13(int batteryLevel, string phoneName) : base(batteryLevel, phoneName)
+        public IPhone13(int batteryLevel, string phoneName, ILogger logger) : base(batteryLevel, phoneName, logger)
         {
         }
     }
