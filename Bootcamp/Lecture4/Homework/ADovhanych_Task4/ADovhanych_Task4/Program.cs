@@ -1,10 +1,13 @@
 ﻿using System;
 
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("UnitTestsPhonesApp")]
+
+
 namespace ADovhanych_Task4
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        internal static void Main(string[] args)
         {
             Phone[] phones = new Phone[]
             {
