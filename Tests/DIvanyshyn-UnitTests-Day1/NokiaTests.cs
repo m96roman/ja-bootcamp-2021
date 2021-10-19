@@ -14,13 +14,36 @@ namespace DIvanyshyn_UnitTests_Day1
 
         public void RunAll()
         {
-            Test_PrayForBattery_Log_Nokia();
+            Test_PrayForBattery_Log_Nokia(1, "123");
+            Test_PrayForBattery_Log_Nokia(4, "123");
+
+            Test_PrayForBattery_Work_Nokia(1, "123");
+            Test_PrayForBattery_Work_Nokia(4, "123");
         }
 
-        private void Test_PrayForBattery_Log_Nokia()
+        private void Test_PrayForBattery_Work_Nokia(int batteryLevel, string Name)
         {
             FakeLogger fakeLogger = new FakeLogger();
-            Nokia nokia = new Nokia(10, "123", fakeLogger);
+
+            Nokia nokia = (Nokia)PhoneBuilder.GetPhone(batteryLevel, Name, typeof(Nokia), fakeLogger);
+
+            nokia.PrayForBattery();
+
+            if (nokia.BatteryLevel == (batteryLevel + 8))
+            {
+                writeResult.Invoke(nameof(Test_PrayForBattery_Log_Nokia) + " has passed", ConsoleColor.Green);
+
+                return;
+            }
+
+            writeResult.Invoke(nameof(Test_PrayForBattery_Log_Nokia) + " has failed", ConsoleColor.Red);
+        }
+
+        private void Test_PrayForBattery_Log_Nokia(int batteryLevel, string Name)
+        {
+            FakeLogger fakeLogger = new FakeLogger();
+
+            Nokia nokia = (Nokia)PhoneBuilder.GetPhone(batteryLevel, Name, typeof(Nokia), fakeLogger);
 
             nokia.PrayForBattery();
 

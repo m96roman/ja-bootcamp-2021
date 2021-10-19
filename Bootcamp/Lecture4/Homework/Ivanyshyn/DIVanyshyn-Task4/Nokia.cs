@@ -12,6 +12,9 @@
         {
         }
 
+        /// <summary>
+        /// Adds to batteryLevel 8% and prints message "praying for the battery"
+        /// </summary>
         public void PrayForBattery()
         {
             batteryLevel += 8;

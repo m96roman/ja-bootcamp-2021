@@ -21,6 +21,8 @@ namespace DIvanyshyn_UnitTests_Day1
 
             phoneTests1.RunAll();
 
+            Console.WriteLine(new string('~', 20));
+
             phoneTests2.RunAll();
 
             Console.WriteLine(new string('~', 20));
