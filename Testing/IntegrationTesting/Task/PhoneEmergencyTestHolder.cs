@@ -13,7 +13,7 @@ namespace Task
             Phones = phonesForTest;
         }
 
-        public static void TestEmergency(PhoneEmergencyTestHolder holder)
+        public static void TestEmergency(PhoneEmergencyTestHolder holder, ILogger logger)
         {
             foreach (IPhone phone in holder)
             {
@@ -23,8 +23,7 @@ namespace Task
                 }
                 catch (BatteryIsDeadException ex)
                 {
-                    
-                    Logger.WriteLine($"Phone failed to call an ambulance: Phone name -> {phone.PhoneName}, Phone Type -> {phone.Type}");
+                    logger.LogMessage($"Phone failed to call an ambulance: Phone name -> {phone.PhoneName}, Phone Type -> {phone.Type}");
                     if (ex.Phone is Nokia nokia)
                     {
                         nokia.PrayForBattery();

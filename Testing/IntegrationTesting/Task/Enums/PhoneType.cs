@@ -1,10 +1,11 @@
 ﻿using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("TestTask")]
-namespace Task.Interfaces
+namespace Task.Enums
 {
-    public interface ILogger
+    public enum PhoneType
     {
-        void LogMessage(string message);
+        IPhone,
+        Nokia
     }
 }

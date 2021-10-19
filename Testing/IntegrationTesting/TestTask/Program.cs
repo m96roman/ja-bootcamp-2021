@@ -1,103 +1,135 @@
-﻿using Task;
+﻿using System.Linq;
+using Task;
+using System;
+using Task.Interfaces;
+using TestTask.Interfaces;
+using Task.Enums;
 using Task.Exceptions;
 
 namespace TestTask
 {
     class Program
     {
-        static FakeLogger logger = new FakeLogger();
+        static IPhoneFactory phoneFactory = new PhoneFactory();
+
         static void Main(string[] args)
         {
-            //logger = Task.Logger;
-            //logger.Messages.Add("gdf");
             ChargeABitPhones();
             ChargPhones();
-            TryCallAmbulanceIPhoneException();
-            TryCallAmbulanceNokiaException();
+            PrayForBatteryPhones();
+            TryCallAmbulanceIPhoneBatteryLess5();
+            TryCallAmbulanceNokiaBatteryMore5();
+            CreateInstancesBatteryLevel();
         }
 
-        static void TryCallAmbulanceNokiaException()
+        static void CreateInstancesBatteryLevel()
         {
+            var logger = new FakeLogger();
+
             try
             {
-                TestData.nokiaPhoneZeroBattery.CallAmbulance();
+                IPhone phoneIPhone13 = phoneFactory.CreatePhone(PhoneType.IPhone, "IPhone 13 Test 1", 102, logger);
             }
-            catch (BatteryIsDeadException ex)
+            catch(ArgumentOutOfRangeException ex)
             {
-                if (ex.Phone?.BatteryLevel == 0)
-                {
-                    Logger.WriteLine($"{TestData.nokiaPhoneZeroBattery.PhoneName} try to call ambulance is PASSED!");
-                }
-                return;
+                logger.LogMessage(ex.Message);
+                TestResult(logger, "Battery range must be between 0 and 100");
             }
-            Logger.WriteLine($"{TestData.nokiaPhoneZeroBattery.PhoneName} try to call ambulance is FAILED!");
+
+            try
+            {
+                IPhone phoneNokia = phoneFactory.CreatePhone(PhoneType.Nokia, "Nokia 3110 Test 2", -2, logger);
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                logger.LogMessage(ex.Message);
+                TestResult(logger, "Battery range must be between 0 and 100");
+            }
         }
 
-        static void TryCallAmbulanceIPhoneException()
+        static void TryCallAmbulanceNokiaBatteryMore5()
         {
+            var logger = new FakeLogger();
+
+            IPhone phoneIPhone13 = phoneFactory.CreatePhone(PhoneType.IPhone, "IPhone 13 Test 1", 14, logger);
+            phoneIPhone13.CallAmbulance();
+
+            IPhone phoneNokia = phoneFactory.CreatePhone(PhoneType.Nokia, "Nokia 3110 Test 2", 18, logger);
+            phoneNokia.CallAmbulance();
+
+            TestResult(logger, $"calling an ambulance from {phoneIPhone13.PhoneName}");
+            TestResult(logger, $"calling an ambulance from {phoneNokia.PhoneName}");
+        }
+
+        static void TryCallAmbulanceIPhoneBatteryLess5()
+        {
+            var logger = new FakeLogger();
+
+            IPhone phoneIPhone13 = phoneFactory.CreatePhone(PhoneType.IPhone, "IPhone 13 Test 1", 4, logger);
             try
             {
-                TestData.phoneIPhone13ZeroBattery.CallAmbulance();
+                phoneIPhone13.CallAmbulance();
             }
             catch(BatteryIsDeadException ex)
             {
-                if(ex.Phone?.BatteryLevel == 0)
-                {
-                    Logger.WriteLine($"{TestData.phoneIPhone13ZeroBattery.PhoneName} try to call ambulance is PASSED!");
-                }
-                return;
+                TestResult(logger, $"{ex.Phone.PhoneName} have died battery!");
             }
-            Logger.WriteLine($"{TestData.phoneIPhone13ZeroBattery.PhoneName} try to call ambulance is FAILED!");
+
+            IPhone phoneNokia = phoneFactory.CreatePhone(PhoneType.Nokia, "Nokia 3110 Test 2", 3, logger);
+            try
+            {
+                phoneNokia.CallAmbulance();
+            }
+            catch(BatteryIsDeadException ex)
+            {
+                TestResult(logger, $"{ex.Phone.PhoneName} have died battery!");
+            }
+        }
+
+        static void PrayForBatteryPhones()
+        {
+            var logger = new FakeLogger();
+
+            Nokia phoneNokia = new Nokia("Nokia 3110 Test 2", 18, PhoneType.Nokia, logger);
+            phoneNokia.PrayForBattery();
+
+            TestResult(logger, $"praying for the battery {phoneNokia.PhoneName}");
         }
 
         static void ChargPhones()
         {
-            TestData.phoneIPhone13.Charge();
+            var logger = new FakeLogger();
 
-            if (TestData.phoneIPhone13.BatteryLevel == 100)
-            {
-                Logger.WriteLine($"{TestData.phoneIPhone13.PhoneName} Charg to 100% is PASSED!");
-            }
-            else
-            {
-                Logger.WriteLine($"{TestData.phoneIPhone13.PhoneName} Charg to 100% is FAILED!");
-            }
+            IPhone phoneIPhone13 = phoneFactory.CreatePhone(PhoneType.IPhone, "IPhone 13 Test 1", 14, logger);
+            phoneIPhone13.Charge();
 
-            TestData.nokiaPhone.Charge();
+            IPhone phoneNokia = phoneFactory.CreatePhone(PhoneType.Nokia, "Nokia 3110 Test 2", 18, logger);
+            phoneNokia.Charge();
 
-            if (TestData.nokiaPhone.BatteryLevel == 100)
-            {
-                Logger.WriteLine($"{TestData.nokiaPhone.PhoneName} Charg to 100% is PASSED!");
-            }
-            else
-            {
-                Logger.WriteLine($"{TestData.nokiaPhone.PhoneName} Charg to 100% is FAILED!");
-            }
+            TestResult(logger, $"Charging {phoneIPhone13.PhoneName} to 100%");
+            TestResult(logger, $"Charging {phoneNokia.PhoneName} to 100%");
         }
 
         static void ChargeABitPhones()
         {
-            TestData.phoneIPhone13.ChargeABit();
+            var logger = new FakeLogger();
 
-            if(TestData.phoneIPhone13.BatteryLevel == 5)
-            {
-                Logger.WriteLine($"{TestData.phoneIPhone13.PhoneName} Charg a bit is PASSED!");
-            }
-            else
-            {
-                Logger.WriteLine($"{TestData.phoneIPhone13.PhoneName} Charg a bit is FAILED!");
-            }
+            IPhone phoneIPhone13 = phoneFactory.CreatePhone(PhoneType.IPhone, "IPhone 13 Test 1", 14, logger);
+            phoneIPhone13.ChargeABit();
 
-            TestData.nokiaPhone.ChargeABit();
+            IPhone phoneNokia = phoneFactory.CreatePhone(PhoneType.Nokia, "Nokia 3110 Test 2", 18, logger);
+            phoneNokia.ChargeABit();
 
-            if (TestData.nokiaPhone.BatteryLevel == 9)
-            {
-                Logger.WriteLine($"{TestData.nokiaPhone.PhoneName} Charg a bit is PASSED!");
-            }
-            else
-            {
-                Logger.WriteLine($"{TestData.nokiaPhone.PhoneName} Charg a bit is FAILED!");
-            }
-        } 
+            TestResult(logger, $"Charging {phoneIPhone13.PhoneName} a bit");
+            TestResult(logger, $"Charging {phoneNokia.PhoneName} a bit");
+        }
+
+        static void TestResult(FakeLogger logger, string checkStr)
+        {
+            Console.WriteLine(logger.Messages.Any(m => m.StartsWith(checkStr))
+                ? "PASSED"
+                : "FAILED");
+        }
     }
 }
+
