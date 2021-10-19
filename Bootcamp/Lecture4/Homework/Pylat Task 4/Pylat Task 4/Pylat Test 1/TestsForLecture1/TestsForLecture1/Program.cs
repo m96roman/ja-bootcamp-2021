@@ -12,7 +12,7 @@ namespace TestsForLecture1
             var test2 = new BateryLevelTests("Is", 0);
             var test3 = new BateryLevelTests("Is", 0);
             var test4 = new BateryLevelTests("Is", 66);
-            var test5 = new BateryLevelTests("Is", 3);
+            var test5 = new BateryLevelTests("Is", 10);
             var test6 = new BateryLevelTests("Is", 36);
             var test7 = new BateryLevelTests("Is", 3);
             var test8 = new BateryLevelTests("Is", 3);
@@ -31,14 +31,12 @@ namespace TestsForLecture1
                 logger.AddToList("Test 1 is passed, but batary level is not between 0 and 100: Batery Level is not between 0 and 100");
             }
 
-            // is batary higner than 5?
+            // is batery higner than 5?
             try
             {
-
-                test2.IsBateryLevelHigher5();
-                test2.CallAmbulance();
                 test2.IsBateryLevelHigher5();
                 Console.WriteLine("Test 2 passed");
+                logger.AddToList("Test 2 passed");
             }
             catch
             {
@@ -75,11 +73,12 @@ namespace TestsForLecture1
             try
             {
                 test5.IsBateryDad();
-                Console.WriteLine("Test 5 passed");
+                Console.WriteLine("Test 5 failed");
+                logger.AddToList("Test 5 failed");
             }
             catch
             {
-                logger.AddToList("Test 5 failed: Batary level lower than 5");
+                logger.AddToList("Test 5 passed");
                          }
 
             Console.WriteLine("Logger has values:");

@@ -30,11 +30,19 @@ namespace TestsForLecture1
             {
                 if (BateryLevel <= 5)
                 {
-                    Console.WriteLine("Batery level is lower (between 0 and 5)");
-                    Console.WriteLine($"-----------------------------------\n");
+                    var tesrBatery = 0;
+                    CallAmbulance();
+                    if(tesrBatery == BateryLevel)
+                    {
+                        Console.WriteLine("Test 2 passed");
+                    }else
+                    {
+                        throw new Exception();
+                    }
                 }
                 else
                 {
+                    Console.WriteLine("Test 2 passed");
                     Console.WriteLine("Batery is higher than 5\n");
                     Console.WriteLine($"-----------------------------------\n");
                 }
@@ -78,6 +86,7 @@ namespace TestsForLecture1
                 {
                     Console.WriteLine("Batery higher than 4");
                     Console.WriteLine($"-----------------------------------\n");
+                    throw new Exception();
                 }
             }
       

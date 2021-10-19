@@ -37,6 +37,7 @@ namespace Pylat_Task_4
 
         public void Charge()
         {
+
             BateryLevel = 100;
             Console.WriteLine($@"Charging {TypeOfPhone} to {BateryLevel}%");
         }
