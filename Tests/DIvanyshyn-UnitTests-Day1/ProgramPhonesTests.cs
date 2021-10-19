@@ -7,12 +7,14 @@ namespace DIvanyshyn_UnitTests_Day1
 {
     internal class ProgramPhonesTests : ITestable
     {
-        public ProgramPhonesTests(Action<string, ConsoleColor> writeResult)
-        {
-            WriteResult = writeResult;
-        }
+        private Action<string> logSucces;
+        private Action<string> logFailure;
 
-        public Action<string, ConsoleColor> WriteResult { get; }
+        public ProgramPhonesTests(Action<string> logSucces, Action<string> logFailure)
+        {
+            this.logSucces = logSucces;
+            this.logFailure = logFailure;
+        }
 
         public void RunAll()
         {
@@ -35,12 +37,12 @@ namespace DIvanyshyn_UnitTests_Day1
             //B=100-5->B++
             if (phone.BatteryLevel == 96)
             {
-                WriteResult.Invoke($"{nameof(Test_Catch_Exception_And_Charge)} has passed", ConsoleColor.Green);
+                logSucces.Invoke(nameof(Test_Catch_Exception_And_Charge));
 
                 return;
             }
 
-            WriteResult.Invoke($"{nameof(Test_Catch_Exception_And_Charge)} is failed", ConsoleColor.Red);
+            logFailure.Invoke(nameof(Test_Catch_Exception_And_Charge));
         }
 
         private void Test_Catch_Exception_And_Charge()
@@ -53,12 +55,12 @@ namespace DIvanyshyn_UnitTests_Day1
 
             if (phone.BatteryLevel == 100)
             {
-                WriteResult.Invoke($"{nameof(Test_Catch_Exception_And_Charge)} has passed", ConsoleColor.Green);
+                logSucces.Invoke(nameof(Test_Catch_Exception_And_Charge));
 
                 return;
             }
 
-            WriteResult.Invoke($"{nameof(Test_Catch_Exception_And_Charge)} is failed", ConsoleColor.Red);
+            logFailure.Invoke(nameof(Test_Catch_Exception_And_Charge));
         }
 
         private void Test_Create_Holder_Count_Of_CreatedPhones_is_2()
@@ -67,12 +69,12 @@ namespace DIvanyshyn_UnitTests_Day1
 
             if (holder.Count() == 2)
             {
-                WriteResult.Invoke($"{nameof(Test_Create_Holder_Count_Of_CreatedPhones_is_2)} has passed", ConsoleColor.Green);
+                logSucces.Invoke(nameof(Test_Create_Holder_Count_Of_CreatedPhones_is_2));
 
                 return;
             }
 
-            WriteResult.Invoke($"{nameof(Test_Create_Holder_Count_Of_CreatedPhones_is_2)} has failed", ConsoleColor.Red);
+            logFailure.Invoke(nameof(Test_Create_Holder_Count_Of_CreatedPhones_is_2));
         }
     }
 }

@@ -5,12 +5,16 @@ namespace DIvanyshyn_UnitTests_Day1
 {
     internal class UniversalPhoneTests : ITestable
     {
-        private Action<string, ConsoleColor> writeResult;
+        private Action<string> logSucces;
+
+        private Action<string> logFailure;
+
         private Type type;
 
-        public UniversalPhoneTests(Action<string, ConsoleColor> writeResult, Type phoneType)
+        public UniversalPhoneTests(Action<string> logSucces, Action<string> logFailure, Type phoneType)
         {
-            this.writeResult = writeResult;
+            this.logSucces = logSucces;
+            this.logFailure = logFailure;
             this.type = phoneType;
         }
 
@@ -25,14 +29,14 @@ namespace DIvanyshyn_UnitTests_Day1
             Test_CallAmbulance_Log_Phone(6, "123", this.type);
             Test_CallAmbulance_Log_Phone(96, "123", this.type);
 
-            Test_CallAmbulance_Work_Phone(6, "123", this.type);
-            Test_CallAmbulance_Work_Phone(7, "123", this.type);
+            Test_CallAmbulance_Work_Phone(6, "123", this.type, expectedValue: 1);
+            Test_CallAmbulance_Work_Phone(7, "123", this.type, expectedValue: 2);
 
             Test_ChargeABit_Log_Phone(3, "123", this.type);
             Test_ChargeABit_Log_Phone(2, "123", this.type);
 
-            Test_ChargeABit_Work_Phone(3, "123", this.type);
-            Test_ChargeABit_Work_Phone(2, "123", this.type);
+            Test_ChargeABit_Work_Phone(3, "123", this.type, expectedValue: 4);
+            Test_ChargeABit_Work_Phone(2, "123", this.type, expectedValue: 3);
 
             Test_Charge_Log_Phone(3, "123", this.type);
             Test_Charge_Work_Phone(3, "123", this.type);
@@ -52,15 +56,15 @@ namespace DIvanyshyn_UnitTests_Day1
                 fakeLogger.FakeLoggerLog[0].Key == $"Charging {name} by 1%" &&
                 fakeLogger.FakeLoggerLog[0].Value == MessageType.Message)
             {
-                writeResult.Invoke(nameof(Test_ChargeABit_Log_Phone) + " passed", ConsoleColor.Green);
+                logSucces.Invoke(nameof(Test_ChargeABit_Log_Phone));
 
                 return;
             }
 
-            writeResult.Invoke(nameof(Test_ChargeABit_Log_Phone) + " failed", ConsoleColor.Red);
+            logFailure.Invoke(nameof(Test_ChargeABit_Log_Phone));
         }
 
-        private void Test_ChargeABit_Work_Phone(int batteryLevel, string name, Type type)
+        private void Test_ChargeABit_Work_Phone(int batteryLevel, string name, Type type, int expectedValue)
         {
             FakeLogger fakeLogger = new FakeLogger();
 
@@ -68,14 +72,14 @@ namespace DIvanyshyn_UnitTests_Day1
 
             phone.ChargeABit();
 
-            if (phone.BatteryLevel == (batteryLevel + 1))
+            if (phone.BatteryLevel == expectedValue)
             {
-                writeResult.Invoke(nameof(Test_ChargeABit_Log_Phone) + " passed", ConsoleColor.Green);
+                logSucces.Invoke(nameof(Test_ChargeABit_Log_Phone));
 
                 return;
             }
 
-            writeResult.Invoke(nameof(Test_ChargeABit_Log_Phone) + " failed", ConsoleColor.Red);
+            logFailure.Invoke(nameof(Test_ChargeABit_Log_Phone));
         }
 
         private void Test_Charge_Log_Phone(int batteryLevel, string name, Type type)
@@ -89,12 +93,12 @@ namespace DIvanyshyn_UnitTests_Day1
                 fakeLogger.FakeLoggerLog[0].Key == $"Charging {name} to 100%" &&
                 fakeLogger.FakeLoggerLog[0].Value == MessageType.Message)
             {
-                writeResult.Invoke(nameof(Test_Charge_Log_Phone) + " has passed", ConsoleColor.Green);
+                logSucces.Invoke(nameof(Test_Charge_Log_Phone));
 
                 return;
             }
 
-            writeResult.Invoke(nameof(Test_Charge_Log_Phone) + " has failed", ConsoleColor.Red);
+            logFailure.Invoke(nameof(Test_Charge_Log_Phone));
         }
 
         private void Test_Charge_Work_Phone(int batteryLevel, string name, Type type)
@@ -106,12 +110,12 @@ namespace DIvanyshyn_UnitTests_Day1
 
             if (phone.BatteryLevel == 100)
             {
-                writeResult.Invoke(nameof(Test_Charge_Log_Phone) + " has passed", ConsoleColor.Green);
+                logSucces.Invoke(nameof(Test_Charge_Log_Phone));
 
                 return;
             }
 
-            writeResult.Invoke(nameof(Test_Charge_Log_Phone) + " has failed", ConsoleColor.Red);
+            logFailure.Invoke(nameof(Test_Charge_Log_Phone));
         }
 
         private void Test_CallAmbulance_ThrowException_Phone(int batteryLevel, string name, Type type)
@@ -128,13 +132,13 @@ namespace DIvanyshyn_UnitTests_Day1
             {
                 if (bs.Phone?.BatteryLevel == 0)
                 {
-                    writeResult.Invoke(nameof(Test_CallAmbulance_ThrowException_Phone) + " passed", ConsoleColor.Green);
+                    logSucces.Invoke(nameof(Test_CallAmbulance_ThrowException_Phone));
                 }
 
                 return;
             }
 
-            writeResult.Invoke(nameof(Test_CallAmbulance_ThrowException_Phone) + " failed", ConsoleColor.Red);
+            logFailure.Invoke(nameof(Test_CallAmbulance_ThrowException_Phone));
         }
 
         private void Test_CallAmbulance_Log_Phone(int batteryLevel, string name, Type type)
@@ -150,15 +154,15 @@ namespace DIvanyshyn_UnitTests_Day1
                 fakeLogger.FakeLoggerLog[0].Value == MessageType.Message)
             {
 
-                writeResult.Invoke(nameof(Test_CallAmbulance_Log_Phone) + " passed", ConsoleColor.Green);
+                logSucces.Invoke(nameof(Test_CallAmbulance_Log_Phone));
 
                 return;
             }
 
-            writeResult.Invoke(nameof(Test_CallAmbulance_Log_Phone) + " failed", ConsoleColor.Red);
+            logFailure.Invoke(nameof(Test_CallAmbulance_Log_Phone));
         }
 
-        private void Test_CallAmbulance_Work_Phone(int batteryLevel, string name, Type type)
+        private void Test_CallAmbulance_Work_Phone(int batteryLevel, string name, Type type, int expectedValue)
         {
             FakeLogger fakeLogger = new FakeLogger();
 
@@ -166,15 +170,15 @@ namespace DIvanyshyn_UnitTests_Day1
 
             phone.CallForAmbulance();
 
-            if (phone.BatteryLevel == (batteryLevel - 5))
+            if (phone.BatteryLevel == expectedValue)
             {
 
-                writeResult.Invoke(nameof(Test_CallAmbulance_Log_Phone) + " passed", ConsoleColor.Green);
+                logSucces.Invoke(nameof(Test_CallAmbulance_Log_Phone));
 
                 return;
             }
 
-            writeResult.Invoke(nameof(Test_CallAmbulance_Log_Phone) + " failed", ConsoleColor.Red);
+            logFailure.Invoke(nameof(Test_CallAmbulance_Log_Phone));
         }
 
         private void Test_Contructor_Throwing_Excpetion_Phone(int batteryLevel, string name, Type type)
@@ -185,12 +189,12 @@ namespace DIvanyshyn_UnitTests_Day1
             }
             catch (ArgumentException)
             {
-                writeResult.Invoke(nameof(Test_Contructor_Throwing_Excpetion_Phone) + " has passed", ConsoleColor.Green);
+                logSucces.Invoke(nameof(Test_Contructor_Throwing_Excpetion_Phone));
 
                 return;
             }
 
-            writeResult.Invoke(nameof(Test_Contructor_Throwing_Excpetion_Phone) + " has failed", ConsoleColor.Red);
+            logFailure.Invoke(nameof(Test_Contructor_Throwing_Excpetion_Phone));
         }
 
         #endregion

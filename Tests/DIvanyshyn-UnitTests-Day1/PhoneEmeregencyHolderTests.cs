@@ -5,12 +5,16 @@ namespace DIvanyshyn_UnitTests_Day1
 {
     internal class PhoneEmeregencyHolderTests : ITestable
     {
-        public PhoneEmeregencyHolderTests(Action<string, ConsoleColor> writeResult)
+        private Action<string> logSuccess;
+        private Action<string> logFailure;
+
+        public PhoneEmeregencyHolderTests(Action<string> logSuccess, Action<string> logFailure)
         {
-            WriteResult = writeResult;
+            this.logSuccess = logSuccess;
+            this.logFailure = logFailure;
         }
 
-        public Action<string, ConsoleColor> WriteResult { get; }
+
 
         public void RunAll()
         {
@@ -43,13 +47,13 @@ namespace DIvanyshyn_UnitTests_Day1
                     && fakeLogger.FakeLoggerLog[0].Key == $"Phone failed to call an ambulance: {phone.GetType().Name}"
                     && fakeLogger.FakeLoggerLog[0].Value == MessageType.Exception)
                 {
-                    WriteResult.Invoke($"{nameof(Test_PhoneEmergencyHolder_LogException)} is successed", ConsoleColor.Green);
+                    logSuccess.Invoke(nameof(Test_PhoneEmergencyHolder_LogException));
 
                     return;
                 }
             }
 
-            WriteResult.Invoke($"{nameof(Test_PhoneEmergencyHolder_LogException)} is failed", ConsoleColor.Red);
+            logFailure.Invoke(nameof(Test_PhoneEmergencyHolder_LogException));
         }
 
         private void Test_PhoneEmeregencyHolder_Rethrow_Excpetion_And_Charge_A_Bit()
@@ -65,12 +69,12 @@ namespace DIvanyshyn_UnitTests_Day1
             {
                 if (bs.Phone?.BatteryLevel == 1)
                 {
-                    WriteResult.Invoke($"{nameof(Test_PhoneEmeregencyHolder_Rethrow_Excpetion_And_Charge_A_Bit)} is successed", ConsoleColor.Green);
+                    logSuccess.Invoke(nameof(Test_PhoneEmeregencyHolder_Rethrow_Excpetion_And_Charge_A_Bit));
                     return;
                 }
             }
 
-            WriteResult.Invoke($"{nameof(Test_PhoneEmeregencyHolder_Rethrow_Excpetion_And_Charge_A_Bit)} is failed", ConsoleColor.Red);
+            logFailure.Invoke(nameof(Test_PhoneEmeregencyHolder_Rethrow_Excpetion_And_Charge_A_Bit));
         }
 
         private void Test_For_Nokia_Case()
@@ -85,7 +89,7 @@ namespace DIvanyshyn_UnitTests_Day1
 
                 if (nokia.BatteryLevel == 4)
                 {
-                    WriteResult.Invoke($"{nameof(Test_For_Nokia_Case)} is successed", ConsoleColor.Green);
+                    logSuccess.Invoke(nameof(Test_For_Nokia_Case));
 
                     return;
                 }
@@ -95,7 +99,7 @@ namespace DIvanyshyn_UnitTests_Day1
 
             }
 
-            WriteResult.Invoke($"{nameof(Test_For_Nokia_Case)} failed", ConsoleColor.Red);
+            logFailure.Invoke(nameof(Test_For_Nokia_Case));
         }
 
         private void Test_Charge_A_Bit()
@@ -116,11 +120,11 @@ namespace DIvanyshyn_UnitTests_Day1
             }
             catch (BatteryIsDeadException bs)
             {
-                WriteResult.Invoke($"{nameof(Test_PhoneEmeregencyHolder_Rethrow_Excpetion)} is successed", ConsoleColor.Green);
+                logSuccess.Invoke(nameof(Test_PhoneEmeregencyHolder_Rethrow_Excpetion));
                 return;
             }
 
-            WriteResult.Invoke($"{nameof(Test_PhoneEmeregencyHolder_Rethrow_Excpetion)} is failed", ConsoleColor.Red);
+            logFailure.Invoke(nameof(Test_PhoneEmeregencyHolder_Rethrow_Excpetion));
         }
 
         private void Test_PhoneEmeregencyHolder_Charge_A_Bit()
@@ -133,12 +137,12 @@ namespace DIvanyshyn_UnitTests_Day1
 
             if (phone.BatteryLevel == 6)
             {
-                WriteResult.Invoke($"{nameof(Test_PhoneEmeregencyHolder_Charge_A_Bit)} is passed", ConsoleColor.Green);
+                logSuccess.Invoke(nameof(Test_PhoneEmeregencyHolder_Charge_A_Bit));
 
                 return;
             }
 
-            WriteResult.Invoke($"{nameof(Test_PhoneEmeregencyHolder_Charge_A_Bit)} is failed", ConsoleColor.Red);
+            logFailure.Invoke(nameof(Test_PhoneEmeregencyHolder_Charge_A_Bit));
         }
 
         #endregion

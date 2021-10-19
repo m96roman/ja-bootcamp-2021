@@ -7,11 +7,11 @@ namespace DIvanyshyn_UnitTests_Day1
     {
         static void Main(string[] args)
         {
-            ITestable nokiaTest = new NokiaTests(WriteResult);
-            ITestable phoneTests1 = new UniversalPhoneTests(WriteResult, typeof(Nokia));
-            ITestable phoneTests2 = new UniversalPhoneTests(WriteResult, typeof(IPhone13));
-            ITestable emeregencyHolder = new PhoneEmeregencyHolderTests(WriteResult);
-            ITestable programTests = new ProgramPhonesTests(WriteResult);
+            ITestable nokiaTest = new NokiaTests(LogSuccess, LogFailure);
+            ITestable phoneTests1 = new UniversalPhoneTests(LogSuccess, LogFailure, typeof(Nokia));
+            ITestable phoneTests2 = new UniversalPhoneTests(LogSuccess, LogFailure, typeof(IPhone13));
+            ITestable emeregencyHolder = new PhoneEmeregencyHolderTests(LogSuccess, LogFailure);
+            ITestable programTests = new ProgramPhonesTests(LogSuccess, LogFailure);
 
             Console.WriteLine(new string('~', 20));
 
@@ -47,6 +47,16 @@ namespace DIvanyshyn_UnitTests_Day1
             Console.ForegroundColor = color;
             Console.WriteLine(message);
             Console.ResetColor();
+        }
+
+        private static void LogFailure(string methodName)
+        {
+            WriteResult(methodName + " failed", ConsoleColor.Red);
+        }
+
+        private static void LogSuccess(string methodName)
+        {
+            WriteResult(methodName + " successed", ConsoleColor.Green);
         }
     }
 }
