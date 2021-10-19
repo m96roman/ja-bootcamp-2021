@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
+using System.Diagnostics;
+using System.Linq;
 
 namespace UnitTesting_Martin_Task1
 {
@@ -9,7 +12,7 @@ namespace UnitTesting_Martin_Task1
         {
             var loggerList = new List<ConsoleLogger>()
             {
-                PhoneCreatingWithBatteryLevel(70),
+               /* PhoneCreatingWithBatteryLevel(70),
                 PhoneCreatingWithBatteryLevel(120),
                 PhoneCreatingWithBatteryLevel(-23),
                 PhoneCreatingWithBatteryLevel(0),
@@ -23,10 +26,11 @@ namespace UnitTesting_Martin_Task1
 
                 TestPhoneCallAmbulance(4),
                 TestPhoneCallAmbulance(5),
-                TestPhoneCallAmbulance(6),
+                TestPhoneCallAmbulance(6),*/
+               TestEmergencyTest(),
             };
 
-            foreach (var iteam in loggerList) 
+            foreach (var iteam in loggerList)
             {
                 iteam.WriteTestResult();
             }
@@ -92,7 +96,7 @@ namespace UnitTesting_Martin_Task1
 
             phone.ChargeABit();
 
-            if ((phone.batteryLevel == batteryValue+1 && batteryValue + 1<=100) || phone.batteryLevel == 100)
+            if ((phone.batteryLevel == batteryValue + 1 && batteryValue + 1 <= 100) || phone.batteryLevel == 100)
             {
                 return new ConsoleLogger(true, $"Current battery level is {phone.batteryLevel}");
             }
@@ -100,7 +104,7 @@ namespace UnitTesting_Martin_Task1
             return new ConsoleLogger(false, $"Incorrect battery value {phone.batteryLevel}");
         }
 
-        static ConsoleLogger TestPhoneCallAmbulance(int batteryValue) 
+        static ConsoleLogger TestPhoneCallAmbulance(int batteryValue)
         {
 
             MRoshko_Task4.Phone phone = new MRoshko_Task4.Phone($"{batteryValue}");
@@ -111,15 +115,45 @@ namespace UnitTesting_Martin_Task1
             }
             catch (Exception ex)
             {
-                return new ConsoleLogger(true, $"Battery value is {batteryValue-5} \n{ex}");
+                return new ConsoleLogger(true, $"Battery value is {batteryValue - 5} \n{ex}");
             }
 
-            if (phone.batteryLevel == batteryValue-5)
+            if (phone.batteryLevel == batteryValue - 5)
             {
                 return new ConsoleLogger(true, $"Ambulance was colled \nBattery value is {phone.batteryLevel}");
             }
 
             return new ConsoleLogger(false, $"Incorrect battery value {phone.batteryLevel}");
+        }
+
+        static ConsoleLogger TestEmergencyTest()
+        {
+            MRoshko_Task4.Phone[] myPhones = new MRoshko_Task4.Phone[]
+            {
+                new MRoshko_Task4.IPhone13("20"),
+                new MRoshko_Task4.Nokia("98"),
+                new MRoshko_Task4.Nokia("87"),
+            };
+
+            MRoshko_Task4.PhoneEmergencyTestHolder phones = new MRoshko_Task4.PhoneEmergencyTestHolder(myPhones);
+
+            try
+            {
+                MRoshko_Task4.Program.TestEmergency(phones);
+            }
+            catch (Exception ex)
+            {
+                return new ConsoleLogger(true, $"{ex}");
+            }
+
+            foreach (var item in MRoshko_Task4.Logger.logList)
+            {
+                if (item.Contains($@"Calling an ambulance from"))
+                {
+                    return new ConsoleLogger(true, $"Message was printed");
+                }
+            }
+            return new ConsoleLogger(false, $"Message was not printed");
         }
     }
 }

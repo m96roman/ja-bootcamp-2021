@@ -34,7 +34,7 @@ namespace MRoshko_Task4
             {
                 this.batteryLevel -= 5;
 
-                Console.WriteLine($"calling an ambulance from {GetType()}, remaining charge: {this.batteryLevel} % ");
+                var log = new Logger($"Calling an ambulance from {GetType()}, remaining charge: {this.batteryLevel} % ");
             }
             else
             {
@@ -48,7 +48,7 @@ namespace MRoshko_Task4
         {
             this.batteryLevel = 100;
 
-            Console.WriteLine($"Charging {GetType()} to 100%");
+            var log = new Logger($"Charging {GetType()} to 100%");
         }
 
         public void ChargeABit()
@@ -62,7 +62,7 @@ namespace MRoshko_Task4
             {
                 this.batteryLevel += 1;
             }
-            Console.WriteLine($"Charging {GetType()} by 1%");
+            var log = new Logger($"Charging {GetType()} by 1%");
         }
 
         public void PrintBatteryLevel()

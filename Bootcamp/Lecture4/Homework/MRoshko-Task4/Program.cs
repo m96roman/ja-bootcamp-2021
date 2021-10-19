@@ -58,7 +58,8 @@ namespace MRoshko_Task4
                         continue;
                     }
 
-                    Console.WriteLine($"Phone failed to call an ambulance: {phone.GetType()}");
+                    var log = new Logger($"Phone failed to call an ambulance: {phone.GetType()}");
+                    
 
                     throw;
                 }

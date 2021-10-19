@@ -18,7 +18,6 @@ namespace MRoshko_Task4
         public PhoneEmergencyTestHolder(Phone[] phones)
         {
             this.phones = phones;
-
         }
 
         public IEnumerator GetEnumerator()
