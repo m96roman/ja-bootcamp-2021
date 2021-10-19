@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 [assembly: InternalsVisibleTo("PhoneUnitTest")]
+[assembly: InternalsVisibleTo("IPlyska.NUnitTest")]
 
 namespace IPlyskaLect4
 {
