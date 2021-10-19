@@ -83,12 +83,7 @@ namespace KFedak_UnitTest1
         {
             try
             {
-                var holder = new List<Phone>
-                {
-                    new IPhone(4, "Iphone13"),
-                    new Nokia(-5, "345"),
-                    new IPhone(25, "Iphone7")
-                };
+                var p = new Nokia(-5, "6788");
             }
             catch (InvalidValueForBattery ex)
             {

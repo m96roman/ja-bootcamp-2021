@@ -13,10 +13,10 @@ namespace KFedak_Task9
     {
         public const int iteration = 10;
         public static ILogger logger = new Logger();
+        public static List<Phone> phones = new();
 
         internal static void Main()
         {
-            List<Phone> phones= new();
             try
             {
                 phones = new List<Phone>

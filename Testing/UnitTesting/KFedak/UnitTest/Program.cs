@@ -18,13 +18,25 @@ namespace UnitTest
             Console.WriteLine("\n\nIPhone\n\n");
 
             IPhoneTest phoneTest = new((FakeLogger)fakelogger);
-            phoneTest.RunLogger(KFedak_Task9.Program.CreatePhones());
+
+            Console.WriteLine("LoggerTest\n\n");
+
+            phoneTest.RunLogger(KFedak_Task9.Program.phones);
+
+            Console.WriteLine("\nTest\n");
+
             phoneTest.RunTest();
 
             Console.WriteLine("\n\nNokia\n\n");
 
             NokiaTest nokiaTest = new((FakeLogger)fakelogger);
-            nokiaTest.RunLogger(KFedak_Task9.Program.CreatePhones());
+
+            Console.WriteLine("LoggerTest\n\n");
+
+            nokiaTest.RunLogger(KFedak_Task9.Program.phones);
+            
+            Console.WriteLine("\nTest\n");
+
             nokiaTest.RunTest();
         }
     }
