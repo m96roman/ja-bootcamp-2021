@@ -10,7 +10,14 @@ namespace ADovhanych_Task4
     {
         public Nokia(int batteryLvl)
         {
-            BatteryLvl = batteryLvl;
+            if (batteryLvl > 0 && batteryLvl < 100)
+            {
+                BatteryLvl = batteryLvl;
+            }
+            else
+            {
+                throw new InvalidBatteryLevelException();
+            }
         }
 
         public void PrayForBatery()
@@ -19,13 +26,13 @@ namespace ADovhanych_Task4
             Console.WriteLine($"Charging {GetType().Name}");
         }
 
-        void ICharge.Charge()
+        public void Charge()
         {
             BatteryLvl = 100;
             Console.WriteLine($"Charging {GetType().Name} to 100%");
         }
 
-        void ICharge.ChargeABit()
+        public void ChargeABit()
         {
             BatteryLvl += 1;
             Console.WriteLine($"Charging {GetType().Name} by 1%");

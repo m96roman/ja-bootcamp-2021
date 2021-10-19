@@ -8,11 +8,11 @@ namespace UnitTestsPhonesApp
 {
     class Logger
     {
-        void PassedTest()
+        public static void PassedTest()
         {
             Console.WriteLine("Test was PASSED");
         }
-        public void FailedTet()
+        public static void FailedTest()
         {
             Console.WriteLine("Test was Failed");
         }

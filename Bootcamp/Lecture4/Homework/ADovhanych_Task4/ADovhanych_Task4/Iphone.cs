@@ -10,7 +10,14 @@ namespace ADovhanych_Task4
     {
         public IPhone(int batteryLvl)
         {
-            BatteryLvl = batteryLvl;
+            if (batteryLvl > 0 && batteryLvl < 100)
+            {
+                BatteryLvl = batteryLvl;
+            }
+            else
+            {
+                throw new InvalidBatteryLevelException();
+            }
         }
 
         public void Charge()
