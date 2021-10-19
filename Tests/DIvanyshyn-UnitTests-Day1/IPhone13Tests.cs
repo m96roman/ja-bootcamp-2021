@@ -16,18 +16,21 @@ namespace DIvanyshyn_UnitTests_Day1
         {
             Test_Contructor_Throwing_Excpetion_Iphone13();
 
-            Test_CallAmbulance_ThrowException_And_Check_Phone_Property_IPhone13();
+            Test_CallAmbulance_ThrowException_IPhone13();
 
-            Test_CallAmbulance_Work_And_Log_IPhone13();
+            Test_CallAmbulance_Log_IPhone13();
+            Test_CallAmbulance_Work_IPhone13();
 
-            Test_ChargeABit_Iphone13();
+            Test_ChargeABit_Log_Iphone13();
+            Test_ChargeABit_Work_Iphone13();
 
-            Test_Charge_Iphone14();
+            Test_Charge_Log_Iphone14();
+            Test_Charge_Work_Iphone14();
         }
 
         #region Tests
 
-        private void Test_ChargeABit_Iphone13()
+        private void Test_ChargeABit_Log_Iphone13()
         {
             FakeLogger fakeLogger = new FakeLogger();
 
@@ -35,40 +38,73 @@ namespace DIvanyshyn_UnitTests_Day1
 
             iphone.ChargeABit();
 
-            if (iphone.BatteryLevel == 21 &&
-                fakeLogger.FakeLoggerLog.Count == 1 &&
+            if (fakeLogger.FakeLoggerLog.Count == 1 &&
                 fakeLogger.FakeLoggerLog[0].Key == "Charging 123 by 1%" &&
                 fakeLogger.FakeLoggerLog[0].Value == MessageType.Message)
             {
-                writeResult.Invoke(nameof(Test_ChargeABit_Iphone13) + " passed", ConsoleColor.Green);
+                writeResult.Invoke(nameof(Test_ChargeABit_Log_Iphone13) + " passed", ConsoleColor.Green);
 
                 return;
             }
 
-            writeResult.Invoke(nameof(Test_ChargeABit_Iphone13) + " failed", ConsoleColor.Red);
+            writeResult.Invoke(nameof(Test_ChargeABit_Log_Iphone13) + " failed", ConsoleColor.Red);
         }
 
-        private void Test_Charge_Iphone14()
+        private void Test_ChargeABit_Work_Iphone13()
+        {
+            FakeLogger fakeLogger = new FakeLogger();
+
+            IPhone13 iphone = new IPhone13(20, "123", fakeLogger);
+
+            iphone.ChargeABit();
+
+            if (iphone.BatteryLevel == 21)
+            {
+                writeResult.Invoke(nameof(Test_ChargeABit_Log_Iphone13) + " passed", ConsoleColor.Green);
+
+                return;
+            }
+
+            writeResult.Invoke(nameof(Test_ChargeABit_Log_Iphone13) + " failed", ConsoleColor.Red);
+        }
+
+        private void Test_Charge_Log_Iphone14()
         {
             FakeLogger fakeLogger = new FakeLogger();
 
             IPhone13 iphone = new IPhone13(8, "123", fakeLogger);
             iphone.Charge();
 
-            if (iphone.BatteryLevel == 100 &&
-                fakeLogger.FakeLoggerLog.Count == 1 &&
+            if (fakeLogger.FakeLoggerLog.Count == 1 &&
                 fakeLogger.FakeLoggerLog[0].Key == "Charging 123 to 100%" &&
                 fakeLogger.FakeLoggerLog[0].Value == MessageType.Message)
             {
-                writeResult.Invoke(nameof(Test_Charge_Iphone14) + " has passed", ConsoleColor.Green);
+                writeResult.Invoke(nameof(Test_Charge_Log_Iphone14) + " has passed", ConsoleColor.Green);
 
                 return;
             }
 
-            writeResult.Invoke(nameof(Test_Charge_Iphone14) + " has failed", ConsoleColor.Red);
+            writeResult.Invoke(nameof(Test_Charge_Log_Iphone14) + " has failed", ConsoleColor.Red);
         }
 
-        private void Test_CallAmbulance_ThrowException_And_Check_Phone_Property_IPhone13()
+        private void Test_Charge_Work_Iphone14()
+        {
+            FakeLogger fakeLogger = new FakeLogger();
+
+            IPhone13 iphone = new IPhone13(8, "123", fakeLogger);
+            iphone.Charge();
+
+            if (iphone.BatteryLevel == 100)
+            {
+                writeResult.Invoke(nameof(Test_Charge_Log_Iphone14) + " has passed", ConsoleColor.Green);
+
+                return;
+            }
+
+            writeResult.Invoke(nameof(Test_Charge_Log_Iphone14) + " has failed", ConsoleColor.Red);
+        }
+
+        private void Test_CallAmbulance_ThrowException_IPhone13()
         {
             FakeLogger fakeLogger = new FakeLogger();
 
@@ -82,16 +118,16 @@ namespace DIvanyshyn_UnitTests_Day1
             {
                 if (bs.Phone?.BatteryLevel == 0)
                 {
-                    writeResult.Invoke(nameof(Test_CallAmbulance_ThrowException_And_Check_Phone_Property_IPhone13) + " passed", ConsoleColor.Green);
+                    writeResult.Invoke(nameof(Test_CallAmbulance_ThrowException_IPhone13) + " passed", ConsoleColor.Green);
                 }
 
                 return;
             }
 
-            writeResult.Invoke(nameof(Test_CallAmbulance_ThrowException_And_Check_Phone_Property_IPhone13) + " failed", ConsoleColor.Red);
+            writeResult.Invoke(nameof(Test_CallAmbulance_ThrowException_IPhone13) + " failed", ConsoleColor.Red);
         }
 
-        private void Test_CallAmbulance_Work_And_Log_IPhone13()
+        private void Test_CallAmbulance_Log_IPhone13()
         {
             FakeLogger fakeLogger = new FakeLogger();
 
@@ -101,18 +137,34 @@ namespace DIvanyshyn_UnitTests_Day1
 
             if (fakeLogger.FakeLoggerLog.Count == 1 &&
                 fakeLogger.FakeLoggerLog[0].Key == $"Calling an ambulance for phone Test1 remaining charge 5%" &&
-                fakeLogger.FakeLoggerLog[0].Value == MessageType.Message &&
-
-                phone13.BatteryLevel == 5
-                )
+                fakeLogger.FakeLoggerLog[0].Value == MessageType.Message)
             {
 
-                writeResult.Invoke(nameof(Test_CallAmbulance_Work_And_Log_IPhone13) + " passed", ConsoleColor.Green);
+                writeResult.Invoke(nameof(Test_CallAmbulance_Log_IPhone13) + " passed", ConsoleColor.Green);
 
                 return;
             }
 
-            writeResult.Invoke(nameof(Test_CallAmbulance_Work_And_Log_IPhone13) + " failed", ConsoleColor.Red);
+            writeResult.Invoke(nameof(Test_CallAmbulance_Log_IPhone13) + " failed", ConsoleColor.Red);
+        }
+
+        private void Test_CallAmbulance_Work_IPhone13()
+        {
+            FakeLogger fakeLogger = new FakeLogger();
+
+            IPhone13 phone13 = new IPhone13(10, "Test1", fakeLogger);
+
+            phone13.CallForAmbulance();
+
+            if (phone13.BatteryLevel == 5)
+            {
+
+                writeResult.Invoke(nameof(Test_CallAmbulance_Log_IPhone13) + " passed", ConsoleColor.Green);
+
+                return;
+            }
+
+            writeResult.Invoke(nameof(Test_CallAmbulance_Log_IPhone13) + " failed", ConsoleColor.Red);
         }
 
         private void Test_Contructor_Throwing_Excpetion_Iphone13()
