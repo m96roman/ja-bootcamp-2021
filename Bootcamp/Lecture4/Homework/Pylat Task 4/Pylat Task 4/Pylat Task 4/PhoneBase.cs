@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 
+[assembly: InternalsVisibleTo("TestsForLecture1")]
 namespace Pylat_Task_4
 {
     public abstract class PhoneBase : IPhoneBehaviour
@@ -9,23 +11,21 @@ namespace Pylat_Task_4
 
         public PhoneBase(string typeOfPhone, int bateryLevel)
         {
-           
-                if (bateryLevel < 0 || bateryLevel > 100)
-                {
-                    throw new ArgumentException($"Invalid value of batary({ TypeOfPhone })");
-                }
-            
-          
+            if (bateryLevel < 0 || bateryLevel > 100)
+            {
+                throw new ArgumentException($"Invalid value of batary({ TypeOfPhone })");
+            }
             BateryLevel = bateryLevel;
             TypeOfPhone = typeOfPhone;
         }
+
         public void CallAmbulance()
         {
             if (BateryLevel < 5)
             {
                 BateryLevel = 0;
 
-                throw new PhoneExceptions(this);
+                Console.WriteLine( new PhoneExceptions(this));
 
             }
             else
@@ -33,7 +33,6 @@ namespace Pylat_Task_4
                 BateryLevel -= 5;
                 Console.WriteLine($"calling an ambulance from {TypeOfPhone}, remaining charge: {BateryLevel}%");
             }
-
         }
 
         public void Charge()
@@ -53,13 +52,10 @@ namespace Pylat_Task_4
 
         public void BatteryIsDeadException()
         {
-
             if (BateryLevel < 5)
             {
                 string NewBataryLevel = BateryLevel.ToString();
                 throw new PhoneExceptions($@"{TypeOfPhone}'s batary level is {NewBataryLevel}");
-
-
             }
         }
     }
