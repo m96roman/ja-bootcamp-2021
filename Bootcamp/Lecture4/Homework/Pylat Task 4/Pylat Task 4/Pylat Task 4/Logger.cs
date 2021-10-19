@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Text;
-
+[assembly: InternalsVisibleTo("TestsForLecture1")]
 namespace Pylat_Task_4
 {
    public class Logger
@@ -10,11 +11,12 @@ namespace Pylat_Task_4
         public void AddToListAndPrint(string text)
         {
             a.Add(text);
-            Print(a);
+           
         }
-        public void Print(List<string> list)
+        public void Print()
         {
-            foreach (var item in list) {
+            foreach (var item in a)
+            {
                 Console.WriteLine(item);
             }
         }

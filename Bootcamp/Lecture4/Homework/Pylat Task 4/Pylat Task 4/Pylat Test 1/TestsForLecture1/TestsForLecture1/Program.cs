@@ -8,31 +8,27 @@ namespace TestsForLecture1
     {
         public static void Main(string[] args)
         {
+            Logger logger = new Logger();
+            BateryLevelTests created = new BateryLevelTests("Is", 3);
+
             // Is batery created?
             try
             {
-                BateryLevelTests created = new BateryLevelTests("Is", 134);
                 created.IsBateryLevelCreated();
             }
             catch
             {
-                BateryLevelTests created = new BateryLevelTests("Is", 134);
-                Logger logger = new Logger();
                 logger.AddToListAndPrint("Batary level is not created");
                 Console.WriteLine("-------------------");
-                created.IsBateryLevelCreated();
             }
 
             // is batary higner than 5?
             try
             {
-                BateryLevelTests created = new BateryLevelTests("Is", 134);
                 created.IsBateryLevelHigher5();
             }
             catch
             {
-                BateryLevelTests created = new BateryLevelTests("Is", 19);
-                Logger logger = new Logger();
                 logger.AddToListAndPrint("Batary level is 0");
                 Console.WriteLine("-------------------");
                 created.IsBateryLevelHigher5();
@@ -41,49 +37,38 @@ namespace TestsForLecture1
             // charging to 100
             try
             {
-                BateryLevelTests created = new BateryLevelTests("Is", 134);
                 created.Charge();
                 created.ChargeTo100();
             }
             catch
             {
-                BateryLevelTests created = new BateryLevelTests("Is", 134);
-                Logger logger = new Logger();
                 logger.AddToListAndPrint("Batary level is not 100");
                 Console.WriteLine("-------------------");
-                created.ChargeTo100();
             }
 
             // is batary charged a bit?
             try
             {
-                BateryLevelTests created = new BateryLevelTests("Is", 98);
                 created.IsChargedABit();
-
-
             }
             catch
             {
-                BateryLevelTests created = new BateryLevelTests("Is", 55);
-                Logger logger = new Logger();
                 logger.AddToListAndPrint("Batary level is not 100");
                 Console.WriteLine("-------------------");
-                created.ChargeTo100();
             }
 
             // Is batary lower than 5?
             try
             {
-                BateryLevelTests created = new BateryLevelTests("Is", 4);
                 created.IsBateryDad();
             }
             catch
             {
-                BateryLevelTests created = new BateryLevelTests("Is", 4);
-                Logger logger = new Logger();
                 logger.AddToListAndPrint("Batary level lower than 5");
-                Console.WriteLine("-------------------");    
+                Console.WriteLine("-------------------");
             }
+
+            logger.Print();
         }
 
         public class BateryLevelTests : PhoneBase
@@ -155,17 +140,16 @@ namespace TestsForLecture1
 
             public void IsBateryDad()
             {
-                if (BateryLevel >= 5)
+                if (BateryLevel < 5)
+                {
+                    BatteryIsDeadException();
+                }
+                else
                 {
                     Console.WriteLine("Batery higher than 4");
                     Console.WriteLine($"-----------------------------------\n");
                 }
-                else
-                {          
-                    BatteryIsDeadException();
-                }
             }
-
         }
     }
 }
