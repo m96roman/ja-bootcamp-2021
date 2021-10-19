@@ -33,16 +33,15 @@ namespace UnitTest
 
         public void ValidBatteryLevelCheckValue(int battery, string name)
         {
-            try
-            {
-                Phone phone = new Nokia(battery, name, fakeLogger);
-            }
-            catch (InvalidValueForBattery)
+            if (battery < 0 || battery > 100)
             {
                 Console.WriteLine("ValidBatteryLevelCheckValue Faild!!!\n" + $"{battery}\n");
-                return;
             }
-            Console.WriteLine("ValidBatteryLevelCheckValue Passed!!!\n" + $"{battery}\n");
+            else
+            {
+                Console.WriteLine("ValidBatteryLevelCheckValue Passed!!!\n" + $"{battery}\n");
+                Phone phone = new Nokia(battery, name, fakeLogger);
+            }
         }
 
         public void ValidBatteryLevelCheckExceptionLogged()
@@ -61,7 +60,7 @@ namespace UnitTest
             }
         }
 
-        public  void CheckCallAmbulance(List<Phone> phones)
+        public void CheckCallAmbulance(List<Phone> phones)
         {
             var currentLevel = 0;
             foreach (var phone in phones)
@@ -111,7 +110,7 @@ namespace UnitTest
             }
         }
 
-        public  void CheckCharge(List<Phone> phones)
+        public void CheckCharge(List<Phone> phones)
         {
             foreach (var phone in phones)
             {
@@ -148,7 +147,7 @@ namespace UnitTest
             }
         }
 
-        public  void CheckChargeABit(List<Phone> phones)
+        public void CheckChargeABit(List<Phone> phones)
         {
             foreach (var phone in phones)
             {
