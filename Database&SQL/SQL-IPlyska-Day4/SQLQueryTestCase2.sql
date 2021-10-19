@@ -3,10 +3,16 @@
 exec tSQLt.DropClass 'Test_spUnitTestClassIPlyska'​
 go
 
+exec tSQLt.NewTestClass 'Test_spUnitTestClassIPlyska'
+go
+
+exec tSQLt.DropClass 'Test_spUnitTestClassIPlyska2'​
+go 
+
 exec tSQLt.NewTestClass 'Test_spUnitTestClassIPlyska2'
 go
 
-create procedure Test_spUnitTestClassIPlyska.[Setup]​
+create or alter  procedure Test_spUnitTestClassIPlyska.[Setup]​
 
 as begin​
 
@@ -18,7 +24,7 @@ end​
 go
 
 
-alter procedure Test_spUnitTestClassIPlyska.[test 2, happy path]
+create or alter procedure Test_spUnitTestClassIPlyska.[test 2, happy path]
 
 as begin​
 		
@@ -40,7 +46,7 @@ as begin​
 end
 go
 
-create procedure Test_spUnitTestClassIPlyska2.[test 1, happy path]
+create or alter procedure Test_spUnitTestClassIPlyska2.[test 1, happy path]
 
 as begin
 
@@ -67,9 +73,4 @@ exec tSQLt.Run'Test_spUnitTestClassIPlyska'
 
 exec tSQLt.Run 'Test_spUnitTestClassIPlyska2'
 
-select * from Meal
-
-select * from Recipe
-
-sp_helptext 'sp_ConvertToChar_IPlyska'
 
