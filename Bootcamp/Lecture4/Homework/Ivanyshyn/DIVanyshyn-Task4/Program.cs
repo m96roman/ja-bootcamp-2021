@@ -7,10 +7,20 @@ namespace DIVanyshyn_Task4
 {
     class Program
     {
-        static void Main(string[] args)
+        internal static void Main(string[] args)
         {
-            ILogger logger = new OutLogger();
-            int[] batteryLevels = new[] { 4, 8, 25 };
+            RunProgram(CreateHolder(new int[] { 4, 8, 25 }, new OutLogger()), 10);
+        }
+
+        /// <summary>
+        /// Adds the object of <see cref="Nokia"/> and <see cref="IPhone13"/> with levels in <paramref name="batteryLevels"/>
+        /// to <see cref="PhoneEmeregencyTestHolder"/> that returns
+        /// </summary>
+        /// <param name="batteryLevels">Levels of battery with which <see cref="Nokia"/> and <see cref="IPhone13"/> will be created</param>
+        /// <param name="logger"> <see cref="ILogger"/> which will be logging the phone messages</param>
+        /// <returns>new intance of <see cref="PhoneEmeregencyTestHolder"/> filled with values</returns>
+        internal static PhoneEmeregencyTestHolder CreateHolder(int[] batteryLevels, ILogger logger)
+        {
             PhoneEmeregencyTestHolder holder = new();
 
             for (int i = 0; i < batteryLevels.Length; i++)
@@ -26,22 +36,25 @@ namespace DIVanyshyn_Task4
                 }
             }
 
+            return holder;
+        }
 
-            for (int i = 0; i < 10; i++)
+        /// <summary>
+        /// Runs pro
+        /// </summary>
+        /// <param name="holder"></param>
+        /// <param name="iterationCount"></param>
+        internal static void RunProgram(PhoneEmeregencyTestHolder holder, int iterationCount)
+        {
+            for (int i = 0; i < iterationCount; i++)
             {
                 try
                 {
-                    Console.WriteLine(new string('-', 20));
                     PhoneEmeregencyTestHolder.TestEmeregency(holder);
-                    Console.WriteLine(new string('-', 20));
                 }
                 catch (BatteryIsDeadException bs)
                 {
-                    Console.WriteLine(new string('~', 20));
-                    bs.Phone.Status();
                     bs.Phone.Charge();
-                    bs.Phone.Status();
-                    Console.WriteLine(new string('~', 20));
                 }
             }
         }

@@ -10,20 +10,26 @@ namespace DIvanyshyn_UnitTests_Day1
             ITestable nokiaTest = new NokiaTests(WriteResult);
             ITestable iphoneTests = new IPhone13Tests(WriteResult);
             ITestable emeregencyHolder = new PhoneEmeregencyHolderTests(WriteResult);
+            ITestable programTests = new ProgramPhonesTests(WriteResult);
 
             Console.WriteLine(new string('~', 20));
 
-            nokiaTest.RunAll();
+            //nokiaTest.RunAll();
 
             Console.WriteLine(new string('~', 20));
 
-            iphoneTests.RunAll();
+            //iphoneTests.RunAll();
 
             Console.WriteLine(new string('~', 20));
 
-            emeregencyHolder.RunAll();
+            //emeregencyHolder.RunAll();
 
             Console.WriteLine(new string('~', 20));
+
+            programTests.RunAll();
+
+            Console.WriteLine(new string('~', 20));
+
         }
 
         /// <summary>
