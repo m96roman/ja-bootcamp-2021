@@ -6,10 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="C:\Users\nestor.pylat\Desktop\xxx.cs" Link="xxx.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\..\Pylat Task 4\Pylat Task 4.csproj" />
   </ItemGroup>
 

@@ -8,7 +8,7 @@ namespace Pylat_Task_4
    public class Logger
     {
         public List<string> a = new List<string>();
-        public void AddToListAndPrint(string text)
+        public void AddToList(string text)
         {
             a.Add(text);
            

@@ -9,34 +9,32 @@ namespace TestsForLecture1
         public static void Main(string[] args)
         {
             Logger logger = new Logger();
-            var test1 = new BateryLevelTests("Is", 100);
             var test2 = new BateryLevelTests("Is", 0);
             var test3 = new BateryLevelTests("Is", 0);
-            var test4 = new BateryLevelTests("Is", 0);
+            var test4 = new BateryLevelTests("Is", 100);
             var test5 = new BateryLevelTests("Is", 3);
-            
-            
 
             // Is batery created?
             try
-            {   
+            {
+                var test1 = new BateryLevelTests("Is", 100);
                 test1.IsBateryLevelCreated();
+                Console.WriteLine(" Test 1 - passed");
             }
             catch
             {
-                logger.AddToListAndPrint("Batary level is not created");
-                Console.WriteLine("-------------------");
+                logger.AddToList("Test 1 failed: Batery Level is not between 0 and 100");
             }
 
             // is batary higner than 5?
             try
             {
                 test2.IsBateryLevelHigher5();
+                Console.WriteLine("Test 2 passed");
             }
             catch
             {
-                logger.AddToListAndPrint("Batary level is 0");
-                Console.WriteLine("-------------------");
+                logger.AddToList("Test 2 failed: Batary level is 0");
                 test2.IsBateryLevelHigher5();
             }
 
@@ -45,32 +43,33 @@ namespace TestsForLecture1
             {
                 test3.Charge();
                 test3.ChargeTo100();
+                Console.WriteLine("Test 3 passed");
             }
             catch
             {
-                logger.AddToListAndPrint("Batary level is not 100");
-                Console.WriteLine("-------------------");
+                logger.AddToList("Test 3 failed: Batery is not 100");
             }
 
             // is batary charged a bit?
             try
             {
                 test4.IsChargedABit();
+                Console.WriteLine("Test 4 passed");
             }
             catch
             {
-                logger.AddToListAndPrint("Batary level is not 100");
-                Console.WriteLine("-------------------");
+                logger.AddToList("Test 4 failed: Batary level is 100");
             }
 
             // Is batary lower than 5?
             try
             {
                 test5.IsBateryDad();
+                Console.WriteLine("Test 5 passed");
             }
             catch
             {
-                logger.AddToListAndPrint("Batary level lower than 5");
+                logger.AddToList("Test 5 failed: Batary level lower than 5");
                 Console.WriteLine("-------------------");
             }
 
@@ -124,8 +123,10 @@ namespace TestsForLecture1
                 {
                     Console.WriteLine("Batery is not 100");
                     Console.WriteLine($"-----------------------------------\n");
+                    throw new Exception("Batery is not 100");
                 }
             }
+
             public void IsChargedABit()
             {
                 if (BateryLevel < 100)
@@ -142,6 +143,7 @@ namespace TestsForLecture1
                 {
                     Console.WriteLine("Batery is 100");
                     Console.WriteLine($"-----------------------------------\n");
+                    throw new Exception("Batery is 100");
                 }
             }
 
