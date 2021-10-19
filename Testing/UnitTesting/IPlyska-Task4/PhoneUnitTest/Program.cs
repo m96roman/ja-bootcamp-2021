@@ -21,7 +21,6 @@ namespace PhoneUnitTest
             test.TestCasePhoneCharge(4);
             test.TestCasePrayForBattery(34);
         }
-
-       
+  
     }
 }

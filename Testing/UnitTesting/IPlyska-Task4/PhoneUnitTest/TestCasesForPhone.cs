@@ -84,12 +84,13 @@ namespace PhoneUnitTest
         /// </summary>
         public void TestCaseChargeABit(int batteryLevel)
         {
+            string message = $"Charging {phone.GetType().Name} by 1%";
             phone.BatteryLevel = batteryLevel;
             var expectedResult = batteryLevel + 1;
 
             phone.ChargeABit();
 
-            if (expectedResult != phone.BatteryLevel)
+            if (expectedResult != phone.BatteryLevel || Loger.messages.Last() != message)
             {
                 Console.WriteLine("Test case 'TestCaseChargeABit' is FAILED");
             }
@@ -104,13 +105,15 @@ namespace PhoneUnitTest
         /// when BatteryLevel more than 5
         /// </summary>
         public void TestCaseCallAmbulanceMoreThan5(int batteryLevel)
-        {
+        {   
             phone.BatteryLevel = batteryLevel;
             var expectedResult = batteryLevel - 5;
 
             phone.CallAmbulance();
 
-            if (phone.BatteryLevel != expectedResult)
+            string message = $"calling an ambulance from {phone.GetType().Name}, remaining charge: {phone.BatteryLevel}%";
+
+            if (phone.BatteryLevel != expectedResult || Loger.messages.Last() != message)
             {
                 Console.WriteLine("Test case 'TestCaseCallAmbulanceMoreThan5' is FAILED");
             }
@@ -126,21 +129,23 @@ namespace PhoneUnitTest
         /// </summary>
         public void TestCaseCallAmbulanceLessThan5(int batteryLevel)
         {
+           
             var expectedValue = batteryLevel - 5;
             try
             {
                 phone.BatteryLevel = batteryLevel;
                 phone.CallAmbulance();
+
             }
             catch (Exception ex)
             {
-                if (phone.BatteryLevel == 0)
+                if (phone.BatteryLevel == 0 )
                 {
                     Console.WriteLine("Test case 'TestCaseCallAmbulanceLessThan5' is PASSED");
                     return;
                 }
             }
-            if (phone.BatteryLevel == expectedValue)
+            if (phone.BatteryLevel == expectedValue )
             {
                 Console.WriteLine("Test case 'TestCaseCallAmbulanceLessThan5' is PASSED");
                 return;
