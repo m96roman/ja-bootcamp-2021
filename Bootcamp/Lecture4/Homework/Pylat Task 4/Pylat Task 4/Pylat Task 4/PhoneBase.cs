@@ -9,11 +9,13 @@ namespace Pylat_Task_4
 
         public PhoneBase(string typeOfPhone, int bateryLevel)
         {
-            if (bateryLevel < 0 || bateryLevel > 100)
-            {
-                throw new ArgumentException($"Invalid value of batary({ TypeOfPhone })");
-            }
-
+           
+                if (bateryLevel < 0 || bateryLevel > 100)
+                {
+                    throw new ArgumentException($"Invalid value of batary({ TypeOfPhone })");
+                }
+            
+          
             BateryLevel = bateryLevel;
             TypeOfPhone = typeOfPhone;
         }

@@ -9,12 +9,18 @@ namespace TestsForLecture1
         public static void Main(string[] args)
         {
             Logger logger = new Logger();
-            BateryLevelTests created = new BateryLevelTests("Is", 3);
+            var test1 = new BateryLevelTests("Is", 100);
+            var test2 = new BateryLevelTests("Is", 0);
+            var test3 = new BateryLevelTests("Is", 0);
+            var test4 = new BateryLevelTests("Is", 0);
+            var test5 = new BateryLevelTests("Is", 3);
+            
+            
 
             // Is batery created?
             try
-            {
-                created.IsBateryLevelCreated();
+            {   
+                test1.IsBateryLevelCreated();
             }
             catch
             {
@@ -25,20 +31,20 @@ namespace TestsForLecture1
             // is batary higner than 5?
             try
             {
-                created.IsBateryLevelHigher5();
+                test2.IsBateryLevelHigher5();
             }
             catch
             {
                 logger.AddToListAndPrint("Batary level is 0");
                 Console.WriteLine("-------------------");
-                created.IsBateryLevelHigher5();
+                test2.IsBateryLevelHigher5();
             }
 
             // charging to 100
             try
             {
-                created.Charge();
-                created.ChargeTo100();
+                test3.Charge();
+                test3.ChargeTo100();
             }
             catch
             {
@@ -49,7 +55,7 @@ namespace TestsForLecture1
             // is batary charged a bit?
             try
             {
-                created.IsChargedABit();
+                test4.IsChargedABit();
             }
             catch
             {
@@ -60,7 +66,7 @@ namespace TestsForLecture1
             // Is batary lower than 5?
             try
             {
-                created.IsBateryDad();
+                test5.IsBateryDad();
             }
             catch
             {
@@ -80,6 +86,7 @@ namespace TestsForLecture1
             {
                 if (BateryLevel != null && BateryLevel >= 0 && BateryLevel <= 100)
                 {
+
                     Console.WriteLine("Batary Level Is Created");
                     Console.WriteLine($"-----------------------------------");
                     Console.WriteLine($"Batary Level Is {BateryLevel}");
