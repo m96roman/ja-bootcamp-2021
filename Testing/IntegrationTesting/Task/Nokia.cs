@@ -1,0 +1,79 @@
+﻿using System;
+using System.Linq;
+using Task.Interfaces;
+using System.Runtime.CompilerServices;
+using Task.Enums;
+
+[assembly: InternalsVisibleTo("TestTask")]
+namespace Task
+{
+    internal class Nokia : IPhone
+    {
+        private int _batteryLevel;
+
+        public int BatteryLevel
+        {
+            get => _batteryLevel;
+            set
+            {
+                if(Enumerable.Range(0, 101).Contains(value))
+                {
+                    _batteryLevel = value;
+                }
+                else
+                {
+                    throw new ArgumentOutOfRangeException(paramName: "Catch exception", message: "Battery range must be between 0 and 100");
+                }
+            }
+        }
+
+        public string PhoneName { get; set; }
+        public PhoneType Type { get; set; }
+        public ILogger _Logger { get; set; }
+
+        public Nokia(string phoneName, int batteryLevel, PhoneType type, ILogger logger)
+        {
+            PhoneName = phoneName;
+            Type = type;
+            _Logger = logger;
+            BatteryLevel = batteryLevel;
+        }
+
+        public void CallAmbulance()
+        {
+            if(BatteryLevel >= 5)
+            {
+                BatteryLevel -= 5;
+                _Logger.LogMessage($"calling an ambulance from {PhoneName}, remaining charge: {_batteryLevel}%");
+            }
+            else
+            {
+                BatteryLevel = 0;
+
+                _Logger.LogMessage($"{PhoneName} have died battery!");
+                throw new Exceptions.BatteryIsDeadException($"{PhoneName} have died battery!")
+                {
+                    Phone = this
+                };
+            }
+        }
+
+        public void Charge()
+        {
+            BatteryLevel = 100;
+            _Logger.LogMessage($"Charging {PhoneName} to 100%");
+        }
+
+        public void ChargeABit()
+        {
+            BatteryLevel = 1;
+            _Logger.LogMessage($"Charging {PhoneName} a bit");
+        }
+
+        public void PrayForBattery()
+        {
+            BatteryLevel += 8;
+            _Logger.LogMessage($"praying for the battery {PhoneName}");
+        }
+    }
+}
