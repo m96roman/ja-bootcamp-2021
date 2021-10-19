@@ -19,4 +19,5 @@ namespace IPlyskaLect4
             messages.Add(message);
         }
     }
+
 }

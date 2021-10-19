@@ -18,9 +18,9 @@ namespace PhoneUnitTest
         /// <summary>
         /// Test Case for testing Charge method in class Phone
         /// </summary>
-         void TestCasePhoneCharge()
+         public void TestCasePhoneCharge(int batteryLevel)
          {
-            phone.BatteryLevel = 50;
+            phone.BatteryLevel = batteryLevel;
             phone.Charge();
 
             if (phone.BatteryLevel != 100)
@@ -39,14 +39,19 @@ namespace PhoneUnitTest
         /// Test case for testing value for propperty BatteryLevel
         /// in class Phone more than 100
         /// </summary>
-         void TestCaseBatteryLevelMore100()
+         public void TestCaseBatteryLevelMore100(int batteryLevel)
          {
             try
             {
-                phone.Charge();
-                phone.ChargeABit();
+                phone.BatteryLevel = batteryLevel;
             }
             catch (Exception ex)
+            {
+                Console.WriteLine("Test case 'TestCaseBatteryLevelMore100' is PASSED");
+                return;
+            }
+            
+            if (phone.BatteryLevel >= 100 && phone.BatteryLevel >= 0)
             {
                 Console.WriteLine("Test case 'TestCaseBatteryLevelMore100' is PASSED");
                 return;
@@ -59,12 +64,11 @@ namespace PhoneUnitTest
         /// Test case for testing value for property BatteryLevel
         /// in class Phone less than 0
         /// </summary>
-         void TestCaseBatteryLevelLess0()
+         public void TestCaseBatteryLevelLess0(int  batteryLevel)
          {
             try
-            {
-                phone.Charge();
-                phone.BatteryLevel -= 101;
+            { 
+                phone.BatteryLevel = batteryLevel;
             }
             catch (Exception ex)
             {
@@ -78,10 +82,10 @@ namespace PhoneUnitTest
         /// <summary>
         /// Test Case for testing Charge method in class Phone
         /// </summary>
-        void TestCaseChargeABit()
+        public void TestCaseChargeABit(int batteryLevel)
         {
-            phone.BatteryLevel = 60;
-            var expectedResult = 61;
+            phone.BatteryLevel = batteryLevel;
+            var expectedResult = batteryLevel + 1;
 
             phone.ChargeABit();
 
@@ -99,10 +103,10 @@ namespace PhoneUnitTest
         /// Test Case for testing CallAmbulance method in class Phone
         /// when BatteryLevel more than 5
         /// </summary>
-        void TestCaseCallAmbulanceMoreThan5()
+        public void TestCaseCallAmbulanceMoreThan5(int batteryLevel)
         {
-            phone.BatteryLevel = 5;
-            var expectedResult = 0;
+            phone.BatteryLevel = batteryLevel;
+            var expectedResult = batteryLevel - 5;
 
             phone.CallAmbulance();
 
@@ -120,11 +124,12 @@ namespace PhoneUnitTest
         /// Test Case for testing CallAmbulance method in class Phone
         /// when BatteryLevel less than 5
         /// </summary>
-        void TestCaseCallAmbulanceLessThan5()
+        public void TestCaseCallAmbulanceLessThan5(int batteryLevel)
         {
+            var expectedValue = batteryLevel - 5;
             try
             {
-                phone.BatteryLevel = 4;
+                phone.BatteryLevel = batteryLevel;
                 phone.CallAmbulance();
             }
             catch (Exception ex)
@@ -135,18 +140,23 @@ namespace PhoneUnitTest
                     return;
                 }
             }
+            if (phone.BatteryLevel == expectedValue)
+            {
+                Console.WriteLine("Test case 'TestCaseCallAmbulanceLessThan5' is PASSED");
+                return;
+            }
 
             Console.WriteLine("Test case 'TestCaseCallAmbulanceLessThan5' is FAILED");
         }
 
         /// <summary>
-        /// Test Case for testing PrayForBattery when 
+        /// Test Case for testing PrayForBattery method 
         /// </summary>
-        void TestCasePrayForBattery()
+        public void TestCasePrayForBattery(int batteryLevel)
         {
             Nokia nokia = new Nokia();
-            var expectedResult = 58;
-            nokia.BatteryLevel = 50;
+            var expectedResult = batteryLevel + 8;
+            nokia.BatteryLevel = batteryLevel;
 
             const string message = "praying for the battery";
 
@@ -160,6 +170,7 @@ namespace PhoneUnitTest
                 Console.WriteLine("Test case 'TestCasePrayForBattery' is PASSED");
             }
         }
+
 
     }
 }
