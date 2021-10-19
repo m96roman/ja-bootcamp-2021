@@ -12,7 +12,7 @@ namespace KFedak_Task9
     internal class Program
     {
         public const int iteration = 10;
-        public static ILogger logger = new Logger();
+        internal static ILogger logger = new Logger();
         public static List<Phone> phones = new();
 
         internal static void Main()
@@ -21,9 +21,9 @@ namespace KFedak_Task9
             {
                 phones = new List<Phone>
                 {
-                    new IPhone(4, "Iphone13"),
-                    new Nokia(5, "345"),
-                    new IPhone(25, "Iphone7")
+                    new IPhone(4, "Iphone13",logger),
+                    new Nokia(5, "345",logger),
+                    new IPhone(25, "Iphone7",logger)
                 };
             }
             catch (InvalidValueForBattery ex)
@@ -62,7 +62,8 @@ namespace KFedak_Task9
 
                     if (phone is not Nokia nokia)
                     {
-                        Console.WriteLine(ex.Message);
+                       // Console.WriteLine(ex.Message);
+                        logger.WriteLine(ex);
                         throw;
                     }
 
@@ -75,16 +76,16 @@ namespace KFedak_Task9
             }
         }
 
-        public static List<Phone> CreatePhones()
-        {
-            var holder = new List<Phone>
-                {
-                    new IPhone(4, "Iphone13"),
-                    new Nokia(5, "345"),
-                    new IPhone(25, "Iphone7")
-                };
+        //public static List<Phone> CreatePhones()
+        //{
+        //    var holder = new List<Phone>
+        //        {
+        //            new IPhone(4, "Iphone13"),
+        //            new Nokia(5, "345"),
+        //            new IPhone(25, "Iphone7")
+        //        };
 
-            return holder;
-        }
+        //    return holder;
+        //}
     }
 }

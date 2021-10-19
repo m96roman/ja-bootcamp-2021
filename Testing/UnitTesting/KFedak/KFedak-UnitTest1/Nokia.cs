@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KFedak_UnitTest1;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,13 +9,18 @@ namespace KFedak_Task9
 {
     class Nokia : Phone, ITelephone
     {
-        public Nokia(int battery, string name) : base(battery, name) { }
+        internal ILogger logger;
+      
+        public Nokia(int battery, string name, ILogger logger) : base(battery, name,logger)
+        {
+            this.logger = logger;
+        }
 
         public void PrayForBattery()
         {
             this.BatteryLevel += 8;
-
-            Console.WriteLine("Praying for the battery");
+            logger.WriteLine(new Exception("Praying for the battery"));
+            //Console.WriteLine("Praying for the battery");
         }
     }
 }

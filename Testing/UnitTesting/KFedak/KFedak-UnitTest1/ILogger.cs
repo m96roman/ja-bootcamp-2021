@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KFedak_UnitTest1
 {
-    interface ILogger
+   internal interface ILogger
     {
         void WriteLine(Exception message);
     }

@@ -9,8 +9,23 @@ namespace KFedak_UnitTest1
 {
     interface ITestable
     {
-         void RunTest() { }
+        public FakeLogger fakeLogger { get; set; }
 
-        void RunLogger(List<Phone> phones) { }
+        void ValidBatteryLevelCheckException(int battery, string name) { }
+
+        void ValidBatteryLevelCheckValue(int battery, string name) { }
+
+        void ValidBatteryLevelCheckExceptionLogged() { }
+
+        static void CheckCallAmbulance(List<Phone> phones) { }
+        void CheckCallAmbulanceLogged(List<Phone> phones) { }
+
+        static void CheckCharge(List<Phone> phones) { }
+
+        void CheckChargeLogged(List<Phone> phones) { }
+        static void CheckChargeABit(List<Phone> phones) { }
+
+        void CheckChargeABitLogged(List<Phone> phones) { }
+
     }
 }

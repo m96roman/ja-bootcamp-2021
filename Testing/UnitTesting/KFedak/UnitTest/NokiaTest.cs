@@ -1,206 +1,60 @@
 ﻿using KFedak_Task9;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using UnitTest;
 
 namespace KFedak_UnitTest1
 {
-    public class NokiaTest : ITestable
+    class NokiaTest : TestPhone
     {
-        public FakeLogger fakeLogger;
+        public FakeLogger fakeLogger { get; set; }
 
-        public NokiaTest(FakeLogger logger)
+        public NokiaTest(FakeLogger fakeLogger) : base(fakeLogger)
         {
-            fakeLogger = logger;
+            this.fakeLogger = fakeLogger;
         }
 
-        public void RunLogger(List<Phone> phone)
-        {
-            CheckCallAmbulanceLogged(phone);
-           // ValidBatteryLevelLogged();
-        }
-
-        public void RunTest()
-        {
-            ValidBatteryLevel(-5, "10");
-
-            Console.WriteLine("\n");
-
-            var phoneAmmbulance = new List<Nokia>
-            {
-                new Nokia(4, "546"),
-                new Nokia(25, "211")
-            };
-
-            CheckCallAmbulance(phoneAmmbulance);
-
-            Console.WriteLine("\n");
-
-            var phoneCharge = new List<Nokia>
-            {
-                new Nokia(40, "567"),
-                new Nokia(25, "123")
-            };
-
-            CheckCharge(phoneCharge);
-
-            Console.WriteLine("\n");
-
-            var phoneChargeABit = new List<Nokia>
-            {
-                new Nokia(4, "78"),
-                new Nokia(25, "8400")
-            };
-
-            CheckChargeABit(phoneChargeABit);
-
-            var phonePrayForBattery = new List<Nokia>
-            {
-                new Nokia(4, "Nokia"),
-            };
-
-            CheckPrayForBattery(phonePrayForBattery);
-        }
-
-        public void ValidBatteryLevel(int battery, string name)
-        {
-            try
-            {
-                Phone phone = new Nokia(battery, name);
-            }
-            catch (InvalidValueForBattery)
-            {
-                Console.WriteLine("ValidBatteryLevel was passed!!!");
-                return;
-            }
-
-            Console.WriteLine("ValidBatteryLevel was failed!!!\n");
-        }
-
-        public void ValidBatteryLevelLogged()
-        {
-            try
-            {
-                var p = new Nokia(-5, "6788");
-            }
-            catch (InvalidValueForBattery ex)
-            {
-                if (fakeLogger.message.Contains(ex.Message))
-                {
-                    Console.WriteLine("PASSED");
-                    Console.WriteLine("Correct message!");
-                }
-            }
-        }
-
-        static void CheckCallAmbulance(List<Nokia> phones)
-        {
-            var currentLevel = 0;
-            foreach (var phone in phones)
-            {
-                try
-                {
-                    currentLevel = phone.BatteryLevel;
-                    phone.CallAmbulance();
-                    if (currentLevel >= 5 && phone.BatteryLevel == currentLevel - 5)
-                    {
-                        Console.WriteLine($"'CurrentLevel'={currentLevel}, after CallAmbulance() {phone.BatteryLevel}");
-                        Console.WriteLine("PASSED\n");
-                        return;
-                    }
-                }
-                catch (BatteryIsDeadException)
-                {
-                    if (phone.BatteryLevel == 0)
-                    {
-                        Console.WriteLine("When we catch BatteryException");
-                        Console.WriteLine($"The start level of charge was {currentLevel} and after CallAmbulance() {phone.BatteryLevel}");
-                        Console.WriteLine("PASSED\n");
-                        return;
-                    }
-                }
-
-                Console.WriteLine("Failed\n");
-            }
-        }
-
-        void CheckCallAmbulanceLogged(List<Phone> phones)
-        {
-            foreach (var phone in phones)
-            {
-                try
-                {
-                    phone.CallAmbulance();
-                }
-                catch (BatteryIsDeadException ex)
-                {
-                    if (fakeLogger.message.Contains(ex.Message))
-                    {
-                        Console.WriteLine("PASSED");
-                        Console.WriteLine("Correct message!");
-                    }
-                    return;
-                }
-            }
-        }
-
-        static void CheckCharge(List<Nokia> phones)
+        public void CheckPrayForBattery(List<Phone> phones)
         {
             foreach (var phone in phones)
             {
                 int currentLevel = phone.BatteryLevel;
-                phone.Charge();
-                if (phone.BatteryLevel == 100)
+                if (phone is Nokia nokia)
                 {
-                    Console.WriteLine($"'CurrentLevel'={currentLevel}, after Charge() {phone.BatteryLevel}");
-                    Console.WriteLine("PASSED\n");
-                }
-                else
-                {
-                    Console.WriteLine($"'CurrentLevel'={currentLevel}, after Charge() {phone.BatteryLevel}");
-                    Console.WriteLine("Failed\n");
-                }
-            }
-        }
-
-        static void CheckChargeABit(List<Nokia> phones)
-        {
-            foreach (var phone in phones)
-            {
-                int currentLevel = phone.BatteryLevel;
-                phone.ChargeABit();
-                if (phone.BatteryLevel == currentLevel + 1)
-                {
-                    Console.WriteLine($"'CurrentLevel'={currentLevel}, after ChargeABit() {phone.BatteryLevel}");
-                    Console.WriteLine("PASSED\n");
-                }
-                else
-                {
-                    Console.WriteLine($"'CurrentLevel'={currentLevel}, after ChargeABit() {phone.BatteryLevel}");
-                    Console.WriteLine("Failed\n");
+                    nokia.PrayForBattery();
+                    if (phone.BatteryLevel == currentLevel + 8)
+                    {
+                        Console.WriteLine("\nPASSED CheckPrayForBattery");
+                        Console.WriteLine($"'CurrentLevel'={currentLevel}, after PrayForBattery() {phone.BatteryLevel}");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"'CurrentLevel'={currentLevel}, after PrayForBattery() {phone.BatteryLevel}");
+                        Console.WriteLine("Failed\n");
+                    }
                 }
             }
         }
 
-        static void CheckPrayForBattery(List<Nokia> phones)
+        public void CheckPrayForBatteryLogged(List<Phone> phones)
         {
             foreach (var phone in phones)
             {
-                int currentLevel = phone.BatteryLevel;
-                phone.PrayForBattery();
-                if (phone.BatteryLevel == currentLevel + 8)
+                if (phone is Nokia nokia)
                 {
-                    Console.WriteLine($"'CurrentLevel'={currentLevel}, after PrayForBattery() {phone.BatteryLevel}");
-                    Console.WriteLine("PASSED\n");
-                }
-                else
-                {
-                    Console.WriteLine($"'CurrentLevel'={currentLevel}, after PrayForBattery() {phone.BatteryLevel}");
-                    Console.WriteLine("Failed\n");
+                    nokia.PrayForBattery();
+                    if (fakeLogger.message.Contains("Praying for the battery"))
+                    {
+                        Console.WriteLine("PASSED CheckPrayForBatteryLogged\n");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Failed\n");
+                    }
                 }
             }
         }
+
     }
 }

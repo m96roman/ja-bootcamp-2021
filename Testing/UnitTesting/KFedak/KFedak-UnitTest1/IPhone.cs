@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KFedak_UnitTest1;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace KFedak_Task9
 {
     class IPhone : Phone,ITelephone
     {
-        public IPhone(int battery, string name) : base(battery, name) { }
+        public IPhone(int battery, string name, ILogger logger) : base(battery, name, logger) { }
     }
 }

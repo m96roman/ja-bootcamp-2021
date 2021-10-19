@@ -12,32 +12,104 @@ namespace UnitTest
         static void Main(string[] args)
         {
             ILogger fakelogger = new FakeLogger();
-            KFedak_Task9.Program.logger = fakelogger;
-            KFedak_Task9.Program.Main();
 
-            Console.WriteLine("\n\nIPhone\n\n");
-
-            IPhoneTest phoneTest = new((FakeLogger)fakelogger);
-
-            Console.WriteLine("LoggerTest\n\n");
-
-            phoneTest.RunLogger(KFedak_Task9.Program.phones);
-
-            Console.WriteLine("\nTest\n");
-
-            phoneTest.RunTest();
-
-            Console.WriteLine("\n\nNokia\n\n");
-
-            NokiaTest nokiaTest = new((FakeLogger)fakelogger);
-
-            Console.WriteLine("LoggerTest\n\n");
-
-            nokiaTest.RunLogger(KFedak_Task9.Program.phones);
+            Console.WriteLine("*************NOKIA****************");
             
-            Console.WriteLine("\nTest\n");
+            RunTestNokia((FakeLogger)fakelogger);
+            
+            Console.WriteLine("*************IPHONE****************");
 
-            nokiaTest.RunTest();
+            RunTestIPhone((FakeLogger)fakelogger);
+        }
+
+        public static void RunTestNokia(FakeLogger fakeLogger)
+        {
+            NokiaTest testPhone = new NokiaTest(fakeLogger);
+
+            testPhone.ValidBatteryLevelCheckException(-5, "10");
+
+            testPhone.ValidBatteryLevelCheckException(5, "10");
+
+            testPhone.ValidBatteryLevelCheckValue(5, "10");
+
+            testPhone.ValidBatteryLevelCheckValue(-5, "10");
+
+            var phoneAmmbulance = new List<Phone>
+            {
+                new Nokia(4, "546",fakeLogger),
+                new Nokia(25, "211",fakeLogger)
+            };
+
+            testPhone.CheckCallAmbulance(phoneAmmbulance);
+
+            var phoneCharge = new List<Phone>
+            {
+                new Nokia(40, "567",fakeLogger),
+                new Nokia(25, "123",fakeLogger)
+            };
+
+            testPhone.CheckCharge(phoneCharge);
+
+            var phoneChargeABit = new List<Phone>
+            {
+                new Nokia(4, "78",fakeLogger),
+                new Nokia(25, "8400",fakeLogger)
+            };
+
+            testPhone.CheckChargeABit(phoneChargeABit);
+
+            var phonePrayForBattery = new List<Phone>
+            {
+                new Nokia(4, "Nokia",fakeLogger),
+            };
+
+            testPhone.CheckPrayForBattery(phonePrayForBattery);
+            testPhone.CheckCallAmbulanceLogged(phoneAmmbulance);
+            testPhone.ValidBatteryLevelCheckExceptionLogged();
+            testPhone.CheckChargeLogged(phoneAmmbulance);
+            testPhone.CheckChargeABitLogged(phoneAmmbulance);
+            testPhone.CheckPrayForBatteryLogged(phoneAmmbulance);
+        }
+
+        public static void RunTestIPhone(FakeLogger fakeLogger)
+        {
+            TestPhone testPhone = new IPhoneTest(fakeLogger);
+
+            testPhone.ValidBatteryLevelCheckException(-5, "10");
+
+            testPhone.ValidBatteryLevelCheckException(5, "10");
+
+            testPhone.ValidBatteryLevelCheckValue(5, "10");
+
+            testPhone.ValidBatteryLevelCheckValue(-5, "10");
+
+            var phoneAmmbulance = new List<Phone>
+            {
+                new IPhone(4, "IPhone12",fakeLogger),
+                new IPhone(25, "IPhone13",fakeLogger)
+            };
+
+            testPhone.CheckCallAmbulance(phoneAmmbulance);
+
+            var phoneCharge = new List<Phone>
+            {
+                new IPhone(40, "IPhone7",fakeLogger),
+                new IPhone(25, "IPhone10",fakeLogger)
+            };
+
+            testPhone.CheckCharge(phoneCharge);
+
+            var phoneChargeABit = new List<Phone>
+            {
+                new IPhone(4, "IPhone13",fakeLogger),
+                new IPhone(25, "IPhone8",fakeLogger)
+            };
+
+            testPhone.CheckChargeABit(phoneChargeABit);
+            testPhone.CheckCallAmbulanceLogged(phoneAmmbulance);
+            testPhone.ValidBatteryLevelCheckExceptionLogged();
+            testPhone.CheckChargeLogged(phoneAmmbulance);
+            testPhone.CheckChargeABitLogged(phoneAmmbulance);
         }
     }
 }
