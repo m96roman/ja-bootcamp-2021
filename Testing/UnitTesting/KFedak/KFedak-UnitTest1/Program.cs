@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KFedak_UnitTest1;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -11,11 +12,25 @@ namespace KFedak_Task9
     internal class Program
     {
         public const int iteration = 10;
+        public static ILogger logger = new Logger();
 
         internal static void Main()
         {
-            
-            List<Phone> phones = CreatePhones();
+            List<Phone> phones= new();
+            try
+            {
+                phones = new List<Phone>
+                {
+                    new IPhone(4, "Iphone13"),
+                    new Nokia(5, "345"),
+                    new IPhone(25, "Iphone7")
+                };
+            }
+            catch (InvalidValueForBattery ex)
+            {
+                logger.WriteLine(ex);
+            }
+
             var holder = new PhoneEmergencyTestHolder(phones);
 
             for (int i = 0; i < iteration; i++)
@@ -26,8 +41,7 @@ namespace KFedak_Task9
                 }
                 catch (BatteryIsDeadException ex)
                 {
-                    Logger.WriteLine(ex);
-
+                    logger.WriteLine(ex);
                     ex.Telephone.Charge();
                 }
             }
@@ -35,6 +49,7 @@ namespace KFedak_Task9
 
         public static void TestEmergency(PhoneEmergencyTestHolder phoneEmergency)
         {
+
             foreach (Phone phone in phoneEmergency)
             {
                 try
@@ -43,7 +58,7 @@ namespace KFedak_Task9
                 }
                 catch (BatteryIsDeadException ex)
                 {
-                    Logger.WriteLine(ex);
+                    logger.WriteLine(ex);
 
                     if (phone is not Nokia nokia)
                     {
@@ -63,11 +78,11 @@ namespace KFedak_Task9
         public static List<Phone> CreatePhones()
         {
             var holder = new List<Phone>
-            {
-                new IPhone(4, "Iphone13"),
-                new Nokia(5, "345"),
-                new IPhone(25, "Iphone7")
-            };
+                {
+                    new IPhone(4, "Iphone13"),
+                    new Nokia(5, "345"),
+                    new IPhone(25, "Iphone7")
+                };
 
             return holder;
         }
