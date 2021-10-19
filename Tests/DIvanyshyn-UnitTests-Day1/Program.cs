@@ -8,7 +8,8 @@ namespace DIvanyshyn_UnitTests_Day1
         static void Main(string[] args)
         {
             ITestable nokiaTest = new NokiaTests(WriteResult);
-            ITestable iphoneTests = new IPhone13Tests(WriteResult);
+            ITestable phoneTests1 = new UniversalPhoneTests(WriteResult, typeof(Nokia));
+            ITestable phoneTests2 = new UniversalPhoneTests(WriteResult, typeof(IPhone13));
             ITestable emeregencyHolder = new PhoneEmeregencyHolderTests(WriteResult);
             ITestable programTests = new ProgramPhonesTests(WriteResult);
 
@@ -18,7 +19,9 @@ namespace DIvanyshyn_UnitTests_Day1
 
             Console.WriteLine(new string('~', 20));
 
-            iphoneTests.RunAll();
+            phoneTests1.RunAll();
+
+            phoneTests2.RunAll();
 
             Console.WriteLine(new string('~', 20));
 

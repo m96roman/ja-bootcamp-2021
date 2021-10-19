@@ -55,8 +55,11 @@ namespace DIVanyshyn_Task4
         /// </summary>
         public void ChargeABit()
         {
-            batteryLevel += 1;
-            logger.WriteLine($"Charging {phoneName} by 1%", MessageType.Message);
+            if (batteryLevel != 100)
+            {
+                batteryLevel += 1;
+                logger.WriteLine($"Charging {phoneName} by 1%", MessageType.Message);
+            }
         }
 
         /// <summary>
