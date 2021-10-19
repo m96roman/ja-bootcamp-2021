@@ -11,8 +11,9 @@ namespace UnitTest
         static void Main(string[] args)
         {
 
-            ValidBatteryLevel(-5,"Iphon 10");
-            ValidBatteryLevel(4, "Iphon 13");
+            ValidBatteryLevel(-5, "Iphon 10");
+            ValidBatteryLevel(-5, "Iphon 10");
+
 
             Console.WriteLine("\n");
 
@@ -55,21 +56,19 @@ namespace UnitTest
         }
 
 
-        static void ValidBatteryLevel(int battery,string name )
+        static void ValidBatteryLevel(int battery, string name)
         {
-                try
-                {
-                    Phone phone = new IPhone(battery, name);
-                    if (phone.BatteryLevel >= 0 && phone.BatteryLevel <= 100)
-                    {
-                        Console.WriteLine("ValidBatteryLevel was passed!!!" + $"\n{phone.BatteryLevel}");
-                    }
-                }
-                catch (InvalidValueForBattery ex)
-                {
-                    Console.WriteLine(ex.Message,ex.batteryLevel);
-                    Console.WriteLine("ValidBatteryLevel was failed!!!\n");
-                } 
+            try
+            {
+                Phone phone = new IPhone(battery, name);
+            }
+            catch (InvalidValueForBattery)
+            {
+                Console.WriteLine("ValidBatteryLevel was passed!!!");
+                return;
+            }
+
+            Console.WriteLine("ValidBatteryLevel was failed!!!\n");
         }
 
         static void CheckCallAmbulance(List<Phone> phones)
@@ -85,6 +84,7 @@ namespace UnitTest
                     {
                         Console.WriteLine($"'CurrentLevel'={currentLevel}, after CallAmbulance() {phone.BatteryLevel}");
                         Console.WriteLine("PASSED\n");
+                        return;
                     }
                 }
                 catch (BatteryIsDeadException)
@@ -94,21 +94,19 @@ namespace UnitTest
                         Console.WriteLine("When we catch BatteryException");
                         Console.WriteLine($"The start level of charge was {currentLevel} and after CallAmbulance() {phone.BatteryLevel}");
                         Console.WriteLine("PASSED\n");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Failed\n");
+                        return;
                     }
                 }
+
+                Console.WriteLine("Failed\n");
             }
         }
 
         static void CheckCharge(List<Phone> phones)
         {
-            var currentLevel = 0;
             foreach (var phone in phones)
             {
-                currentLevel = phone.BatteryLevel;
+                int currentLevel = phone.BatteryLevel;
                 phone.Charge();
                 if (phone.BatteryLevel == 100)
                 {
@@ -125,11 +123,9 @@ namespace UnitTest
 
         static void CheckChargeABit(List<Phone> phones)
         {
-            var currentLevel = 0;
             foreach (var phone in phones)
             {
-
-                currentLevel = phone.BatteryLevel;
+                int currentLevel = phone.BatteryLevel;
                 phone.ChargeABit();
                 if (phone.BatteryLevel == currentLevel + 1)
                 {
@@ -146,10 +142,9 @@ namespace UnitTest
 
         static void CheckPrayForBattery(List<Nokia> phones)
         {
-            var currentLevel = 0;
             foreach (var phone in phones)
             {
-                currentLevel = phone.BatteryLevel;
+                int currentLevel = phone.BatteryLevel;
                 phone.PrayForBattery();
                 if (phone.BatteryLevel == currentLevel + 8)
                 {
