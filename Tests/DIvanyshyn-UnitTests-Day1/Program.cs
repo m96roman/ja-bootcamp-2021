@@ -14,15 +14,15 @@ namespace DIvanyshyn_UnitTests_Day1
 
             Console.WriteLine(new string('~', 20));
 
-            //nokiaTest.RunAll();
+            nokiaTest.RunAll();
 
             Console.WriteLine(new string('~', 20));
 
-            //iphoneTests.RunAll();
+            iphoneTests.RunAll();
 
             Console.WriteLine(new string('~', 20));
 
-            //emeregencyHolder.RunAll();
+            emeregencyHolder.RunAll();
 
             Console.WriteLine(new string('~', 20));
 

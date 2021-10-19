@@ -1,6 +1,7 @@
 ﻿using DIVanyshyn_Task4;
 using System;
 using System.Linq;
+using Prog = DIVanyshyn_Task4.Program;
 
 namespace DIvanyshyn_UnitTests_Day1
 {
@@ -28,7 +29,7 @@ namespace DIvanyshyn_UnitTests_Day1
             Phone phone = new IPhone13(1, "123", new FakeLogger());
             phones.Add(phone);
 
-            DIVanyshyn_Task4.Program.RunProgram(phones, 2);
+            Prog.RunProgram(phones, 2);
 
             //B=1->then handling Error B=100
             //B=100-5->B++
@@ -48,7 +49,7 @@ namespace DIvanyshyn_UnitTests_Day1
             Phone phone = new IPhone13(1, "123", new FakeLogger());
             phones.Add(phone);
 
-            DIVanyshyn_Task4.Program.RunProgram(phones, 1);
+            Prog.RunProgram(phones, 1);
 
             if (phone.BatteryLevel == 100)
             {
@@ -62,7 +63,7 @@ namespace DIvanyshyn_UnitTests_Day1
 
         private void Test_Create_Holder_Count_Of_CreatedPhones_is_2()
         {
-            PhoneEmeregencyTestHolder holder = DIVanyshyn_Task4.Program.CreateHolder(new int[] { 1 }, new FakeLogger());
+            PhoneEmeregencyTestHolder holder = Prog.CreateHolder(new int[] { 1 }, new FakeLogger());
 
             if (holder.Count() == 2)
             {
