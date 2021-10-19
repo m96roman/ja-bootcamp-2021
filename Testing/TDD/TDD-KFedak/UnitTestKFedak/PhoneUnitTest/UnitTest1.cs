@@ -179,5 +179,18 @@ namespace PhoneUnitTest
             var ex = Assert.Throws<BatteryIsDeadException>(() => phone.CallAmbulance());
             Assert.That(ex.Telephone.BatteryLevel, Is.EqualTo(0));
         }
+
+        [Test]
+        public void ConstructorPhoneValue()
+        {
+            //arrange
+            var logger = InitLogger();
+
+            //act
+            Nokia phone = new Nokia(4, "5600", logger);
+
+            //assert
+            Assert.That(phone.BatteryLevel, Is.EqualTo(4));
+        }
     }
 }
