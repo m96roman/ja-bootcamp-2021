@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Shyptur___Task4
 {
-    class PhoneEmergencyTestHolder : IEnumerable
+    internal class PhoneEmergencyTestHolder : IEnumerable
     {
          Phone[] Phones;
 

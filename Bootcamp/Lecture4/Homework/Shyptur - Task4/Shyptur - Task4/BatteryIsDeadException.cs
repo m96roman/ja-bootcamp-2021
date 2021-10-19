@@ -4,10 +4,10 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
-
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("Shyptur - UnitTest 1")]
 namespace Shyptur___Task4
 {
-    class BatteryIsDeadException : Exception
+   internal class BatteryIsDeadException : Exception
     {
         public Phone PhoneInfo { get; set; }
            

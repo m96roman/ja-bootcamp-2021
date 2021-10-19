@@ -3,19 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("Shyptur - UnitTest 1")]
 namespace Shyptur___Task4
 {
-    class Nokia : Phone
+    internal class Nokia : Phone
     {
-          public Nokia(int baterylevel)
+        public Nokia(int baterylevel, IMessageLogger logger = null):base(baterylevel,logger)
         {
-            this.BateryLevel = baterylevel;
+        
+                 
         }
-        public   void PrayForBattery()
+
+      
+        public void PrayForBattery()
         {
             BateryLevel += 8;
-            Console.WriteLine("praying for the battery");
+            _logger.Log("praying for the battery in Nokoia");
+                       
         }
     }
 }

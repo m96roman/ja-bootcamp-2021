@@ -1,8 +1,9 @@
 ﻿using System;
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("Shyptur - UnitTest 1")]
 
 namespace Shyptur___Task4
 {
-    class Program
+   internal class Program
     {
         public static void TestEmergency(PhoneEmergencyTestHolder phoneEmergencyTestHolder)
         {
@@ -36,7 +37,7 @@ namespace Shyptur___Task4
 
             Phone[] phones = new Phone[]
             {
-             new Nokia(4),
+                new Nokia(1),
                 new Nokia(8),
                 new Nokia(25),
                 new IPhone13(4),
