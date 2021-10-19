@@ -8,10 +8,10 @@ namespace UnitTestsPhonesApp
     {
         static void Main(string[] args)
         {
-            //CallAmbulanceTest(-5);
-            //ValidBatteryTest(200);
-            //NokiaTest(20);
-            //ChargeABitTest(-5);
+            CallAmbulanceTest(-5);
+            ValidBatteryTest(200);
+            NokiaTest(20);
+            ChargeABitTest(-5);
         }
 
         static void ValidBatteryTest(int batteryLvl)
@@ -21,12 +21,12 @@ namespace UnitTestsPhonesApp
                 Phone phone = new IPhone(batteryLvl);
                 if (phone.BatteryLvl > 0 && phone.BatteryLvl <= 100)
                 {
-                    Logger.PassedTest();
+                    Logger.PassedTest(batteryLvl);
                 }
             }
             catch (Exception)
             {
-                Logger.FailedTest();
+                Logger.FailedTest(batteryLvl);
                 throw;
             }
         }
@@ -34,19 +34,18 @@ namespace UnitTestsPhonesApp
         static void CallAmbulanceTest(int battery)
         {
             try
-            {
+            {   
                 Phone phone = new Nokia(battery);
+                phone.CallAmbulance();
+
                 if (battery >= 5 && battery < 100)
-                {
-                    phone.CallAmbulance();
-                    //Console.WriteLine($"Ambulance called successfully {phone.GetType().Name}");
-                    Logger.PassedTest();
+                {                    
+                    Logger.PassedTest(battery);
                 }
             }
             catch (Exception)
             {
-                Logger.FailedTest();
-                throw;
+                Logger.FailedTest(battery);
             }
         }
 
@@ -57,11 +56,11 @@ namespace UnitTestsPhonesApp
 
             if (iphone.BatteryLvl == 100)
             {
-                Logger.PassedTest();
+                Logger.PassedTest(battery);
             }
             else
             {
-                Logger.FailedTest();
+                Logger.FailedTest(battery);
             }
         }
 
@@ -71,11 +70,11 @@ namespace UnitTestsPhonesApp
             nokia.ChargeABit();
             if (nokia.BatteryLvl == battery + 1)
             {
-                Logger.PassedTest();
+                Logger.PassedTest(battery);
             }
             else
             {
-                Logger.FailedTest();
+                Logger.FailedTest(battery);
             }
         }
 
@@ -85,11 +84,11 @@ namespace UnitTestsPhonesApp
             nokia.PrayForBatery();
             if (nokia.BatteryLvl == battery + 8)
             {
-                Logger.PassedTest();
+                Logger.PassedTest(battery);
             }
             else
             {
-                Logger.FailedTest();
+                Logger.FailedTest(battery);
             }
         }
     }

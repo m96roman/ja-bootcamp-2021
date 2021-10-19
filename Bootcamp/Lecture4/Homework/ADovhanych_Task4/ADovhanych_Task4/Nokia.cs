@@ -8,17 +8,7 @@ namespace ADovhanych_Task4
 {
     class Nokia : Phone, ICharge
     {
-        public Nokia(int batteryLvl)
-        {
-            if (batteryLvl > 0 && batteryLvl < 100)
-            {
-                BatteryLvl = batteryLvl;
-            }
-            else
-            {
-                throw new InvalidBatteryLevelException();
-            }
-        }
+        public Nokia(int batterLvl) : base(batterLvl) { }
 
         public void PrayForBatery()
         {

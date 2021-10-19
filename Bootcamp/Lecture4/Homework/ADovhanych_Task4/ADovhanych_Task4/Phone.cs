@@ -11,7 +11,19 @@ namespace ADovhanych_Task4
         public string PhoneName { get; set; }
         public int BatteryLvl { get; set; }
 
-        public Phone() { }
+
+
+        public Phone(int batteryLvl)
+        {
+            if (batteryLvl > 0 && batteryLvl < 100)
+            {
+                BatteryLvl = batteryLvl;
+            }
+            else
+            {
+                throw new InvalidBatteryLevelException();
+            }
+        }
 
         public Phone(string phoneName, int batteryLvl)
         {
