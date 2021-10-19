@@ -8,6 +8,8 @@ namespace UnitTestsPhonesApp
     {
         static void Main(string[] args)
         {
+            TestLogger testLogger = new TestLogger();
+
             CallAmbulanceTest(-5);
             ValidBatteryTest(200);
             NokiaTest(20);
@@ -27,7 +29,7 @@ namespace UnitTestsPhonesApp
             catch (Exception)
             {
                 Logger.FailedTest(batteryLvl);
-                throw;
+                return;
             }
         }
 

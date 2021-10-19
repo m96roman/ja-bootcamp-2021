@@ -24,8 +24,15 @@ namespace ADovhanych_Task4
 
         public void ChargeABit()
         {
-            BatteryLvl += 1;
-            Console.WriteLine($"Charging {GetType().Name} by 1%");
+            if (BatteryLvl >= 0 && BatteryLvl < 100)
+            {
+                BatteryLvl += 1;
+                Console.WriteLine($"Charging {GetType().Name} by 1%");
+            }
+            else
+            {
+                throw new InvalidBatteryLevelException();
+            }
         }
     }
 }

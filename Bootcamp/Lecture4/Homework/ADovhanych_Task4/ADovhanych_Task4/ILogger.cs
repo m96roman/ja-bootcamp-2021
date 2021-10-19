@@ -8,6 +8,6 @@ namespace ADovhanych_Task4
 {
     interface ILogger
     {   
-        void Log(string message);
+        void LogInfo(string message);
     }
 }

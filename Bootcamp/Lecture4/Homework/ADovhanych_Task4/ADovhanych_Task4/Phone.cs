@@ -6,15 +6,16 @@ using System.Threading.Tasks;
 
 namespace ADovhanych_Task4
 {
-    public class Phone
+    internal class Phone
     {
         public string PhoneName { get; set; }
         public int BatteryLvl { get; set; }
+        protected ILogger _logger { get; set; }
 
-
-
-        public Phone(int batteryLvl)
+        public Phone(int batteryLvl, ILogger logger = null)
         {
+            _logger = logger ?? new PhoneLogger();
+            
             if (batteryLvl > 0 && batteryLvl < 100)
             {
                 BatteryLvl = batteryLvl;

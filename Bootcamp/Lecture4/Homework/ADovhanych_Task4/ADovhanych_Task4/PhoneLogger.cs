@@ -8,7 +8,7 @@ namespace ADovhanych_Task4
 {
     class PhoneLogger : ILogger
     {
-        public void Log(string message)
+        public void LogInfo(string message)
         {
             Console.WriteLine(message);
         }

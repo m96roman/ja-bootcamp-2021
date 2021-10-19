@@ -11,7 +11,7 @@ namespace UnitTestsPhonesApp
     {
         public List<string> Messages { get; set; } = new List<string>();
 
-        public void Log(string message)
+        public void LogInfo(string message)
         {
             Messages.Add(message);
         }
