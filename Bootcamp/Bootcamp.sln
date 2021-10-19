@@ -238,6 +238,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeUnitTest", "..\Test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TDD-KFedak", "..\Testing\TDD\TDD-KFedak\TDD-KFedak\TDD-KFedak\TDD-KFedak.csproj", "{C3127E6B-BB59-45B7-AA0E-BB639ABBD4CA}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneUnitTest", "..\Testing\TDD\TDD-KFedak\UnitTestKFedak\PhoneUnitTest\PhoneUnitTest.csproj", "{B9647756-618C-4E65-8BC8-3D77ABE7E030}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KFedak-TDD", "..\Testing\TDD\TDD-KFedak\TDD-KFedak\KFedak-TDD\KFedak-TDD\KFedak-TDD.csproj", "{F5B4E924-2298-49DA-BCAE-709C9280DE48}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -540,6 +544,14 @@ Global
 		{C3127E6B-BB59-45B7-AA0E-BB639ABBD4CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3127E6B-BB59-45B7-AA0E-BB639ABBD4CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3127E6B-BB59-45B7-AA0E-BB639ABBD4CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9647756-618C-4E65-8BC8-3D77ABE7E030}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9647756-618C-4E65-8BC8-3D77ABE7E030}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9647756-618C-4E65-8BC8-3D77ABE7E030}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9647756-618C-4E65-8BC8-3D77ABE7E030}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5B4E924-2298-49DA-BCAE-709C9280DE48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5B4E924-2298-49DA-BCAE-709C9280DE48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5B4E924-2298-49DA-BCAE-709C9280DE48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5B4E924-2298-49DA-BCAE-709C9280DE48}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
