@@ -16,15 +16,14 @@ namespace DIvanyshyn_UnitTests_Day1
             {
                 try
                 {
-                    if (phonetype == typeof(Nokia))
-                    {
-                        return new Nokia(batteryLevel, name, logger);
-                    }
-
-                    return new IPhone13(batteryLevel, name, logger);
+                    return (Phone)Activator.CreateInstance(phonetype, batteryLevel, name, logger);
                 }
-                catch (ArgumentException exe)
+                catch (TargetInvocationException exe)
                 {
+                    if (exe.InnerException is ArgumentException argexe)
+                    {
+                        throw new ArgumentException(argexe.Message);
+                    }
 
                     throw;
                 }

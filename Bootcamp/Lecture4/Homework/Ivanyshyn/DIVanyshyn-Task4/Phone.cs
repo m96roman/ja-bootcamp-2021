@@ -8,7 +8,7 @@ namespace DIVanyshyn_Task4
 
         internal ILogger logger { get; }
 
-        public int BatteryLevel { get => batteryLevel; }
+        public int BatteryLevel => batteryLevel;
 
         protected int batteryLevel;
 

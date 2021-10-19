@@ -17,11 +17,11 @@ namespace DIvanyshyn_UnitTests_Day1
             Test_PrayForBattery_Log_Nokia(1, "123");
             Test_PrayForBattery_Log_Nokia(4, "123");
 
-            Test_PrayForBattery_Work_Nokia(1, "123");
-            Test_PrayForBattery_Work_Nokia(4, "123");
+            Test_PrayForBattery_Work_Nokia(1, "123", expectedValue: 9);
+            Test_PrayForBattery_Work_Nokia(4, "123", expectedValue: 12);
         }
-
-        private void Test_PrayForBattery_Work_Nokia(int batteryLevel, string Name)
+      
+        private void Test_PrayForBattery_Work_Nokia(int batteryLevel, string Name, int expectedValue)
         {
             FakeLogger fakeLogger = new FakeLogger();
 
@@ -29,7 +29,7 @@ namespace DIvanyshyn_UnitTests_Day1
 
             nokia.PrayForBattery();
 
-            if (nokia.BatteryLevel == (batteryLevel + 8))
+            if (nokia.BatteryLevel == expectedValue)
             {
                 writeResult.Invoke(nameof(Test_PrayForBattery_Log_Nokia) + " has passed", ConsoleColor.Green);
 
@@ -47,7 +47,7 @@ namespace DIvanyshyn_UnitTests_Day1
 
             nokia.PrayForBattery();
 
-            if (fakeLogger.FakeLoggerLog.Count != 0 &&
+            if (fakeLogger.FakeLoggerLog.Count == 1 &&
                 fakeLogger.FakeLoggerLog[0].Key == "Praying for battery (Thank god for another day with Nokia)" &&
                 fakeLogger.FakeLoggerLog[0].Value == MessageType.Message)
             {
