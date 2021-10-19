@@ -69,10 +69,8 @@ namespace DIVanyshyn_Task4
                         throw;
                     }
 
-                    Console.WriteLine(new string('[', 20));
                     nokia.PrayForBattery();
                     nokia.CallForAmbulance();
-                    Console.WriteLine(new string(']', 20));
                 }
                 finally
                 {
