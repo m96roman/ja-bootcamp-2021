@@ -64,11 +64,16 @@ namespace UnitTest
             };
 
             testPhone.CheckPrayForBattery(phonePrayForBattery);
+
             testPhone.CheckCallAmbulanceLogged(phoneAmmbulance);
+
             testPhone.ValidBatteryLevelCheckExceptionLogged();
-            testPhone.CheckChargeLogged(phoneAmmbulance);
-            testPhone.CheckChargeABitLogged(phoneAmmbulance);
-            testPhone.CheckPrayForBatteryLogged(phoneAmmbulance);
+
+            testPhone.CheckChargeLogged(phoneCharge);
+
+            testPhone.CheckChargeABitLogged(phoneChargeABit);
+
+            testPhone.CheckPrayForBatteryLogged(phonePrayForBattery);
         }
 
         public static void RunTestIPhone(FakeLogger fakeLogger)
@@ -106,10 +111,14 @@ namespace UnitTest
             };
 
             testPhone.CheckChargeABit(phoneChargeABit);
+
             testPhone.CheckCallAmbulanceLogged(phoneAmmbulance);
+
             testPhone.ValidBatteryLevelCheckExceptionLogged();
-            testPhone.CheckChargeLogged(phoneAmmbulance);
-            testPhone.CheckChargeABitLogged(phoneAmmbulance);
+
+            testPhone.CheckChargeLogged(phoneCharge);
+
+            testPhone.CheckChargeABitLogged(phoneChargeABit);
         }
     }
 }
