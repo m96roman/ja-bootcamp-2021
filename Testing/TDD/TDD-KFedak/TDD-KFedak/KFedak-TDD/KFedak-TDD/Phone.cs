@@ -35,16 +35,14 @@ namespace KFedak_TDD
                 this.BatteryLevel -= 5;
 
                 Logger.WriteLine(new Exception(($"Calling an ambulance from {PhoneName}, remaining charge: {BatteryLevel}%")));
-
-                //  Console.WriteLine($"Calling an ambulance from {PhoneName}, remaining charge: {BatteryLevel}%");
             }
             else
             {
                 this.BatteryLevel = 0;
 
-                Logger.WriteLine(new BatteryIsDeadException(this, $"Phone failed to call an ambulance: {this.PhoneName} "));
+                Logger.WriteLine(new BatteryIsDeadException(this, $"Phone failed to call an ambulance: {this.PhoneName}"));
 
-                throw new BatteryIsDeadException(this, $"Phone failed to call an ambulance: {this.PhoneName} ");
+                throw new BatteryIsDeadException(this, $"Phone failed to call an ambulance: {this.PhoneName}");
             }
         }
 
@@ -53,8 +51,6 @@ namespace KFedak_TDD
             this.BatteryLevel = 100;
 
             Logger.WriteLine(new Exception($"Charging {PhoneName} to 100%"));
-
-            //Console.WriteLine($"Charging {PhoneName} to 100%");
         }
 
         public void ChargeABit()
@@ -62,8 +58,6 @@ namespace KFedak_TDD
             this.BatteryLevel += 1;
 
             Logger.WriteLine(new Exception($"Charging {PhoneName} by 1%"));
-
-            //Console.WriteLine($"Charging {PhoneName} by 1%");
         }
     }
 }

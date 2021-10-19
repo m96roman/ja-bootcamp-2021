@@ -58,7 +58,6 @@ namespace KFedak_TDD
 
                     if (phone is not Nokia nokia)
                     {
-                        // Console.WriteLine(ex.Message);
                         logger.WriteLine(ex);
                         throw;
                     }

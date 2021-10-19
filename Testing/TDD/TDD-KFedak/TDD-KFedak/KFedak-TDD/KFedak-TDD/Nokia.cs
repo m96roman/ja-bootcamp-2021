@@ -19,7 +19,6 @@ namespace KFedak_TDD
         {
             this.BatteryLevel += 8;
             logger.WriteLine(new Exception("Praying for the battery"));
-            //Console.WriteLine("Praying for the battery");
         }
     }
 }

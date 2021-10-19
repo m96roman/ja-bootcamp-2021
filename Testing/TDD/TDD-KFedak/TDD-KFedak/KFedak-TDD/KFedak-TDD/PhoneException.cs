@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KFedak_TDD
 {
-    class BatteryIsDeadException : ApplicationException
+    public class BatteryIsDeadException : ApplicationException
     {
         public Phone Telephone { get; set; }
         public DateTime ErrorTimeStamp { get; set; }
@@ -21,7 +21,7 @@ namespace KFedak_TDD
 
         public BatteryIsDeadException(string cause) : base(cause) { }
     }
-    class InvalidValueForBattery : ApplicationException
+    public class InvalidValueForBattery : ApplicationException
     {
         public int BatteryLevel { get; set; }
         public DateTime ErrorTimeStamp { get; set; }
