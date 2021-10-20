@@ -13,7 +13,7 @@ namespace DIvanyshyn_8.AssembliesExample
         [Route(name: "delete")]
         public override void Delete()
         {
-            Console.WriteLine("Thank god i deleting");
+            Logger.Log("Thank god i deleting");
         }
 
         [Route(name: "get")]
@@ -25,13 +25,13 @@ namespace DIvanyshyn_8.AssembliesExample
         [Route(name: "post")]
         public override void Post()
         {
-            Console.WriteLine("Thank god i posting");
+            Logger.Log("Thank god i posting");
         }
 
         [Route(name: "put")]
         public override void Put()
         {
-            Console.WriteLine("Thank god i putting");
+            Logger.Log("Thank god i putting");
         }
     }
 }

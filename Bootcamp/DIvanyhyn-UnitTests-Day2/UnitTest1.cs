@@ -5,8 +5,9 @@ namespace DIvanyhyn_UnitTests_Day2
 {
     public class ControllerTests
     {
+
         [Test]
-        public void GetTests()
+        public void Test_Get_Method()
         {
             //Controller contr = new MyController();
         }
