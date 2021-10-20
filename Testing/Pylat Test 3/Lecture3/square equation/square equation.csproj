@@ -6,8 +6,4 @@
     <RootNamespace>square_equation</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Include="C:\Users\nestor.pylat\Desktop\Program.cs" Link="Program.cs" />
-  </ItemGroup>
-
-</Project>
+ </Project>
