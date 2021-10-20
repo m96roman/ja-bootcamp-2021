@@ -50,7 +50,7 @@ namespace IPlyska.NUnitTest
             //act
             var actEx = Assert.Catch<InappropriateBatteryLevelValueException>(() => phone.BatteryLevel = value);
             //Assert
-            Assert.AreEqual(expectedEx, actEx);
+            Assert.AreEqual(expectedEx, actEx.GetType());
         }
 
         [TestCase(40, 41)]
@@ -93,7 +93,7 @@ namespace IPlyska.NUnitTest
             //arrange
             phone.BatteryLevel = value;
             //act
-            var actEx = Assert.Catch(() => phone.CallAmbulance());
+            var actEx = Assert.Catch<BatteryIsDeadException>(() => phone.CallAmbulance());
             //Assert
             Assert.AreEqual(expectedEx, actEx.GetType());
 
