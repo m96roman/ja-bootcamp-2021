@@ -9,20 +9,19 @@ namespace Tests
         Api api = new Api();
         [SetUp]
         public void Setup()
-        {
-                  }
+        { }
 
         [Test]
         public void Test1_NameIs_Null()
         {
-                        Assert.AreEqual(null, controller.Name);
+            Assert.AreEqual(null, controller.Name);
         }
 
         [Test]
         public void Test2_Get_RouteIsNull()
         {
             api.CallEndpoint(null);
-            Assert.AreEqual(8 , controller.Get());
+            Assert.AreEqual(8, controller.Get());
         }
 
         [Test]
@@ -40,7 +39,7 @@ namespace Tests
         }
 
         [Test]
-        public void Test5_Put_Route()
+        public void Test5_Delete_Route()
         {
             api.CallEndpoint("/controller/delete");
             Assert.AreEqual("Delete method executed in controller", controller.Delete());
