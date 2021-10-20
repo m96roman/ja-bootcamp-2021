@@ -1,5 +1,6 @@
 using IPlyskaLect4;
 using NUnit.Framework;
+using System;
 
 namespace IPlyska.NUnitTest
 {
@@ -13,13 +14,12 @@ namespace IPlyska.NUnitTest
              phone = new Phone();
         }
 
-        [TestCase(0)]
-        [TestCase(20)]
-        [TestCase(99)]
-        public void Test_Charge(int value)
+        [TestCase(0, 100)]
+        [TestCase(20, 100)]
+        [TestCase(99, 100)]
+        public void Test_Charge(int value, int expectedValue)
         {
             //arrange
-            var expectedValue = 100;
             phone.BatteryLevel = value;
             //act
             phone.Charge();
@@ -39,29 +39,28 @@ namespace IPlyska.NUnitTest
             Assert.AreEqual(phone.BatteryLevel, value);
         }
 
-        [TestCase(101)]
-        [TestCase(-1)]
-        [TestCase(-10)]
-        [TestCase(110)]
-        public void Test_Prop_BatteryLevelWithInpropValue(int value)
+        [TestCase(101, typeof(InappropriateBatteryLevelValueException))]
+        [TestCase(-1, typeof(InappropriateBatteryLevelValueException))]
+        [TestCase(-10, typeof(InappropriateBatteryLevelValueException))]
+        [TestCase(110, typeof(InappropriateBatteryLevelValueException))]
+        public void Test_Prop_BatteryLevelWithInpropValue(int value, Type expectedEx)
         {
             //arrange
-            var expectedEx = typeof(InappropriateBatteryLevelValueException);
+           
             //act
-            var actEx = Assert.Catch(() => phone.BatteryLevel = value);
+            var actEx = Assert.Catch<InappropriateBatteryLevelValueException>(() => phone.BatteryLevel = value);
             //Assert
-            Assert.AreEqual(expectedEx, actEx.GetType());
+            Assert.AreEqual(expectedEx, actEx);
         }
 
-        [TestCase(40)]
-        [TestCase(2)]
-        [TestCase(33)]
-        [TestCase(1)]
-        public void Test_ChargeABit(int value)
+        [TestCase(40, 41)]
+        [TestCase(2, 3)]
+        [TestCase(33, 34)]
+        [TestCase(1, 2)]
+        public void Test_ChargeABit(int value, int expectedValue)
         {
             //arrange
             phone.BatteryLevel = value;
-            var expectedValue = ++value;
             //act
             phone.ChargeABit();
             //Assert
@@ -69,15 +68,14 @@ namespace IPlyska.NUnitTest
             
         }
 
-        [TestCase(5)]
-        [TestCase(6)]
-        [TestCase(10)]
-        [TestCase(7)]
-        [TestCase(44)]
-        public void Test_CallAmbulanceWithCorrectValue(int value)
+        [TestCase(5, 0)]
+        [TestCase(6, 1)]
+        [TestCase(10, 5)]
+        [TestCase(7, 2)]
+        [TestCase(44, 39)]
+        public void Test_CallAmbulanceWithCorrectValue(int value, int expectedValue)
         {
             //arrange
-            var expectedValue = value - 5;
             phone.BatteryLevel = value;
             //act
             phone.CallAmbulance();
@@ -85,15 +83,14 @@ namespace IPlyska.NUnitTest
             Assert.AreEqual(expectedValue, phone.BatteryLevel);
         }
 
-        [TestCase(4)]
-        [TestCase(3)]
-        [TestCase(2)]
-        [TestCase(1)]
-        [TestCase(0)]
-        public void Test_CallAmbulanceWithInCorrectValue(int value)
+        [TestCase(4, typeof(BatteryIsDeadException))]
+        [TestCase(3, typeof(BatteryIsDeadException))]
+        [TestCase(2, typeof(BatteryIsDeadException))]
+        [TestCase(1, typeof(BatteryIsDeadException))]
+        [TestCase(0, typeof(BatteryIsDeadException))]
+        public void Test_CallAmbulanceWithInCorrectValue(int value, Type expectedEx)
         {
             //arrange
-            var expectedEx = typeof(BatteryIsDeadException);
             phone.BatteryLevel = value;
             //act
             var actEx = Assert.Catch(() => phone.CallAmbulance());
@@ -101,6 +98,5 @@ namespace IPlyska.NUnitTest
             Assert.AreEqual(expectedEx, actEx.GetType());
 
         }
-
     }
 }
