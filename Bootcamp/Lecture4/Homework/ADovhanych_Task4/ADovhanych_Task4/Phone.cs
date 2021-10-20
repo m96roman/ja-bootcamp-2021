@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ADovhanych_Task4
 {
@@ -10,7 +6,7 @@ namespace ADovhanych_Task4
     {
         public string PhoneName { get; set; }
         public int BatteryLvl { get; set; }
-        protected ILogger _logger { get; set; }
+        protected ILogger _logger;
 
         public Phone(int batteryLvl, ILogger logger = null)
         {
@@ -24,12 +20,6 @@ namespace ADovhanych_Task4
             {
                 throw new InvalidBatteryLevelException();
             }
-        }
-
-        public Phone(string phoneName, int batteryLvl)
-        {
-            PhoneName = phoneName;
-            BatteryLvl = batteryLvl;
         }
 
         public void CallAmbulance()

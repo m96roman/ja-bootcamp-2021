@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("UnitTestsPhonesApp")]
 
 namespace ADovhanych_Task4
 {
-    class IPhone : Phone, ICharge
+    internal class IPhone : Phone, ICharge
     {
-        public IPhone(int batteryLvl, ILogger logger = null) : base(batteryLvl) { }
+        public IPhone(int batteryLvl, ILogger logger = null) : base(batteryLvl, logger) { }
 
         public void Charge()
         {

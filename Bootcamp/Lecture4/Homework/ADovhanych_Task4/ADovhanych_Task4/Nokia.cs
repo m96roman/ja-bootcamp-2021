@@ -8,7 +8,7 @@ namespace ADovhanych_Task4
 {
     class Nokia : Phone, ICharge
     {
-        public Nokia(int batterLvl, ILogger logger = null) : base(batterLvl) { }
+        public Nokia(int batterLvl, ILogger logger = null) : base(batterLvl, logger) { }
 
         public void PrayForBatery()
         {
@@ -19,7 +19,7 @@ namespace ADovhanych_Task4
         public void Charge()
         {
             BatteryLvl = 100;
-            Console.WriteLine($"Charging {GetType().Name} to 100%");
+            _logger.LogInfo($"Charging {GetType().Name} to 100%");
         }
 
         public void ChargeABit()

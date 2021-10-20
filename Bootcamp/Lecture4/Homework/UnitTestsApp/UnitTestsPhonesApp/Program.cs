@@ -11,11 +11,12 @@ namespace UnitTestsPhonesApp
         {
             TestLogger testLogger = new TestLogger();
 
-            //CallAmbulanceTest(-5);
-            //ValidBatteryTest(200);
-            //NokiaTest(20);
-            //ChargeABitTest(-5);
-            //CallAmublane_MessageTest(testLogger, 20);
+            CallAmbulanceTest(-5);
+            ValidBatteryTest(200);
+            NokiaTest(20);
+            ChargeABitTest(-5);
+            CallAmublane_MessageTest(testLogger, 20);
+            ChargeMessage_Test(testLogger);
         }
 
         static void ValidBatteryTest(int batteryLvl)
@@ -40,13 +41,35 @@ namespace UnitTestsPhonesApp
             IPhone phone = new IPhone(battery, logger);
             phone.CallAmbulance();
 
-            if (logger.Messages.Any(m => m.StartsWith("Calling")))
+            if (logger.Messages.Any(m => m.Contains("Calling")))
             {
                 Logger.PassedTest(battery);
             }
             else
             {
                 Logger.FailedTest(battery);
+            }
+        }
+
+        static void ChargeMessage_Test(TestLogger logger)
+        {
+            Nokia nokia = new(20, logger);
+            nokia.Charge();
+
+            if (nokia.BatteryLvl == 100)
+            {
+                if (logger.Messages.Any(m => m.Contains("Charging")))
+                {
+                    Logger.PassedTest(20);
+                }
+                else
+                {
+                    Logger.FailedTest(20);
+                }
+            }
+            else
+            {
+                Logger.FailedTest(1);
             }
         }
 
