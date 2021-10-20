@@ -3,6 +3,10 @@
     [Route(name: "controllerA")]
     class MyControllerA : Controller
     {
+        public MyControllerA(ILogger logger) : base(logger)
+        {
+        }
+
         [Route(name: "delete")]
         public override void Delete()
         {

@@ -38,7 +38,7 @@ namespace DIvanyshyn_8.AssembliesExample
                 //First find all class that extend class controller in assembly
                 try
                 {
-                    var clases = ReflectiveEnumerator.GetEnumerableOfType(Controller);
+                    var clases = ReflectiveEnumerator.GetEnumerableOfType(Controller,new OutLogger());
                     MethodInfo MethodBody = null;
                     foreach (var item in clases)
                     {

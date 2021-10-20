@@ -216,7 +216,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Homework", "Homework", "{59
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveCoding8", "Lecture8\LiveCoding8\LiveCoding8.csproj", "{7AF38CE7-1100-4EDB-BD62-7A0BC5E09AF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DIvanyshyn-8", "Lecture8\Homework\ivanyshyn\DIvanyshyn-8\DIvanyshyn-8.csproj", "{65EF59C7-0C93-4CAF-9FFD-83250666A8C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DIvanyshyn-8", "Lecture8\Homework\ivanyshyn\DIvanyshyn-8\DIvanyshyn-8.csproj", "{65EF59C7-0C93-4CAF-9FFD-83250666A8C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DIvanyhyn-UnitTests-Day2", "DIvanyhyn-UnitTests-Day2\DIvanyhyn-UnitTests-Day2.csproj", "{8F998B61-6F8F-4A53-BD53-ED4B89C090A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -508,6 +510,10 @@ Global
 		{65EF59C7-0C93-4CAF-9FFD-83250666A8C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65EF59C7-0C93-4CAF-9FFD-83250666A8C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65EF59C7-0C93-4CAF-9FFD-83250666A8C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F998B61-6F8F-4A53-BD53-ED4B89C090A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F998B61-6F8F-4A53-BD53-ED4B89C090A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F998B61-6F8F-4A53-BD53-ED4B89C090A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F998B61-6F8F-4A53-BD53-ED4B89C090A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

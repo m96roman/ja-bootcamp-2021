@@ -6,6 +6,10 @@ namespace DIvanyshyn_8.AssembliesExample
     [Route(name: "controller")]
     class MyController : Controller
     {
+        public MyController(ILogger logger) : base(logger)
+        {
+        }
+
         [Route(name: "delete")]
         public override void Delete()
         {
