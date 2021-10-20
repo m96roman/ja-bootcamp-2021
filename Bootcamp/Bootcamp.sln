@@ -161,7 +161,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Arrays", "Lecture2\Tasks\MR
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ADovhanych_Task4", "Lecture4\Homework\ADovhanych_Task4\ADovhanych_Task4\ADovhanych_Task4.csproj", "{12D55779-8720-4304-9184-986790D10FE7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestsPhonesApp", "Lecture4\Homework\UnitTestsApp\UnitTestsPhonesApp\UnitTestsPhonesApp.csproj", "{4E4FE5F8-EDB3-4C84-96C8-CD01CF503BBF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTestsPhonesApp", "Lecture4\Homework\UnitTestsApp\UnitTestsPhonesApp\UnitTestsPhonesApp.csproj", "{4E4FE5F8-EDB3-4C84-96C8-CD01CF503BBF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TDDSquareEquation", "Lecture4\Homework\ADovhanych_Task4\TDDSquareEquation\TDDSquareEquation.csproj", "{3C77C081-CAFE-457C-8556-C14661B693DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SquareEquationUnitTests", "Lecture4\Homework\ADovhanych_Task4\SquareEquationUnitTests\SquareEquationUnitTests.csproj", "{6E28F7E2-7704-4FF8-AAE7-9BD12B54AD05}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -389,6 +393,14 @@ Global
 		{4E4FE5F8-EDB3-4C84-96C8-CD01CF503BBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E4FE5F8-EDB3-4C84-96C8-CD01CF503BBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E4FE5F8-EDB3-4C84-96C8-CD01CF503BBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C77C081-CAFE-457C-8556-C14661B693DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C77C081-CAFE-457C-8556-C14661B693DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C77C081-CAFE-457C-8556-C14661B693DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C77C081-CAFE-457C-8556-C14661B693DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E28F7E2-7704-4FF8-AAE7-9BD12B54AD05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E28F7E2-7704-4FF8-AAE7-9BD12B54AD05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E28F7E2-7704-4FF8-AAE7-9BD12B54AD05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E28F7E2-7704-4FF8-AAE7-9BD12B54AD05}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -459,6 +471,8 @@ Global
 		{DBABE1B7-4B73-47D8-93DF-9871BF792A0D} = {4D05E57A-716E-43E0-83DF-9623F509464C}
 		{12D55779-8720-4304-9184-986790D10FE7} = {F1AC00AC-A479-4735-9B6C-C7EB89EF4CFB}
 		{4E4FE5F8-EDB3-4C84-96C8-CD01CF503BBF} = {F1AC00AC-A479-4735-9B6C-C7EB89EF4CFB}
+		{3C77C081-CAFE-457C-8556-C14661B693DF} = {F1AC00AC-A479-4735-9B6C-C7EB89EF4CFB}
+		{6E28F7E2-7704-4FF8-AAE7-9BD12B54AD05} = {F1AC00AC-A479-4735-9B6C-C7EB89EF4CFB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EDF9F64D-8CE1-4567-A599-F6C8CF7B91E0}
