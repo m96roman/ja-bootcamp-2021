@@ -42,7 +42,7 @@ namespace ADovhanych_Task4
             if (BatteryLvl >= 5)
             {
                 BatteryLvl -= 5;
-                Console.WriteLine($"Calling an ambulance from {GetType().Name}, remaining charge: {BatteryLvl}");
+                _logger.LogInfo($"Calling an ambulance from {GetType().Name}, remaining charge: {BatteryLvl}");
             }
             else
             {

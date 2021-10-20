@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using ADovhanych_Task4;
 
 namespace UnitTestsPhonesApp
@@ -10,10 +11,11 @@ namespace UnitTestsPhonesApp
         {
             TestLogger testLogger = new TestLogger();
 
-            CallAmbulanceTest(-5);
-            ValidBatteryTest(200);
-            NokiaTest(20);
-            ChargeABitTest(-5);
+            //CallAmbulanceTest(-5);
+            //ValidBatteryTest(200);
+            //NokiaTest(20);
+            //ChargeABitTest(-5);
+            //CallAmublane_MessageTest(testLogger, 20);
         }
 
         static void ValidBatteryTest(int batteryLvl)
@@ -30,6 +32,21 @@ namespace UnitTestsPhonesApp
             {
                 Logger.FailedTest(batteryLvl);
                 return;
+            }
+        }
+
+        static void CallAmublane_MessageTest(TestLogger logger, int battery)
+        {
+            IPhone phone = new IPhone(battery, logger);
+            phone.CallAmbulance();
+
+            if (logger.Messages.Any(m => m.StartsWith("Calling")))
+            {
+                Logger.PassedTest(battery);
+            }
+            else
+            {
+                Logger.FailedTest(battery);
             }
         }
 

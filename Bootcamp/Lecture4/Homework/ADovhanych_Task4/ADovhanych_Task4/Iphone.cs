@@ -8,7 +8,7 @@ namespace ADovhanych_Task4
 {
     class IPhone : Phone, ICharge
     {
-        public IPhone(int batteryLvl) : base(batteryLvl) { }
+        public IPhone(int batteryLvl, ILogger logger = null) : base(batteryLvl) { }
 
         public void Charge()
         {

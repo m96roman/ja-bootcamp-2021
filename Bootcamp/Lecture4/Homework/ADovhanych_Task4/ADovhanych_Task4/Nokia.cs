@@ -8,7 +8,7 @@ namespace ADovhanych_Task4
 {
     class Nokia : Phone, ICharge
     {
-        public Nokia(int batterLvl) : base(batterLvl) { }
+        public Nokia(int batterLvl, ILogger logger = null) : base(batterLvl) { }
 
         public void PrayForBatery()
         {
