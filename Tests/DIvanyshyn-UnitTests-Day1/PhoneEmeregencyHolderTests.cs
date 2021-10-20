@@ -18,23 +18,27 @@ namespace DIvanyshyn_UnitTests_Day1
 
         public void RunAll()
         {
-            Test_PhoneEmeregencyHolder_Rethrow_Excpetion();
+            Test_PhoneEmeregencyHolder_Rethrow_Excpetion(3, "123", typeof(IPhone13));
+            Test_PhoneEmeregencyHolder_Rethrow_Excpetion(4, "123", typeof(IPhone13));
 
-            Test_For_Nokia_Case();
+            Test_For_Nokia_Case(3, "123", 4);
+            Test_For_Nokia_Case(4, "123", 4);
 
             Test_Charge_A_Bit();
 
-            Test_PhoneEmergencyHolder_LogException();
+            Test_PhoneEmergencyHolder_LogException(4, "123", typeof(IPhone13));
+            Test_PhoneEmergencyHolder_LogException(3, "123", typeof(IPhone13));
+            Test_PhoneEmergencyHolder_LogException(2, "123", typeof(IPhone13));
         }
 
         #region Tests
 
-        private void Test_PhoneEmergencyHolder_LogException()
+        private void Test_PhoneEmergencyHolder_LogException(int batteryLevel, string name, Type phoneType)
         {
             FakeLogger fakeLogger = new FakeLogger();
 
             PhoneEmeregencyTestHolder phones = new();
-            Phone phone = new IPhone13(1, "123", fakeLogger);
+            Phone phone = PhoneBuilder.GetPhone(batteryLevel, name, phoneType, fakeLogger);
             phones.Add(phone);
 
             try
@@ -56,10 +60,10 @@ namespace DIvanyshyn_UnitTests_Day1
             logFailure.Invoke(nameof(Test_PhoneEmergencyHolder_LogException));
         }
 
-        private void Test_PhoneEmeregencyHolder_Rethrow_Excpetion_And_Charge_A_Bit()
+        private void Test_PhoneEmeregencyHolder_Rethrow_Excpetion_And_Charge_A_Bit(int batteryLevel, string name, Type phoneType, int expectedBatteryLevel)
         {
             PhoneEmeregencyTestHolder phones = new();
-            phones.Add(new IPhone13(2, "123", new FakeLogger()));
+            phones.Add(PhoneBuilder.GetPhone(batteryLevel, name, phoneType, new FakeLogger()));
 
             try
             {
@@ -67,7 +71,7 @@ namespace DIvanyshyn_UnitTests_Day1
             }
             catch (BatteryIsDeadException bs)
             {
-                if (bs.Phone?.BatteryLevel == 1)
+                if (bs.Phone?.BatteryLevel == expectedBatteryLevel)
                 {
                     logSuccess.Invoke(nameof(Test_PhoneEmeregencyHolder_Rethrow_Excpetion_And_Charge_A_Bit));
                     return;
@@ -77,17 +81,17 @@ namespace DIvanyshyn_UnitTests_Day1
             logFailure.Invoke(nameof(Test_PhoneEmeregencyHolder_Rethrow_Excpetion_And_Charge_A_Bit));
         }
 
-        private void Test_For_Nokia_Case()
+        private void Test_For_Nokia_Case(int batteryLevel, string name, int expectedBatteryLevel)
         {
             PhoneEmeregencyTestHolder phones = new();
-            Nokia nokia = new Nokia(2, "123", new FakeLogger());
+            Nokia nokia = (Nokia)PhoneBuilder.GetPhone(batteryLevel, name, typeof(Nokia), new FakeLogger());
             phones.Add(nokia);
 
             try
             {
                 PhoneEmeregencyTestHolder.TestEmeregency(phones);
 
-                if (nokia.BatteryLevel == 4)
+                if (nokia.BatteryLevel == expectedBatteryLevel)
                 {
                     logSuccess.Invoke(nameof(Test_For_Nokia_Case));
 
@@ -104,15 +108,17 @@ namespace DIvanyshyn_UnitTests_Day1
 
         private void Test_Charge_A_Bit()
         {
-            Test_PhoneEmeregencyHolder_Rethrow_Excpetion_And_Charge_A_Bit();
+            Test_PhoneEmeregencyHolder_Rethrow_Excpetion_And_Charge_A_Bit(4, "123", typeof(IPhone13), 1);
+            Test_PhoneEmeregencyHolder_Rethrow_Excpetion_And_Charge_A_Bit(3, "123", typeof(IPhone13), 1);
 
-            Test_PhoneEmeregencyHolder_Charge_A_Bit();
+            Test_PhoneEmeregencyHolder_Charge_A_Bit(6, "1123", typeof(IPhone13), 2);
+            Test_PhoneEmeregencyHolder_Charge_A_Bit(6, "1123", typeof(Nokia), 2);
         }
 
-        private void Test_PhoneEmeregencyHolder_Rethrow_Excpetion()
+        private void Test_PhoneEmeregencyHolder_Rethrow_Excpetion(int batteryLevel, string name, Type phoneType)
         {
             PhoneEmeregencyTestHolder phones = new();
-            phones.Add(new IPhone13(2, "123", new FakeLogger()));
+            phones.Add(PhoneBuilder.GetPhone(batteryLevel, name, phoneType, new FakeLogger()));
 
             try
             {
@@ -127,15 +133,15 @@ namespace DIvanyshyn_UnitTests_Day1
             logFailure.Invoke(nameof(Test_PhoneEmeregencyHolder_Rethrow_Excpetion));
         }
 
-        private void Test_PhoneEmeregencyHolder_Charge_A_Bit()
+        private void Test_PhoneEmeregencyHolder_Charge_A_Bit(int batteryLevel, string name, Type phoneType, int expectedBatteryLevel)
         {
             PhoneEmeregencyTestHolder phones = new();
-            Phone phone = new IPhone13(10, "123", new FakeLogger());
+            Phone phone = PhoneBuilder.GetPhone(batteryLevel, name, phoneType, new FakeLogger());
             phones.Add(phone);
 
             PhoneEmeregencyTestHolder.TestEmeregency(phones);
 
-            if (phone.BatteryLevel == 6)
+            if (phone.BatteryLevel == expectedBatteryLevel)
             {
                 logSuccess.Invoke(nameof(Test_PhoneEmeregencyHolder_Charge_A_Bit));
 

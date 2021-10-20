@@ -18,56 +18,40 @@ namespace DIvanyshyn_UnitTests_Day1
 
         public void RunAll()
         {
-            Test_Create_Holder_Count_Of_CreatedPhones_is_2();
+            Test_Create_Holder_Count_Of_CreatedPhones_is_2(new int[] { 1, 2, 3 }, 6);
+            Test_Create_Holder_Count_Of_CreatedPhones_is_2(new int[] { 1 }, 2);
 
-            Test_Catch_Exception_And_Charge();
-
-            Test_Catch_Excpetion_And_Loop_Is_not_Interrupted();
+            Test_Catch_Excpetion_And_Loop_Is_not_Interrupted(iterationCount: 2, 1, "123", typeof(IPhone13), 96);
+            Test_Catch_Excpetion_And_Loop_Is_not_Interrupted(iterationCount: 3, 4, "123", typeof(IPhone13), 92);
         }
 
-        private void Test_Catch_Excpetion_And_Loop_Is_not_Interrupted()
+        private void Test_Catch_Excpetion_And_Loop_Is_not_Interrupted(int iterationCount, int batteryLevel, string name, Type phoneType, int expectedBatteryLevel)
         {
             PhoneEmeregencyTestHolder phones = new PhoneEmeregencyTestHolder();
-            Phone phone = new IPhone13(1, "123", new FakeLogger());
+            Phone phone = PhoneBuilder.GetPhone(batteryLevel, name, phoneType, new FakeLogger());
             phones.Add(phone);
 
-            Prog.RunProgram(phones, 2);
+            Prog.RunProgram(phones, iterationCount);
 
             //B=1->then handling Error B=100
             //B=100-5->B++
-            if (phone.BatteryLevel == 96)
+            if (phone.BatteryLevel == expectedBatteryLevel)
             {
-                logSucces.Invoke(nameof(Test_Catch_Exception_And_Charge));
+                logSucces.Invoke(nameof(Test_Catch_Excpetion_And_Loop_Is_not_Interrupted));
 
                 return;
             }
 
-            logFailure.Invoke(nameof(Test_Catch_Exception_And_Charge));
+            logFailure.Invoke(nameof(Test_Catch_Excpetion_And_Loop_Is_not_Interrupted));
         }
 
-        private void Test_Catch_Exception_And_Charge()
+
+
+        private void Test_Create_Holder_Count_Of_CreatedPhones_is_2(int[] batteryLevelsEnum, int expectedPhonesCount)
         {
-            PhoneEmeregencyTestHolder phones = new PhoneEmeregencyTestHolder();
-            Phone phone = new IPhone13(1, "123", new FakeLogger());
-            phones.Add(phone);
+            PhoneEmeregencyTestHolder holder = Prog.CreateHolder(batteryLevelsEnum, new FakeLogger());
 
-            Prog.RunProgram(phones, 1);
-
-            if (phone.BatteryLevel == 100)
-            {
-                logSucces.Invoke(nameof(Test_Catch_Exception_And_Charge));
-
-                return;
-            }
-
-            logFailure.Invoke(nameof(Test_Catch_Exception_And_Charge));
-        }
-
-        private void Test_Create_Holder_Count_Of_CreatedPhones_is_2()
-        {
-            PhoneEmeregencyTestHolder holder = Prog.CreateHolder(new int[] { 1 }, new FakeLogger());
-
-            if (holder.Count() == 2)
+            if (holder.Count() == expectedPhonesCount)
             {
                 logSucces.Invoke(nameof(Test_Create_Holder_Count_Of_CreatedPhones_is_2));
 
