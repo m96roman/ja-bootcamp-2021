@@ -242,7 +242,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EquationUnitTest", "..\Test
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KFedakT8", "..\Testing\TDD\TDD-KFedak\TDD-KFedak\KFedakT8\KFedakT8.csproj", "{39C7398C-51E1-4E9D-877D-BE0FAEE1A766}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControllerUnitTest", "..\Testing\TDD\TDD-KFedak\UnitTestKFedak\ControllerUnitTest\ControllerUnitTest.csproj", "{7E3D4E43-B98F-498D-84B6-08E01614C3DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ControllerUnitTest", "..\Testing\TDD\TDD-KFedak\UnitTestKFedak\ControllerUnitTest\ControllerUnitTest.csproj", "{7E3D4E43-B98F-498D-84B6-08E01614C3DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Equation", "..\Testing\TDD\TDD-KFedak\TDD-KFedak\Equation\Equation.csproj", "{CE27CF5A-8392-4047-8A5B-13CE8194ADDC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -558,6 +560,10 @@ Global
 		{7E3D4E43-B98F-498D-84B6-08E01614C3DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E3D4E43-B98F-498D-84B6-08E01614C3DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E3D4E43-B98F-498D-84B6-08E01614C3DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE27CF5A-8392-4047-8A5B-13CE8194ADDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE27CF5A-8392-4047-8A5B-13CE8194ADDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE27CF5A-8392-4047-8A5B-13CE8194ADDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE27CF5A-8392-4047-8A5B-13CE8194ADDC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

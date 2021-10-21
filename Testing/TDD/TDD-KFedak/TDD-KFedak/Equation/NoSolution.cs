@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace EquationUnitTest
+namespace Equation
 
 {
     [Serializable]
-    internal class NoSolution : Exception
+    public class NoSolution : Exception
     {
         public QuadraticFunction QuadraticFunction { get; }
 
