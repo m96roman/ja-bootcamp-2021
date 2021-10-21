@@ -6,20 +6,11 @@ namespace QuadraticSolver
     [Serializable]
     internal class NoRootsException : Exception
     {
-        public NoRootsException()
-        {
-        }
+        public TypesOfSolution WrongSolutionType { get; private set; }
 
-        public NoRootsException(string message) : base(message)
+        public NoRootsException(string message, TypesOfSolution type = TypesOfSolution.NoSolution) : base(message)
         {
-        }
-
-        public NoRootsException(string message, Exception innerException) : base(message, innerException)
-        {
-        }
-
-        protected NoRootsException(SerializationInfo info, StreamingContext context) : base(info, context)
-        {
+            WrongSolutionType = type;
         }
     }
 }

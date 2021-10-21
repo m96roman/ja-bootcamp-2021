@@ -1,8 +1,10 @@
 ﻿namespace QuadraticSolver
 {
-    enum TypesOfSolution
+    public enum TypesOfSolution
     {
         OneRoot,
-        TwoRealRoots
+        TwoRealRoots,
+        TwoImaginaryRoots,
+        NoSolution
     }
 }
