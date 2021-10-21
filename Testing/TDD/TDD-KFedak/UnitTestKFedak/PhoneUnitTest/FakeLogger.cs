@@ -11,9 +11,6 @@ namespace PhoneUnitTest
         public void WriteLine(Exception message)
         {
             this.message.Add(message.Message);
-           
         }
-
-
     }
 }
