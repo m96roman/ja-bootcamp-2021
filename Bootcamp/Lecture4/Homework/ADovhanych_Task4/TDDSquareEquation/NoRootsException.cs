@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace TDDSquareEquation
 {
-    class InputData
+    class NoRootsException : Exception
     {
-        public double A { get; set; }
-        public double B { get; set; }
-        public double C { get; set; }
+        public NoRootsException() { }
+        public NoRootsException(string message) : base(message) { }
     }
 }
