@@ -8,15 +8,10 @@ namespace Equation
     {
         public IFileWrapper FileWrapper { get; set; } = new FileWrapper();
 
-        public QuadraticFunction()
+        public Result DeltaBiggerThanZero(double a, double b, double c)
         {
-            
-        }
-
-        public Result DeltaBiggerThanZero(double a, double b,double c)
-        {
-            var x1 = (-b - Math.Sqrt(CalculateDelta(a,b,c))) / 2 * a;
-            var x2 = (-b + Math.Sqrt(CalculateDelta(a,b,c))) / 2 * a;
+            var x1 = (-b - Math.Sqrt(CalculateDelta(a, b, c))) / 2 * a;
+            var x2 = (-b + Math.Sqrt(CalculateDelta(a, b, c))) / 2 * a;
 
             return new Result(x1, x2);
         }
@@ -35,11 +30,11 @@ namespace Equation
 
         public Result Slove(double a, double b, double c)
         {
-            var delta = CalculateDelta(a,b,c);
+            var delta = CalculateDelta(a, b, c);
 
             if (delta < 0)
             {
-                throw new NoSolution(this,"No solution");
+                throw new NoSolution(this, "No solution");
             }
             else if (delta == 0)
             {
@@ -47,13 +42,14 @@ namespace Equation
             }
             else
             {
-                return DeltaBiggerThanZero(a, b,c);
+                return DeltaBiggerThanZero(a, b, c);
             }
         }
-
-        public void SaveResult(Result result, string filePath, string equation)
+        public void SaveResult(Result result, string filePath)
         {
-            if (result.X1 == result.X2 && result.X1!=null)
+            FileWrapper.CheckFileExists(filePath);
+
+            if (result.X1 == result.X2 && result.X1 != null)
             {
                 FileWrapper.WriteInFile(filePath, $"Root #1: {result.X1}");
             }
@@ -61,7 +57,7 @@ namespace Equation
             {
                 FileWrapper.WriteInFile(filePath, $"Root #1: {result.X1}; Root #2: {result.X2}");
             }
-            else 
+            else
             {
                 FileWrapper.WriteInFile(filePath, $"No solution");
             }
@@ -70,21 +66,19 @@ namespace Equation
         public void SolveAndSaveSolution(double a, double b, double c, string filePath)
         {
             //var equation = $"{a}x^2+{b}x+{c}=0";
-            var equation = "";
-            var root = new Result(0,0);
+            var root = new Result(0, 0);
             try
             {
-                 root = Slove(a, b, c);
+                root = Slove(a, b, c);
             }
-            catch(NoSolution)
+            catch (NoSolution)
             {
                 root = new Result(null, null);
             }
             finally
             {
-                SaveResult(root, filePath, equation);
+                SaveResult(root, filePath);
             }
         }
-
     }
 }

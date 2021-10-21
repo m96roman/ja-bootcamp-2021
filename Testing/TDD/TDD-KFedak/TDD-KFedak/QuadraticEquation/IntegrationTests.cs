@@ -3,9 +3,10 @@ using Equation;
 using Moq;
 using NUnit.Framework;
 
-namespace EquationUnitTest
+namespace QuadraticEquation
 {
-  public  class IntegrationTests
+    [TestFixture]
+    public class IntegrationTests
     {
         [Test]
         [TestCase(-1,5, "Root #1: -1; Root #2: 5")]
@@ -19,7 +20,7 @@ namespace EquationUnitTest
             {
                 FileWrapper = fileMock.Object
             };
-            var path = Program.logFilePath;
+            var path = Equation.Program.logFilePath;
 
             //act
             quadraticFunction.SaveResult(new Result(x1, x2),path, "");

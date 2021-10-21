@@ -2,7 +2,7 @@ using NUnit.Framework;
 using Equation;
 using Moq;
 
-namespace EquationUnitTest
+namespace EquationTest
 
 {
     [TestFixture]
@@ -14,7 +14,7 @@ namespace EquationUnitTest
         public void EquationHasOneResult(double a, double b, double c)
         {
             //arrange
-            QuadraticFunction quadraticFunction = new QuadraticFunction();
+            QuadraticFunction quadraticFunction = new();
             var expectedRoot = quadraticFunction.Slove(a, b, c);
 
             //act
@@ -29,7 +29,7 @@ namespace EquationUnitTest
         public void EquationHasTwoResults(double a, double b, double c)
         {
             //arrange
-            QuadraticFunction quadraticFunction = new QuadraticFunction();
+            QuadraticFunction quadraticFunction = new();
             var expectedRoot = quadraticFunction.Slove(a, b, c);
 
             //act
@@ -45,7 +45,7 @@ namespace EquationUnitTest
         public void EquationHasNotSolution(double a, double b, double c)
         {
             //arrange
-            QuadraticFunction quadraticFunction = new QuadraticFunction();
+            QuadraticFunction quadraticFunction = new();
 
             //act&&assert
             Assert.That(() => quadraticFunction.Slove(a, b, c), Throws.TypeOf<NoSolution>());
@@ -56,7 +56,7 @@ namespace EquationUnitTest
         public void EquationHasNotSolutionMessage(double a, double b, double c)
         {
             //arrange
-            QuadraticFunction quadraticFunction = new QuadraticFunction();
+            QuadraticFunction quadraticFunction = new();
 
             //act&&assert
             var ex = Assert.Throws<NoSolution>(() => quadraticFunction.Slove(a, b, c));
@@ -68,7 +68,7 @@ namespace EquationUnitTest
         public void CorrectValueOfDelta(double a, double b, double c)
         {
             //arrange
-            QuadraticFunction quadraticFunction = new QuadraticFunction();
+            QuadraticFunction quadraticFunction = new();
 
             //act
             var actualDelta = quadraticFunction.CalculateDelta(a, b, c);
@@ -81,7 +81,7 @@ namespace EquationUnitTest
         public void CorrectFormatRootsInFile()
         {
             //arrange
-            QuadraticFunction quadraticFunction = new QuadraticFunction();
+            //QuadraticFunction quadraticFunction = new();
 
             //act
             //  var actualDelta = quadraticFunction.CalculateDelta(a, b, c);
@@ -98,15 +98,15 @@ namespace EquationUnitTest
         {
             //arrange
             QuadraticFunction quadraticFunction = new();
-            Mock<IFileWrapper> fileStub = new();
-            fileStub.Setup(it => it.CheckFileExists("file")).Returns(true);
-            quadraticFunction.FileWrapper = fileStub.Object;
+            Mock<IFileWrapper> fileMock = new();
+            fileMock.Setup(it => it.CheckFileExists("file")).Returns(true);
+            quadraticFunction.FileWrapper = fileMock.Object;
 
             //act
             quadraticFunction.SolveAndSaveSolution(a, b, c, "file");
 
             //assert
-            fileStub.Verify(it => it.WriteInFile("file", result), Times.Once);
+            fileMock.Verify(it => it.WriteInFile("file", result), Times.Once);
         }
     }
 }
