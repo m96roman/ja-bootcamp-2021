@@ -43,5 +43,14 @@ namespace QuadraticEquationMartinTests
             Assert.AreEqual(Math.Round(inputDate.R2, 10), Math.Round(r2, 10));
         }
 
+        [TestCase("1", "-1", "1")]
+        [TestCase("2", "3", "12")]
+        public void Parse_GivenArgument_ShouldThrowNoRootsException(string a, string b, string c)
+        {
+            var inputDate = new InputDate(a, b, c);
+            inputDate.FindD(inputDate.A,inputDate.B,inputDate.C);
+            Assert.That(() => inputDate.FindRoots(inputDate.D), Throws.TypeOf<NoRootsException>());
+        }
+
     }
 }

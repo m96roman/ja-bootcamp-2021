@@ -64,21 +64,21 @@ namespace QuadraticEquationMartin
         {
             D = b * b - 4 * (a * c);
         }
-        public void FindRoots(double a, double b, double c, double d)
+        public void FindRoots( double d)
         {
             if (d < 0)
             {
                 throw new NoRootsException();
             }
 
-            R1 = (-b + Math.Sqrt(d)) / 2 * a;
-            R2 = (-b - Math.Sqrt(d)) / 2 * a;
+            R1 = (-B + Math.Sqrt(d)) / 2 * A;
+            R2 = (-B - Math.Sqrt(d)) / 2 * A;
         }
 
         public void SolveTheEquation()
         {
             FindD(A, B, C);
-            FindRoots(A, B, C, D);
+            FindRoots(D);
             Console.WriteLine($"{R1}\n{R2}");
         }
     }
