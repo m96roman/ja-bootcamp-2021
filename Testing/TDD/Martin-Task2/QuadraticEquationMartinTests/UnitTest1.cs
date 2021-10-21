@@ -8,6 +8,7 @@ namespace QuadraticEquationMartinTests
     public class Tests
     {
         [TestCase("0", "0", "0")]
+        [TestCase("000", "65", "56")]
         public void Parse_GivenFirstNull_ShouldThrowArgumentException(string a, string b, string c)
         {
             var inputDate = new InputDate();

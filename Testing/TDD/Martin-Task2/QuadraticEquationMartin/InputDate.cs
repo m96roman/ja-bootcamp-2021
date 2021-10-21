@@ -30,11 +30,6 @@ namespace QuadraticEquationMartin
 
         public void ValiDateInputData(string a, string b, string c)
         {
-            if (a.Equals("0"))
-            {
-                throw new ArgumentException();
-            }
-
             if (!double.TryParse(a, out var _a))
             {
                 throw new ArgumentException();
@@ -46,6 +41,11 @@ namespace QuadraticEquationMartin
             }
 
             if (!double.TryParse(c, out var _c))
+            {
+                throw new ArgumentException();
+            }
+
+            if (_a.Equals(0))
             {
                 throw new ArgumentException();
             }
