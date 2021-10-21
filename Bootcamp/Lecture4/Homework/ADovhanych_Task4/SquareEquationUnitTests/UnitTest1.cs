@@ -19,7 +19,7 @@ namespace SquareEquationUnitTests
         public void CheckForTwoSolutionsInSquareEq(double a, double b, double c)
         {            
             SquareEquation equation = new SquareEquation();
-            Roots roots = equation.SquareEquationSolution(a, b, c);
+            Roots roots = equation.SquareEquationTwoRoots(a, b, c);
             
             var expectedOne = (-1.6339745962155614);
             var expectedTwo = (-3.3660254037844384);
@@ -38,6 +38,20 @@ namespace SquareEquationUnitTests
             var expectedRoot = (-1);
 
             Assert.AreEqual(expectedRoot, roots.Root1);
-        }        
+        }     
+        
+        [Test]
+        [TestCase(5, 14, 6)]
+        public void CheckForSolutions(double a, double b, double c)
+        {
+            SquareEquation equation = new SquareEquation();
+            Roots roots = equation.SquareEquationSolution(a, b, c);
+
+            var expectedOne = (-1.1550510257216822);
+            var expectedTwo = (-1.6449489742783179);
+
+            Assert.AreEqual(expectedOne, roots.Root1);
+            Assert.AreEqual(expectedTwo, roots.Root2);
+        }
     }
 }
