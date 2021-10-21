@@ -10,7 +10,8 @@ namespace KFedak_TDD
     {
         public string PhoneName { get; set; }
         public int BatteryLevel { get; set; }
-        internal ILogger Logger;
+
+        public ILogger Logger;
 
         internal Phone(int batteryLevel, string phoneName, ILogger logger)
         {

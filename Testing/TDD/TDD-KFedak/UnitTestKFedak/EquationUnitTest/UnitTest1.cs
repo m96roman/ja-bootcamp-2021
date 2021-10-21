@@ -10,18 +10,18 @@ namespace EquationTest
     {
 
         [Test]
-        [TestCase(1, 6, 9)]
-        public void EquationHasOneResult(double a, double b, double c)
+        [TestCase(1, 6, 9,0)]
+        public void EquationHasOneResult(double a, double b, double c,double result)
         {
             //arrange
             QuadraticFunction quadraticFunction = new();
             var expectedRoot = quadraticFunction.Slove(a, b, c);
 
             //act
-            var actualroot = quadraticFunction.DeltaEqualZero(a, b);
+            var actualroot = result;
 
             //assert
-            Assert.AreEqual(actualroot.X1, expectedRoot.X1);
+            Assert.AreEqual(actualroot, expectedRoot.X1);
         }
 
         [Test]
@@ -67,6 +67,7 @@ namespace EquationTest
         [TestCase(1, 2, 5)]
         public void CorrectValueOfDelta(double a, double b, double c)
         {
+            //private
             //arrange
             QuadraticFunction quadraticFunction = new();
 
@@ -99,7 +100,6 @@ namespace EquationTest
             //arrange
             QuadraticFunction quadraticFunction = new();
             Mock<IFileWrapper> fileMock = new();
-            fileMock.Setup(it => it.CheckFileExists("file")).Returns(true);
             quadraticFunction.FileWrapper = fileMock.Object;
 
             //act

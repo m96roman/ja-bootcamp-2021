@@ -1,6 +1,8 @@
 using KFedak_TDD;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using NUnit.Framework;
+using System;
 using Assert = NUnit.Framework.Assert;
 
 namespace PhoneUnitTest
@@ -10,7 +12,7 @@ namespace PhoneUnitTest
         public static FakeLogger InitLogger()
         {
             var logger = new FakeLogger();
-            KFedak_TDD.Program.logger = logger;
+            Program.logger = logger;
             return logger;
         }
 
@@ -18,14 +20,15 @@ namespace PhoneUnitTest
         public void ChargeABitMessage()
         {
             //arrange
-            var logger = InitLogger();
+            Mock<ILogger> fileMock = new();
+          //  Program.logger =fileMock.Object;
 
             //act
-            Nokia phone = new Nokia(6, "5600",logger);
+            Nokia phone = new Nokia(6, "5600", fileMock.Object);
             phone.ChargeABit();
 
             //assert
-            Assert.IsTrue(logger.message.Contains($"Charging {phone.PhoneName} by 1%"));
+            fileMock.Verify(it=>it.WriteLine(new Exception($"Charging {phone.PhoneName} by 1%")),Times.Once);
         }
 
         [Test]

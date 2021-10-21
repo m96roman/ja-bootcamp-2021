@@ -82,7 +82,11 @@ namespace ControllerUnitTest
             //act
             var api = new Api(logger);
             api.CallEndpoint($"/controller/{methodName.ToLower()}");
-            var result=typeof(Controller).GetMethod(methodName).Invoke(api.Controller,null);
+            var logger2 = InitLogger();
+
+            //act
+            var api2 = new Api(logger2);
+            var result=typeof(Controller).GetMethod(methodName).Invoke(api2.Controller,null);
 
             //assert
             Assert.IsTrue(logger.message.Contains($"Method {methodName} return {result}"));
