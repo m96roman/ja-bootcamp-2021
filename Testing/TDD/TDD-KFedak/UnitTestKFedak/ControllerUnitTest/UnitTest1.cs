@@ -74,7 +74,7 @@ namespace ControllerUnitTest
 
         [Test]
         [TestCase("Get")]
-        public void CallEndpointGetMethodMessage(string methodName)
+        public void CallEndpointValueMethodMessage(string methodName)
         {
             //arrange
             var logger = InitLogger();
@@ -82,7 +82,7 @@ namespace ControllerUnitTest
             //act
             var api = new Api(logger);
             api.CallEndpoint($"/controller/{methodName.ToLower()}");
-            var result = api.Controller.Get();
+            var result=typeof(Controller).GetMethod(methodName).Invoke(api.Controller,null);
 
             //assert
             Assert.IsTrue(logger.message.Contains($"Method {methodName} return {result}"));
