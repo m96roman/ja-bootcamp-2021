@@ -11,27 +11,31 @@ namespace DIvanyshyn_8.AssembliesExample
         }
 
         [Route(name: "delete")]
-        public override void Delete()
+        public override ActionResult Delete()
         {
-            Logger.Log("Thank god i deleting");
+            Logger.Log("Method Delete in MyController is called");
+            return new ActionResult("Method Delete in MyController is called");
         }
 
         [Route(name: "get")]
-        public override int Get()
+        public override ActionResult Get()
         {
-            return 8;
+            Logger.Log("Method Get in MyController is called");
+            return new ActionResult(8);
         }
 
         [Route(name: "post")]
-        public override void Post()
+        public override ActionResult Post()
         {
-            Logger.Log("Thank god i posting");
+            Logger.Log("Method Post in MyController is called");
+            return new ActionResult("Method Post in MyController is called");
         }
 
         [Route(name: "put")]
-        public override void Put()
+        public override ActionResult Put()
         {
-            Logger.Log("Thank god i putting");
+            Logger.Log("Method Put in MyController is called");
+            return new ActionResult("Method Put in MyController is called");
         }
     }
 }

@@ -6,13 +6,13 @@ namespace DIvanyshyn_8.AssembliesExample
     {
         internal static void Execute()
         {
-            var api = new Api();
-            api.CallEndpoint("/controller/get");
-            api.CallEndpoint("/controller/post");
-            api.CallEndpoint("/controller/post");
-            api.CallEndpoint("/controllerA/get");
-            api.CallEndpoint("/controller/put");
-            api.CallEndpoint("/controller/delete");
+            var api = new Api(new OutLogger());
+            Console.WriteLine(api.CallEndpoint("/controller/get"));
+            Console.WriteLine(api.CallEndpoint("/controller/post"));
+            Console.WriteLine(api.CallEndpoint("/controller/post"));
+            Console.WriteLine(api.CallEndpoint("/controllerA/get"));
+            Console.WriteLine(api.CallEndpoint("/controller/put"));
+            Console.WriteLine(api.CallEndpoint("/controller/delete"));
         }
     }
 }

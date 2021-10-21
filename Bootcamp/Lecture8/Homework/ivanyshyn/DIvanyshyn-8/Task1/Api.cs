@@ -8,21 +8,29 @@ namespace DIvanyshyn_8.AssembliesExample
 {
     internal class Api
     {
+        ILogger ApiLogger { get; }
+
         Dictionary<string, CachedAction> dict = new Dictionary<string, CachedAction>();
 
         public Type Controller => typeof(Controller);
 
         readonly Regex regex = new("[a-zA-Z]+/[a-zA-Z]+", RegexOptions.IgnoreCase);
 
-        public bool CallEndpoint(string route)
+        public Api(ILogger logger)
         {
+            ApiLogger = logger;
+        }
+
+        public ActionResult CallEndpoint(string route)
+        {
+            if (route == null)
+            {
+                throw new ArgumentNullException($"The {nameof(route)} is null");
+            }
+
             if (dict.ContainsKey(route))
             {
-                Console.WriteLine(new string('-', 20));
-                dict[route].Execute();
-                Console.WriteLine(new string('-', 20));
-
-                return true;
+                return dict[route].Execute();
             }
 
             if (regex.IsMatch(route))
@@ -38,7 +46,7 @@ namespace DIvanyshyn_8.AssembliesExample
                 //First find all class that extend class controller in assembly
                 try
                 {
-                    var clases = ReflectiveEnumerator.GetEnumerableOfType(Controller,new OutLogger());
+                    var clases = ReflectiveEnumerator.GetEnumerableOfType(Controller, ApiLogger);
                     MethodInfo MethodBody = null;
                     foreach (var item in clases)
                     {
@@ -54,24 +62,24 @@ namespace DIvanyshyn_8.AssembliesExample
                             if (MethodBody != null)
                             {
                                 dict[route] = new CachedAction(MethodBody, item, null);
-                                dict[route].Execute();
-
-                                return true;
+                                return dict[route].Execute();
                             }
                         }
                     }
                 }
                 catch (Exception exe)
                 {
-                    Console.WriteLine(exe);
+                    ApiLogger.Log(exe.ToString());
                 }
             }
+            else
+            {
+                throw new ArgumentException($"The {nameof(route)} is in invalid format!");
+            }
 
-            Console.WriteLine("Route does not match a pattern!");
-            return false;
+            ApiLogger.Log("Route does not match a pattern!");
+            return null;
         }
-
-
 
         /// <summary>
         /// Gets method with specified route action 

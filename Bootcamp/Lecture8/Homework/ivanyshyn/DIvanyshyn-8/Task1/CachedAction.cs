@@ -12,13 +12,15 @@ namespace DIvanyshyn_8.AssembliesExample
             this.Params = parameters;
         }
 
-        public void Execute()
+        public ActionResult Execute()
         {
             var returnVal = Method.Invoke(Intance, parameters: Params);
             if (Method.ReturnType != typeof(void))
             {
-                Console.WriteLine($"Method {Method.Name} returns {returnVal}");
+                return (ActionResult)returnVal;
             }
+
+            return null;
         }
 
         public MethodInfo Method { get; }

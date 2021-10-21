@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<OutputType>Library</OutputType>
+		<OutputType>Exe</OutputType>
 		<TargetFramework>net5.0</TargetFramework>
 		<RootNamespace>DIvanyshyn_8</RootNamespace>
 		<ApplicationIcon />

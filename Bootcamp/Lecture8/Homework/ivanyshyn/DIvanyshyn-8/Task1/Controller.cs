@@ -9,12 +9,12 @@
             Logger = logger;
         }
 
-        public abstract int Get();
+        public abstract ActionResult Get();
 
-        public abstract void Post();
+        public abstract ActionResult Post();
 
-        public abstract void Put();
+        public abstract ActionResult Put();
 
-        public abstract void Delete();
+        public abstract ActionResult Delete();
     }
 }

@@ -8,28 +8,31 @@
         }
 
         [Route(name: "delete")]
-        public override void Delete()
+        public override ActionResult Delete()
         {
             Logger.Log("Controller2 is unique and very good deleter");
+            return new ActionResult("Controller2 is unique and very good deleter");
         }
 
         [Route(name: "get")]
-        public override int Get()
+        public override ActionResult Get()
         {
             Logger.Log("Controller2 is unique and very good getter");
-            return 440;
+            return new ActionResult(440);
         }
 
         [Route(name: "post")]
-        public override void Post()
+        public override ActionResult Post()
         {
             Logger.Log("Controller2 is unique and very good poster");
+            return new ActionResult("Controller2 is unique and very good poster");
         }
 
         [Route(name: "put")]
-        public override void Put()
+        public override ActionResult Put()
         {
             Logger.Log("Controller2 is unique and very good putter");
+            return new ActionResult("Controller2 is unique and very good putter");
         }
     }
 }
