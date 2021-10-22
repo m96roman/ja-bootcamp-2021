@@ -25,6 +25,7 @@ namespace IntegrationTest
 
             //assert
             Assert.AreEqual(result, File.ReadAllText(filePath));
+            Assert.IsTrue(File.Exists(filePath));
         }
     }
 
