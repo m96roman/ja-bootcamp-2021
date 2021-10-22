@@ -23,7 +23,7 @@ namespace ControllerUnitTest
             api.Controller.Post();
 
             //assert
-            Assert.IsTrue(logger.message.Contains($"Post method executed in {api.Controller.Name} controller"));
+            Assert.IsTrue(logger.message.Contains($"Post method execute in {api.Controller.Name} controller"));
         }
 
         [Test]
@@ -37,7 +37,7 @@ namespace ControllerUnitTest
             api.Controller.Put();
 
             //assert
-            Assert.IsTrue(logger.message.Contains($"Put method executed in {api.Controller.Name} controller"));
+            Assert.IsTrue(logger.message.Contains($"Put method execute in {api.Controller.Name} controller"));
         }
 
         [Test]
