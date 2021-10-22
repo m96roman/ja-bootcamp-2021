@@ -15,6 +15,7 @@ namespace SolveQuadraticEquatation
             ParametersValidation(a, b, c);
 
             if (ParametersValidationForZero(a, b, c))
+            { 
 
                 return new EquationRoots(0, 0);
             }
@@ -25,7 +26,6 @@ namespace SolveQuadraticEquatation
         private static EquationRoots FindRoots(double a, double b, double c)
         {
             return OneParameterIsZero(a, b, c) ?? FindRootsWithDiscriminant(a, b, c);
-
         }
 
         /// <summary>
