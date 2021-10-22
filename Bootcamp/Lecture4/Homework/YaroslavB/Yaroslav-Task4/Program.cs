@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Yaroslav_Task4
 {
@@ -7,83 +6,27 @@ namespace Yaroslav_Task4
     {
         static void Main(string[] args)
         {
+            PhoneEmergencyTestHolder phoneHolder = GetPhoneCollection();
+            AdvancedTestPhoneEmergency test = new AdvancedTestPhoneEmergency(phoneHolder, new Logger());
 
-            List<IPhone> PhoneEmergencyTestHolder = GetPhoneCollection();
-
-            TestAllPhones(PhoneEmergencyTestHolder, 10);
+            test.CycleTestEmergency(10);
 
 
-            Console.WriteLine("Press \'Enter\' to exit...");
-
+            Console.WriteLine("\n\nPress \'Enter\' to exit...");
             Console.ReadLine();
         }
 
-
-
-        private static List<IPhone> GetPhoneCollection()
+        private static PhoneEmergencyTestHolder GetPhoneCollection()
         {
-            var phones = new List<IPhone>()
+            var phones = new PhoneEmergencyTestHolder()
             {
                 new Nokia(4),
-
                 new IPhone13(8),
-
                 new Nokia(25),
-
                 new IPhone13(42)
             };
 
             return phones;
-        }
-
-        private static void TestAllPhones(List<IPhone> PhoneEmergencyTestHolder, int numberOfCalls = 3)
-        {
-            for (int i = 1; i <= numberOfCalls; i++)
-            {
-                Console.WriteLine($"\n\n================ Loop {i}/{numberOfCalls}, total phones: {PhoneEmergencyTestHolder.Count} ==============");
-
-                try
-                {
-                    TestEmergency(PhoneEmergencyTestHolder);
-                }
-                catch (BatteryIsDeadException ex)
-                {
-                    ex.PhoneInstance.Charge();
-                }
-            }
-        }
-
-        private static void TestEmergency(List<IPhone> PhoneEmergencyTestHolder)
-        {
-            foreach (var phone in PhoneEmergencyTestHolder)
-            {
-                Console.WriteLine($"\nTrying to call ambulance from {phone.PhoneType}...");
-
-                try
-                {
-                    phone.CallAmbulance();
-                }
-                catch (BatteryIsDeadException ex)
-                {
-                    Console.WriteLine($"Phone failed to call an ambulance: {ex.PhoneInstance.PhoneType}");
-
-                    if(phone is Nokia nokiaPhone)
-                    {
-                        nokiaPhone.PrayForBattery();
-
-                        phone.CallAmbulance();
-
-                        continue;
-                    }
-
-                    throw;
-                }
-                finally
-                {
-                    phone.ChargeABit();
-                }
-
-            }
         }
     }
 }
