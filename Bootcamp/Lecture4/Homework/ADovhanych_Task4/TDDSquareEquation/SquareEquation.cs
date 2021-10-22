@@ -23,11 +23,11 @@ namespace TDDSquareEquation
             return new Roots(firstRoot, secondRoot);
         }
 
-        internal Roots SquaqreEquationOneRoot(double a, double b, double c)
+        internal Roots SquareEquationOneRoot(double a, double b, double c)
         {
-            double singleRoot = -b / (2.0 * a);
+            double similarRoots = -b / (2.0 * a);
 
-            return new Roots(singleRoot);
+            return new Roots(similarRoots, similarRoots);
         }
 
         internal Roots SquareEquationSolution(double a, double b, double c)
@@ -40,7 +40,7 @@ namespace TDDSquareEquation
             }
             else if (discriminant == 0)
             {
-                return SquaqreEquationOneRoot(a, b, c);
+                return SquareEquationOneRoot(a, b, c);
             }
             else
             {

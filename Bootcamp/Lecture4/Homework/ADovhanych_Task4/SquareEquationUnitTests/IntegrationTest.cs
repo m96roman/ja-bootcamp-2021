@@ -12,12 +12,11 @@ namespace SquareEquationUnitTests
         public void CheckFileForTheData()
         {
             Solver solver = new Solver();
-            solver.SolveAndSave(5, 2, 1);
-            string expected = "<No solution>";
-            string asd = File.ReadAllText("Solution.txt");
+            string filePath = Path.Combine(Directory.GetCurrentDirectory(), "result.txt");
+            solver.SolveAndSave(4, 8, 4, filePath);
+            string expected = "Root #1: -1";
 
-            Assert.AreEqual(expected, File.ReadAllText("Solution.txt"));
-
+            Assert.AreEqual(expected, File.ReadAllText("result.txt"));
         }
     }
 }

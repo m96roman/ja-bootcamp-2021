@@ -33,7 +33,7 @@ namespace SquareEquationUnitTests
         public void CheckForOneSolutionInSquareEq(double a, double b, double c)
         {
             SquareEquation equation = new SquareEquation();
-            Roots roots = equation.SquaqreEquationOneRoot(a, b, c);
+            Roots roots = equation.SquareEquationOneRoot(a, b, c);
 
             var expectedRoot = (-1);
 

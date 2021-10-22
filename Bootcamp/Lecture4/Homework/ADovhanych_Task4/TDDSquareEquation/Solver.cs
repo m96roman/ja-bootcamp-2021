@@ -9,22 +9,17 @@ namespace TDDSquareEquation
 {
     class Solver
     {
-        public void SolveAndSave(double a, double b, double c)
+        public void SaveResult(Roots roots, string filePath)
         {
-            SquareEquation equation = new();
-            double discriminant = equation.FindDiscriminant(a, b, c);
-
-            using (StreamWriter streamWriter = new("Solution.txt"))
+            using (StreamWriter streamWriter = new(filePath))
             {
-                if (discriminant > 0)
+                if (roots.Root1 != roots.Root2)
                 {
-                    Roots solution = equation.SquareEquationTwoRoots(a, b, c);
-                    streamWriter.Write($"Root #1: {solution.Root1}; Root #2: {solution.Root2}");
+                    streamWriter.Write($"Root #1: {roots.Root1}; Root #2: {roots.Root2}");
                 }
-                else if (discriminant == 0)
+                else if (roots.Root2 == roots.Root1)
                 {
-                    Roots solution = equation.SquareEquationOneRoot(a, b, c);
-                    streamWriter.Write($"Root #1: {solution.Root1}");
+                    streamWriter.Write($"Root #1: {roots.Root1}");
                 }
                 else
                 {
@@ -32,5 +27,26 @@ namespace TDDSquareEquation
                 }
             }
         }
+        
+        public void SolveAndSave(double a, double b, double c, string filePath)
+        {
+            SquareEquation equation = new();
+            Roots roots = new();
+
+            try
+            {
+                roots = equation.SquareEquationSolution(a, b, c);
+            }
+            catch (NoRootsException)
+            {
+
+                roots = null;
+            }
+            finally
+            {
+                SaveResult(roots, filePath);
+            }
+        }
+
     }
 }
