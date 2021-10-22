@@ -37,6 +37,7 @@ namespace DIvanyshyn_UnitTests_Day1
         }
 
         [TestCase(3, "123", typeof(IPhone13))]
+        [TestCase(3, "123", typeof(Nokia))]
         public void Test_Charge_Log_Phone(int batteryLevel, string name, Type type)
         {
             Mock<ILogger> mockLogger = new();
@@ -48,6 +49,13 @@ namespace DIvanyshyn_UnitTests_Day1
         }
 
         [TestCase(3, "123", typeof(IPhone13))]
+        [TestCase(50, "123", typeof(IPhone13))]
+        [TestCase(70, "123", typeof(IPhone13))]
+        [TestCase(20, "123", typeof(IPhone13))]
+        [TestCase(3, "123", typeof(Nokia))]
+        [TestCase(50, "123", typeof(Nokia))]
+        [TestCase(70, "123", typeof(Nokia))]
+        [TestCase(20, "123", typeof(Nokia))]
         public void Test_Charge_Work_Phone(int batteryLevel, string name, Type type)
         {
             Mock<ILogger> mockLogger = new();
@@ -103,6 +111,19 @@ namespace DIvanyshyn_UnitTests_Day1
         public void Test_Contructor_Throwing_Excpetion_Phone(int batteryLevel, string name, Type type)
         {
             Assert.Throws<ArgumentException>(() => PhoneBuilder.GetPhone(batteryLevel, name, type, null));
+        }
+
+        [TestCase(90, "1", typeof(Nokia))]
+        [TestCase(60, "123", typeof(IPhone13))]
+        public void Test_Status_Log(int batteryLevel, string name, Type type)
+        {
+            Mock<ILogger> mockLogger = new Mock<ILogger>();
+
+            Phone phone = PhoneBuilder.GetPhone(batteryLevel, name, type, mockLogger.Object);
+
+            phone.Status();
+
+            mockLogger.Verify(l => l.WriteLine($"Phone {name} has a battery level {batteryLevel}", MessageType.Message));
         }
 
         #endregion
