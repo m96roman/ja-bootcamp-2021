@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\TDD-KFedak\KFedakT8\KFedakT8.csproj" />
+    <ProjectReference Include="..\..\TDD-KFedak\Equation\Equation.csproj" />
   </ItemGroup>
 
 </Project>

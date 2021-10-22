@@ -1,21 +1,15 @@
-﻿using Equation;
-using Moq;
+using Equation;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace EquationTest
+namespace IntegrationTest
 {
     [TestFixture]
-    public class IntegrationTest
+    public class Tests
     {
-        [TestCase("Root #1: -1; Root #2: 5",1,-4,-5)]
-        [TestCase("Root #1: -3",1,6,9)]
-        [TestCase("No solution",1,2,5)]
+        [TestCase("Root #1: -1; Root #2: 5", 1, -4, -5)]
+        [TestCase("Root #1: -3", 1, 6, 9)]
+        [TestCase("No solution", 1, 2, 5)]
         public void FileIsExistsAndCorrectData(string result, double a, double b, double c)
         {
             //arrange
@@ -33,4 +27,5 @@ namespace EquationTest
             Assert.AreEqual(result, File.ReadAllText(filePath));
         }
     }
+
 }
