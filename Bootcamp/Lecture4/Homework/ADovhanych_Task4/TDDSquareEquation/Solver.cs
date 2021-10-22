@@ -9,13 +9,15 @@ namespace TDDSquareEquation
 {
     class Solver
     {
+        internal static IFileWrapper FileWrapper { get; set; } = new FileWrapper();
+
         public void SaveResult(Roots roots, string filePath)
         {
             using (StreamWriter streamWriter = new(filePath))
             {
-                if (roots.Root1 != roots.Root2)
+                if (roots == null)
                 {
-                    streamWriter.Write($"Root #1: {roots.Root1}; Root #2: {roots.Root2}");
+                    streamWriter.Write("<No solution>");
                 }
                 else if (roots.Root2 == roots.Root1)
                 {
@@ -23,8 +25,10 @@ namespace TDDSquareEquation
                 }
                 else
                 {
-                    streamWriter.Write($"<No solution>");
+                    streamWriter.Write($"Root #1: {roots.Root1}; Root #2: {roots.Root2}"); ;
                 }
+
+                FileWrapper.CheckIfExists(filePath);
             }
         }
         

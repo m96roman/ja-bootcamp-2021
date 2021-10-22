@@ -25,9 +25,8 @@ namespace TDDSquareEquation
             //Console.WriteLine($"Solution for the problem is: x1 = {twoRoots.Root1}, x2 = {twoRoots.Root2}");
 
             string filePath = Path.Combine(Directory.GetCurrentDirectory(), "result.txt");
-            SquareEquation equation = new();
             Solver solver = new();
-            solver.SolveAndSave(5, 3, 1, filePath);
+            solver.SolveAndSave(4, 8, 4, filePath);
         }        
     }
 }
