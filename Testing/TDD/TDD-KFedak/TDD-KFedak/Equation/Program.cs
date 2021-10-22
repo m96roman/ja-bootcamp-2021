@@ -15,8 +15,8 @@ namespace Equation
             {
                 FileWrapper = fileWrapper
             };
-            quadraticFunction.SolveAndSaveSolution(1, 6, 9, logFilePath);
 
+            quadraticFunction.SolveAndSaveSolution(1, 6, 9, logFilePath);
         }
     }
 }

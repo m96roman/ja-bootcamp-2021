@@ -16,7 +16,7 @@ namespace Equation
 
         public void WriteInFile (string filePath,string message)
         {
-            File.AppendAllText(filePath,message);
+            File.WriteAllText(filePath,message);
         }
     }
 }

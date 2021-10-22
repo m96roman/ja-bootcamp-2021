@@ -65,7 +65,6 @@ namespace Equation
 
         public void SolveAndSaveSolution(double a, double b, double c, string filePath)
         {
-            //var equation = $"{a}x^2+{b}x+{c}=0";
             var root = new Result(0, 0);
             try
             {
