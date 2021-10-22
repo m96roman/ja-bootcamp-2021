@@ -1,6 +1,7 @@
 ﻿using System;
 using NUnit.Framework;
 using Yaroslav_Task4;
+using Moq;
 
 namespace Task4.NunitTest
 {
@@ -10,6 +11,12 @@ namespace Task4.NunitTest
         private Nokia InitNokia(int initBateryLevel)
         {
             return new Nokia(initBateryLevel);
+        }
+
+        private Nokia InitNokiaWithLoggerMock(int initBateryLevel, out Mock<ILogger> loggerMock)
+        {
+            loggerMock = new Mock<ILogger>();
+            return new Nokia(initBateryLevel, loggerMock.Object);
         }
 
 
@@ -39,7 +46,7 @@ namespace Task4.NunitTest
         [TestCase(7, 2)]
         public void CallAmbulance_GivenValueInRange_SetValueShouldBeDecreasedBy_5(int initBateryLevel, int expected)
         {
-            //arrange & act
+            //arrange
             Nokia instance = InitNokia(initBateryLevel);
 
             //act
@@ -50,31 +57,33 @@ namespace Task4.NunitTest
         }
 
 
-        [TestCase("Calling an ambulance from")]
-        public void CallAmbulance_OutputMessageShouldStartWith(string outputMessage)
+        [TestCase("Calling an ambulance from Nokia")]
+        public void CallAmbulance_OutputMessageShouldStartWith(string startString)
         {
             //arrange
             int initBateryLevel = 10;
+            Nokia instance = InitNokiaWithLoggerMock(initBateryLevel, out Mock<ILogger> loggerMock);
 
             //arrange & act
-            Nokia instance = InitNokia(initBateryLevel);
+            instance.CallAmbulance();
+            int invocationsCount = loggerMock.Invocations.Count;
+            string outputMessage = loggerMock.Invocations[0].Arguments[0].ToString();
 
             //assert
-            Assert.Fail();
+            Assert.AreEqual(1,invocationsCount, $"Invocations count:");
+            Assert.IsTrue(outputMessage.StartsWith(startString), $"Output message: <{outputMessage}> is starting with expected substring: <{startString}>");
         }
 
 
         [TestCase(3)]
         public void CallAmbulance_GivenValue_5_orLess_ShouldThrowException(int initBateryLevel)
         {
-            //arrange & act
+            //arrange
             Nokia instance = InitNokia(initBateryLevel);
 
             //act & assert
-            //Assert.That(() => instance.CallAmbulance(), Throws.TypeOf<BatteryIsDeadException>()); //add description
             BatteryIsDeadException ex = Assert.Throws<BatteryIsDeadException>(() => instance.CallAmbulance());
             Assert.That(ex.PhoneInstance, Is.Not.Null);
-
         }
 
 
@@ -84,8 +93,6 @@ namespace Task4.NunitTest
         {
             //arrange
             int expectedLevel = 0;
-
-            //arrange & act
             Nokia instance = InitNokia(initBateryLevel);
 
             //act & assert
@@ -100,9 +107,9 @@ namespace Task4.NunitTest
             //arrange
             int expectedLevel = 100;
             int initBateryLevel = 10;
-
-            //arrange & act
             Nokia instance = InitNokia(initBateryLevel);
+
+            //act
             instance.Charge();
 
             //assert
@@ -110,18 +117,18 @@ namespace Task4.NunitTest
         }
 
 
-        [TestCase("Charging", "to 100%")]
-        public void Charge_OutputMessageShouldStartWith_EndWith(string startString, string endString)
+        [TestCase("Charging Nokia to 100%")]
+        public void Charge_ShouldPrintMessage(string message)
         {
             //arrange
             int initBateryLevel = 10;
+            Nokia instance = InitNokiaWithLoggerMock(initBateryLevel, out Mock<ILogger> loggerMock);
 
-            //arrange & act
-            Nokia instance = InitNokia(initBateryLevel);
+            //act
             instance.Charge();
 
             //assert
-            Assert.Fail();
+            loggerMock.Verify(ins => ins.Log(message, MessageType.Warning));
         }
 
 
@@ -129,8 +136,10 @@ namespace Task4.NunitTest
         [TestCase(89, 90)]
         public void ChargeABit_IncreaseBateryLevelBy_1(int initBateryLevel, int expectedLevel)
         {
-            //arrange & act
+            //arrange
             Nokia instance = InitNokia(initBateryLevel);
+
+            //act
             instance.ChargeABit();
 
             //assert
@@ -143,13 +152,17 @@ namespace Task4.NunitTest
         {
             //arrange
             int initBateryLevel = 10;
+            Nokia instance = InitNokiaWithLoggerMock(initBateryLevel, out Mock<ILogger> loggerMock);
 
             //arrange & act
-            Nokia instance = InitNokia(initBateryLevel);
             instance.ChargeABit();
+            int invocationsCount = loggerMock.Invocations.Count;
+            string outputMessage = loggerMock.Invocations[0].Arguments[0].ToString();
 
             //assert
-            Assert.Fail();
+            Assert.IsTrue(invocationsCount == 1);
+            Assert.IsTrue(outputMessage.StartsWith(startString), $"Output message: <{outputMessage}> is starting with expected substring: <{startString}>");
+            Assert.IsTrue(outputMessage.EndsWith(endString), $"Output message: <{outputMessage}> is ending with expected substring: <{endString}>");
         }
 
 
@@ -157,8 +170,10 @@ namespace Task4.NunitTest
         [TestCase(50, 58)]
         public void PrayForBattery_IncreaseBateryLevelBy_8(int initBateryLevel, int expectedLevel)
         {
-            //arrange & act
+            //arrange
             Nokia instance = InitNokia(initBateryLevel);
+
+            //act
             instance.PrayForBattery();
 
             //assert
@@ -166,18 +181,18 @@ namespace Task4.NunitTest
         }
 
 
-        [TestCase("Praying for the battery")]
+        [TestCase("praying for the battery")]
         public void PrayForBattery_ShouldPrintMessage(string message)
         {
             //arrange
             int initBateryLevel = 10;
+            Nokia instance = InitNokiaWithLoggerMock(initBateryLevel, out Mock<ILogger> loggerMock);
 
-            //arrange & act
-            Nokia instance = InitNokia(initBateryLevel);
+            //act
             instance.PrayForBattery();
 
             //assert
-            Assert.Fail();
+            loggerMock.Verify(ins => ins.Log(message, MessageType.Warning));
         }
     }
 }
