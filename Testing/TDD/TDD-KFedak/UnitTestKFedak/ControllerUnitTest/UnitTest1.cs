@@ -54,7 +54,6 @@ namespace ControllerUnitTest
             Assert.IsTrue(logger.message.Contains($"Delete method execute in {api.Controller.Name} controller"));
         }
 
-        [Test]
         [TestCase("Delete")]
         [TestCase("Put")]
         [TestCase("Post")]
@@ -66,15 +65,14 @@ namespace ControllerUnitTest
             //act
             var api = new Api(logger);
             api.CallEndpoint($"/controller/{methodName.ToLower()}");
-            var result = $"{methodName} method executed in {api.Controller.Name}";
+            var result = $"{methodName} method execute in {api.Controller.Name} controller";
 
             //assert
-            Assert.IsTrue(logger.message.Contains($"Method {methodName} return {result}"));
+            Assert.IsTrue(logger.message.Contains(result));
         }
 
-        [Test]
         [TestCase("Get")]
-        public void CallEndpointValueMethodMessage(string methodName)
+        public void CallEndpointValueAndMessage(string methodName)
         {
             //arrange
             var logger = InitLogger();
@@ -82,11 +80,7 @@ namespace ControllerUnitTest
             //act
             var api = new Api(logger);
             api.CallEndpoint($"/controller/{methodName.ToLower()}");
-            var logger2 = InitLogger();
-
-            //act
-            var api2 = new Api(logger2);
-            var result=typeof(Controller).GetMethod(methodName).Invoke(api2.Controller,null);
+            var result =typeof(Controller).GetMethod(methodName).Invoke(api.Controller,null);
 
             //assert
             Assert.IsTrue(logger.message.Contains($"Method {methodName} return {result}"));

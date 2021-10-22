@@ -24,14 +24,9 @@ namespace KFedakT8
             var methodName = method.Name;
 
             var result = method.Invoke(this.Controller, null);
-
+           
             if (result != null)
             {
-                this.Controller.Logger.WriteLine($"Method {method.Name} return {result}");
-            }
-            else
-            {
-                result = $"{method.Name} method executed in {this.Controller.Name}";
                 this.Controller.Logger.WriteLine($"Method {method.Name} return {result}");
             }
         }

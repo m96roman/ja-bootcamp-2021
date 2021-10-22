@@ -21,13 +21,13 @@ namespace KFedakT8
         [Route(Name = "/controller/post")]
         public void Post()
         {
-           Logger.WriteLine($"Post method executed in {Name} controller");
+           Logger.WriteLine($"Post method execute in {Name} controller");
         }
 
         [Route(Name = "/controller/put")]
         public void Put()
         {
-            Logger.WriteLine($"Put method executed in {Name} controller");
+            Logger.WriteLine($"Put method execute in {Name} controller");
         }
 
         [Route(Name = "/controller/delete")]
