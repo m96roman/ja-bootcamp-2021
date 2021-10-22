@@ -5,7 +5,10 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
-			<_Parameter1>QuadraticSolverTests</_Parameter1>
+			<_Parameter1>QuadraticSolverTests.UnitTests</_Parameter1>
+		</AssemblyAttribute>
+		<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+			<_Parameter1>QuadraticSolverTests.IntegrationTests</_Parameter1>
 		</AssemblyAttribute>
 	</ItemGroup>
 </Project>

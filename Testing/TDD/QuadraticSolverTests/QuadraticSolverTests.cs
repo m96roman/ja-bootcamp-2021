@@ -18,20 +18,23 @@ namespace QuadraticSolver.Tests
         #region GetSolution() tests
 
         [Test]
-        public void Test_ThrowsArgumentException_When_A_0()
+        public void Test_NoSolution_When_A_0()
         {
-            Assert.That(() => GetSolution(0, 3, 4),
-                Throws.TypeOf<NoRootsException>());
+            var sol = GetSolution(0, 3, 4);
+
+            Assert.That(sol.SolutionType,
+                Is.EqualTo(TypesOfSolution.NoSolution));
         }
 
         [TestCase(9, -6, 60)]
         [TestCase(0.1, 0.0001, 60)]
         [TestCase(9, -1, 60)]
         [TestCase(0.1, 2, 60)]
-        public void Test_ThrowsRootsException_When_Discriminant_less_0(double a, double b, double c)
+        public void Test_TwoImaganaryRootSoltuion_When_Discriminant_less_0(double a, double b, double c)
         {
-            Assert.That(() => GetSolution(a, b, c),
-               Throws.TypeOf<NoRootsException>());
+            var sol = GetSolution(a, b, c);
+
+            Assert.That(sol.SolutionType, Is.EqualTo(TypesOfSolution.TwoImaginaryRoots));
         }
 
         [TestCase(1, 2, 3, -8, 0.000001)]
@@ -62,7 +65,7 @@ namespace QuadraticSolver.Tests
         {
             var sol = GetSolution(a, b, c);
 
-            Assert.That(sol.SolutionType == TypesOfSolution.TwoRealRoots);
+            Assert.That(sol.SolutionType, Is.EqualTo(TypesOfSolution.TwoRealRoots));
 
             Assert.AreEqual(sol.Root1, expectedRoot1, delta);
             Assert.AreEqual(sol.Root2, expectedRoot2, delta);

@@ -21,55 +21,57 @@ namespace QuadraticSolver
             C = c;
         }
 
+        private double Round(double par)
+        {
+            return Math.Round(par, 10);
+        }
+
         internal string GetInFormat()
         {
-            string result;
-
             switch (Solution.SolutionType)
             {
                 case TypesOfSolution.OneRoot:
-                    result = string.Format("<A: {0}; B: {1}; C: {2}; Root #1: {3}>", A, B, C, Math.Round(Solution.Root1, 10));
-                    break;
-                case TypesOfSolution.TwoRealRoots:
-                    result = string.Format("<A: {0}; B: {1}; C: {2}; Root #1: {3}; Root #2: {4}>", A, B, C, Math.Round(Solution.Root1, 10), Math.Round(Solution.Root2, 10));
-                    break;
-                default:
-                    result = $"<{Solution.SolutionType}>";
-                    break;
-            }
+                    return GetFormatOneRoot();
 
-            return result;
+                case TypesOfSolution.TwoRealRoots:
+                    return GetFormatTwoRoots();
+
+                default:
+                    return $"<{Solution.SolutionType}>";
+            }
+        }
+
+        private string GetFormatTwoRoots()
+        {
+            return string.Format("<A: {0}; B: {1}; C: {2}; Root #1: {3}; Root #2: {4}>",
+                        A, B, C, Round(Solution.Root1), Round(Solution.Root2));
+        }
+
+        private string GetFormatOneRoot()
+        {
+            return string.Format("<A: {0}; B: {1}; C: {2}; Root #1: {3}>", A, B, C, Round(Solution.Root1));
         }
 
         //Or display//
         public void WriteAndSolve(string filePath, bool append = false)
         {
-            try
-            {
-                Solution = GetSolution();
-            }
-            catch (NoRootsException nR)
-            {
-                Solution.SolutionType = nR.WrongSolutionType;
-            }
-            finally
-            {
-                Writer.Write(GetInFormat(), filePath, append);
-            }
+            Solution = GetSolution();
+
+            Writer.Write(GetInFormat(), filePath, append);
         }
 
         internal Solution GetSolution()
         {
             if (A == 0)
             {
-                throw new NoRootsException($"{nameof(A)} cannot be 0");
+                return new Solution(TypesOfSolution.NoSolution, 0, 0);
             }
 
             double D = GetDiscriminant(A, B, C);
 
             if (D < 0)
             {
-                throw new NoRootsException($"Equation dont have real roots", TypesOfSolution.TwoImaginaryRoots);
+                return new Solution(TypesOfSolution.TwoImaginaryRoots, 0, 0);
             }
 
             double root1 = ((-B + Math.Sqrt(D)) / (2 * A));

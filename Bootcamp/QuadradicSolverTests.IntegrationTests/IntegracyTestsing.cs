@@ -1,5 +1,4 @@
-﻿using Moq;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using QuadraticSolver;
 using System;
 using System.Collections.Generic;
@@ -26,7 +25,7 @@ namespace QuadraticSolverTests.IntegrationTests
             //Act
             quadraticEquation.WriteAndSolve("text.txt");
 
-            //Arrange
+            //Assert
             Assert.IsTrue(File.Exists("text.txt"));
 
             var text = File.ReadAllText("text.txt");
@@ -40,7 +39,7 @@ namespace QuadraticSolverTests.IntegrationTests
             //Arrange
             QuadraticEquation quadraticEquation = new QuadraticEquation(1, 2, 3);
 
-            //Act+Arrange
+            //Act+Assert
             Assert.That(() => quadraticEquation.WriteAndSolve(wrongPath),
                   Throws.InstanceOf<IOException>());
         }
