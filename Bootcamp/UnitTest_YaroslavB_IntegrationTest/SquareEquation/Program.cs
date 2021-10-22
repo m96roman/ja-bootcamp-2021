@@ -15,4 +15,6 @@ namespace SquareEquation
 
 
     }
+
+    
 }
