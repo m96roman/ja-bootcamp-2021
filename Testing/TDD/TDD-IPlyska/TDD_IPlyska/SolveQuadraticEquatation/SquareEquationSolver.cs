@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,24 +11,21 @@ namespace SolveQuadraticEquatation
     {
         internal EquationRoots Solve(double a, double b, double c)
         {
-            bool status = false;
-            EquationRoots equation;
+
             ParametersValidation(a, b, c);
 
             if (ParametersValidationForZero(a, b, c))
-            {
-                return new EquationRoots() { R1 = 0, R2 = 0 };
-            }
-            equation = OneParameterIsZero(a, b, c, out status);
 
-            if (status)
-            {
-                return equation;
+                return new EquationRoots(0, 0);
             }
-            else
-            {
-                return FindDiscriminant(a, b, c);
-            }
+
+            return FindRoots(a, b, c);
+        }
+
+        private static EquationRoots FindRoots(double a, double b, double c)
+        {
+            return OneParameterIsZero(a, b, c) ?? FindRootsWithDiscriminant(a, b, c);
+
         }
 
         /// <summary>
@@ -38,16 +36,20 @@ namespace SolveQuadraticEquatation
         /// <param name="c"></param>
         private static void ParametersValidation(double a, double b, double c)
         {
-            if (a == 0 && b == 0 && c == 0)
+            if (AllParametersAreZero(a, b, c) || TwoParamAandBAreZero(a, b))
             {
                 throw new ArgumentException("Arguments can not be equals zero.");
             }
+        }
 
-            if (a == 0 && b == 0)
-            {
-                throw new ArgumentException("Arguments can not be equals zero.");
-            }
+        private static bool TwoParamAandBAreZero(double a, double b)
+        {
+            return a == 0 && b == 0; 
+        }
 
+        private static bool AllParametersAreZero(double a, double b, double c)
+        {
+            return a == 0 && b == 0 && c == 0;
         }
 
         /// <summary>
@@ -83,9 +85,9 @@ namespace SolveQuadraticEquatation
         /// <param name="b"></param>
         /// <param name="c"></param>
         /// <returns></returns>
-        private static EquationRoots FindDiscriminant(double a, double b, double c)
+
+        private static EquationRoots FindRootsWithDiscriminant(double a, double b, double c)
         {
-            EquationRoots equation;
             double discriminant = b * b - 4 * a * c;
 
             if (discriminant < 0)
@@ -93,24 +95,16 @@ namespace SolveQuadraticEquatation
                 throw new NoRootsException();
             }
 
-            if (discriminant > 0)
-            {
-                return equation = new EquationRoots()
-                {
-                    R1 = Math.Round((-b + Math.Sqrt(discriminant)) / 2 * a, 10),
-                    R2 = Math.Round((-b - Math.Sqrt(discriminant)) / 2 * a, 10),
-                };
-            }
-
             if (discriminant == 0)
             {
-                return equation = new EquationRoots()
-                {
-                    R1 = Math.Round(-b / (2 * a), 10),
-                };
+                return new EquationRoots(Round(-b / (2 * a)));
             }
 
-            return new EquationRoots();
+            return new EquationRoots()
+            {
+                R1 = Round((-b + Math.Sqrt(discriminant)) / 2 * a),
+                R2 = Round((-b - Math.Sqrt(discriminant)) / 2 * a)
+            };
         }
 
         /// <summary>
@@ -119,36 +113,57 @@ namespace SolveQuadraticEquatation
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <param name="c"></param>
-        /// <param name="status"></param>
+        /// <param name="foundRoots"></param>
         /// <returns></returns>
-        private static EquationRoots OneParameterIsZero(double a, double b, double c, out bool status)
+        private static EquationRoots? OneParameterIsZero(double a, double b, double c)
         {
-            if (a == 0 && b != 0 && c != 0)
-            {
-                status = true;
-                return new EquationRoots() { R1 = Math.Round(-c / b, 10), R2 = null };
-            }
+            if (a == 0) { return new EquationRoots(Round(-c / b)); }
 
-            if (a != 0 && b == 0 && c != 0)
+            if (b == 0)
             {
-                status = true;
-
                 if (-c / a > 0)
                 {
-                    return new EquationRoots() { R1 = Math.Round(Math.Sqrt(-c / a), 10), R2 = -Math.Round(Math.Sqrt(-c / a), 10) };
+                    double root = Round(Math.Sqrt(-c / a));
+                    return new EquationRoots(root, -root);
                 }
 
                 throw new NoRootsException();
             }
 
-            if (a != 0 && b != 0 && c == 0)
+            if (c == 0) { return new EquationRoots(0, Round(-b / a)); }
+
+            return null;
+        }
+
+        private static double Round(double root)
+        {
+            return Math.Round(root, 10);
+        }
+
+        public void SaveResult(EquationRoots roots, string path)
+        {
+            File.AppendAllText(path, roots.ToString());
+        }
+
+        public void SolveAndSaveSolution(double a, double b, double c, string filePath)
+        {
+            if (string.IsNullOrEmpty(filePath))
             {
-                status = true;
-                return new EquationRoots() { R1 = 0, R2 = Math.Round(-b / a, 10) };
+                throw new ArgumentException(filePath);
             }
 
-            status = false;
-            return new EquationRoots() { R1 = null, R2 = null };
+            EquationRoots roots = new EquationRoots();
+
+            try
+            {
+                roots = Solve(a, b, c);
+            }
+            catch (Exception ex)
+            {
+                File.AppendAllText(filePath, "<No solution>");
+            }
+
+            SaveResult(roots, filePath);
         }
     }
 }

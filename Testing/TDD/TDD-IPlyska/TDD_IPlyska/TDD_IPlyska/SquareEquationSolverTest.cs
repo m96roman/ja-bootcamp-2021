@@ -8,12 +8,8 @@ namespace TDD_IPlyska
     [TestFixture]
     public class SquareEquationSolverTest
     {
-        SquareEquationSolver equation;
-        [SetUp]
-        public void Setup()
-        {
-            equation = new SquareEquationSolver();
-        }
+
+        readonly SquareEquationSolver equation = new SquareEquationSolver();
 
         [TestCase(0, 0, 0)]
         [TestCase(0, 0, 2)]
@@ -71,15 +67,16 @@ namespace TDD_IPlyska
             Assert.That(roots.R2, Is.EqualTo(-expectedValue));
         }
 
-        [TestCase(-4, 0, -5)]
-        [TestCase(44, 0, 15)]
-        [TestCase(0.4564, 0, 0.3335)]
-        public void Solve_Given_B_Zero_One_Way_With_NoRoots_Should_Throw_Exception(double a, double b, double c)
-        {
-            //act
-            //arrange
-             Assert.That(() => equation.Solve(a, b, c), Throws.TypeOf<NoRootsException>());
-        }
+
+        //[TestCase(-4, 0, -5)]
+        //[TestCase(44, 0, 15)]
+        //[TestCase(0.4564, 0, 0.3335)]
+        //public void Solve_Given_B_Zero_One_Way_With_NoRoots_Should_Throw_Exception(double a, double b, double c)
+        //{
+        //    //act
+        //    //arrange
+        //     Assert.That(() => equation.Solve(a, b, c), Throws.TypeOf<NoRootsException>());
+        //}
 
         [TestCase(2.2, 6, 3, -3.1917746553, -10.0082253447)]
         [TestCase(-5.6, 2.22, 1.24, -9.7965730599, 22.2285730599)]
@@ -92,6 +89,10 @@ namespace TDD_IPlyska
             Assert.That(roots.R2, Is.EqualTo(r2));
         }
 
+
+        [TestCase(-4, 0, -5)]
+        [TestCase(44, 0, 15)]
+        [TestCase(0.4564, 0, 0.3335)]
         [TestCase(1.1, 5, 77)]
         [TestCase(10, 0.99999, 7)]
         [TestCase(0.55, 2.4, 3.3)]
