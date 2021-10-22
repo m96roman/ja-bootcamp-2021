@@ -9,7 +9,7 @@
   </PropertyGroup>
   <ItemGroup>
     <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
-      <_Parameter1>Divanyshyn-UnitTests-Day1</_Parameter1>
+      <_Parameter1>DIvanysnyn-UnitTests-Day1(Modified)</_Parameter1>
     </AssemblyAttribute>
   </ItemGroup>
 </Project>

@@ -2,7 +2,7 @@
 
 namespace DIVanyshyn_Task4
 {
-    enum MessageType
+    public enum MessageType
     {
         Message,
         Exception,
