@@ -4,6 +4,7 @@ using System;
 using Moq;
 using System.IO;
 using System.Linq;
+using QuadraticEquationMartin1;
 
 namespace QuadraticEquationMartinTests
 {   

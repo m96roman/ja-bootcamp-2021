@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\QuadraticEquationMartin\QuadraticEquationMartin.csproj" />
+    <ProjectReference Include="..\QuadraticEquationMartin1\QuadraticEquationMartin1.csproj" />
   </ItemGroup>
 
 </Project>
