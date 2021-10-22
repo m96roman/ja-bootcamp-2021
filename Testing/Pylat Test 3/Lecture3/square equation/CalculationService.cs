@@ -5,9 +5,9 @@
         private ISquereCalculator _solver;
         private IResultSaver _saver;
 
-        public CalculationService(ISquereCalculator sover, IResultSaver saver)
+        public CalculationService(ISquereCalculator solver, IResultSaver saver)
         {
-            _solver = sover;
+            _solver = solver;
             _saver = saver;
         }
 

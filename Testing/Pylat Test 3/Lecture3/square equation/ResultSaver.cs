@@ -14,34 +14,19 @@ namespace square_equation
             {
                 if (list[0] != list[1])
                 {
-                    using (StreamWriter sw = File.CreateText(path))
-                    {
-                        var stringOfX = $"< Root #1: {list[0]}; Root #2: {list[1]}>";
-                        sw.WriteLine(stringOfX);
-                    }
+                    File.WriteAllText(filePath, $"< Root #1: {list[0]}; Root #2: {list[1]}>");
                     Console.WriteLine($"{list[0]}, {list[1]}");
                 }
 
                 else if (list[0] == list[1])
                 {
-
-                    using (StreamWriter sw = File.CreateText(path))
-                    {
-                        var stringOfX = $"< Root #1: {list[0]} >";
-                        sw.WriteLine(stringOfX);
-                    }
+                    File.WriteAllText(filePath, $"< Root #1: {list[0]} >");
                     Console.WriteLine($"{list[0]}, {list[1]}");
-
                 }
             }
             else
             {
-                using (StreamWriter sw = File.CreateText(path))
-                {
-                    var stringOfX = $"<No solution>";
-                    sw.WriteLine(stringOfX);
-                }
-
+                File.WriteAllText(filePath, $"<No solution>");
             }
 
             return true;
@@ -49,5 +34,5 @@ namespace square_equation
     }
 
 
-    
+
 }
