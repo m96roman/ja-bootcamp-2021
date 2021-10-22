@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SolveQuadraticEquatation
 {
-    internal struct EquationRoots
+    public struct EquationRoots
     {
         public double? R1 { get; set; }
         public double? R2 { get; set; }

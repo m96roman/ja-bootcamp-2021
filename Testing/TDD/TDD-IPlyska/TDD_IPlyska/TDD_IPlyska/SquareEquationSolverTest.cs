@@ -1,3 +1,4 @@
+using Moq;
 using NUnit.Framework;
 using SolveQuadraticEquatation;
 using System;
@@ -66,16 +67,6 @@ namespace TDD_IPlyska
             Assert.That(roots.R2, Is.EqualTo(-expectedValue));
         }
 
-        //[TestCase(-4, 0, -5)]
-        //[TestCase(44, 0, 15)]
-        //[TestCase(0.4564, 0, 0.3335)]
-        //public void Solve_Given_B_Zero_One_Way_With_NoRoots_Should_Throw_Exception(double a, double b, double c)
-        //{
-        //    //act
-        //    //arrange
-        //     Assert.That(() => equation.Solve(a, b, c), Throws.TypeOf<NoRootsException>());
-        //}
-
         [TestCase(2.2, 6, 3, -3.1917746553, -10.0082253447)]
         [TestCase(-5.6, 2.22, 1.24, -9.7965730599, 22.2285730599)]
         public void Solve_If_Discriminant_More_Than_Zero(double a, double b, double c, double r1, double r2)
@@ -108,6 +99,23 @@ namespace TDD_IPlyska
             EquationRoots roots = equation.Solve(a, b, c);
             //assert
             Assert.That(roots.R1, Is.EqualTo(r1));
+        }
+
+        [TestCase(2, 3, 5, "")]
+        [TestCase(4, 5, 7, null)]
+        public void SolveAndSaveSolution_Given_Invalid_FilePath_Shold_Throw_Exception(double a, double b, double c, string filePath)
+        {
+            //assert
+            Assert.That(() => equation.SolveAndSaveSolution(a, b, c, filePath), Throws.TypeOf<ArgumentException>());
+        }
+
+        public void Check_Formatting_For_Output_Result(double a, double b, double c, string content)
+        {
+            //arrange
+            Logger logger = new Logger();
+            Mock<ILogger> fileMock = new Mock<ILogger>();
+            SquareEquationSolver.Logger = fileMock.Object;
+
         }
     }
 }

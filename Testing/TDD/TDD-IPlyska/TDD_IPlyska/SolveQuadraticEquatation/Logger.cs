@@ -1,19 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SolveQuadraticEquatation
 {
-    internal class NoRootsException : Exception
+    internal class Logger : ILogger
     {
-        public NoRootsException()
+        public void SaveResult(EquationRoots roots, string path)
         {
-        }
-
-        public NoRootsException(string message) : base(message)
-        {
+            File.WriteAllText(path, roots.ToString());
         }
     }
 }
