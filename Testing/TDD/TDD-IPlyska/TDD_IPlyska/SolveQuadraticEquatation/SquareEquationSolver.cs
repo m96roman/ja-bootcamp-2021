@@ -30,6 +30,12 @@ namespace SolveQuadraticEquatation
             }
         }
 
+        /// <summary>
+        /// Method to check if Quadratic Equatation is correct
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <param name="c"></param>
         private static void ParametersValidation(double a, double b, double c)
         {
             if (a == 0 && b == 0 && c == 0)
@@ -44,6 +50,15 @@ namespace SolveQuadraticEquatation
 
         }
 
+        /// <summary>
+        /// Method to check if a and c equals 0
+        /// and b and c equal 0
+        /// in that case roots quals 0
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <param name="c"></param>
+        /// <returns></returns>
         private static bool ParametersValidationForZero(double a, double b, double c)
         {
             bool status = false;
@@ -61,7 +76,13 @@ namespace SolveQuadraticEquatation
             return status;
         }
 
-
+        /// <summary>
+        /// Method to find discriminant
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <param name="c"></param>
+        /// <returns></returns>
         private static EquationRoots FindDiscriminant(double a, double b, double c)
         {
             EquationRoots equation;
@@ -92,6 +113,14 @@ namespace SolveQuadraticEquatation
             return new EquationRoots();
         }
 
+        /// <summary>
+        /// Method to check when Quadratic Equatation is not full
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <param name="c"></param>
+        /// <param name="status"></param>
+        /// <returns></returns>
         private static EquationRoots OneParameterIsZero(double a, double b, double c, out bool status)
         {
             if (a == 0 && b != 0 && c != 0)
