@@ -21,7 +21,7 @@ namespace QuadraticSolver
             C = c;
         }
 
-        internal void SaveInFormat(string path, bool append)
+        internal string GetInFormat()
         {
             string result;
 
@@ -38,7 +38,7 @@ namespace QuadraticSolver
                     break;
             }
 
-            Writer.Write(result, path, append);
+            return result;
         }
 
         //Or display//
@@ -54,7 +54,7 @@ namespace QuadraticSolver
             }
             finally
             {
-                SaveInFormat(filePath, append);
+                Writer.Write(GetInFormat(), filePath, append);
             }
         }
 
