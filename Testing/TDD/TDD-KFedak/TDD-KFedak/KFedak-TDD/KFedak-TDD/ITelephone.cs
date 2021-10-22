@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KFedak_TDD
 {
-    interface ITelephone
+    public interface ITelephone
     {
         string PhoneName { get; set; }
 

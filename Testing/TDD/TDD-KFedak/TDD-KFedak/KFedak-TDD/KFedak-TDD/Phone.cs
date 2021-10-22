@@ -11,15 +11,16 @@ namespace KFedak_TDD
         public string PhoneName { get; set; }
         public int BatteryLevel { get; set; }
 
-        public ILogger Logger;
+        public ILogger Logger= new Logger();
 
         internal Phone(int batteryLevel, string phoneName, ILogger logger)
         {
             this.PhoneName = phoneName;
             this.Logger = logger;
+
             if (batteryLevel < 0 || batteryLevel > 100)
             {
-                Logger.WriteLine(new InvalidValueForBattery(this.BatteryLevel, $"Invalid value!"));
+                Logger.WriteLine(new InvalidValueForBattery(this.BatteryLevel, $"Invalid value!").Message);
 
                 throw new InvalidValueForBattery(this.BatteryLevel, $"Invalid value!");
             }
@@ -35,13 +36,13 @@ namespace KFedak_TDD
             {
                 this.BatteryLevel -= 5;
 
-                Logger.WriteLine(new Exception(($"Calling an ambulance from {PhoneName}, remaining charge: {BatteryLevel}%")));
+                Logger.WriteLine(new Exception($"Calling an ambulance from {PhoneName}, remaining charge: {BatteryLevel}%").Message);
             }
             else
             {
                 this.BatteryLevel = 0;
 
-                Logger.WriteLine(new BatteryIsDeadException(this, $"Phone failed to call an ambulance: {this.PhoneName}"));
+                Logger.WriteLine(new BatteryIsDeadException(this, $"Phone failed to call an ambulance: {this.PhoneName}").Message);
 
                 throw new BatteryIsDeadException(this, $"Phone failed to call an ambulance: {this.PhoneName}");
             }
@@ -51,14 +52,14 @@ namespace KFedak_TDD
         {
             this.BatteryLevel = 100;
 
-            Logger.WriteLine(new Exception($"Charging {PhoneName} to 100%"));
+            Logger.WriteLine($"Charging {PhoneName} to 100%");
         }
 
         public void ChargeABit()
         {
             this.BatteryLevel += 1;
 
-            Logger.WriteLine(new Exception($"Charging {PhoneName} by 1%"));
+            Logger.WriteLine($"Charging {PhoneName} by 1%");
         }
     }
 }

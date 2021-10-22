@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KFedak_TDD
 {
-    class IPhone : Phone, ITelephone
+    public class IPhone : Phone, ITelephone
     {
         public IPhone(int battery, string name, ILogger logger) : base(battery, name, logger) { }
     }

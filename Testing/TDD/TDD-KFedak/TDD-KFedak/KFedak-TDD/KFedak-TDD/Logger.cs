@@ -9,10 +9,10 @@ namespace KFedak_TDD
 {
     public class Logger : ILogger
     {
-        public void WriteLine(Exception e)
+        public void WriteLine(string e)
         {
             string logFilePath = Path.Combine(Directory.GetCurrentDirectory(), "log.txt");
-            File.AppendAllText(logFilePath, e.ToString());
+            File.AppendAllText(logFilePath, e);
         }
     }
 }

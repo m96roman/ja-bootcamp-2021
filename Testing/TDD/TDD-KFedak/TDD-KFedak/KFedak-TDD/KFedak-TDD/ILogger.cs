@@ -8,6 +8,6 @@ namespace KFedak_TDD
 {
     public interface ILogger
     {
-        void WriteLine(Exception message);
+        void WriteLine(string message);
     }
 }

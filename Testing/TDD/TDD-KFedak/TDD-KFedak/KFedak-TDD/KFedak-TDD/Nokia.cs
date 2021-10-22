@@ -8,7 +8,7 @@ namespace KFedak_TDD
 {
     public class Nokia : Phone, ITelephone
     {
-        public ILogger Logger;
+        public ILogger Logger = new Logger();
 
         public Nokia(int battery, string name, ILogger logger) : base(battery, name, logger)
         {
@@ -18,7 +18,7 @@ namespace KFedak_TDD
         public void PrayForBattery()
         {
             this.BatteryLevel += 8;
-            Logger.WriteLine(new Exception("Praying for the battery"));
+            Logger.WriteLine("Praying for the battery");
         }
     }
 }

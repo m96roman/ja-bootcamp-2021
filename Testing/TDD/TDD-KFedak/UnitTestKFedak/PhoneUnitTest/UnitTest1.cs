@@ -9,118 +9,94 @@ namespace PhoneUnitTest
 {
     public class Tests
     {
-        public static FakeLogger InitLogger()
-        {
-            var logger = new FakeLogger();
-            Program.logger = logger;
-            return logger;
-        }
 
         [Test]
         public void ChargeABitMessage()
         {
             //arrange
-            Mock<ILogger> fileMock = new();
-          //  Program.logger =fileMock.Object;
+            Mock<ILogger> loggerMock = new();
 
             //act
-            Nokia phone = new Nokia(6, "5600", fileMock.Object);
+            IPhone phone = new IPhone(6, "5600", loggerMock.Object);
             phone.ChargeABit();
 
             //assert
-            fileMock.Verify(it=>it.WriteLine(new Exception($"Charging {phone.PhoneName} by 1%")),Times.Once);
+            loggerMock.Verify(it=>it.WriteLine($"Charging {phone.PhoneName} by 1%"),Times.Once);
         }
 
         [Test]
         public void CallAmbulanceLess5Message()
         {
             //arrange
-            var logger = InitLogger();
+            Mock<ILogger> loggerMock = new();
+            Nokia phone = new Nokia(4, "5600", loggerMock.Object);
 
-            //act
-            Nokia phone = new Nokia(4, "5600", logger);
-
-            //assert
-            var ex = Assert.Throws<BatteryIsDeadException>(() => phone.CallAmbulance());
-            var message = logger.message.Find(m => m == $"Phone failed to call an ambulance: {phone.PhoneName}");
-            Assert.That(ex.Message, Is.EqualTo(message));
+            //assert&&act
+            Assert.Throws<BatteryIsDeadException>(() => phone.CallAmbulance());
+            loggerMock.Verify(it => it.WriteLine($"Phone failed to call an ambulance: {phone.PhoneName}"), Times.Once);
         }
 
         [Test]
         public void CallAmbulanceMore5Message()
         {
             //arrange
-            var logger = InitLogger();
+            Mock<ILogger> loggerMock = new();
 
             //act
-            Nokia phone = new Nokia(9, "5600", logger);
+            Nokia phone = new Nokia(9, "5600", loggerMock.Object);
             phone.CallAmbulance();
 
             //assert
-            Assert.IsTrue(logger.message.Contains($"Calling an ambulance from {phone.PhoneName}, remaining charge: {phone.BatteryLevel}%"));
+            loggerMock.Verify(it=>it.WriteLine($"Calling an ambulance from {phone.PhoneName}, remaining charge: {phone.BatteryLevel}%"),Times.Once);
         }
 
         [Test]
         public void CheckChargeMessage()
         {
             //arrange
-            var logger = InitLogger();
+            Mock<ILogger> loggerMock = new();
 
             //act
-            Nokia phone = new Nokia(9, "5600",logger);
+            Nokia phone = new Nokia(9, "5600", loggerMock.Object);
             phone.Charge();
 
             //assert
-            Assert.IsTrue(logger.message.Contains($"Charging {phone.PhoneName} to 100%"));
+            loggerMock.Verify(it=>it.WriteLine($"Charging {phone.PhoneName} to 100%"), Times.Once);
         }
 
         [Test]
         public void CheckPrayForBatteryMessage()
         {
             //arrange
-            var logger = InitLogger();
+            Mock<ILogger> loggerMock = new();
 
             //act
-            Nokia phone = new Nokia(9, "5600", logger);
+            Nokia phone = new Nokia(9, "5600", loggerMock.Object);
             phone.PrayForBattery();
 
             //assert
-            Assert.IsTrue(logger.message.Contains("Praying for the battery"));
-        }
-
-        [Test]
-        public void CallAmbulanceCatchException()
-        {
-            //arrange
-            var logger = InitLogger();
-
-            //act
-            Nokia phone = new Nokia(3, "5600", logger);
-           
-            //assert
-            var ex = Assert.Throws<BatteryIsDeadException>(() => phone.CallAmbulance());
-            Assert.That(ex.Message, Is.EqualTo($"Phone failed to call an ambulance: {phone.PhoneName}"));
+            loggerMock.Verify(it=>it.WriteLine("Praying for the battery"), Times.Once);
         }
 
         [Test]
         public void ConstructorForPhoneCatchException()
         {
             //arrange
-            var logger = InitLogger();
+            Mock<ILogger> loggerMock = new();
 
-            //assert
-            var ex = Assert.Throws<InvalidValueForBattery>(() => new Nokia(-3,"8800",logger));
-            Assert.That(ex.Message, Is.EqualTo("Invalid value!"));
+            //assert&&act
+            Assert.Throws<InvalidValueForBattery>(() => new Nokia(-3,"8800", loggerMock.Object));
+            loggerMock.Verify(it => it.WriteLine($"Invalid value!"),Times.Once);
         }
 
         [Test]
         public void ChargeValue()
         {
             //arrange
-            var logger = InitLogger();
+            Mock<ILogger> loggerMock = new();
 
             //act
-            Nokia phone = new Nokia(3, "5600", logger);
+            Nokia phone = new Nokia(3, "5600", loggerMock.Object);
             phone.Charge();
 
             //assert
@@ -131,10 +107,10 @@ namespace PhoneUnitTest
         public void ChargeABitValue()
         {
             //arrange
-            var logger = InitLogger();
+            Mock<ILogger> loggerMock = new();
 
             //act
-            Nokia phone = new Nokia(19, "5600", logger);
+            Nokia phone = new Nokia(19, "5600", loggerMock.Object);
             phone.ChargeABit();
 
             //assert
@@ -145,10 +121,10 @@ namespace PhoneUnitTest
         public void PrayForABatteryValue()
         {
             //arrange
-            var logger = InitLogger();
+            Mock<ILogger> loggerMock = new();
 
             //act
-            Nokia phone = new Nokia(19, "5600", logger);
+            Nokia phone = new Nokia(19, "5600", loggerMock.Object);
             phone.PrayForBattery();
 
             //assert
@@ -159,10 +135,10 @@ namespace PhoneUnitTest
         public void CallAmbulanceMoreThan5Value()
         {
             //arrange
-            var logger = InitLogger();
+            Mock<ILogger> loggerMock = new();
 
             //act
-            Nokia phone = new Nokia(19, "5600", logger);
+            Nokia phone = new Nokia(19, "5600", loggerMock.Object);
             phone.CallAmbulance();
 
             //assert
@@ -173,10 +149,10 @@ namespace PhoneUnitTest
         public void CallAmbulanceLessThan5Value()
         {
             //arrange
-            var logger = InitLogger();
+            Mock<ILogger> loggerMock = new();
 
             //act
-            Nokia phone = new Nokia(4, "5600", logger);
+            Nokia phone = new Nokia(4, "5600", loggerMock.Object);
 
             //assert
             var ex = Assert.Throws<BatteryIsDeadException>(() => phone.CallAmbulance());
@@ -187,10 +163,10 @@ namespace PhoneUnitTest
         public void ConstructorPhoneValue()
         {
             //arrange
-            var logger = InitLogger();
+            Mock<ILogger> loggerMock = new();
 
             //act
-            Nokia phone = new Nokia(4, "5600", logger);
+            Nokia phone = new Nokia(4, "5600", loggerMock.Object);
 
             //assert
             Assert.That(phone.BatteryLevel, Is.EqualTo(4));
@@ -200,10 +176,10 @@ namespace PhoneUnitTest
         public void ConstructorPhoneValueAfterException()
         {
             //arrange
-            var logger = InitLogger();
+            Mock<ILogger> loggerMock = new();
 
             //assert
-            var ex = Assert.Throws<InvalidValueForBattery>(() => new Nokia(-3, "8800", logger));
+            var ex = Assert.Throws<InvalidValueForBattery>(() => new Nokia(-3, "8800", loggerMock.Object));
             Assert.That(ex.BatteryLevel, Is.EqualTo(0));
         }
 

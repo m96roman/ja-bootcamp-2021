@@ -24,7 +24,7 @@ namespace KFedak_TDD
             }
             catch (InvalidValueForBattery ex)
             {
-                logger.WriteLine(ex);
+                logger.WriteLine(ex.Message);
             }
 
             var holder = new PhoneEmergencyTestHolder(phones);
@@ -37,7 +37,7 @@ namespace KFedak_TDD
                 }
                 catch (BatteryIsDeadException ex)
                 {
-                    logger.WriteLine(ex);
+                    logger.WriteLine(ex.Message);
                     ex.Telephone.Charge();
                 }
             }
@@ -54,11 +54,11 @@ namespace KFedak_TDD
                 }
                 catch (BatteryIsDeadException ex)
                 {
-                    logger.WriteLine(ex);
+                    logger.WriteLine(ex.Message);
 
                     if (phone is not Nokia nokia)
                     {
-                        logger.WriteLine(ex);
+                        logger.WriteLine(ex.Message);
                         throw;
                     }
 
