@@ -21,6 +21,7 @@ namespace SolveQuadraticEquatation
         {
             _logger = logger;
         }
+
         internal EquationRoots Solve(double a, double b, double c)
         {
             ParametersValidation(a, b, c);

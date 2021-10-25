@@ -7,7 +7,7 @@ using System;
 namespace SolveQuadraticEquatation.UnitTest
 {
     [TestFixture]
-    public class SquareEquationSolverTest
+    public class TestSquareEquationSolver
     {
         readonly SquareEquationSolver equation = new SquareEquationSolver();
         readonly Mock<ILogger> fileMock = new Mock<ILogger>();
