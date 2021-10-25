@@ -14,9 +14,9 @@ namespace Shyptur_Task10HW
     {
         static async Task Main(string[] args)
         {
-            Task1();
+            await Task1();
 
-            // await Task2();
+            await Task2();
         }
 
         static async Task Task2()
@@ -37,16 +37,21 @@ namespace Shyptur_Task10HW
 
         public static async Task Task22(string[] array)
         {
-            var longestWoerd = array
-                  .Where(length => length.Length > 5)
-                  .OrderBy(s => s.Length)
-                  .Last();
 
-            Console.WriteLine($" Find the longest word in this book, the word must be longer than 5 characters to participate in the challenge?  IS - {longestWoerd}");
+            await Task.Run(() =>
+            {
+                var longestWoerd = array
+                     .Where(length => length.Length > 5)
+                     .OrderBy(s => s.Length)
+                     .Last();
+               Console.WriteLine($" Find the longest word in this book, the word must be longer than 5 characters to participate in the challenge?  IS - {longestWoerd}");
+            });
+
         }
 
         public static async Task Task23(string[] array)
         {
+            await Task.Run(() => { 
             var MostCommonWordsUsed = array.GroupBy(s => s);
             MostCommonWordsUsed = MostCommonWordsUsed.OrderByDescending(s => s.Count());
             int count = 0;
@@ -55,18 +60,21 @@ namespace Shyptur_Task10HW
 
             foreach (var item in MostCommonWordsUsed)
             {
-                Console.WriteLine($"word {count} - {item.Key} "); ;
+                Console.WriteLine($"word {count} - {item.Key} "); 
                 count += 1;
             }
+            });
         }
 
         public static async Task Task24(string[] array)
         {
-            var result = array.Count(t => t.Equals("relativity", StringComparison.CurrentCultureIgnoreCase));
+            await Task.Run(() => {
+                var result = array.Count(t => t.Equals("relativity", StringComparison.CurrentCultureIgnoreCase));
             Console.WriteLine(" Find how many times the word 'Relativity' is used?  - " + result);
+            });
         }
 
-        static async void Task1()
+        static async Task Task1()
         {
             Git git = new Git();
             var listOfThreads = new List<Task>();
@@ -75,9 +83,8 @@ namespace Shyptur_Task10HW
             {
                 listOfThreads.Add(Task.Run(() => PushUse(git)));
             }
-            Console.WriteLine("lol");
-            await Task.Run(() => Task.WaitAll(listOfThreads.ToArray()));
-            //  Task.WaitAll(listOfThreads.ToArray());
+
+            await Task.WhenAll(listOfThreads.ToArray());
             Console.WriteLine(git.commits.Count);
         }
 
