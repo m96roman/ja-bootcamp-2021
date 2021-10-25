@@ -3,6 +3,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 
 [assembly: System.Runtime.CompilerServices.InternalsVisibleTo("ProjectSolve.UnitTests")]
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("SolveEquationIntegrationTests")]
 namespace SolveEquation
 {
     internal partial class Program

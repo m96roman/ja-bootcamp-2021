@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 using SolveEquation;
 
+
 namespace ProjectSolve.UnitTests
 {
     [TestFixture]

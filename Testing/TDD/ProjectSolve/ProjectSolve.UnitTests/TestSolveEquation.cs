@@ -18,7 +18,7 @@ namespace ProjectSolve.UnitTests
         }
 
         [TestCase(1, 0, 0)]
-        public void Test__root_as_0(double a, double b, double c)
+        public void Test_root_as_0(double a, double b, double c)
         {
             Equation equation = new Equation(a, b, c);
 
@@ -44,19 +44,20 @@ namespace ProjectSolve.UnitTests
             Assert.AreEqual(equationRoots.Res1, equationRoots.Res2);
         }
 
-        [TestCase(1, 5, 4)]
-        public void Test_Happy_Path(double a, double b, double c)
+        [TestCase(1, 5, 4, -1, -4)]
+        [TestCase(1, 5, 4,-1,-4)]
+        public void Test_When_Two_Roots(double a, double b, double c, double res1, double res2)
         {
             Equation equation = new Equation(a, b, c);
 
             EquationRoots equationRoots = equation.FindRoots();
 
-            Assert.AreEqual(-1, equationRoots.Res1);
-            Assert.AreEqual(-4, equationRoots.Res2);
+            Assert.AreEqual(res1, equationRoots.Res1);
+            Assert.AreEqual(res2, equationRoots.Res2);
         }
 
         [Test]
-        public void Check_format_Happy_path_root()
+        public void Check_format_When_Two_Roots()
         {
             Mock<ILoger> mock = new Mock<ILoger>();
 
@@ -79,28 +80,29 @@ namespace ProjectSolve.UnitTests
 
             mock.Verify(it => it.Log("<No solution>"), Times.Once);
         }
+
         [Test]
         public void Check_format_One_Root()
         {
-            Mock<ILoger> mock = new Mock<ILoger>();
+            Mock<ILoger> logerMock = new Mock<ILoger>();
 
             Equation equation = new Equation();
-            Equation.Loger = mock.Object;
+            Equation.Loger = logerMock.Object;
             equation.SolveAndSaveSolution(10, 10, 2.5, @"C:\Users\Yevhen.shyptur\Desktop\");
 
-            mock.Verify(it => it.Log("< Root #1: -0.5>"), Times.Once);
+            logerMock.Verify(it => it.Log("< Root #1: -0.5>"), Times.Once);
         }
 
         [Test]
         public void Check_file_write()
         {
-            Mock<IFileWrapper> mock1 = new Mock<IFileWrapper>();
+            Mock<IFileWrapper> fileWrapperMock = new Mock<IFileWrapper>();
 
             Equation equation = new Equation();
-            Equation.FileWrapper1 = mock1.Object;
+            Equation.FileWrapper1 = fileWrapperMock.Object;
             equation.SolveAndSaveSolution(4, 11, 4, @"C:\Users\Yevhen.shyptur\Desktop\");
 
-            mock1.Verify(f => f.WriteToFile(@"C:\Users\Yevhen.shyptur\Desktop\Result.txt", "< Root #1: -0.4312706956; Root #2: -2.3187293044>"),Times.Once);
+            fileWrapperMock.Verify(f => f.WriteToFile(@"C:\Users\Yevhen.shyptur\Desktop\Result.txt", "< Root #1: -0.4312706956; Root #2: -2.3187293044>"),Times.Once);
         }
     }
 }
