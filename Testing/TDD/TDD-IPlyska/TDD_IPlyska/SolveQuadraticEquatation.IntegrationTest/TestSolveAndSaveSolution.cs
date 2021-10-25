@@ -1,8 +1,7 @@
 using NUnit.Framework;
-using SolveQuadraticEquatation;
 using System.IO;
 
-namespace IntegrationTest_SolveQuadraticEquatation
+namespace SolveQuadraticEquatation.IntegrationTest
 {
     public class TestSolveAndSaveSolution
     {

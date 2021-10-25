@@ -6,10 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <InternalsVisibleTo Include="TDD_IPlyska" />
+    <InternalsVisibleTo Include="SolveQuadraticEquatation.UnitTest" />
   </ItemGroup>
 
   <ItemGroup>
-    <InternalsVisibleTo Include="IntegrationTest_SolveQuadraticEquatation" />
+    <InternalsVisibleTo Include="SolveQuadraticEquatation.IntegrationTest" />
   </ItemGroup>
 </Project>

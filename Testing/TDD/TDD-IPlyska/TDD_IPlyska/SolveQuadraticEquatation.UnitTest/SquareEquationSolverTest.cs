@@ -1,10 +1,10 @@
 using Moq;
 using NUnit.Framework;
+using NUnit.Framework.Internal;
 using SolveQuadraticEquatation;
 using System;
-using System.Runtime.Serialization;
 
-namespace TDD_IPlyska
+namespace SolveQuadraticEquatation.UnitTest
 {
     [TestFixture]
     public class SquareEquationSolverTest
@@ -124,6 +124,5 @@ namespace TDD_IPlyska
             //assert
             fileMock.Verify(x => x.SaveResult(content, "file"));
         }
- 
     }
 }
