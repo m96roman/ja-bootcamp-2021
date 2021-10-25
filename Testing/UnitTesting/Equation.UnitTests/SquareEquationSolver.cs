@@ -6,7 +6,7 @@ using Equation.Models;
 namespace Equation.UnitTests
 {
     [TestFixture]
-    public class MoqUnitTests
+    public class SquareEquationSolverTests
     {
         [TestCase(5, 3, 7, "<No solution>")]
         [TestCase(1, 12, 36, "<Root #1: -6>")]
@@ -20,10 +20,10 @@ namespace Equation.UnitTests
             Coefficients coef = new Coefficients { A = a, B = b, C = c };
 
             //act
-            solve.SolveAndSaveSolution(coef, Equation.Program.filePath);
+            solve.SolveAndSaveSolution(coef, "file");
 
             //assert
-            fileMock.Verify(it => it.WriteDataIntofile(Equation.Program.filePath, content));
+            fileMock.Verify(it => it.WriteDataIntofile("file", content), Times.Once);
         }
     }
 }
