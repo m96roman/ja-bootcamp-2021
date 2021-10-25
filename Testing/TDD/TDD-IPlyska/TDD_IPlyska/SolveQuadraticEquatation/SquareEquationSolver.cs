@@ -22,16 +22,28 @@ namespace SolveQuadraticEquatation
             _logger = logger;
         }
 
-        internal EquationRoots Solve(double a, double b, double c)
+        internal async Task<EquationRoots> SolveAsync(double a, double b, double c)
         {
-            ParametersValidation(a, b, c);
+          return await Task.Run(() =>
+                {
+                    ParametersValidation(a, b, c);
 
-            if (ParametersValidationForZero(a, b, c))
-            {
-                return new EquationRoots(0, 0);
-            }
+                    if (ParametersValidationForZero(a, b, c))
+                    {
+                        return new EquationRoots(0, 0);
+                    }
+
+                    return FindRoots(a, b, c);
+                });
+
+            //ParametersValidation(a, b, c);
+
+            //if (ParametersValidationForZero(a, b, c))
+            //{
+            //    return new EquationRoots(0, 0);
+            //}
              
-            return FindRoots(a, b, c);
+            //return FindRoots(a, b, c);
         }
 
         private static EquationRoots FindRoots(double a, double b, double c)
@@ -149,7 +161,7 @@ namespace SolveQuadraticEquatation
             return Math.Round(root, 10);
         }
 
-        public void SolveAndSaveSolution(double a, double b, double c, string filePath)
+        public async Task SolveAndSaveSolutionAsync(double a, double b, double c, string filePath)
         {
             if (string.IsNullOrEmpty(filePath))
             {
@@ -158,7 +170,7 @@ namespace SolveQuadraticEquatation
 
             try
             {
-                var roots = Solve(a, b, c);
+                var roots = await SolveAsync(a, b, c);
                 if (roots.R1 != null && roots.R2 == null)
                 {
                     _logger.SaveResult($"<Root #1: {roots.R1}>", filePath);

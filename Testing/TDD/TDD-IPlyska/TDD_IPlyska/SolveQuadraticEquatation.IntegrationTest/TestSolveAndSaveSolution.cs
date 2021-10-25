@@ -13,7 +13,7 @@ namespace SolveQuadraticEquatation.IntegrationTest
         public void SolveAndSaveSolution_With_Inegration_Test_File_Should_Exist(double a, double b, double c, string context)
         {
             //act
-            equation.SolveAndSaveSolution(a, b, c, equation.FilePath);
+            equation.SolveAndSaveSolutionAsync(a, b, c, equation.FilePath).Wait();
             var result = File.ReadAllText(equation.FilePath);
 
             //assert
