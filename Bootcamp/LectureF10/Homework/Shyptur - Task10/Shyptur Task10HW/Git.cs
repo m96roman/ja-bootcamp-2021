@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,14 +12,13 @@ namespace Shyptur_Task10HW
     {
         private static object _lock = new object();
 
-        public List<string> commits = new List<string>();
+        public ConcurrentBag<string> commits { get; set; } = new ConcurrentBag<string>();
 
         public void Push(string message)
         {
-            lock (_lock)
-            {
-                commits.Add(message);
-            }
+
+            commits.Add(message);
+
         }
     }
 }

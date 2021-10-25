@@ -14,9 +14,9 @@ namespace Shyptur_Task10HW
     {
         static async Task Main(string[] args)
         {
-            //  Task1();
+            Task1();
 
-            await Task2();
+            // await Task2();
         }
 
         static async Task Task2()
@@ -32,7 +32,7 @@ namespace Shyptur_Task10HW
 
         public static async Task Task21(string text)
         {
-            File.WriteAllTextAsync("Relativity: The Special and General Theory.txt", text);
+            await File.WriteAllTextAsync("Relativity: The Special and General Theory.txt", text);
         }
 
         public static async Task Task22(string[] array)
@@ -48,27 +48,25 @@ namespace Shyptur_Task10HW
         public static async Task Task23(string[] array)
         {
             var MostCommonWordsUsed = array.GroupBy(s => s);
-            MostCommonWordsUsed.OrderByDescending(s => s.Count());
+            MostCommonWordsUsed = MostCommonWordsUsed.OrderByDescending(s => s.Count());
             int count = 0;
             Console.WriteLine("Find top 8(obviously) most common words used.");
+            MostCommonWordsUsed = MostCommonWordsUsed.Take(8);
 
             foreach (var item in MostCommonWordsUsed)
             {
                 Console.WriteLine($"word {count} - {item.Key} "); ;
                 count += 1;
-                if (count == 8)
-                {
-                    break;
-                }
             }
         }
 
         public static async Task Task24(string[] array)
         {
-            var HowManyTimes = array.Where(s => s == "Relativity" || s == "RELATIVITY").Count();
-            Console.WriteLine(" Find how many times the word 'Relativity' is used?  - " + HowManyTimes.ToString());
+            var result = array.Count(t => t.Equals("relativity", StringComparison.CurrentCultureIgnoreCase));
+            Console.WriteLine(" Find how many times the word 'Relativity' is used?  - " + result);
         }
-        static void Task1()
+
+        static async void Task1()
         {
             Git git = new Git();
             var listOfThreads = new List<Task>();
@@ -77,8 +75,9 @@ namespace Shyptur_Task10HW
             {
                 listOfThreads.Add(Task.Run(() => PushUse(git)));
             }
-
-            Task.WaitAll(listOfThreads.ToArray());
+            Console.WriteLine("lol");
+            await Task.Run(() => Task.WaitAll(listOfThreads.ToArray()));
+            //  Task.WaitAll(listOfThreads.ToArray());
             Console.WriteLine(git.commits.Count);
         }
 
