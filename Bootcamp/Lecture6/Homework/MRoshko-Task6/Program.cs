@@ -8,11 +8,11 @@ namespace MRoshko_Task6
     {
         static void Main(string[] args)
         {
-            Task1();
+            //Task1();
 
-            //Task2();
-
+            Task2();
         }
+
         public static void Task1()
         {
             MyFilterDelegate del = MyFilter;
@@ -49,7 +49,6 @@ namespace MRoshko_Task6
             }
         }
 
-
         public static void Task2()
         {
             var auctioneer = new Auctioneer();
@@ -57,7 +56,6 @@ namespace MRoshko_Task6
             auctioneer.OnBidChanged += MyNewBid1;
 
             auctioneer.OnBidChanged += MyNewBid2;
-<<<<<<< HEAD
 
             auctioneer.OnBidChanged += MyNewBid3;
 
@@ -66,53 +64,33 @@ namespace MRoshko_Task6
             auctioneer.SetNewBid(228);
         }
 
-=======
-            auctioneer.OnBidChanged += MyNewBid3;
-            auctioneer.SetNewBid(122);
-            auctioneer.SetNewBid(228);
-        }
-
->>>>>>> 1811e42d495bfdeca01513cbe9652f0c744337f1
         public static void MyNewBid1(object arg, int bidValue)
         {
             if (bidValue > 100)
             {
                 Console.WriteLine($"Ohhh they really want to by this car for {bidValue}?");
             }
-
         }
 
         public static void MyNewBid2(object arg, int bidValue)
         {
-<<<<<<< HEAD
-
-=======
-       
->>>>>>> 1811e42d495bfdeca01513cbe9652f0c744337f1
             if (bidValue < 300)
             {
                 Console.WriteLine($"I can give more, { bidValue} is nothing.");
             }
-
         }
 
         public static void MyNewBid3(object arg, int bidValue)
         {
-
             if (bidValue < 200)
             {
                 Console.WriteLine($"I will wait a bit. I think that {bidValue} is not the last price.");
             }
-<<<<<<< HEAD
         }
 
         public static bool MyFilter(string filter)
         {
-
             return Char.IsUpper(filter, 0);
-
-=======
->>>>>>> 1811e42d495bfdeca01513cbe9652f0c744337f1
         }
 
         public static int MyMap(string param)
@@ -153,5 +131,4 @@ namespace MRoshko_Task6
 
         public delegate int MyMapDeledate(string map);
     }
-
 }

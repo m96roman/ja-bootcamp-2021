@@ -16,7 +16,9 @@ namespace MRoshko_Task6
         public void SetNewBid(int argument)
         {
             Bid = argument;
+
             Notify handler = OnBidChanged;
+
             handler?.Invoke(this,argument);
         }
     }
