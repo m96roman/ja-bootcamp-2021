@@ -10,7 +10,6 @@ namespace MRoshko_Task9
     {
         public IPhone13(int batteryLevel) : base(batteryLevel)
         {
-
         }
     }
 }

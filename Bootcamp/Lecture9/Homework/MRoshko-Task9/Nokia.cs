@@ -10,11 +10,11 @@ namespace MRoshko_Task9
     {
         public Nokia(int batteryLevel) : base(batteryLevel)
         {
-
         }
+
         public void PrayForBattery()
         {
-            this.batteryLevel += 8;
+            this.BatteryLevel += 8;
 
             Console.WriteLine($"praying for the battery");
         }

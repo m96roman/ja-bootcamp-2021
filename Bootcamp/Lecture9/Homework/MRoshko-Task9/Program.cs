@@ -18,9 +18,9 @@ namespace MRoshko_Task9
 
             //Task2();
 
-            Task3();
+            //Task3();
 
-            //Task4();
+            Task4();
         }
 
         public static void Task1()
@@ -68,8 +68,8 @@ namespace MRoshko_Task9
 
         public static void Task3()
         {
-            var path = $@"{Directory.GetCurrentDirectory()}\Student.json";
-            var group = new List<Student>();
+            string path = $@"{Directory.GetCurrentDirectory()}\Student.json";
+            List<Student> group = new ();
 
             if (File.Exists(Path.GetFileName(path)))
             {                               
@@ -139,7 +139,7 @@ namespace MRoshko_Task9
         public static void WriteIntoFile(string data, int indexOfFile)
         {
             var directory = Directory.GetCurrentDirectory();
-
+            Logger log = new();
             string fileName = $@"{directory}\inputFromVIM{indexOfFile}.txt";
 
             try
@@ -148,6 +148,8 @@ namespace MRoshko_Task9
             }
             catch (Exception ex)
             {
+                log.WriteLine(ex.ToString());
+
                 Console.WriteLine(ex);
             }
         }
@@ -156,6 +158,8 @@ namespace MRoshko_Task9
         {
             var directory = Directory.GetCurrentDirectory();
             var targetPath = $@"{directory}{DateTime.Now.Day}{DateTime.Now.Month}{DateTime.Now.Year}";
+            Logger log = new();
+
             try
             {
                 if (Directory.Exists(targetPath))
@@ -180,13 +184,14 @@ namespace MRoshko_Task9
             }
             catch (Exception ex)
             {
+                log.WriteLine(ex.ToString());
+
                 Console.WriteLine(ex);
             }
         }
 
         public static void SemesterEmulation(List<Student> group)
         {
-
             for (int i = 0; i < 8; i++)
             {
                 foreach (var student in group)
@@ -197,7 +202,6 @@ namespace MRoshko_Task9
                     }
                 }
             }
-
         }
 
         public static void TestEmergency(PhoneEmergencyTestHolder phoneEmergencyTestHolder)
@@ -230,6 +234,7 @@ namespace MRoshko_Task9
             }
 
             Console.WriteLine();
+
         }
     }
 }

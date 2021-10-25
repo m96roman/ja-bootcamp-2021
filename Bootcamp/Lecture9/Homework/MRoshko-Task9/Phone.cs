@@ -8,7 +8,7 @@ namespace MRoshko_Task9
 {
     public class Phone
     {
-        protected int batteryLevel;
+        protected int BatteryLevel { get; set; }
 
         public Phone(int batteryLevel)
         {
@@ -19,7 +19,7 @@ namespace MRoshko_Task9
         {
             if (batteryLevel >= 0 && batteryLevel <= 100)
             {
-                this.batteryLevel = batteryLevel;
+                this.BatteryLevel = batteryLevel;
             }
             else
             {
@@ -29,15 +29,15 @@ namespace MRoshko_Task9
 
         public void CallAmbulance()
         {
-            if (this.batteryLevel >= 5)
+            if (this.BatteryLevel >= 5)
             {
-                this.batteryLevel -= 5;
+                this.BatteryLevel -= 5;
 
-                Console.WriteLine($"calling an ambulance from {GetType()}, remaining charge: {this.batteryLevel} % ");
+                Console.WriteLine($"calling an ambulance from {GetType()}, remaining charge: {this.BatteryLevel} % ");
             }
             else
             {
-                this.batteryLevel = 0;
+                this.BatteryLevel = 0;
 
                 throw new BatteryIsDeadException(this, $"BatteryIsDeadException {GetType()}");
             }
@@ -45,21 +45,28 @@ namespace MRoshko_Task9
 
         public void Charge()
         {
-            this.batteryLevel = 100;
+            this.BatteryLevel = 100;
 
             Console.WriteLine($"Charging {GetType()} to 100%");
         }
 
         public void ChargeABit()
         {
-            this.batteryLevel += 1;
+            if (BatteryLevel >= 100)
+            {
+                BatteryLevel = 100;
+            }
+            else 
+            {
+                this.BatteryLevel += 1;
+            }           
 
             Console.WriteLine($"Charging {GetType()} by 1%");
         }
 
         public void PrintBatteryLevel()
         {
-            Console.WriteLine($"{this.batteryLevel}");
+            Console.WriteLine($"{this.BatteryLevel}");
         }
     }
 }
