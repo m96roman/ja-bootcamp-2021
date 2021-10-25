@@ -39,5 +39,41 @@ namespace Exchange_Task
             return (fileName.IndexOfAny(System.IO.Path.GetInvalidFileNameChars()) != -1);
         }
 
+        public void IncorrectDataToUpdate(string currency, string rate)
+        {
+            if (IsCorrectCurrency(currency) && IsCorrectRate(rate))
+            {
+                if (!IsCorrectRate(rate) && IsCorrectCurrency(currency))
+                {
+                    Console.WriteLine("Incorrect rate!");
+                }
+                else if (!IsCorrectCurrency(currency) && IsCorrectRate(rate))
+                {
+                    Console.WriteLine("Incorrect currency!");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Incorrect rate and currency!");
+            }
+        }
+        public void IncorrectDataToConversion(string currency, string amount)
+        {
+            if (IsCorrectCurrency(currency) && IsCorrectAmount(amount))
+            {
+                if (!IsCorrectAmount(amount) && IsCorrectCurrency(currency))
+                {
+                    Console.WriteLine("Incorrect amount!");
+                }
+                else if (!IsCorrectCurrency(currency) && IsCorrectAmount(amount))
+                {
+                    Console.WriteLine("Incorrect currency!");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Incorrect amount and currency!");
+            }
+        }
     }
 }
