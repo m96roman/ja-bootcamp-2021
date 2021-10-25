@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29306.81
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnitTestProject1", "NUnitTestProject1\NUnitTestProject1.csproj", "{887391C0-891A-4E74-9417-0CD619ECDF7F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Task 1", "..\..\..\Bootcamp\Lecture8\Homework\Pylat Task 1\Task 1\Task 1.csproj", "{FAD46E4A-D5FC-40E9-AC1D-298306526450}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{887391C0-891A-4E74-9417-0CD619ECDF7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{887391C0-891A-4E74-9417-0CD619ECDF7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{887391C0-891A-4E74-9417-0CD619ECDF7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{887391C0-891A-4E74-9417-0CD619ECDF7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAD46E4A-D5FC-40E9-AC1D-298306526450}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAD46E4A-D5FC-40E9-AC1D-298306526450}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAD46E4A-D5FC-40E9-AC1D-298306526450}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAD46E4A-D5FC-40E9-AC1D-298306526450}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4F0A5FA4-C1A3-41E8-96F4-39D61A910C3B}
+	EndGlobalSection
+EndGlobal
