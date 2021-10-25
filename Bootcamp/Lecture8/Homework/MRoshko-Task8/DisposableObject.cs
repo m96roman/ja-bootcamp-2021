@@ -8,32 +8,34 @@ using System.IO;
 namespace MRoshko_Task8
 {
     class DisposableObject : IDisposable
-    {   
-        private MemoryStream disposableObject;
+    {
+        private MemoryStream DisposableObj { get; set; }
 
-        private bool dispose= false; 
+        private bool DisposeFlag { get; set; }
 
-        public DisposableObject() 
+        public DisposableObject()
         {
-            disposableObject = new MemoryStream();
+            DisposableObj = new MemoryStream();
+
+            DisposeFlag = false;
         }
 
         public void Dispose()
-        {            
+        {
             Console.WriteLine($"I was disposed =(");
 
-            dispose = true;
+            DisposeFlag = true;
 
-            disposableObject.Dispose();
+            DisposableObj.Dispose();
         }
 
         public void DoSomething()
         {
-            if (dispose)
+            if (DisposeFlag)
             {
                 throw new ObjectDisposedException(GetType().Name);
             }
-            else 
+            else
             {
                 Console.WriteLine("I'm doing something important.");
             }

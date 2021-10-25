@@ -24,12 +24,10 @@ namespace MRoshko_Task8
                 .GetType()
                 .GetMethods()
                 .Select(s => new { methods = s, atribute = s.GetCustomAttribute<RouteAttribute>() })
-                .Where(p => p.atribute != null);
-
-            var currentMethod = colectionsAtribue
+                .Where(p => p.atribute != null)
                 .FirstOrDefault(atr => atr.atribute.Name == route);
 
-            Console.WriteLine(currentMethod.methods.Invoke(Controller, null));
+            Console.WriteLine(colectionsAtribue.methods.Invoke(Controller, null));
         }
     }
 }

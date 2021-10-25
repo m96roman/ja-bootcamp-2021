@@ -8,7 +8,7 @@ namespace MRoshko_Task8
 {
     public class RouteAttribute : Attribute
     {
-        public string Name { get; set; }
+        public string Name { get; private set; }
 
         public RouteAttribute(string name)
         {

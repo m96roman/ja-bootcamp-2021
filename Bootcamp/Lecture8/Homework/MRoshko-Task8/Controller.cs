@@ -33,6 +33,5 @@ namespace MRoshko_Task8
         {
             Console.WriteLine($"Delete method execute in {Name} controller");
         }
-
     }
 }

@@ -8,7 +8,7 @@ namespace MRoshko_Task8
         {
             Task1();
 
-            //Task2();
+            Task2();
         }
 
         public static void Task1()
