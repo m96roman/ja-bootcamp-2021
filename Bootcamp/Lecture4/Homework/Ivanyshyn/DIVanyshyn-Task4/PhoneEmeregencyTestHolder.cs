@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace DIVanyshyn_Task4
 {
     /// <summary>
-    ///  - It can hold any number of phones
+    /// - It can hold any number of phones
     ///- It also should be possible to use this type in foreach loop
     /// </summary>
     internal class PhoneEmeregencyTestHolder : IEnumerable<Phone>
@@ -29,9 +29,30 @@ namespace DIVanyshyn_Task4
         /// Adds phone to collection
         /// </summary>
         /// <param name="phone">A phone :)</param>
+        /// <exception cref="ArgumentNullException">When <paramref name="phone"/> is null</exception>
         public void Add(Phone phone)
         {
+            if (phone is null)
+            {
+                throw new ArgumentNullException(nameof(phone));
+            }
+
             phones.Add(phone);
+        }
+
+        /// <summary>
+        /// Removes the specific phone from collection
+        /// </summary>
+        /// <param name="phone">The phone to add</param>
+        /// <exception cref="ArgumentNullException">When <paramref name="phone"/> is null</exception>
+        public void Remove(Phone phone)
+        {
+            if (phone is null)
+            {
+                throw new ArgumentNullException(nameof(phone));
+            }
+
+            phones.Remove(phone);
         }
 
         public IEnumerator<Phone> GetEnumerator()
@@ -56,29 +77,59 @@ namespace DIVanyshyn_Task4
         {
             foreach (var item in holder)
             {
-                try
-                {
-                    item.CallForAmbulance();
-                }
-                catch (BatteryIsDeadException bs)
-                {
-                    if (bs.Phone is not Nokia nokia)
-                    {
-                        Console.WriteLine($"Phone failed to call an ambulance: {bs.Phone.GetType().Name}");
-                        
-                        throw;
-                    }
-
-                    Console.WriteLine(new string('[', 20));
-                    nokia.PrayForBattery();
-                    nokia.CallForAmbulance();
-                    Console.WriteLine(new string(']', 20));
-                }
-                finally
-                {
-                    item.ChargeABit();
-                }
+                CallAmbulanceRoutine(item);
             }
+        }
+
+        /// <summary>
+        /// CallAmbulence to <paramref name="item"/> 
+        /// if <see cref="BatteryIsDeadException"/> is thrown then goes to catch block
+        /// and perform action in 
+        /// </summary>
+        /// <param name="item">the Phone item that need to be routined</param>
+        private static void CallAmbulanceRoutine(Phone item)
+        {
+            try
+            {
+                item.CallForAmbulance();
+            }
+            catch (BatteryIsDeadException bs)
+            {
+                if (bs.Phone is Nokia nokia)
+                {
+                    PrayForNokia(nokia);
+
+                    return;
+                }
+
+                LogCallAnAmbulanceError(bs.Phone);
+
+                throw;
+            }
+            finally
+            {
+                item.ChargeABit();
+            }
+        }
+
+        /// <summary>
+        /// Logs CllAnAmbulance error
+        /// </summary>
+        /// <param name="phone"></param>
+        private static void LogCallAnAmbulanceError(Phone phone)
+        {
+            string message = $"Phone failed to call an ambulance: {phone.GetType().Name}";
+            phone.logger.WriteLine(message, MessageType.Exception);
+        }
+
+        /// <summary>
+        /// Call from <paramref name="nokia"/> method PrayForBattery and CallForAmbulance
+        /// </summary>
+        /// <param name="nokia">Phone parameter</param>
+        private static void PrayForNokia(Nokia nokia)
+        {
+            nokia.PrayForBattery();
+            nokia.CallForAmbulance();
         }
     }
 }

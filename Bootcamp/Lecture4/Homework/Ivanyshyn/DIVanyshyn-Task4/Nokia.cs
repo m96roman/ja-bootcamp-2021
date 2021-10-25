@@ -8,14 +8,17 @@
         /// </summary>
         /// <param name="batteryLevel"></param>
         /// <exception cref="ArgumentException">When battery level is not in range from 0 to 100</exception>
-        public Nokia(int batteryLevel, string phoneName) : base(batteryLevel, phoneName)
+        public Nokia(int batteryLevel, string phoneName, ILogger logger) : base(batteryLevel, phoneName, logger)
         {
         }
 
+        /// <summary>
+        /// Adds to batteryLevel 8% and prints message "praying for the battery"
+        /// </summary>
         public void PrayForBattery()
         {
             batteryLevel += 8;
-            System.Console.WriteLine("Praying for battery (Thank god for another day with Nokia)");
+            logger.WriteLine("Praying for battery (Thank god for another day with Nokia)", MessageType.Message);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace DIVanyshyn_Task4
 {
-    public interface IChargable
+    internal interface IChargable
     {
         void CallForAmbulance();
 

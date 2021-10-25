@@ -1,9 +1,15 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <TargetFramework>net5.0</TargetFramework>
     <RootNamespace>DIVanyshyn_Task4</RootNamespace>
+    <ApplicationIcon />
+    <StartupObject />
   </PropertyGroup>
-
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+      <_Parameter1>DIvanysnyn-UnitTests-Day1(Modified)</_Parameter1>
+    </AssemblyAttribute>
+  </ItemGroup>
 </Project>

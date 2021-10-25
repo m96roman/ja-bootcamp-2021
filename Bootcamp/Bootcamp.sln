@@ -232,7 +232,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Homework", "Homework", "{0E
 		LectureF10\Homework\Tasks.txt = LectureF10\Homework\Tasks.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveCoding10", "LectureF10\LiveCoding10\LiveCoding10.csproj", "{A604CFE5-8722-443F-B357-249527EDAF86}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveCoding10", "LectureF10\LiveCoding10\LiveCoding10.csproj", "{A604CFE5-8722-443F-B357-249527EDAF86}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DIvanysnyn-UnitTests-Day1(Modified)", "..\Tests\DIvanysnyn-UnitTests-Day1(Modified)\DIvanysnyn-UnitTests-Day1(Modified).csproj", "{A52E0DA4-08F3-429C-B8F1-4399F65250C1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -528,6 +530,10 @@ Global
 		{A604CFE5-8722-443F-B357-249527EDAF86}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A604CFE5-8722-443F-B357-249527EDAF86}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A604CFE5-8722-443F-B357-249527EDAF86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A52E0DA4-08F3-429C-B8F1-4399F65250C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A52E0DA4-08F3-429C-B8F1-4399F65250C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A52E0DA4-08F3-429C-B8F1-4399F65250C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A52E0DA4-08F3-429C-B8F1-4399F65250C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
