@@ -20,18 +20,17 @@ namespace MRoshko_Task7
 
         public static void Task1()
         {
-            int[] numbers = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-
-            foreach (var numb in numbers)
+           var numbers = new List<int>(){ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }
+           .Select(s => new { numb = s, squera = Math.Pow(s, 2) });
+         
+            foreach (var it in numbers)
             {
-                Console.WriteLine($" Number = {numb},SqrNo = { Math.Pow(numb, 2)} ");
+                Console.WriteLine($" Number = {it.numb},SqrNo = { it.squera} ");
             }
-
         }
 
         public static void Task2()
         {
-
             var inputData = Console.ReadLine();
 
             var result = inputData 
@@ -42,7 +41,6 @@ namespace MRoshko_Task7
             {
                 Console.WriteLine($"Character {item.Key}: {item.Count()} times");
             }
-
         }
 
         public static void Task3()
@@ -66,6 +64,13 @@ namespace MRoshko_Task7
                     FacultyId = 1,
                     FirstName = "Martin",
                     AverageGrade = 4.9
+                },
+                new Student
+                {
+                    StudentId = 1,
+                    FacultyId = 1,
+                    FirstName = "Martin",
+                    AverageGrade = 4.2
                 },
                  new Student
                 {
@@ -121,7 +126,6 @@ namespace MRoshko_Task7
                 (s, f) => new { Student = s.FirstName, Faculty = f.Name })
                 .ToList();
 
-
             Console.WriteLine("Print All students with max grade per Faculty like: {FacultyName,StudentName}\n");
 
             foreach (var item in result)
@@ -132,8 +136,8 @@ namespace MRoshko_Task7
             Console.WriteLine("\nHow many students with the same name?\n");
 
             var result1 = listOfStudents
-                .GroupBy(student => student.FirstName)
-                .Select(sstudent => sstudent);
+                .GroupBy(student => student.FirstName);
+               
 
             foreach (var item in result1)
             {
@@ -147,14 +151,15 @@ namespace MRoshko_Task7
                     s => s.FacultyId,
                     f => f.FacultyId,
                     (s, f) => new { Student = s, Faculty = f })
-                .GroupBy(f => f.Faculty.FacultyId);
+                .GroupBy(f => f.Faculty.FacultyId)
+                .Select(s=>s);
 
             foreach (var item in result3)
             {
                 Console.WriteLine($"{item.First().Faculty.Name}");
                 foreach (var item2 in item.GroupBy(name => name.Student.FirstName))
                 {
-                    Console.WriteLine($"{item2.Key}{item2.Count()}");
+                    Console.WriteLine($"{item2.Key} : {item2.Count()}");
                 }
             }  
 
@@ -169,13 +174,9 @@ namespace MRoshko_Task7
 
             foreach (var item in result4)
             {
-
                 Console.WriteLine($"{item.First().Faculty.Name} {item.Select(s => s.Student.AverageGrade).Average()}");
-
             }
-
         }
-
     }
 
     public struct Student
@@ -187,7 +188,6 @@ namespace MRoshko_Task7
         public String FirstName { get; set; }
 
         public double AverageGrade { get; set; }
-
     }
 
     public struct Faculty
