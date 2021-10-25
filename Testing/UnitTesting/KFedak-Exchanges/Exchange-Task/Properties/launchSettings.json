@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "Exchange-Task": {
+      "commandName": "Project"
+    }
+  }
+}
