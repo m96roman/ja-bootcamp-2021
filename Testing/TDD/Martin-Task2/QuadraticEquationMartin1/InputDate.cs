@@ -1,10 +1,7 @@
 ﻿using QuadraticEquationMartin1;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace QuadraticEquationMartin
 {
@@ -33,10 +30,10 @@ namespace QuadraticEquationMartin
 
         public InputDate(string a, string b, string c) : base()
         {
-            ValiDateInputData(a, b, c);
+            ValidateInputData(a, b, c);
         }
 
-        public void ValiDateInputData(string a, string b, string c)
+        public void ValidateInputData(string a, string b, string c)
         {
             if (!double.TryParse(a, out var _a))
             {
@@ -73,6 +70,7 @@ namespace QuadraticEquationMartin
         {
             D = b * b - 4 * (a * c);
         }
+
         public void FindRoots(double d)
         {
             if (d < 0)
@@ -95,7 +93,7 @@ namespace QuadraticEquationMartin
 
                 Result = $"< Root #1: {Math.Round(R1, 10)}; Root #2: {Math.Round(R2, 10)}; >";
             }
-            Console.WriteLine(Result);
+            new Logger(Result).WriteLine();
         }
 
         public void SolveAndSaveSolution(string a = null, string b = null, string c = null, string filePath = "FileResult")
@@ -103,34 +101,33 @@ namespace QuadraticEquationMartin
             if (InicializeDateState == false && (a == null || b == null || c == null))
             {
                 throw new ArgumentNullException();
-            }           
+            }
             if (a != null && b != null && c != null)
             {
-                ValiDateInputData($"{a}", $"{b}", $"{c}");    
+                ValidateInputData($"{a}", $"{b}", $"{c}");
             }
-            
+
             FindD(A, B, C);
             FindRoots(D);
             SaveResult(Result, filePath);
         }
-        public void SaveResult(string result, string filePath = "FileResult")
+        public void SaveResult(string result, string filePath = "FileResult.txt")
         {
-            if (filePath == null) 
+            if (string.IsNullOrWhiteSpace(filePath))
             {
                 throw new Exception();
             }
             try
             {
-                using (StreamWriter sw = File.AppendText(filePath + ".txt"))
+                using (StreamWriter sw = File.AppendText(filePath))
                 {
                     sw.WriteLine(result);
                 }
             }
             catch (Exception ex)
             {
-                throw;
+                throw new Exception();
             }
-
         }
     }
 }

@@ -10,13 +10,12 @@ namespace QuadraticEquationMartin
     {
         static void Main(string[] args)
         {     
-          /*  string a = Console.ReadLine();
+            string a = Console.ReadLine();
             string b = Console.ReadLine();
             string c = Console.ReadLine();
-            */
-            InputDate date = new InputDate();
-            date.SaveResult("sda", "nul");
-            /*date.SolveAndSaveSolution(a,b,c);*/
+            
+            InputDate date = new InputDate(a, b, c);
+            date.SolveAndSaveSolution();
         }
     }
 }

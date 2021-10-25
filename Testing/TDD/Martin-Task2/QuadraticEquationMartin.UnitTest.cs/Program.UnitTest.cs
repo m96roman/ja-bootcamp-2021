@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
-using QuadraticEquationMartin;
+﻿using NUnit.Framework;
 namespace QuadraticEquationMartin.UnitTests
 {
     [TestFixture]
-    class Program
+    class ProgramUnitTest
     {
         [TestCase("0", "2", "2")]       
         public void Parse_GivenFirstNull_ShouldThrowArgumentException(string a, string b, string c)
         {               
             var inputDate = new InputDate();
-            Assert.That(() => inputDate.ValiDateInputData(a, b, c), Throws.ArgumentException);
+            Assert.That(() => inputDate.ValidateInputData(a, b, c), Throws.ArgumentException);
         }
 
     }
