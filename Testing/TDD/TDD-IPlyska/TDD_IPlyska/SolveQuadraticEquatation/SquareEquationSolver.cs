@@ -161,6 +161,7 @@ namespace SolveQuadraticEquatation
                 if (roots.R1 != null && roots.R2 == null)
                 {
                     _logger.SaveResult($"<Root #1: {roots.R1}>", filePath);
+                    return;
                 }
 
                 _logger.SaveResult(roots.ToString(), filePath);

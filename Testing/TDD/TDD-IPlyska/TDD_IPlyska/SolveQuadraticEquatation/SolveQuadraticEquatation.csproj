@@ -9,4 +9,7 @@
     <InternalsVisibleTo Include="TDD_IPlyska" />
   </ItemGroup>
 
+  <ItemGroup>
+    <InternalsVisibleTo Include="IntegrationTest_SolveQuadraticEquatation" />
+  </ItemGroup>
 </Project>

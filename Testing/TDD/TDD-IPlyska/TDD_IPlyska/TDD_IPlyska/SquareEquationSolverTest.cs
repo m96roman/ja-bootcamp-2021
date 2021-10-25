@@ -124,21 +124,6 @@ namespace TDD_IPlyska
             //assert
             fileMock.Verify(x => x.SaveResult(content, "file"));
         }
-
-        [TestCase(2, 4, 2, "<Root #1: -1>")]
-        [TestCase(-5.6, 2.22, 1.24, "<Root #1: -9,7965730599; Root #2: 22,2285730599>")]
-        [TestCase(0, 0, 3, "<No solution>")]
-        public void Save_Result_With_RealPath(double a, double b, double c, string content)
-        {
-            //arrange
-            SquareEquationSolver solver = new SquareEquationSolver(fileMock.Object);
-
-            //act
-            var filePath = equation.FilePath;
-            solver.SolveAndSaveSolution(a, b, c, filePath);
-
-            //assert
-            fileMock.Verify(x => x.SaveResult(content, filePath));
-        }
+ 
     }
 }

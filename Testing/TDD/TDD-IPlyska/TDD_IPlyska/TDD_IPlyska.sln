@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TDD_IPlyska", "TDD_IPlyska\TDD_IPlyska.csproj", "{4FA94B4B-44C4-40C8-9A08-C247028DD42D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TDD_IPlyska", "TDD_IPlyska\TDD_IPlyska.csproj", "{4FA94B4B-44C4-40C8-9A08-C247028DD42D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolveQuadraticEquatation", "SolveQuadraticEquatation\SolveQuadraticEquatation.csproj", "{52CE7CFA-6DE0-47FE-96AA-E5524FD47AB2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SolveQuadraticEquatation", "SolveQuadraticEquatation\SolveQuadraticEquatation.csproj", "{52CE7CFA-6DE0-47FE-96AA-E5524FD47AB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTest_SolveQuadraticEquatation", "IntegrationTest_SolveQuadraticEquatation\IntegrationTest_SolveQuadraticEquatation.csproj", "{2C338C41-C07E-4173-B27C-5F845908674A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{52CE7CFA-6DE0-47FE-96AA-E5524FD47AB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52CE7CFA-6DE0-47FE-96AA-E5524FD47AB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52CE7CFA-6DE0-47FE-96AA-E5524FD47AB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C338C41-C07E-4173-B27C-5F845908674A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C338C41-C07E-4173-B27C-5F845908674A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C338C41-C07E-4173-B27C-5F845908674A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C338C41-C07E-4173-B27C-5F845908674A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
