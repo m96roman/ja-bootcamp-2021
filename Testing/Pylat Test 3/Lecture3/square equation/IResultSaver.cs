@@ -6,6 +6,6 @@ namespace square_equation
 {
     public interface IResultSaver
     {
-        bool SaveResult(List<double> list, string filePath);
+        void SaveResult(List<double> list, string filePath);
     }
 }

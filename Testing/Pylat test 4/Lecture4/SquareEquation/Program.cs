@@ -18,10 +18,6 @@ namespace SquareEquation
 
             calculation.SolveAndSave(1, 16, 1, path);
 
-          //Console.WriteLine()
-            /*
-                        ICalculationService service = new CalculationService(new SquereEquetionSolver(), new ResultSaver());
-                        service.SolveAndSave(1, 16, 1, path);*/
         }
 
     }

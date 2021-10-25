@@ -15,9 +15,7 @@
         {
             var eqiationSolution = _solver.SolveSquereEquation(a, b, c);
 
-           // eqiationSolution.Add(22);
-
-           _saver.SaveResult(eqiationSolution, filePath);
-         }
+            _saver.SaveResult(eqiationSolution, filePath);
+        }
     }
 }

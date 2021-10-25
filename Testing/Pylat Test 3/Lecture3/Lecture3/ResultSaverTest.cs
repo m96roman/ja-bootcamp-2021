@@ -1,21 +1,23 @@
-using Moq;
-using NUnit.Framework;
+﻿using NUnit.Framework;
+using square_equation;
+using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 
-namespace SquareEquation.UnitTests
+namespace Lecture3
 {
-    public class ResultSaverServiceTest
+    [TestFixture]
+    class ResultSaverTest
     {
-        public string path = @"C:\Users\nestor.pylat\ja-bootcamp-2021\Testing\Pylat test 4\Lecture4";
-
+        public string path = @"C:\Users\nestor.pylat\ja-bootcamp-2021\Testing\Pylat test 4\Lecture4\Text.txt";
         [TestCase(1, 16, 1)]
         public void Test2_(int a, int b, int c)
         {
-            SquareEquationService squere = new SquareEquationService();
-            ResultSaverService result = new ResultSaverService();
+            SquereEquetionSolver squere = new SquereEquetionSolver();
+            ResultSaver result = new ResultSaver();
             CalculationService calculation = new CalculationService(squere, result);
-            var list = squere.Solve(a, b, c);
+            var list = squere.SolveSquereEquation(a, b, c);
             var exprctedRes = "< Root #1: -0.0627460668062279; Root #2: -15.9372539331938>";
 
             calculation.SolveAndSave(a, b, c, path);

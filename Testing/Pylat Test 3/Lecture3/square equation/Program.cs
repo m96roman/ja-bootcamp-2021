@@ -17,12 +17,6 @@ namespace square_equation
             var exprctedRes = "< Root #1: -0.0627460668062279; Root #2: -15.9372539331938>";
 
             calculation.SolveAndSave(1, 16, 1, path);
-
-          //Console.WriteLine()
-            /*
-                        ICalculationService service = new CalculationService(new SquereEquetionSolver(), new ResultSaver());
-                        service.SolveAndSave(1, 16, 1, path);*/
         }
-
     }
 }

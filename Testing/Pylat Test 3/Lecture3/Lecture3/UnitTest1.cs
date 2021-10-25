@@ -1,4 +1,4 @@
-using NUnit.Framework;
+/*using NUnit.Framework;
 using square_equation;
 using System;
 using Moq;
@@ -16,35 +16,22 @@ namespace Tests
         [TestCase(0, 6, 7)]
         public void Test1_(int a, int b, int c)
         {
-            var x1 = 2;
-            var x2 = 2;
+            var x1 = -0.0627460668062279;
+            var x2 = -15.9372539331938;
             var expectedRsult = new List<double>() { x1, x2 };
 
             _solverMock.Setup(x => x.SolveSquereEquation(It.IsAny<double>(), It.IsAny<double>(), It.IsAny<double>())).Returns(expectedRsult);
 
-            _saverMock.Setup(x => x.SaveResult(It.Is<List<double>>(list => list == expectedRsult), It.IsAny<string>())).Returns(true);
+            _saverMock.Setup(x => x.SaveResult(It.Is<List<double>>(list => list == expectedRsult), It.IsAny<string>()));
 
             CalculationService service = new CalculationService(_solverMock.Object, _saverMock.Object);
 
             service.SolveAndSave(a, b, c, "path");
 
-            Mock.VerifyAll(_solverMock, _saverMock);
+            Mock.Verify(_solverMock, _saverMock);
         }
 
-        [TestCase(1, 16, 1)]
-        public void Test2_(int a, int b, int c)
-        {
-            SquereEquetionSolver squere = new SquereEquetionSolver();
-            ResultSaver result = new ResultSaver();
-            CalculationService calculation = new CalculationService(squere, result);
-            var list = squere.SolveSquereEquation(a, b, c);
-            var exprctedRes = "< Root #1: -0.0627460668062279; Root #2: -15.9372539331938>";
-
-            calculation.SolveAndSave(a, b, c, path);
-
-            Assert.AreEqual(exprctedRes, File.ReadAllText(path));
-
-        }
+        
 
         //[TestCase(1, 16, 1)]
         //public void Test1_X1_IsEqual(int a, int b, int c)
@@ -86,4 +73,4 @@ namespace Tests
         //    Assert.That(ex.Message, Is.EqualTo("a == 0 or d < 0"));
         //}
     }
-}
+}*/
