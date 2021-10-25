@@ -49,7 +49,7 @@ namespace SquareEquation
             d = b * b - 4 * a * c;
             if (a == 0 || d < 0)
             {
-                throw new Exception("a == 0 or d < 0");
+                return d = -1;          
             }
             return d;
         }
