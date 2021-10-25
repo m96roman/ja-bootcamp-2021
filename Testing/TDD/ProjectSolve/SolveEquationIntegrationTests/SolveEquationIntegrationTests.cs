@@ -11,7 +11,7 @@ using SolveEquation;
 namespace ProjectSolve.UnitTests
 {
     [TestFixture]
-    class integrationTest
+    class SolveEquationIntegrationTests
     {
         [Test]
         public void Test_Check_file_should_return_correcr_value()
