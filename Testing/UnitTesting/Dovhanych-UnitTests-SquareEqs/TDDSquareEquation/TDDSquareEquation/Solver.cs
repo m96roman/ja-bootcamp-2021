@@ -11,7 +11,7 @@ namespace TDDSquareEquation
     {
         public static IFileWrapper FileWrapper { get; set; } = new FileWrapper();
 
-        public void SaveResult(Roots roots, string filePath)
+        private void SaveResult(Roots roots, string filePath)
         {
             FileWrapper.CheckIfExists(filePath);
 

@@ -1,7 +1,8 @@
 ﻿using System;
 using System.IO;
 
-[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("SquareEquationTests")]
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("TDDSquareEquation.UnitTests")]
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("TDDSquareEquation.IntegrationTests")]
 
 namespace TDDSquareEquation
 {
@@ -11,7 +12,7 @@ namespace TDDSquareEquation
         {
             string filePath = Path.Combine(Directory.GetCurrentDirectory(), "result.txt");
             Solver solver = new();
-            solver.SolveAndSave(290, 20, 4, filePath);
+            solver.SolveAndSave(10, 35, 5, filePath);
         }
     }
 }
