@@ -8,6 +8,6 @@ namespace SolveQuadraticEquatation
 {
     public interface ILogger
     {
-        void SaveResult(EquationRoots roots, string path);
+        void SaveResult(string content, string path);
     }
 }

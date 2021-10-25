@@ -10,6 +10,7 @@ namespace TDD_IPlyska
     public class SquareEquationSolverTest
     {
         readonly SquareEquationSolver equation = new SquareEquationSolver();
+        readonly Mock<ILogger> fileMock = new Mock<ILogger>();
 
         [TestCase(0, 0, 0)]
         [TestCase(0, 0, 2)]
@@ -109,13 +110,35 @@ namespace TDD_IPlyska
             Assert.That(() => equation.SolveAndSaveSolution(a, b, c, filePath), Throws.TypeOf<ArgumentException>());
         }
 
-        public void Check_Formatting_For_Output_Result(double a, double b, double c, string content)
+        [TestCase(2, 4, 2, "<Root #1: -1>")]
+        [TestCase(-5.6, 2.22, 1.24, "<Root #1: -9,7965730599; Root #2: 22,2285730599>")]
+        [TestCase(0, 0, 3, "<No solution>")]
+        public void Save_Result_Check_Formatting_For_Output_Result(double a, double b, double c, string content)
         {
             //arrange
-            Logger logger = new Logger();
-            Mock<ILogger> fileMock = new Mock<ILogger>();
-            SquareEquationSolver.Logger = fileMock.Object;
+            SquareEquationSolver solver = new SquareEquationSolver(fileMock.Object);
 
+            //act
+            solver.SolveAndSaveSolution(a, b, c, "file");
+
+            //assert
+            fileMock.Verify(x => x.SaveResult(content, "file"));
+        }
+
+        [TestCase(2, 4, 2, "<Root #1: -1>")]
+        [TestCase(-5.6, 2.22, 1.24, "<Root #1: -9,7965730599; Root #2: 22,2285730599>")]
+        [TestCase(0, 0, 3, "<No solution>")]
+        public void Save_Result_With_RealPath(double a, double b, double c, string content)
+        {
+            //arrange
+            SquareEquationSolver solver = new SquareEquationSolver(fileMock.Object);
+
+            //act
+            var filePath = equation.FilePath;
+            solver.SolveAndSaveSolution(a, b, c, filePath);
+
+            //assert
+            fileMock.Verify(x => x.SaveResult(content, filePath));
         }
     }
 }

@@ -9,9 +9,14 @@ namespace SolveQuadraticEquatation
 {
     internal class Logger : ILogger
     {
-        public void SaveResult(EquationRoots roots, string path)
+        public void SaveResult(string content, string path)
         {
-            File.WriteAllText(path, roots.ToString());
+            if (string.IsNullOrEmpty(path))
+            {
+                throw new ArgumentNullException();
+            }
+
+            File.WriteAllText(path, content);
         }
     }
 }

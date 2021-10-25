@@ -7,9 +7,7 @@ namespace SolveQuadraticEquatation
     {
         static void Main(string[] args)
         {
-            SquareEquationSolver solver = new SquareEquationSolver();
-
-            solver.SolveAndSaveSolution(4.5, 7.8, 3, "quadraticEquatation.txt");
+          // new SquareEquationSolver().SolveAndSaveSolution(4.5, 7.8, 3, "quadraticEquatation.txt");
         }
     }
 }

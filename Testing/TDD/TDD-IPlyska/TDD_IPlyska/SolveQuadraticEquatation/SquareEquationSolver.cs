@@ -9,7 +9,18 @@ namespace SolveQuadraticEquatation
 {
     internal class SquareEquationSolver
     {
-        internal static ILogger Logger { get; set; } = new Logger();
+        public string FilePath { get; } = $@"{Directory.GetCurrentDirectory()}\quadraticEquatation.txt";
+        private readonly ILogger _logger; 
+
+        public SquareEquationSolver()
+        {
+            _logger = new Logger();
+        }
+
+        public SquareEquationSolver(ILogger logger)
+        {
+            _logger = logger;
+        }
         internal EquationRoots Solve(double a, double b, double c)
         {
             ParametersValidation(a, b, c);
@@ -146,15 +157,21 @@ namespace SolveQuadraticEquatation
 
             try
             {
-                new Logger().SaveResult(Solve(a, b, c), filePath);
+                var roots = Solve(a, b, c);
+                if (roots.R1 != null && roots.R2 == null)
+                {
+                    _logger.SaveResult($"<Root #1: {roots.R1}>", filePath);
+                }
+
+                _logger.SaveResult(roots.ToString(), filePath);
             }
             catch (ArgumentException ex)
             {
-                File.AppendAllText(filePath, "<No solution>");
+                _logger.SaveResult("<No solution>", filePath);
             }
             catch (NoRootsException ex)
             {
-                File.AppendAllText(filePath, "<No solution>");
+                _logger.SaveResult("<No solution>", filePath);
             }
         }
     }
