@@ -43,7 +43,7 @@ namespace Exchange_Task
                 {
                     Console.WriteLine();
                     Console.WriteLine("Conversion : ");
-                    Console.Write(Calculate.CalculateConversionRate(currency, Convert.ToDecimal(amount), Sql));
+                    Console.Write(Calculate.CalculateConversionRate(currency, Convert.ToDecimal(amount), Sql)+"\n");
                 }
             }
             else

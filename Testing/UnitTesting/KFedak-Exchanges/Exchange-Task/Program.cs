@@ -38,32 +38,31 @@ namespace Exchange_Task
 
         public static void Proccess(string mode)
         {
+            Console.WriteLine();
+
             while (mode != "5")
             {
-                if (mode == "1")
+
+                switch (mode)
                 {
-                    if (!ExchangeModes.UpdateCurrencyRate())
-                    {
-                        continue;
-                    }
-                }
-                else if (mode == "2")
-                {
-                    if (!ExchangeModes.Conversion())
-                    {
-                        continue;
-                    }
-                }
-                else if (mode == "3")
-                {
-                    if (!ExchangeModes.ConversionBathces())
-                    {
-                        continue;
-                    }
-                }
-                else if (mode == "4")
-                {
-                    ExchangeModes.ViewCurrency();
+                    case "1":
+                        if (!ExchangeModes.UpdateCurrencyRate()) { continue; }
+                        break;
+
+                    case "2":
+                        if (!ExchangeModes.Conversion()) { continue; }
+                        break;
+
+                    case "3":
+                        if (!ExchangeModes.ConversionBathces()) { continue; }
+                        break;
+
+                    case "4":
+                        ExchangeModes.ViewCurrency();
+                        break;
+                    default:
+                        Console.WriteLine($"Invalid operation , we have just this..");
+                        break;
                 }
 
                 Menu();
@@ -71,6 +70,5 @@ namespace Exchange_Task
                 mode = Console.ReadLine();
             }
         }
-
     }
 }
