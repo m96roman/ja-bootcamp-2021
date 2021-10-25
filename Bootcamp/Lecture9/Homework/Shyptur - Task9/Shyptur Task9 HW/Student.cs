@@ -23,11 +23,9 @@ namespace Shyptur_Task9_HW
             FavoriteNumber = rnd.Next(0, 12);
             LecturesAttended = 0;
         }
-
-
+        
         public void AttendLecture(int numberOfLecture)
         {
-
             if (numberOfLecture != FavoriteNumber)
             {
                 LecturesAttended += 1;

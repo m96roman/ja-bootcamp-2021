@@ -10,62 +10,47 @@ namespace Shyptur_Task9_HW
     {
         static void Main(string[] args)
         {
-            // Task1();
+            //Task1();
 
-            // Task2();
+           // Task2();
 
-            // Task3();
+             Task3();
 
-            Task4();
+            // Task4();
         }
 
         public static void Task1()
         {
-            string path = @"C:\Users\Yevhen.shyptur\Documents\bootcamp\ja-bootcamp-2021\Bootcamp\Lecture9\Homework\Shyptur - Task9\Shyptur Task9 HW\bin\Debug\net5.0\Example txt files\Example.txt";
+            string path = $@"{Directory.GetCurrentDirectory()}\Example txt files\Example.txt";
+            //string path = @"C:\Users\Yevhen.shyptur\Documents\bootcamp\ja-bootcamp-2021\Bootcamp\Lecture9\Homework\Shyptur - Task9\Shyptur Task9 HW\bin\Debug\net5.0\Example txt files\Example.txt";
             var intCount = File.ReadLines(path).Count();
             Console.WriteLine(intCount);
         }
 
         public static void Task2()
-        {
-            int CounterLines = 0;
+        {         
             int indexOfFile = 0;
             List<string> text = new List<string>();
-            string STOP = "stop";
             string line = "";
+
             while (line != "stop")
             {
                 line = Console.ReadLine();
-                if (CounterLines == 7)
+                if (text.Count == 7)
                 {
-                    using (StreamWriter streamWriter = new($"inputFromVim{ indexOfFile }.txt"))
-                    {
-                        foreach (var item in text)
-                        {
-                            streamWriter.WriteLine(item);
-                        }
-                        streamWriter.Flush();
-                        indexOfFile += 1;
-                        text.RemoveRange(0, text.Count);
-                        CounterLines = 0;
-                    }
+                    text.Add(line);
+                    File.WriteAllText($"inputFromVim{ indexOfFile }.txt", string.Join('\n', text));
+                    indexOfFile += 1;
+                    text.RemoveRange(0, text.Count);                  
                 }
                 else
                 {
-                    text.Add(line);
-                    CounterLines += 1;
+                    text.Add(line);                  
                 }
             }
             if (text.Count != 0)
             {
-                using (StreamWriter streamWriter = new($"inputFromVim{ indexOfFile }.txt"))
-                {
-                    foreach (var item in text)
-                    {
-                        streamWriter.WriteLine(item);
-                    }
-                    streamWriter.Flush();
-                }
+                File.WriteAllText($"inputFromVim{ indexOfFile }.txt", string.Join('\n', text));
             }
 
             MoveIntoFolder();
@@ -74,7 +59,7 @@ namespace Shyptur_Task9_HW
         public static void MoveIntoFolder()
         {
             var directory = Directory.GetCurrentDirectory();
-            var targetPath = $@"{directory}\Session_{DateTime.Now.Day}.{DateTime.Now.Month}.{DateTime.Now.Year}";
+            var targetPath = $@"{directory}\Session_{DateTime.Now}";
             try
             {
                 if (Directory.Exists(targetPath))
@@ -84,7 +69,7 @@ namespace Shyptur_Task9_HW
                 }
 
                 DirectoryInfo di = Directory.CreateDirectory(targetPath);
-                string[] files = Directory.GetFiles(directory);
+                string[] files = Directory.GetFiles(directory,"*.txt");
 
                 Console.WriteLine(files.Length);
 
@@ -158,7 +143,7 @@ namespace Shyptur_Task9_HW
                 }
                 catch (BatteryIsDeadException ex)
                 {
-                    
+
                     Logger log = new Logger();
                     log.WriteLine(ex.ToString());
                     ex.PhoneInfo.Charge();

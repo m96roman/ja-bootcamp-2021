@@ -11,7 +11,7 @@ namespace Shyptur_Task9_HW
     {
         public void WriteLine(string text)
         {
-            File.AppendAllText("ExeptionsPhone.txt", text);
+            File.AppendAllText("ExeptionsPhone.txt", $"{DateTime.UtcNow} {text}");
         }
     }
 }
