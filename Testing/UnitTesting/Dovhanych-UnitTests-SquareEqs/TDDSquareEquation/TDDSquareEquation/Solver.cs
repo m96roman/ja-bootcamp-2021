@@ -9,27 +9,42 @@ namespace TDDSquareEquation
 {
     class Solver
     {
-        public void SolveAndSave(double a, double b, double c)
+        public static IFileWrapper FileWrapper { get; set; } = new FileWrapper();
+
+        public void SaveResult(Roots roots, string filePath)
+        {
+            FileWrapper.CheckIfExists(filePath);
+
+            if (roots.Root1 == null && roots.Root2 == null)
+            {
+                FileWrapper.WriteTextInFile(filePath, "<No solution>");
+            }
+            else if (roots.Root1 == roots.Root2)
+            {
+                FileWrapper.WriteTextInFile(filePath, $"<Root #1: {roots.Root1}>");
+            }
+            else
+            {
+                FileWrapper.WriteTextInFile(filePath, $"<Root #1: {roots.Root1}; Root #2: {roots.Root2}>");
+            }
+        }
+
+        public void SolveAndSave(double a, double b, double c, string filePath)
         {
             SquareEquation equation = new();
-            double discriminant = equation.FindDiscriminant(a, b, c);
+            Roots roots = new();
 
-            using (StreamWriter streamWriter = new("Solution.txt"))
+            try
             {
-                if (discriminant > 0)
-                {
-                    Roots solution = equation.SquareEquationTwoRoots(a, b, c);
-                    streamWriter.Write($"Root #1: {solution.Root1}; Root #2: {solution.Root2}");
-                }
-                else if (discriminant == 0)
-                {
-                    Roots solution = equation.SquareEquationOneRoot(a, b, c);
-                    streamWriter.Write($"Root #1: {solution.Root1}");
-                }
-                else
-                {
-                    streamWriter.Write($"<No solution>");
-                }
+                roots = equation.SquareEquationSolution(a, b, c);
+            }
+            catch (NoRootsException)
+            {
+                roots = new Roots(null, null);
+            }
+            finally
+            {
+                SaveResult(roots, filePath);
             }
         }
     }

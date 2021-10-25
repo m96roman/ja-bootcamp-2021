@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TDDSquareEquation
 {
@@ -25,9 +21,9 @@ namespace TDDSquareEquation
 
         internal Roots SquareEquationOneRoot(double a, double b, double c)
         {
-            double singleRoot = -b / (2.0 * a);
+            double similarRoots = -b / (2.0 * a);
 
-            return new Roots(singleRoot);
+            return new Roots(similarRoots, similarRoots);
         }
 
         internal Roots SquareEquationSolution(double a, double b, double c)
