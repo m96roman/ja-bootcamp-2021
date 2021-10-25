@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MRoshko_Task5
 {
@@ -22,22 +19,14 @@ namespace MRoshko_Task5
 
         public static void Task1()
         {
+            var list = new List<Drawable>() {new Point(3, 9), new Rectangle(7, 4), new Circle(9)};
 
-            var list = new List<Drawable>();
-
-            list.Add(new Point(3, 9));
-
-            list.Add(new Rectangle(7, 4));
-
-            list.Add(new Circle(9));
-
-
-            DrawFigure( list);
+            DrawFigure(list);
 
             Point[] arr = { new Point(3, 4), new Point(2, 3), new Point(0, 1) };
+
             DrawFigure(arr);
         }
-
 
         public static void Task2()
         {
@@ -64,6 +53,7 @@ namespace MRoshko_Task5
                     let count = g.Count()
                     orderby count descending
                     select new { Value = g.Key, Count = count };
+
             foreach (var x in q)
             {
                 Console.WriteLine($"* {x.Value} - {x.Count}");
@@ -73,15 +63,17 @@ namespace MRoshko_Task5
         public static void Task3()
         {
             var res1 = new DataReader();
+
             Console.WriteLine($"{res1.GetMagicNumber().Value}");
 
             foreach (var iteam in res1.GetCityNames().Value)
             {
                 Console.WriteLine($"{iteam}");
             }
-            var res2 = new DataReader();
-            Console.WriteLine($"{res2.GetMagicNumber().Value}");
 
+            var res2 = new DataReader();
+
+            Console.WriteLine($"{res2.GetMagicNumber().Value}");
         }
 
         public static void Task4()
@@ -112,29 +104,15 @@ namespace MRoshko_Task5
 
         public static void DrawFigure<T>(IEnumerable<T> argument) where T : Drawable
         {
-           
             foreach (var arg in argument)
             {
-                if (arg is Point point1)
-                {
-                    DrawPoint(point1);
-                }
-                else if (arg is Drawable drawable)
-                {
-                    DrawArea(drawable);
-                }
+                DrawArea(arg);
             }
         }
-
 
         public static void DrawArea(Drawable drawable)
         {
             drawable.PrintArea();
-        }
-
-        public static void DrawPoint(Point point)
-        {
-            point.PrintPoint();
         }
     }
 }

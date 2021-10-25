@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MRoshko_Task5
 {
@@ -18,7 +14,7 @@ namespace MRoshko_Task5
             this.Y = y;
         }
 
-        public void PrintPoint()
+        public override void PrintArea()
         {
             Console.WriteLine($"Point : {(X, Y)}");
         }
