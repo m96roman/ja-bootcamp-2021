@@ -2,7 +2,7 @@
 
 namespace SquareEquation
 {
-    internal class ConsoleValueReader : IValuesReader
+    internal class ConsoleValueReader
     {
         private ILogger _logger;
 
@@ -17,7 +17,7 @@ namespace SquareEquation
         }
 
 
-        public InputValues ReadValues(string source = "N/A")
+        public (double a, double b, double c) ReadValues(string source = "N/A")
         {
             double a = 0;
             double b = 0;
@@ -33,7 +33,7 @@ namespace SquareEquation
                     continue;
                 }
 
-                return new InputValues(a, b, c);
+                return (a, b, c);
             }
         }
 

@@ -8,13 +8,14 @@ namespace SquareEquation
         {
             Console.WriteLine("Hello World!");
 
-            InputValues inputValues = new ConsoleValueReader().ReadValues();
+            var values = new ConsoleValueReader().ReadValues();
 
-            SquareEquationSolver instance = new SquareEquationSolver(inputValues);
+            SquareEquationSolver instance = new SquareEquationSolver();
 
-            instance.CalculateRoots(out double root1, out double root2);
+            EquationSolution result = instance.Solve(values.a, values.b, values.c);
+            instance.SaveResult(result, "..\\..\\..\\test.txt");
 
-            Console.WriteLine($"Root1: {root1},  root2: {root2}");
+            Console.WriteLine($"Root1: {result.Root1},  Root2: {result.Root2}");
 
 
             Console.WriteLine("\n\nPress \'Enter\' to exit");
