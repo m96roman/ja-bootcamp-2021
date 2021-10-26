@@ -95,12 +95,10 @@ namespace SolveQuadraticEquatation.UnitTest
         [TestCase(2, 4, 2, -1)]
         [TestCase(2, 8, 8, -2)]
         [TestCase(5, -10, 5, 1)]
-        public async Task Solve_If_Discriminant_Equal_ZeroAsync(double a, double b, double c, double r1)
+        public void Solve_If_Discriminant_Equal_Zero(double a, double b, double c, double r1)
         {
-            //act
-            EquationRoots roots = await equation.SolveAsync(a, b, c);
             //assert
-            Assert.That(roots.R1, Is.EqualTo(r1));
+            Assert.That(async () => (await equation.SolveAsync(a, b, c)).R1, Is.EqualTo(r1));
         }
 
         [TestCase(2, 3, 5, "")]
@@ -120,7 +118,7 @@ namespace SolveQuadraticEquatation.UnitTest
             SquareEquationSolver solver = new SquareEquationSolver(fileMock.Object);
 
             //act
-           await solver.SolveAndSaveSolutionAsync(a, b, c, "file");
+            await solver.SolveAndSaveSolutionAsync(a, b, c, "file");
 
             //assert
             fileMock.Verify(x => x.SaveResult(content, "file"));
