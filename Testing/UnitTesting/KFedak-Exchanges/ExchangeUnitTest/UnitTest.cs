@@ -2,6 +2,7 @@ using NUnit.Framework;
 using Exchange_Task;
 using System.IO;
 using System;
+using Moq;
 
 namespace ExchangeUnitTest
 {
@@ -20,22 +21,6 @@ namespace ExchangeUnitTest
 
             //asert
             Assert.AreEqual(answear, result);
-        }
-
-        [TestCase(@"C:\Users\kateryna.fedak\source\repos\m96roman\ja-bootcamp-2021\Testing\UnitTesting\KFedak-Exchanges\ExchangeUnitTest\bin\Debug\net5.0\TestExpextedOutput.txt")]
-        public void ChechkValueCalculateConversionInBatches (string expectedResultFile)
-        {
-            //arrange
-            SQLOpeartion sQL = new();
-            CalculateConversion calculateConversion = new();
-            string filePathInput = Path.Combine(Directory.GetCurrentDirectory(), "TestInput.txt");
-            string filePathOutput = Path.Combine(Directory.GetCurrentDirectory(), "TestOutput.txt");
-
-            //act
-            calculateConversion.CalculateConversionInBatches(filePathInput, filePathOutput, sQL);
-
-            //assert
-            Assert.AreEqual(File.ReadAllText(expectedResultFile).Replace("\r", ""), File.ReadAllText(filePathOutput));
         }
 
         [TestCase("hello")]
