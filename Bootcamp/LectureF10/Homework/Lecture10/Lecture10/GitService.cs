@@ -14,7 +14,7 @@ namespace Lecture10
 
             for (int i = 0; i < 8; i++)
             {
-                list.Add(Task.Run(()=>GitPush(git)));
+                list.Add(Task.Run(() => GitPush(git)));
             }
 
             Task.WaitAll(list.ToArray());

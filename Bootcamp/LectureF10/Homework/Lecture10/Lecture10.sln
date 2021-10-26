@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29306.81
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lecture10", "Lecture10\Lecture10.csproj", "{6F3E8BE2-3023-4B1C-9752-349911640AF3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lecture10", "Lecture10\Lecture10.csproj", "{6F3E8BE2-3023-4B1C-9752-349911640AF3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lecture10Task2", "Lecture10\Lecture10Task2\Lecture10Task2.csproj", "{627C2E65-155D-490D-B61B-17528BAEA64A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{6F3E8BE2-3023-4B1C-9752-349911640AF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F3E8BE2-3023-4B1C-9752-349911640AF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F3E8BE2-3023-4B1C-9752-349911640AF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{627C2E65-155D-490D-B61B-17528BAEA64A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{627C2E65-155D-490D-B61B-17528BAEA64A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{627C2E65-155D-490D-B61B-17528BAEA64A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{627C2E65-155D-490D-B61B-17528BAEA64A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
