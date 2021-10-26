@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.Json.Serialization;
 
 namespace ADovhanych_Task9._3
 {
@@ -6,10 +7,12 @@ namespace ADovhanych_Task9._3
     {
         public string Name { get; set; }
 
+        [JsonIgnore]
         public int FavoriteNumber { get; set; }
 
         public int LecturesAttended { get; set; }
 
+        [JsonConstructor]
         public Student(string name)
         {
             Name = name;

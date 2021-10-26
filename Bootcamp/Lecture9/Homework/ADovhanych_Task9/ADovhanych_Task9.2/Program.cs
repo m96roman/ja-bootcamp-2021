@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace ADovhanych_Task9._2
 {
@@ -9,7 +10,6 @@ namespace ADovhanych_Task9._2
         static void Main(string[] args)
         {
             List<string> inputList = new();
-            int counter = 0;
             int indexOfFile = 0;
             string input = "";
 
@@ -17,7 +17,7 @@ namespace ADovhanych_Task9._2
             {
                 input = Console.ReadLine();
 
-                if (counter == 8)
+                if (inputList.Count == 8)
                 {
                     using (StreamWriter streamWriter = new StreamWriter($"inputFromVIM{indexOfFile}.txt"))
                     {
@@ -26,14 +26,12 @@ namespace ADovhanych_Task9._2
                             streamWriter.WriteLine(item);
                         }
                         indexOfFile++;
-                        counter = 0;
                         inputList.RemoveRange(0, inputList.Count);
                     }  
                 }
                 else
                 {
                     inputList.Add(input);
-                    counter++;
                 }
             }
 
@@ -55,33 +53,27 @@ namespace ADovhanych_Task9._2
 
         public static void MoveFolder()
         {
-            string newDirectory = Directory.GetCurrentDirectory();
-            string path = $@"{newDirectory}{DateTime.Now}";
+            string currentDirectory = Directory.GetCurrentDirectory();
+            string path = Path.Combine(currentDirectory, $"Session_{DateTime.Now.ToString("MM/dd/yyyy hh-mm-tt")}");
 
             try
             {
-                if (Directory.Exists(path))
-                {
-                    Console.WriteLine("Folder already exist");
-                    throw new Exception("Folder already exist");
-                }
-
                 DirectoryInfo directoryInfo = Directory.CreateDirectory(path);
-                string[] files = Directory.GetFiles(newDirectory);
+                string[] files = Directory.GetFiles(currentDirectory, "*.txt");
 
                 foreach (var item in files)
+
                 {
-                    if (Path.GetFileName(item).Contains($"inputFromVim"))
+                    if (Path.GetFileName(item).Contains($"inputFromVIM"))
                     {
                         var fileName = Path.GetFileName(item);
-                        var comninedPath = Path.Combine(path, fileName);
-                        File.Move(item, comninedPath, true);
+                        var comnbinedPath = Path.Combine(path, fileName);
+                        File.Move(item, comnbinedPath, true);
                     }
                 }
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
