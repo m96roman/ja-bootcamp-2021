@@ -4,12 +4,12 @@ namespace SquareEquation
 {
     class ConsoleLogger : ILogger
     {
-        public void Log(string message, string path = null)
+        public void Log(string message, string path)
         {
-            Log(message, MessageType.Default);
+            Log(message, MessageType.Default, path);
         }
 
-        public void Log(string message, MessageType messageType, string path = null)
+        public void Log(string message, MessageType messageType, string path)
         {
             var defaultColor = Console.ForegroundColor;
 

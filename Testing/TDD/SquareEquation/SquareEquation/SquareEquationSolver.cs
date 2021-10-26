@@ -7,7 +7,7 @@ namespace SquareEquation
     {
         ILogger _logger;
 
-        public SquareEquationSolver() : this(new Logger()) {}
+        public SquareEquationSolver() : this(new ConsoleLogger()) {}
 
         public SquareEquationSolver(ILogger logger)
         {
@@ -53,7 +53,7 @@ namespace SquareEquation
                 content = $"<Root #1: {solution.Root1}; Root #2: {solution.Root2}>";
             }
 
-            File.WriteAllText(path, content);
+            _logger.Log(content, path);
         }
 
         public void SolveAndSaveSolution(double a, double b, double c, string filePath)
@@ -71,7 +71,6 @@ namespace SquareEquation
         {
             if(a == 0)
             {
-                _logger.Log("\'A\' cannot be zero, otherwise it is a linear equation!", MessageType.Error);
                 throw new ArgumentException("\'A\' cannot be zero, otherwise it is a linear equation!");
             }
         }
