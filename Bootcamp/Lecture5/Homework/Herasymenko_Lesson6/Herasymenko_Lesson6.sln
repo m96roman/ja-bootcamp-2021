@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Herasymenko_Lesson6", "Herasymenko_Lesson6\Herasymenko_Lesson6.csproj", "{D06232CF-6BBC-4B8A-8A45-88DDFD9F64BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Copart", "Copart\Copart.csproj", "{E6B7082A-01F8-49F5-B1C4-1A49399B63EA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D06232CF-6BBC-4B8A-8A45-88DDFD9F64BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D06232CF-6BBC-4B8A-8A45-88DDFD9F64BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D06232CF-6BBC-4B8A-8A45-88DDFD9F64BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D06232CF-6BBC-4B8A-8A45-88DDFD9F64BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6B7082A-01F8-49F5-B1C4-1A49399B63EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6B7082A-01F8-49F5-B1C4-1A49399B63EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6B7082A-01F8-49F5-B1C4-1A49399B63EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6B7082A-01F8-49F5-B1C4-1A49399B63EA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {318EAADA-EF9A-44B6-A27F-B606BD9ED6E0}
+	EndGlobalSection
+EndGlobal
