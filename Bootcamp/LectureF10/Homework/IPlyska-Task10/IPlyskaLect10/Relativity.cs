@@ -11,7 +11,6 @@ namespace IPlyskaLect10
 {
     public class Relativity
     {
-
         public string Text { get; private set; }
 
         char[] split = new char[] { '.', '?', '!', ' ', ';', ':', ',', '\t', '\n' };
@@ -28,7 +27,9 @@ namespace IPlyskaLect10
 
         public void FindLongestWord()
         {
-            var result =   Text.Split(split, StringSplitOptions.TrimEntries).OrderByDescending(x => x.Length).First();
+            var result =   Text.Split(split, StringSplitOptions.TrimEntries)
+                               .OrderByDescending(x => x.Length)
+                               .First();
 
             Console.WriteLine($"the longest word is {result}");
         }
@@ -37,9 +38,10 @@ namespace IPlyskaLect10
         {
            List<string> container = new List<string>();
 
-           var list =  Text.Split(split, StringSplitOptions.RemoveEmptyEntries).GroupBy(x => x)
-                                                 .OrderByDescending(g => g.Count())                   
-                                                 .Take(8);
+           var list =  Text.Split(split, StringSplitOptions.RemoveEmptyEntries)
+                           .GroupBy(x => x)
+                           .OrderByDescending(g => g.Count())                   
+                           .Take(8);
 
             Console.WriteLine("top 8(obviously) most common words used");
 
@@ -52,10 +54,9 @@ namespace IPlyskaLect10
         public void CountOneWord(string word)
         {
             var result = Text.Split(split, StringSplitOptions.RemoveEmptyEntries)
-                                                  .Where(x => x == word).Count();
+                             .Where(x => x == word).Count();
 
             Console.WriteLine($"Word Relativity is used {result}");
         }
-
     }
 }

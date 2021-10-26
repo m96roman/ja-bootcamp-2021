@@ -31,8 +31,7 @@ namespace IPlyskaLect10
             await relativity.Gettext(client);
 
             Parallel.Invoke(
-
-                () => 
+                () =>
                 {
                     relativity.SaveText();
                 },
@@ -40,17 +39,14 @@ namespace IPlyskaLect10
                 {
                     relativity.FindLongestWord();
                 },
-                             
-                () => 
+                () =>
                 {
                     relativity.TopWordUsed();
                 },
-                             
                 () =>
                 {
                     relativity.CountOneWord("Relativity");
                 });
-    
         }
     }
 }
