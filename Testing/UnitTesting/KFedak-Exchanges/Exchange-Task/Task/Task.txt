@@ -1,0 +1,12 @@
+Write an app which should
+1) read from DataBase exchange rates 
+ExchangeRates (ID, CurrencyId, RateToUsd, RowInsert)
+Currency (ID, IsoCode, IsoNumber, Description)
+2) 3 modes
+- update exchange rates (user enter amount and currency and app prints amount in USD)
+- calculate conversion rates for amounts from file and write output in specified file (user enter file name from wihch and file name to)
+- commandline mode in loop
+3) should be validation
+- incorrect data -> troubleshoting message should be displayed
+- error during upsert of exchange rates -> display message
+- unknown currency for calculating exchange rate -> display message
