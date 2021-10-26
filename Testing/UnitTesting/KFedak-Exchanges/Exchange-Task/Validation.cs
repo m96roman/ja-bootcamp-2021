@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -19,7 +20,7 @@ namespace Exchange_Task
 
         public bool IsCorrectRate(string rate)
         {
-            var regexRate = @"^((([1-9]\d{0,2}(,\d{3})*|[1-9]\d*)(\.\d{1,4})?)|[1-9]\d*|(0\.\d{1,4})|0)$";
+            var regexRate = @"(?!0\.00)^(0|[1-9][0-9]{0,2})(,\d{3})*(\.\d{1,2})?$";
             return Regex.IsMatch(rate, regexRate);
         }
 
@@ -30,45 +31,41 @@ namespace Exchange_Task
 
         public bool IsCorrectAmount(string rate)
         {
-            var regexRate = @"^((([1-9]\d{0,2}(,\d{3})*|[1-9]\d*)(\.\d{1,4})?)|[1-9]\d*|(0\.\d{1,4})|0)$";
+            var regexRate = @"(?!0\.00)^((([1-9]\d{0,2}(,\d{3})*|[1-9]\d*)(\.\d{1,4})?)|[1-9]\d*|(0\.\d{1,4})|0)$";
             return Regex.IsMatch(rate, regexRate);
         }
 
         public bool IsCorrectFileName(string fileName)
         {
-            return (fileName.IndexOfAny(System.IO.Path.GetInvalidFileNameChars()) != -1);
+            return (fileName.IndexOfAny(Path.GetInvalidFileNameChars()) == -1);
         }
 
         public void IncorrectDataToUpdate(string currency, string rate)
         {
-            if (IsCorrectCurrency(currency) && IsCorrectRate(rate))
+
+            if (!IsCorrectRate(rate) && IsCorrectCurrency(currency))
             {
-                if (!IsCorrectRate(rate) && IsCorrectCurrency(currency))
-                {
-                    Console.WriteLine("Incorrect rate!");
-                }
-                else if (!IsCorrectCurrency(currency) && IsCorrectRate(rate))
-                {
-                    Console.WriteLine("Incorrect currency!");
-                }
+                Console.WriteLine("Incorrect rate!");
+            }
+            else if (!IsCorrectCurrency(currency) && IsCorrectRate(rate))
+            {
+                Console.WriteLine("Incorrect currency!");
             }
             else
             {
                 Console.WriteLine("Incorrect rate and currency!");
             }
         }
+
         public void IncorrectDataToConversion(string currency, string amount)
         {
-            if (IsCorrectCurrency(currency) && IsCorrectAmount(amount))
+            if (!IsCorrectAmount(amount) && IsCorrectCurrency(currency))
             {
-                if (!IsCorrectAmount(amount) && IsCorrectCurrency(currency))
-                {
-                    Console.WriteLine("Incorrect amount!");
-                }
-                else if (!IsCorrectCurrency(currency) && IsCorrectAmount(amount))
-                {
-                    Console.WriteLine("Incorrect currency!");
-                }
+                Console.WriteLine("Incorrect amount!");
+            }
+            else if (!IsCorrectCurrency(currency) && IsCorrectAmount(amount))
+            {
+                Console.WriteLine("Incorrect currency!");
             }
             else
             {

@@ -43,7 +43,7 @@ namespace Exchange_Task
                 {
                     Console.WriteLine();
                     Console.WriteLine("Conversion : ");
-                    Console.Write(Calculate.CalculateConversionRate(currency, Convert.ToDecimal(amount), Sql)+"\n");
+                    Console.Write(Calculate.CalculateConversionRate(currency, Convert.ToDecimal(amount), Sql) + "\n");
                 }
             }
             else
@@ -102,7 +102,7 @@ namespace Exchange_Task
 
             string filePathOutput = Path.Combine(Directory.GetCurrentDirectory(), endFile);
 
-            if (Validation.IsCorrectFileName(enterFile))
+            if (!Validation.IsCorrectFileName(enterFile))
             {
                 Console.WriteLine("The filename is invalid");
 

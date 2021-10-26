@@ -18,17 +18,19 @@ namespace Exchange_Task
         public void CalculateConversionInBatches(string filePathEnter, string filePathEnd, SQLOpeartion sQL)
         {
             decimal result;
-            StringBuilder builder = new StringBuilder();
+            StringBuilder builder = new();
             var informationAboutCurrency = SetDateFromFile(filePathEnter);
+
             foreach (var element in informationAboutCurrency)
             {
                 result = sQL.SelectRateForCurrency(element.Item2) * element.Item1;
                 builder.Append($"{element.Item1} \t {element.Item2} \t => {result} USD\n");
             }
+
             fileWrapper.WriteInFile(filePathEnd, builder.ToString());
         }
 
-        public List<Tuple<decimal, string>> SetDateFromFile(string filePath)
+        private List<Tuple<decimal, string>> SetDateFromFile(string filePath)
         {
             List<Tuple<decimal, string>> informationAboutCurrency = new();
             string information = fileWrapper.ReadDataFromFile(filePath);

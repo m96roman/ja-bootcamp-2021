@@ -33,6 +33,7 @@ namespace Exchange_Task
         {
             try
             {
+
                 Connection.Open();
                 Query = new StringBuilder();
 
@@ -44,7 +45,7 @@ namespace Exchange_Task
 
                 var date = DateTime.UtcNow;
 
-                using (SqlCommand command = new SqlCommand(sqlQuery, Connection))
+                using (SqlCommand command = new(sqlQuery, Connection))
                 {
                     command.Parameters.Add(new SqlParameter("0", rateToUsd));
                     command.Parameters.Add(new SqlParameter("1", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")));
@@ -69,6 +70,7 @@ namespace Exchange_Task
                 Connection.Open();
 
                 Query = new StringBuilder();
+
                 Query.Append("SELECT Currency.IsoCode,ExchangeRates.RateToUsd, ExchangeRates.RowInsert FROM ExchangeRates ");
                 Query.Append("JOIN Currency ON Currency.Id = ExchangeRates.CurrencyId");
 
@@ -77,13 +79,13 @@ namespace Exchange_Task
                 using (SqlCommand command = new SqlCommand(sqlQuery, Connection))
                 {
                     command.ExecuteNonQuery();
+
                     InformationFromQuery.Clear();
 
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                          //  Console.WriteLine(String.Format("{0} \t | {1} \t | {2}", reader[0], reader[1], reader[2]));
                             InformationFromQuery.Append(String.Format("{0} \t | {1} \t | {2:yyyy-MM-dd HH:mm:ss.fff} \n", reader[0], reader[1], reader[2]));
                         }
                     }
@@ -106,10 +108,14 @@ namespace Exchange_Task
             try
             {
                 Connection.Open();
+
                 Query = new StringBuilder();
+
                 Query.Append("SELECT ExchangeRates.RateToUsd FROM ExchangeRates JOIN Currency ON Currency.Id = ExchangeRates.CurrencyId WHERE Currency.IsoCode = @0");
+
                 string sqlQuery = Query.ToString();
-                using (SqlCommand command = new SqlCommand(sqlQuery, Connection))
+
+                using (SqlCommand command = new(sqlQuery, Connection))
                 {
                     command.Parameters.Add(new SqlParameter("0", currency));
 
