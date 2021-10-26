@@ -33,10 +33,7 @@ namespace IPlyskaLect9
 
         public static void SemesterEmulation(List<Student> students)
         {
-            if (students is null || students.Count == 0)
-            {
-                throw new ArgumentNullException("Argument can not be null or an empty", nameof(students));
-            }
+            ValidationForList(students);
 
             for (int i = 0; i < 8; i++)
             {
@@ -44,15 +41,20 @@ namespace IPlyskaLect9
                 {
                     item.AttendLecture();
                 }
-            }  
+            }
         }
 
-        public static void SerializeStudents(List<Student> students)
+        private static void ValidationForList(List<Student> students)
         {
             if (students is null || students.Count == 0)
             {
                 throw new ArgumentNullException("Argument can not be null or an empty", nameof(students));
             }
+        }
+
+        public static void SerializeStudents(List<Student> students)
+        {
+            ValidationForList(students);
 
             File.WriteAllText("snapshot.json", JsonSerializer.Serialize(students));
         }
