@@ -7,7 +7,7 @@ namespace ADovhanych_Task10
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             var oppenedThreads = new List<Task>();
             var git = new Git();
@@ -17,8 +17,8 @@ namespace ADovhanych_Task10
                 oppenedThreads.Add(Task.Run(() => git.Push("commit")));
             }
 
-            Task.WaitAll(oppenedThreads.ToArray());
-            Console.WriteLine(git.messageCollection.Count);
+            await Task.WhenAll(oppenedThreads.ToArray());
+            Console.WriteLine(git.MessageCollection.Count);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,17 +9,18 @@ namespace ADovhanych_Task10
 {
     class Git
     {
-        public List<string> messageCollection = new List<string>();
+        public ConcurrentBag<string> MessageCollection { get; private set; }
+        
+        public Git()
+        {
+            MessageCollection = new ConcurrentBag<string>();
+        }
 
-        private static object _lock = new object();
         public void Push(string message)
         {
-            lock (_lock)
+            for (int i = 0; i < 88; i++)
             {
-                for (int i = 0; i < 88; i++)
-                {
-                    messageCollection.Add(message);
-                }
+                MessageCollection.Add(message);
             }
         }
     }
