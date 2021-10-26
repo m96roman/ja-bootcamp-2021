@@ -9,13 +9,13 @@ namespace IPlyskaLect9
 {
     public class FileWorker
     {
-
         public int CountNumberLines(string path)
         {
             if (string.IsNullOrEmpty(path))
             {
                 throw new ArgumentNullException("Argument can not be null or an empty", nameof(path));
             }
+
             string [] files = File.ReadAllLines(path);
 
             return files.Length;
@@ -28,33 +28,48 @@ namespace IPlyskaLect9
             string folderName = $"Session_{DateTime.Now:dd MMMM yyyy hh:mm tt}";
 
             Console.WriteLine("Please type some text. If you wanna quit just type quit ");
+
             int counter = 1;
             string quit;
 
             do
             {
                 quit = Console.ReadLine();
-
-                if (quit != "quit")
-                {
-                    container.Add(quit);
-                }
-
-                if (container.Count == 8)
-                {
-                    CreateFile(container, counter, folderName);
-                    counter++;
-                    container.Clear();
-                }
+                AddToListIfNotQuit(container, quit);
+                counter = CreateFileIfContainerCount8(container, folderName, counter);
             }
-            while(quit != "quit");
+            while (quit != "quit");
 
+            CheckContainer(container, folderName, counter);
+            Move(folderName);
+        }
+
+        private static void CheckContainer(List<string> container, string folderName, int counter)
+        {
             if (container.Count != 0)
             {
                 CreateFile(container, counter, folderName);
             }
-            
-            Move(folderName);
+        }
+
+        private static int CreateFileIfContainerCount8(List<string> container, string folderName, int counter)
+        {
+            if (container.Count == 8)
+            {
+                CreateFile(container, counter, folderName);
+                counter++;
+                container.Clear();
+            }
+
+            return counter;
+        }
+
+        private static void AddToListIfNotQuit(List<string> container, string quit)
+        {
+            if (quit != "quit")
+            {
+                container.Add(quit);
+            }
         }
 
         public static void CreateFile(List<string> data, int index, string folderName)
@@ -76,7 +91,6 @@ namespace IPlyskaLect9
 
         public static void Move(string folderName)
         {
-
             var files = Directory.GetFiles(Directory.GetCurrentDirectory(), "*.txt");
 
             foreach (var item in files)
