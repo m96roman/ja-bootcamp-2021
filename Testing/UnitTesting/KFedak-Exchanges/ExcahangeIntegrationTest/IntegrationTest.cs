@@ -7,7 +7,7 @@ namespace ExcahangeIntegrationTest
     [TestFixture]
     public class Tests
     {
-        [TestCase(@"C:\Users\kateryna.fedak\source\repos\m96roman\ja-bootcamp-2021\Testing\UnitTesting\KFedak-Exchanges\ExchangeUnitTest\bin\Debug\net5.0\TestExpextedOutput.txt")]
+        [TestCase(@"C:\Users\kateryna.fedak\source\repos\m96roman\ja-bootcamp-2021\Testing\UnitTesting\KFedak-Exchanges\ExcahangeIntegrationTest\bin\Debug\net5.0\TestExpextedOutput.txt")]
         public void ChechkValueCalculateConversionInBatches(string expectedResultFile)
         {
             //arrange
