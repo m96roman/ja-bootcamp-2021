@@ -10,16 +10,19 @@ namespace EquationSolver2.IntegrationTests
         [TestCase (4, 9, 0, "<Root #1: 0; Root #2: -2.25;>")]
         public void CheckingFileIsCreatedAndWithCorrectData(double a, double b, double c, string expectedRoot)
         {
+            //arrange
            Solver solve = new();
           
            string directoryPath = Directory.GetCurrentDirectory();
            string fileName = @"\ResultedRoots.txt";
            string fullPath = directoryPath + fileName;
+       
+            //act
 
            solve.SolveAndSaveSolution(a, b, c, fullPath);
-
            string resultedText = File.ReadAllText(fullPath);
-
+           
+            //assert
            Assert.IsTrue(File.Exists(fullPath));
            Assert.AreEqual(expectedRoot, resultedText);
         }

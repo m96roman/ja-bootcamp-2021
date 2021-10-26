@@ -8,6 +8,8 @@ namespace SquareEquationSolver
     {
         static void Main(string[] args)
         {
+            string directoryPath = Directory.GetCurrentDirectory();
+            Console.WriteLine(directoryPath);
         }
     }
 
