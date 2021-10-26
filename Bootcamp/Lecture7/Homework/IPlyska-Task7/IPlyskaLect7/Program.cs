@@ -8,7 +8,7 @@ namespace IPlyskaLect7
     {
         static void Main(string[] args)
         {
-            int[] array = { 3, 5, 6, 7, 8 };
+            int[] array = { };
 
             List<string> str = new List<string> { "dog", "cat", "tar" };
 
@@ -34,7 +34,7 @@ namespace IPlyskaLect7
 
             try
             {
-                //new Task1().FindSquareNumber(array).PrintObjects();
+                new Task1().FindSquareNumber(array).PrintObjects();
 
                 //CountChar("Milkki");
 
