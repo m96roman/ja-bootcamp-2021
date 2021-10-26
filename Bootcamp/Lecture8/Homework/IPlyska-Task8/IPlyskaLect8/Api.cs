@@ -14,26 +14,14 @@ namespace IPlyskaLect8
         public void CallEndpoint(string rout)
         {
             var personType = typeof(Controller);
+            MyController.Name = rout;
+            var methods = personType.GetMethods(BindingFlags.NonPublic | BindingFlags.Instance)
+                                    .Where(x => x.GetCustomAttribute<RouteAttribute>() != null)
+                                    .Where(y => y.GetCustomAttribute<RouteAttribute>().Name == rout)
+                                    .Select(m => m.Invoke(MyController, null))
+                                    .First();
 
-            var methods = personType.GetMethods(BindingFlags.NonPublic | BindingFlags.Instance).Where(x => x.GetCustomAttribute<RouteAttribute>() != null);
-
-            foreach (var item in methods)
-            {
-
-                var t = item.GetCustomAttribute<RouteAttribute>();
-
-                if (t.Name == rout)
-                {
-                    MyController.Name = t.Name;
-                    var result = item.Invoke(MyController, null);
-
-                    if (result is not null)
-                    {
-                        Console.WriteLine($"Method {item.Name} return {result}");
-                    }
-                } 
-            }
-    
+            Console.WriteLine(methods?.ToString()); 
         }
     }
 }
