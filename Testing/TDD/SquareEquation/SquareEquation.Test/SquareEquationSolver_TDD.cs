@@ -13,6 +13,12 @@ namespace SquareEquation.Test
             return new SquareEquationSolver();
         }
 
+        private SquareEquationSolver GetTestInstanceWithLoggermock(out Mock<ILogger> loggerMock)
+        {
+            loggerMock = new Mock<ILogger>();
+            return new SquareEquationSolver(loggerMock.Object);
+        }
+
         [Test]
         public void Solve_Given_A_IsZero_ShouldThrowsException()
         {
@@ -78,6 +84,20 @@ namespace SquareEquation.Test
             //assert
             Assert.AreEqual(expectedRoot1, values.Root1);
             Assert.AreEqual(expectedRoot2, values.Root2);
+        }
+
+        [Test]
+        public void SolveAndSaveSolution_GivenResult_ShouldLog()
+        {
+            //arrange           
+            string testPath = "test";
+            SquareEquationSolver instance = GetTestInstanceWithLoggermock(out var loggerMock);
+
+            //act
+            instance.SolveAndSaveSolution(1, 1, 1, testPath);
+
+            //assert
+            loggerMock.Verify(it => it.Log(It.IsAny<string>(), It.IsAny<string>()), Times.Once);
         }
     }
 }

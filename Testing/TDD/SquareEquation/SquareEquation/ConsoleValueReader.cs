@@ -6,7 +6,7 @@ namespace SquareEquation
     {
         private ILogger _logger;
 
-        public ConsoleValueReader() : this(new Logger())
+        public ConsoleValueReader() : this(new ConsoleLogger())
         {
             
         }
@@ -44,7 +44,7 @@ namespace SquareEquation
 
             if (inputStr.ToLower() == "exit")
             {
-                _logger.Log("Application is closing...", MessageType.Warning);
+                _logger.Log("Application is closing...", MessageType.Warning, null);
                 Environment.Exit(0);
             }
 
@@ -54,7 +54,7 @@ namespace SquareEquation
                 return true;
             }
 
-            _logger.Log("Error! All values must contains only numbers and/or floating point", MessageType.Error);
+            _logger.Log("Error! All values must contains only numbers and/or floating point", MessageType.Error, null);
 
             return false;
         }
