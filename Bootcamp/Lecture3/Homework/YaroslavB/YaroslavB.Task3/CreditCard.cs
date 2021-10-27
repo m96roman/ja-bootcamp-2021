@@ -2,15 +2,13 @@
 {
     public abstract class CreditCard
     {
-        //private string _cardName;
-
-        public abstract long CardNumber { get; }
-
         public abstract string CardType { get; }
 
-        public abstract string BankOwner { get; }
+        public long CardNumber { get; protected set; }
 
-        public virtual string Curency { get; } = "USD";
+        public string BankOwner { get; protected set; }
+
+        public string Curency { get; protected set; } = "USD";
 
         public virtual bool DoubleCurencyСonversion { get; } = false;
 
@@ -21,7 +19,5 @@
         public abstract void BlockCard();
 
         public abstract double GetCardBalance();
-
-
     }
 }

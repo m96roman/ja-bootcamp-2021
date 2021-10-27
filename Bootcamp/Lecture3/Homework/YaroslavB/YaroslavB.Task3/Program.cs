@@ -7,22 +7,13 @@ namespace YaroslavB.Task3
     {
         static void Main(string[] args)
         {
-            VisaCard newVisa = new VisaCard("Bank of America", 1234565457)
+            List<CreditCard> listOfCard = new List<CreditCard>
             {
-                CardPurpose = "Private card"
+                new VisaCard("Bank of America", 1234565457),
+                new VisaCard("Deutsche Bank", 3452754253, "EUR"),
+                new VisaCardUkraine("PrivatBank", 3457623466, "UAH"),
+                new MasterCard("UniCredit", 394592394, "USD")
             };
-
-            VisaCard workerVisa = new VisaCard("Deutsche Bank", 3452754253, "EUR")
-            {
-                CardPurpose = "Business card"
-            };
-
-            VisaCardUkraine visaUkrane = new VisaCardUkraine("PrivatBank", 3457623466, "UAH")
-            {
-                CardPurpose = "Private card"
-            };
-
-            List<CreditCard> listOfCard = new List<CreditCard>() { newVisa, workerVisa, visaUkrane };
 
             foreach (var item in listOfCard)
             {
@@ -45,18 +36,12 @@ namespace YaroslavB.Task3
 
                 Console.WriteLine($"Checking card balance.......\n" +
                     $"available balance: {item.GetCardBalance()}");
-                
-                
+                               
                 Console.Write("------------------------------------------\n\n\n");
             }
 
             Console.WriteLine("Press \'Enter\' to exit...");
-
             Console.ReadLine();
         }
-    }
-
-
-
-   
+    }  
 }

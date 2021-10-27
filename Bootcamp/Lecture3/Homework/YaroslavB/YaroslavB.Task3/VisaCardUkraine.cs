@@ -3,16 +3,12 @@
 namespace YaroslavB.Task3
 {
     public class VisaCardUkraine : VisaCard
-    {
-        
+    {      
         public override string CardType => "VisaCard Ukraine";
 
         public override bool DoubleCurencyСonversion => true;
 
-        public VisaCardUkraine(string bankName, long cardNumber, string curency) : base(bankName, cardNumber, curency)
-        {
-            
-        }
+        public VisaCardUkraine(string bankName, long cardNumber, string curency) : base(bankName, cardNumber, curency) {}
 
         public override double GetCardBalance()
         {
@@ -47,13 +43,7 @@ namespace YaroslavB.Task3
         {
             //then gracefully trying to pay and return operation status...
             Random rd = new Random();
-
-            return rd.Next(0, 10) < 9 ? true : false;
+            return rd.Next(0, 10) < 9;
         }
-
     }
-
-
-
-   
 }

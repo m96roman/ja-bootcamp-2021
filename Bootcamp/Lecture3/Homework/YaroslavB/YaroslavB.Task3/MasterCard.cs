@@ -4,25 +4,14 @@ namespace YaroslavB.Task3
 {
     public class MasterCard : CreditCard
     {
-        public override long CardNumber { get; }
+        public override string CardType => "MasterCard";
 
-        public override string CardType { get; }
-
-        public override string BankOwner { get; }
-
-        public override string Curency { get; }
-
-        public MasterCard(string bankOwner, long cardNumber) : this(bankOwner, cardNumber, "EUR")
-        {
-            
-        }
+        public MasterCard(string bankOwner, long cardNumber) : this(bankOwner, cardNumber, "EUR") {}
 
         public MasterCard(string bankOwner, long cardNumber, string curency)
         {
             BankOwner = bankOwner;
-
             CardNumber = cardNumber;
-
             Curency = curency;
         }
 
@@ -39,7 +28,7 @@ namespace YaroslavB.Task3
 
         public override void Payment(long destinationCard)
         {
-            Payment(destinationCard);
+            Payment(destinationCard, null);
         }
 
         public override void Payment(long destinationAccount, int? bankCode)
@@ -69,8 +58,7 @@ namespace YaroslavB.Task3
         {
             //then gracefully trying to pay and return operation status...
             Random rd = new Random();
-
-            return rd.Next(0, 1) == 1 ? true : false;
+            return rd.Next(0, 1) == 1;
         }
     }
 }

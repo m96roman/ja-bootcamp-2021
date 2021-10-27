@@ -4,32 +4,16 @@ namespace YaroslavB.Task3
 {
     public class VisaCard : CreditCard
     {
-
         public override string CardType => "VisaCard";
 
-        public override string BankOwner { get; }
-
-        public override long CardNumber { get; }
-
-        public override string Curency { get; }
-
-        public string CardPurpose { get; set; }
-
-        public VisaCard(string bankOwner, long cardNumber) : this(bankOwner, cardNumber, "USD")
-        {
-            
-        }
+        public VisaCard(string bankOwner, long cardNumber) : this(bankOwner, cardNumber, "USD") {}
 
         public VisaCard(string bankOwner, long cardNumber, string curency)
         {
             BankOwner = bankOwner;
-
             CardNumber = cardNumber;
-
             Curency = curency;
-
         }
-
 
         public override void BlockCard()
         {
@@ -74,10 +58,7 @@ namespace YaroslavB.Task3
         {
             //then gracefully trying to pay and return operation status...
             Random rd = new Random();
-
-            return rd.Next(0, 1) == 1 ? true : false;
+            return rd.Next(0, 1) == 1;
         }
-
-       
     }
 }
