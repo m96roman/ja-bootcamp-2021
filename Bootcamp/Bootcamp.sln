@@ -232,7 +232,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Homework", "Homework", "{0E
 		LectureF10\Homework\Tasks.txt = LectureF10\Homework\Tasks.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveCoding10", "LectureF10\LiveCoding10\LiveCoding10.csproj", "{A604CFE5-8722-443F-B357-249527EDAF86}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveCoding10", "LectureF10\LiveCoding10\LiveCoding10.csproj", "{A604CFE5-8722-443F-B357-249527EDAF86}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SquareEquation", "UnitTest_YaroslavB_IntegrationTest\SquareEquation\SquareEquation.csproj", "{36DF2708-C963-4C20-93DF-BF7AA7B95489}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SquareEquationTests", "SquareEquationTests", "{A5C8E2EB-081C-4EFC-9F15-95DA9E6B9477}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SquareEquation.Test", "UnitTest_YaroslavB_IntegrationTest\SquareEquation.Test\SquareEquation.Test.csproj", "{FBB48ADC-F958-43E3-AC03-50E2926978F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -528,6 +534,14 @@ Global
 		{A604CFE5-8722-443F-B357-249527EDAF86}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A604CFE5-8722-443F-B357-249527EDAF86}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A604CFE5-8722-443F-B357-249527EDAF86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36DF2708-C963-4C20-93DF-BF7AA7B95489}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36DF2708-C963-4C20-93DF-BF7AA7B95489}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36DF2708-C963-4C20-93DF-BF7AA7B95489}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36DF2708-C963-4C20-93DF-BF7AA7B95489}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBB48ADC-F958-43E3-AC03-50E2926978F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBB48ADC-F958-43E3-AC03-50E2926978F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBB48ADC-F958-43E3-AC03-50E2926978F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBB48ADC-F958-43E3-AC03-50E2926978F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -622,6 +636,8 @@ Global
 		{B20BFD1C-3A07-4D59-8496-26553BA82249} = {EAC8777D-CAF1-423B-95B2-904E2164A888}
 		{0EF183F5-0A5E-4555-A1AA-AFE4F52BC8A5} = {FF08AEF5-B35B-4D4D-A184-66778D07CF12}
 		{A604CFE5-8722-443F-B357-249527EDAF86} = {FF08AEF5-B35B-4D4D-A184-66778D07CF12}
+		{36DF2708-C963-4C20-93DF-BF7AA7B95489} = {A5C8E2EB-081C-4EFC-9F15-95DA9E6B9477}
+		{FBB48ADC-F958-43E3-AC03-50E2926978F4} = {A5C8E2EB-081C-4EFC-9F15-95DA9E6B9477}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EDF9F64D-8CE1-4567-A599-F6C8CF7B91E0}
