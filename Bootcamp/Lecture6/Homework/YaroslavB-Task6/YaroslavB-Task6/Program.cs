@@ -48,9 +48,8 @@ namespace YaroslavB_Task6
             Console.WriteLine("\n\n========== Using extension methods \"Filter\" and \"Map\" to filter elements ==========\n" +
                                   "========== which start from uppercase and get those elements length ===============\n");
 
-            var tempStrs = collection.Filter(s => s.Substring(0, 1) == s.Substring(0, 1)
-                                    .ToUpper())
-                                    .Map(s => s.Length);
+            var tempStrs = collection.Filter(s => char.IsUpper(s[0]))
+                                     .Map(s => s.Length);
 
             Console.WriteLine("Length of elements which start from uppercase:");
 
@@ -61,7 +60,7 @@ namespace YaroslavB_Task6
 
             Console.WriteLine("\n\n========== Own example of usage extension generic method \"Map\" ==========\n" +
                                   "========== to get the first char of each of elements ====================\n");
-            var tempChr = collection.Map<string, char>(s => s.Substring(0, 1).ToCharArray()[0]);
+            var tempChr = collection.Map(s => s[0]);
             Console.WriteLine("First character of elemets:");
 
             foreach (var item in tempChr)
@@ -91,7 +90,7 @@ namespace YaroslavB_Task6
                 Console.WriteLine("\nPress \'Enter\' to set new value!");
                 Console.ReadLine();
                 Console.WriteLine($"Setting bid - {i}...");
-                auctioneer.SetNewBid(50);
+                auctioneer.SetNewBid(i);
                 Console.WriteLine();
             }
         }

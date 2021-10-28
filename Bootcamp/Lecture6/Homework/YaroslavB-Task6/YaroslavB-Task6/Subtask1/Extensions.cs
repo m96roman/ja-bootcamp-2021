@@ -17,7 +17,7 @@ namespace YaroslavB_Task6
                 }
             }
 
-            return (ICollection<T>)resultCollection; ;
+            return resultCollection; ;
         }
 
         public static ICollection<int> Map(this ICollection<string> collection, Func<string, int> func)
@@ -29,7 +29,7 @@ namespace YaroslavB_Task6
                 list.Add(func(item));
             }
 
-            return (ICollection<int>)list;
+            return list;
         }
 
         public static ICollection<outT> Map<inT, outT>(this ICollection<inT> collection, Func<inT, outT> func)
@@ -41,7 +41,7 @@ namespace YaroslavB_Task6
                 list.Add(func(item));
             }
 
-            return (ICollection<outT>)list;
+            return list;
         }
     }
 }
