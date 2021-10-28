@@ -1,0 +1,20 @@
+< 10/28/2021 7:30:28 AM >calling an ambulance from Iphone, remaining charge: 8%
+< 10/28/2021 7:30:28 AM >Charging Iphone by 3%
+< 10/28/2021 7:30:28 AM >Pylat_Task_4.PhoneExceptions: Phone failed to call an ambulance: Iphone
+< 10/28/2021 7:30:28 AM >Charging Iphone by 0%
+< 10/28/2021 7:30:28 AM >Pylat_Task_4.PhoneExceptions: Phone failed to call an ambulance: Iphone
+< 10/28/2021 7:30:28 AM >Charging Iphone by 0%
+< 10/28/2021 7:30:28 AM >Pylat_Task_4.PhoneExceptions: Phone failed to call an ambulance: Iphone
+< 10/28/2021 7:30:28 AM >Charging Iphone by 0%
+< 10/28/2021 7:30:28 AM >Pylat_Task_4.PhoneExceptions: Phone failed to call an ambulance: Iphone
+< 10/28/2021 7:30:28 AM >Charging Iphone by 0%
+< 10/28/2021 7:30:28 AM >Pylat_Task_4.PhoneExceptions: Phone failed to call an ambulance: Iphone
+< 10/28/2021 7:30:28 AM >Charging Iphone by 0%
+< 10/28/2021 7:30:28 AM >Pylat_Task_4.PhoneExceptions: Phone failed to call an ambulance: Iphone
+< 10/28/2021 7:30:28 AM >Charging Iphone by 0%
+< 10/28/2021 7:30:28 AM >Pylat_Task_4.PhoneExceptions: Phone failed to call an ambulance: Iphone
+< 10/28/2021 7:30:28 AM >Charging Iphone by 0%
+< 10/28/2021 7:30:28 AM >Pylat_Task_4.PhoneExceptions: Phone failed to call an ambulance: Iphone
+< 10/28/2021 7:30:28 AM >Charging Iphone by 0%
+< 10/28/2021 7:30:28 AM >Pylat_Task_4.PhoneExceptions: Phone failed to call an ambulance: Iphone
+< 10/28/2021 7:30:28 AM >Charging Iphone by 0%

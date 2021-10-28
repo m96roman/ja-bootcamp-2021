@@ -11,14 +11,13 @@ namespace Pylat_Lecture_9_Task_1
     {
         static void Main(string[] args)
         {
-            var pathTask1 = @"C:\Users\nestor.pylat\ja-bootcamp-2021\Bootcamp\Lecture9\Homework\Pylat Lecture 9!!!\Pylat Lecture 9!!!\Text.txt";
-            string pathTask3 = $@"C:\Users\nestor.pylat\ja-bootcamp-2021\Bootcamp\Lecture9\Homework\Pylat Lecture 9!!!\Pylat Lecture 9!!!\snapshot.json";
-
             //   Task 1 //////////////
-            /* LineCounter lineCounter = new LineCounter();
-             lineCounter.CreateFileTxt();
-             lineCounter.CountLines(pathTask1);*/
 
+            /*var pathTask1 = @"C:\Users\nestor.pylat\ja-bootcamp-2021\Bootcamp\Lecture9\Homework\Pylat Lecture 9!!!\Pylat Lecture 9!!!\Text.txt";
+            LineCounter lineCounter = new LineCounter();
+
+            lineCounter.CreateFileTxt();
+            lineCounter.CountLines(pathTask1);*/
 
             // Task 2 //////////////////////
 
@@ -26,6 +25,7 @@ namespace Pylat_Lecture_9_Task_1
 
             // Task3  ////////////////////
 
+           /* string pathTask3 = $@"C:\Users\nestor.pylat\ja-bootcamp-2021\Bootcamp\Lecture9\Homework\Pylat Lecture 9!!!\Pylat Lecture 9!!!\snapshot.json";
             List<Student> students = new List<Student>();
             Student student = new Student();
 
@@ -48,7 +48,8 @@ namespace Pylat_Lecture_9_Task_1
                 students.Add(student5);
 
                 student.SemesterEmulation(students);
-            }
+            }*/
+
             // Task4 /////////////////////////
 
 
