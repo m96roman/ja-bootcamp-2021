@@ -2,30 +2,14 @@
 
 namespace YaroslavB_Task5
 {
-    class Delivery<T> where T : Package
+    abstract class Delivery<T> where T : Package
     {
-        protected Package _package;
+        public abstract void InformRecipient(T package);
 
-        public Delivery(Package package)
+        public void DeliverPackage(T package)
         {
-            _package = package;
-
-        }
-
-        public void DeliverPackage()
-        {
-            Console.WriteLine($"Hi, {_package.Recipient}. We have {_package.Title} " +
-                                $"with size = {_package.Size} for you.");
-
-            if (_package is ForeignPackage fPack)
-            {
-                new MeestExpress().InformRecipient(fPack.SenderCountry);
-            }
-
-            if (_package is DomesticPackage dPack)
-            {
-                new NovaPoshta().InformRecipient(dPack.DepartmentId);
-            }
+            Console.WriteLine($"Hi, {package.Recipient}. We have {package.Title} " +
+                                $"with size = {package.Size} for you.");
         }
     }
 }

@@ -5,8 +5,6 @@ namespace YaroslavB_Task5
 {
     class Designer
     {
-
-
         static void Draw<T>(IEnumerable<T> collection, T num) where T : struct
         {
             foreach (var item in collection)
@@ -26,7 +24,6 @@ namespace YaroslavB_Task5
                 counter++;
             }
         }
-
     }
 }
 

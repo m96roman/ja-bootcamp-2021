@@ -5,56 +5,44 @@ namespace YaroslavB_Task5
 {
     class Survey
     {
-        public Survey()
-        {
-
-        }
-
         public void ShowSurveyResult()
         {
             var users = GetUserList();
-
             var cities = GetCities();
-
             Random cityNumber = new Random();
-
-            int rMin = 1;
-            int rMax = cities.Count + 1;
-
+            int rMin = 0;
+            int rMax = cities.Count;
+            var peoplePerCity = new Dictionary<string, int>();
 
             //----- users---------
             Console.WriteLine("Survey participants:");
-
             int userCount = 1;
-
             int tempUserCityNum;
-
             string userCity;
 
             foreach (string user in users)
             {
                 tempUserCityNum = cityNumber.Next(rMin, rMax);
-
-                userCity = GetCityKeyByNumber(cities, tempUserCityNum);
-
-                cities[userCity] += 1;
-
+                userCity = cities[tempUserCityNum];
                 Console.WriteLine($"    {userCount}.\t{user} -   \t{userCity}");
+                
+                if(!peoplePerCity.ContainsKey(userCity))
+                {
+                    peoplePerCity[userCity] = 0;
+                }
 
+                peoplePerCity[userCity] += 1;
                 userCount++;
             }
 
             //----- cities---------
             Console.WriteLine("\nResults:");
 
-            foreach (var city in cities)
+            foreach (var city in peoplePerCity)
             {
                 Console.WriteLine($" {city.Key} - {city.Value}");
             }
         }
-
-
-        #region Private methods
 
         private List<string> GetUserList()
         {
@@ -85,38 +73,17 @@ namespace YaroslavB_Task5
             return users;
         }
 
-        private Dictionary<string, int> GetCities()
+        private List<string> GetCities()
         {
-            Dictionary<string, int> cities = new Dictionary<string, int>
+            var cities = new List<string>
             {
-                {"Berlin", 0},
-                {"Kyiv", 0},
-                {"London", 0},
-                {"Lviv", 0},
+                "Berlin",
+                "Kyiv",
+                "London",
+                "Lviv"
             };
             
             return cities;
         }
-
-        private string GetCityKeyByNumber(Dictionary<string, int> dictionary, int position)
-        {
-            int i = 1;
-
-            foreach(var item in dictionary.Keys)
-            {
-                if(i == position)
-                {
-                    return item;
-                }
-
-                i++;
-            }
-
-            throw new ArgumentOutOfRangeException($"{position} is out of alloved range");
-        }
-
-        #endregion
-
     }
-
 }

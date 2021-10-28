@@ -84,18 +84,16 @@ namespace YaroslavB_Task5
                 DepartmentId = 64008
             };
 
-            Delivery<ForeignPackage> foreignDelivery = new Delivery<ForeignPackage>(foreignPack);
-
-            foreignDelivery.DeliverPackage();
-
+            MeestExpress foreignDelivery = new MeestExpress();
+            foreignDelivery.DeliverPackage(foreignPack);
+            foreignDelivery.InformRecipient(foreignPack);
             Console.WriteLine();
 
-            Delivery<DomesticPackage> domesticDelivery = new Delivery<DomesticPackage>(domesticPack);
-
-            domesticDelivery.DeliverPackage();
+            NovaPoshta domesticDelivery = new NovaPoshta();
+            domesticDelivery.DeliverPackage(domesticPack);
+            domesticDelivery.InformRecipient(domesticPack);
 
             Console.WriteLine("\n\nPress \'Enter\' to exit...");
-
             Console.ReadLine();
         }
     }

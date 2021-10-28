@@ -2,11 +2,11 @@
 
 namespace YaroslavB_Task5
 {
-    class MeestExpress
+    class MeestExpress : Delivery<ForeignPackage>
     {
-        public void InformRecipient(string senderCountry)
+        public override void InformRecipient(ForeignPackage package)
         {
-            Console.WriteLine($"SMS from MeestExprees: Delivered package from {senderCountry}");
+            Console.WriteLine($"SMS from MeestExprees: Delivered package from {package.SenderCountry}");
         }
     }
 }

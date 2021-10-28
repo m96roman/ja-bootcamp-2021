@@ -6,5 +6,4 @@
         public string Title { get; set; }
         public string Recipient { get; set; }
     }
-
 }
