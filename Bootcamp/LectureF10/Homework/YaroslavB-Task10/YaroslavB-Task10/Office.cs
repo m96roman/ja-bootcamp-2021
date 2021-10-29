@@ -33,6 +33,7 @@ namespace SimulateGIT
 
             Task.WaitAll(_developers.ToArray());
             Console.WriteLine("\nEnd of the workday.");
+            Console.WriteLine($"Total commits pushed within the day - {_git.GetCommitsCount()}");
         }
 
         private void CommitFeatures(string developerNumber)
