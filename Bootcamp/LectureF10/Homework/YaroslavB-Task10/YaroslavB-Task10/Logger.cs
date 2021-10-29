@@ -1,14 +1,12 @@
 ﻿using System;
 
-namespace YaroslavB_Task10
+namespace SimulateGIT
 {
-    class Logger
+    class Logger : ILogger
     {
-        public void LogToConsole(object sender, Commmit message)
+        public void Log(string message)
         {
-            Console.CursorVisible = false;
-            Console.SetCursorPosition(0, 0);
-            Console.Write(message,);
+            Console.WriteLine(message);
         }
     }
 }
