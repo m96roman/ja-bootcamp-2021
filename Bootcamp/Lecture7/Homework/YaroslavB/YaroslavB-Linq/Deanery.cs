@@ -6,6 +6,7 @@ namespace YaroslavB_Linq
     class Deanery
     {
         private static Random rd = new Random();
+
         public static List<Student> GetStudents()
         {
             var students = new List<Student>
@@ -30,6 +31,7 @@ namespace YaroslavB_Linq
 
             return students;
         }
+
         public static List<Faculty> GetFaculties()
         {
             var faculties = new List<Faculty>
