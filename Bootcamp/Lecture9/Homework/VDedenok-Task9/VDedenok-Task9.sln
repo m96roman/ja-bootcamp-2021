@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VDedenok_Task9", "ConsoleApp1\VDedenok_Task9.csproj", "{31F8D343-D61F-4D1B-94E9-29A2DC5E15AF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{31F8D343-D61F-4D1B-94E9-29A2DC5E15AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31F8D343-D61F-4D1B-94E9-29A2DC5E15AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31F8D343-D61F-4D1B-94E9-29A2DC5E15AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31F8D343-D61F-4D1B-94E9-29A2DC5E15AF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9FF1C3D8-8D35-494F-AACC-5BAEA882E258}
+	EndGlobalSection
+EndGlobal
