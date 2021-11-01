@@ -1,0 +1,15 @@
+﻿@model Lecture_1.Models.Value
+@{
+    ViewBag.Title = "show";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model.id == null)
+{
+    <h1>No value provided</h1>
+}
+else
+{
+    <h1>Id: @Model.id</h1>
+}
+
