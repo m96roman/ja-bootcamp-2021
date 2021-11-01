@@ -10,23 +10,18 @@ namespace WebApplication1.Controllers
 {
     public class UserController : Controller
     {
-
-
-        // GET: User
         public ActionResult Index()
         {
 
             return View(RepositoryUser.GetUsers());
         }
 
-        // GET: User/Create
         public ActionResult Create()
         {
 
             return View(new User());
         }
 
-        // POST: User/Create
         [HttpPost]
         public ActionResult Create(User user)
         {
@@ -43,19 +38,17 @@ namespace WebApplication1.Controllers
             }
         }
 
-        // GET: User/Edit/5
         public ActionResult Edit(int id)
         {
             User user = RepositoryUser.GetById(id);
             return View(user);
         }
 
-        // POST: User/Edit/5
         [HttpPost]
         public ActionResult Edit(User user)
         {
             try
-            { 
+            {
                 RepositoryUser.Edit(user);
 
                 return RedirectToAction("Index");
@@ -66,14 +59,12 @@ namespace WebApplication1.Controllers
             }
         }
 
-        // GET: User/Delete/5
         public ActionResult Delete(int id)
         {
             User user = RepositoryUser.GetById(id);
             return View(user);
         }
 
-        // POST: User/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
