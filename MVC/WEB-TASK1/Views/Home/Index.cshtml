@@ -1,0 +1,22 @@
+﻿@model WEB_TASK1.Models.UserModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    @using (Html.BeginForm("CreateUser", "Home", FormMethod.Post, new { data_formType = "UserModel" }))
+    {
+        <div class="item">
+            <label>Name</label>
+            @Html.TextBox("UserName", @Model.UserName)
+        </div>
+        <div class="item">
+            <label>Surname</label>
+            @Html.TextBox("UserSurname", @Model.UserSurname)
+           
+        </div>
+        <input type="submit" value="Submit" />
+    }
+</div>

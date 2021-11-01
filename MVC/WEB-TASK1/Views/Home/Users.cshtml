@@ -1,0 +1,25 @@
+﻿@using WEB_TASK1.Models
+
+@model List<UserModel>
+
+@{
+    ViewData["Title"] = "Users";
+}
+<h1>@ViewData["Title"]</h1>
+@using (Html.BeginForm("DeleteUser", "Home", FormMethod.Post, new { data_formType = "string" }))
+{
+    @Html.TextBox("id")
+    <input type="submit" value="Submit" />
+}
+
+@{
+    foreach (var user in Model)
+    {
+        <div>
+            <span>ID: @user.UserId ;</span>
+            <span>Name: @user.UserName ;</span>
+            <span>Surname: @user.UserSurname ;</span>
+        </div>
+    }
+
+}
