@@ -1,0 +1,17 @@
+﻿@model PersonsMVC.Models.UserViewModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>View</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    @await Html.PartialAsync("UserView", Model)
+
+    <form asp-action="Delete">
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index" class="btn btn-primary">Back to List</a>
+    </form>
+</div>

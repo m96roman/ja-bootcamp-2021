@@ -1,0 +1,9 @@
+﻿@model PersonsMVC.Models.UserViewModel
+
+
+@await Html.PartialAsync("UserView", Model)
+
+<div>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+    <a asp-action="Index">Back to List</a>
+</div>

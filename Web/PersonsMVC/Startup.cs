@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using PersonsMVC.Models.DPA;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,9 @@ namespace PersonsMVC
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddLogging();
+
+            services.AddSingleton(typeof(IUserRepository), typeof(DummyUserRepository));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
