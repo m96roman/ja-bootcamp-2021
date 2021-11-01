@@ -21,9 +21,6 @@
 
 <table class="table">
     <tr>
-        @*<th>
-                @Html.DisplayNameFor(model => model.EmployeeName)
-            </th>*@
         <th>
             @Html.DisplayNameFor(model => model.FirstName)
         </th>
@@ -39,9 +36,6 @@
         foreach (var item in Model)
         {
             <tr>
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.EmployeeName)
-                    </td>*@
                 <td>
                     @Html.DisplayFor(modelItem => item.FirstName)
                 </td>
@@ -56,6 +50,7 @@
             </tr>
 
         }
+
     }
     else
     {

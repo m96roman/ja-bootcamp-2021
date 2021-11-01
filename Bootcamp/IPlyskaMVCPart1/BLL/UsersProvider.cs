@@ -9,10 +9,12 @@ namespace IPlyskaMVCPart1.BLL
 {
     public class UsersProvider : IUsersProvider
     {
-        //  List<Users> IUsers.users { get; set; } = new List<Users>();
-       public List<Users> users = new List<Users>();
+        List<Users> users = new List<Users>(); 
         private static object _locker = new object();
-
+        public UsersProvider()
+        {
+            users = new List<Users>();
+        }
         public bool AddUser(Users user)
         {
            lock (_locker)
@@ -25,6 +27,7 @@ namespace IPlyskaMVCPart1.BLL
 
                 users.Add(user);
            }
+
             return true;
         }
 
@@ -65,7 +68,7 @@ namespace IPlyskaMVCPart1.BLL
                     users.Remove(userEdited);
                     return true;
                 }
-            }
+           }
         }
     }
 }

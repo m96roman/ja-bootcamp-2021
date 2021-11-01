@@ -22,7 +22,7 @@ namespace IPlyskaMVCPart1.Controllers
         [Route("user/get-all")]
         public IActionResult Index()
         {
-            return View();
+            return View(_users.GetAllUsers());
         }
 
         [HttpPost]
@@ -33,10 +33,12 @@ namespace IPlyskaMVCPart1.Controllers
             {
                 return ViewBag.ErrorMessage = "Error";
             }
+            userEdited.Id = _users.GetAllUsers().Count;
 
             var status = _users.AddUser(userEdited);
 
-            return View();
+            return RedirectToAction("index"); 
+            //return View();
         }
 
         [HttpGet]
@@ -44,6 +46,44 @@ namespace IPlyskaMVCPart1.Controllers
         public IActionResult Create()
         {
             return View();
+        }
+
+        [HttpGet]
+        [Route("user/edit/{id}")]
+        public ActionResult Edit(int id)
+        {
+            var data = _users.GetAllUsers().Where(x => x.Id == id).FirstOrDefault();
+            return View(data);
+        }
+
+        [HttpPost]
+        [Route("user/edit/{id}")]
+        public ActionResult Edit(Users Model)
+        {
+            var data = _users.GetAllUsers().Where(x => x.Id == Model.Id).FirstOrDefault();
+            if (data != null)
+            {
+                data.FirstName = Model.FirstName;
+                data.LastName = Model.LastName;
+            }
+
+            return RedirectToAction("index");
+        }
+
+        [HttpGet]
+        [Route("user/detail/{id}")]
+        public ActionResult Detail(int id)
+        {
+            var data = _users.GetAllUsers().Where(x => x.Id == id).FirstOrDefault();
+            return View(data);
+        }
+ 
+        public ActionResult Delete(int id)
+        {
+            var data = _users.GetAllUsers().Where(x => x.Id == id).FirstOrDefault();
+            _users.RemoveUser(data);
+            ViewBag.Messsage = "Record Delete Successfully";
+            return RedirectToAction("index");
         }
 
     }
