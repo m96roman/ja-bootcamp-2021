@@ -1,0 +1,13 @@
+1. Create MVC project and investigate it structure.
+2. Investigate page view and requests in Web inspector.
+2. Add a page that will show provided value in the url and satisfy the following test cases:
+-
+Url: value/show/123
+Expected message: 123
+-
+Url: value/123
+Expected message: 123
+-
+Url: value
+Expected message: No value provided
+2. Create a page with a form that will submit users first and last names and page that will show stored names. The last page should have edit and delete buttons for each user.
