@@ -1,0 +1,72 @@
+﻿
+@using WebApplication1.Models
+
+@model IEnumerable<WebApplication1.Models.User>
+
+<style>
+    input[type=button] {
+        padding: 10px;
+        background: grey;
+        color: #fff;
+        border: 1pxsolid#eee;
+        border-radius: 20px;
+        box-shadow: 5px5px5px black;
+        text-shadow: none;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin: 5px;
+        padding: 10px;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2
+    }
+
+    th {
+        background-color: dimgrey;
+        color: white;
+    }
+</style>
+
+
+<div id="UserList">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr class="item" data-id="@item.Id">
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    <input type="button" class="btn btn-info" value="Edit" onclick="location.href='@Url.Action("Edit", "User",new {id = item.Id})'" />
+                    <input type="button" data-id="@item.Id" value="Delete" class="delete" />
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+
+

@@ -13,7 +13,6 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>User</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -48,10 +47,6 @@
         });
     </script>
 }
-    <div>
-        @Html.ActionLink("Back to List", "Index", "User", null, new
-        {
-            @class = "btn btn-primary btn-large"
-
-        })
-    </div>
+<div>
+    <input type="button" class="btn btn-info" value="Back to List" onclick="location.href='@Url.Action("Index", "User")'" />
+</div>

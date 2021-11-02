@@ -38,7 +38,7 @@ namespace WebApplication1.Controllers
             }
             catch
             {
-                return View(user);
+                return View("~/Views/Shared/Error.cshtml");
             }
         }
 
@@ -64,14 +64,8 @@ namespace WebApplication1.Controllers
             }
             catch
             {
-                return View(user);
+                return View("~/Views/Shared/Error.cshtml");
             }
-        }
-
-        public ActionResult Delete(int id)
-        {
-            User user = RepositoryUser.GetById(id);
-            return View(user);
         }
 
         [HttpPost]
@@ -83,11 +77,13 @@ namespace WebApplication1.Controllers
 
                 RepositoryUser.Delete(user);
 
-                return RedirectToAction("Index");
+                return PartialView("UserList", RepositoryUser.GetUsers());
+
             }
             catch
             {
-                return View();
+                return View("~/Views/Shared/Error.cshtml");
+
             }
         }
     }

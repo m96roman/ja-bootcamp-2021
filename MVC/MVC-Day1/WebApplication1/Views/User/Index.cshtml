@@ -1,61 +1,107 @@
 ﻿@model IEnumerable<WebApplication1.Models.User>
 
+<style>
+    input[type=button] {
+        padding: 10px;
+        background: grey;
+        color: #fff;
+        border: 1pxsolid#eee;
+        border-radius: 20px;
+        box-shadow: 5px5px5px black;
+        text-shadow: none;
+    }
+
+    input[type=text] {
+        width: 130px;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        background-color: white;
+        background-image: url('searchicon.png');
+        background-position: 10px 10px;
+        background-repeat: no-repeat;
+        padding: 12px 20px 12px 40px;
+        transition: width 0.4s ease-in-out;
+    }
+
+        input[type=text]:focus {
+            width: 100%;
+        }
+
+    span {
+        width: 50px;
+        height: 50px;
+        background: black;
+    }
+
+    form {
+        padding: 10px;
+    }
+</style>
+
 
 @if (Model.Count() > 0)
 {
 
+    <form>
+        <input type="text" id="txtsearch" placeholder="Enter user LastName.." />
+    </form>
+    <span></span>
+    <div id="UserList">
+        @Html.Partial("UserList")
+    </div>
 
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LastName)
-            </th>
-            <th></th>
-        </tr>
-
-
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FirstName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LastName)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new {id = item.Id}, new
-                    {
-                        @class = "btn btn-primary btn-large"
-
-                    }) |
-                    @Html.ActionLink("Delete", "Delete", new {id = item.Id}, new
-                    {
-                        @class = "btn btn-primary btn-large"
-
-                    })
-                </td>
-            </tr>
-        }
-
-    </table>
 }
 else
 {
-    <h3>We don`t have user! Please create</h3>
+    <div class="row justify-content-center text-center">
+        <div class="col-12 col-md-10 mt-5">
+
+            <i class="fa fa-user fa-5x mb-5"></i>
+
+            <h2>
+                No Users
+            </h2>
+
+            <p class="text-muted">
+                You do not have any users yet. Add a new user by clicking the <strong>Add User</strong> button below.
+            </p>
+
+            <input type="button" class="btn btn-info" value="Create" onclick="location.href='@Url.Action("Create", "User")'" />
+        </div>
+    </div>
 }
-<div>
-    <p>
-        @Html.ActionLink("Create New", "Create","User",null,new
-        {
-            @class= "btn btn-primary btn-large"
 
-        })
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $("#txtsearch").on("keyup",
+        function () {
+            var txtenter = $(this).val();
+            $("table tr").each(function (results) {
+                if (results !== 0) {
+                    var id = $(this).find("td:nth-child(2)").text();
+                    if (id.indexOf(txtenter) !== 0 && id.toLowerCase().indexOf(txtenter.toLowerCase()) < 0) {
+                        $(this).hide();
+                    } else {
+                        $(this).show();
+                    }
+                }
+            });
+        });
 
-    </p>
-
-</div>
-
+    $('#UserList').on('click',
+        '.delete',
+        (function () {
+            var container = $(this).closest('.item');
+            var id = container.data('id');
+            $.ajax({
+                url: '@Url.Action("Delete", "User")',
+                type: "POST",
+                data: { id: id },
+                dataType: "json",
+                cache: false
+            });
+            container.remove();
+        }));
+</script>
