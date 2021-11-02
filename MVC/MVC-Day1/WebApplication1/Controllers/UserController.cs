@@ -12,34 +12,25 @@ namespace WebApplication1.Controllers
     {
         public ActionResult Index()
         {
-
             return View(RepositoryUser.GetUsers());
         }
 
         public ActionResult Create()
         {
-
             return View(new User());
         }
 
         [HttpPost]
         public ActionResult Create(User user)
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    RepositoryUser.Create(user);
+                RepositoryUser.Create(user);
 
-                    return RedirectToAction("Index");
-                }
+                return RedirectToAction("Index");
+            }
 
-                return View();
-            }
-            catch
-            {
-                return View(user);
-            }
+            return View();
         }
 
         public ActionResult Edit(int id)
@@ -51,8 +42,6 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public ActionResult Edit(User user)
         {
-            try
-            {
                 if (ModelState.IsValid)
                 {
                     RepositoryUser.Edit(user);
@@ -61,11 +50,6 @@ namespace WebApplication1.Controllers
                 }
 
                 return View();
-            }
-            catch
-            {
-                return View(user);
-            }
         }
 
         public ActionResult Delete(int id)
@@ -77,18 +61,11 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
-            try
-            {
                 User user = RepositoryUser.GetById(id);
 
                 RepositoryUser.Delete(user);
 
                 return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
         }
     }
 }

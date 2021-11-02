@@ -27,18 +27,5 @@ namespace WebApplication1.Controllers
 
             return View();
         }
-
-        [Route("value")]
-        [Route("value/show/{id?}")]
-        [Route("value/{id?}")]
-
-        public ActionResult Show(int? id)
-        {
-            Data data = new Data
-            {
-                Value = id
-            };
-            return View(data);
-        }
     }
 }
