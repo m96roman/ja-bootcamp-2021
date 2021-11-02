@@ -12,28 +12,14 @@ namespace WebApplication1
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            routes.MapRoute(
-                name: "ValueId",
-                url: "value/{id}",
-                defaults: new { controller = "Home", action = "Show", id = UrlParameter.Optional }
-            );
 
-            routes.MapRoute(
-                name: "ValueEdit",
-                url: "value/{action}/{id}",
-                defaults: new { controller = "Home", action = "Show", id = UrlParameter.Optional }
-            );
+            routes.MapMvcAttributeRoutes();
 
-            routes.MapRoute(
-                name: "Value",
-                url: "value",
-                defaults: new { controller = "Home", action = "Show" }
-            );
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "User", action = "Index", id = UrlParameter.Optional }
-            );
+                defaults: new { controller = "User", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "WebApplication1.Controllers" });
         }
     }
 }
