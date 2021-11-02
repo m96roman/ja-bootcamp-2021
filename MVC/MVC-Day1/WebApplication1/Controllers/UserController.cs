@@ -25,21 +25,14 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public ActionResult Create(User user)
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    RepositoryUser.Create(user);
+                RepositoryUser.Create(user);
 
-                    return RedirectToAction("Index");
-                }
+                return RedirectToAction("Index");
+            }
 
-                return View();
-            }
-            catch
-            {
-                return View("~/Views/Shared/Error.cshtml");
-            }
+            return View();
         }
 
         public ActionResult Edit(int id)
@@ -51,40 +44,24 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public ActionResult Edit(User user)
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    RepositoryUser.Edit(user);
+                RepositoryUser.Edit(user);
 
-                    return RedirectToAction("Index");
-                }
+                return RedirectToAction("Index");
+            }
 
-                return View();
-            }
-            catch
-            {
-                return View("~/Views/Shared/Error.cshtml");
-            }
+            return View();
         }
 
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
-            try
-            {
-                User user = RepositoryUser.GetById(id);
+            User user = RepositoryUser.GetById(id);
 
-                RepositoryUser.Delete(user);
+            RepositoryUser.Delete(user);
 
-                return PartialView("UserList", RepositoryUser.GetUsers());
-
-            }
-            catch
-            {
-                return View("~/Views/Shared/Error.cshtml");
-
-            }
+            return PartialView("UserList", RepositoryUser.GetUsers());
         }
     }
 }
