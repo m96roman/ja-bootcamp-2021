@@ -10,13 +10,6 @@ namespace IPlyskaMVCPart1.Controllers
     public class ProvideMessageController : Controller
     {
         [HttpGet]
-        [Route("value")]
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        [HttpGet]
         [Route("value/show/{id}")]
         public ActionResult Details(int id)
         {
@@ -25,8 +18,8 @@ namespace IPlyskaMVCPart1.Controllers
         }
 
         [HttpGet]
-        [Route("value/{id}")]
-        public ActionResult DetailsWithOtherRoot(int id)
+        [Route("value/{id?}")]
+        public ActionResult DetailsWithOtherRoot(int? id)
         {
             ViewBag.Message = id;
             return View();

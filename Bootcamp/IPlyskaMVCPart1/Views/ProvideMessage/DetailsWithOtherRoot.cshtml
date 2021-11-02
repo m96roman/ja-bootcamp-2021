@@ -2,6 +2,13 @@
 @{
     ViewData["Title"] = "DetailsWithOtherRoot";
 }
+@if (@ViewBag.Message is null)
+{
+    <h1>No value provided</h1>
+}
+else
+{
+    <h1>@ViewBag.Message</h1>
+}
 
-<h1>@ViewBag.Message</h1>
 
