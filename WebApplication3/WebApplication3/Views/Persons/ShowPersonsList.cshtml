@@ -1,48 +1,87 @@
 ﻿@model IEnumerable<WebApplication3.Models.Person>
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<form>
+    <table>
+        <th>
+            <input type="text" name="NameFilter" id="NameFilter" />
+        </th>
+        <th class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" value="FILTER" class="btn btn-default" id="btnFilter" />
+            </div>
+        </th>
+    </table>
+</form>
+<table id="PersonsTable" class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Message)
+        </th>
+        <th></th>
+    </tr>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>ShowPersons</title>
-</head>
-<body>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
+    @foreach (var item in Model)
+    {
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Message)
-            </th>
-            <th></th>
-        </tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Message)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Message)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                </td>
-            </tr>
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
+@section scripts
+    {
+    <script type="text/javascript">
+        $(function () {
+
+            $("#btnFilter").click(function () {
+                let pers = $("#NameFilter").val();
+                LoadData(pers);
+
+            });
+        });
+        function LoadData(value) {
+            $("#PersonsTable tr").remove();
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("getPerson","Persons")',
+                dataType: 'json',
+                data: { name: value },
+                success: function (data) {
+                    var items = '';
+                    $.each(data, function (i, item) {
+                            var rows = "<tr>"
+                                + "<td>" + item.Name + "</td>"
+                                + "<td>" + item.Message + "</td>"
+                                + "</tr>";
+                            $('#PersonsTable').append(rows);
+                    });
+                }
+            });
+            return false;
         }
 
-    </table>
-</body>
-</html>
+    </script>
+}
+
+
+

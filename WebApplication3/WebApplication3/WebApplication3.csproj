@@ -169,7 +169,7 @@
     <Content Include="Views\Value\Show.cshtml" />
     <Content Include="Views\Value\IncorrectValue.cshtml" />
     <Content Include="Views\Value\Create.cshtml" />
-    <Content Include="Views\Persons\ShowPersons.cshtml" />
+    <Content Include="Views\Persons\del.cshtml" />
     <Content Include="Views\Persons\Create.cshtml" />
     <Content Include="Views\Persons\AddNewHappy.cshtml" />
     <Content Include="Views\Persons\ShowPersonsList.cshtml" />

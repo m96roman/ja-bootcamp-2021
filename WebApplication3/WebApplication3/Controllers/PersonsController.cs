@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -14,7 +15,6 @@ namespace WebApplication3.Controllers
         [Route("Persons")]
         public ActionResult ShowPersonsList()
         {
-
             return View(peopleList);
         }
         public ActionResult Create()
@@ -51,5 +51,13 @@ namespace WebApplication3.Controllers
             peopleList.Remove(peopleList.Where(p => p.Id == id).FirstOrDefault());
             return RedirectToAction("ShowPersonsList");
         }
+
+        [HttpGet]
+        public JsonResult getPerson([Required]string name)
+        {
+            
+            return Json(peopleList.Where(t=>t.Name.Contains(name)), JsonRequestBehavior.AllowGet);
+        }
+
     }
 }
