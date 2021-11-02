@@ -47,20 +47,16 @@ namespace WEB_TASK1.Controllers
             UsersList.Remove(UsersList.Where(u => u.UserId == id).FirstOrDefault());           
             return RedirectToAction("Users");
         }
-        /*  [HttpPost]
-          public ActionResult Users(UserViewModel user)
-          {
-              UsersList.Add(user);
 
-              return View(user);
-          }*/
-
-       /* [HttpGet]
-        public ViewResult Users()
+        [HttpPost]
+        public ActionResult EditUser(int userId, string userName, string userSurname)
         {
-            return View(UsersList);
-        }*/
+            var editUser = UsersList.Where(u => u.UserId == userId).FirstOrDefault();
+            editUser.UserName = userName;
+            editUser.UserSurname = userSurname;
 
+            return RedirectToAction("Users");
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

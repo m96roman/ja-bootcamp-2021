@@ -5,21 +5,51 @@
 @{
     ViewData["Title"] = "Users";
 }
-<h1>@ViewData["Title"]</h1>
-@using (Html.BeginForm("DeleteUser", "Home", FormMethod.Post, new { data_formType = "string" }))
-{
-    @Html.TextBox("id")
-    <input type="submit" value="Submit" />
-}
+<div style="display:flex; flex-direction:row; width:100%">
+    <div style="display: flex; flex-direction: column; width: 50%">
+        <h1>@ViewData["Title"] Delete</h1>
+        @using (Html.BeginForm("DeleteUser", "Home", FormMethod.Post, new { data_formType = "string" }))
+        {
+            <label>Id</label>
+            @Html.TextBox("id")
+            <input type="submit" value="Delete" />
+        }
+    </div>
+    <div style="display: flex; flex-direction: column; width: 50% ">
+        <h1>@ViewData["Title"] Edit</h1>
+        @using (Html.BeginForm("EditUser", "Home", FormMethod.Post, new { data_formType = "UserModel" }))
+        {
+            <div class="item">
+                <label>Id</label>
+                @Html.TextBox("userId")
+            </div>
+            <div class="item">
+                <label>Name</label>
+                @Html.TextBox("userName")
+            </div>
+            <div class="item">
+                <label>Surname</label>
+                @Html.TextBox("userSurname")
 
-@{
-    foreach (var user in Model)
-    {
-        <div>
-            <span>ID: @user.UserId ;</span>
-            <span>Name: @user.UserName ;</span>
-            <span>Surname: @user.UserSurname ;</span>
-        </div>
+            </div>
+            <input type="submit" value="Submit" />
+        }
+    </div>
+</div>
+
+
+
+
+<div style="display:flex;flex-direction:column">
+    @{
+        foreach (var user in Model)
+        {
+            <div>
+                <span>ID: @user.UserId ;</span>
+                <span>Name: @user.UserName ;</span>
+                <span>Surname: @user.UserSurname ;</span>
+            </div>
+        }
     }
+</div>
 
-}
