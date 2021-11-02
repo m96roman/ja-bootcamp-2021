@@ -52,9 +52,46 @@
 <div class="modal fade" id="create-form" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="form">
         <div class="modal-content">
-            <div class="modal-body">
+            <div id="create-form-container" class="modal-body">
                 @await Html.PartialAsync("Create", new UserViewModel())
             </div>
         </div>
     </div>
-</div>   
+</div>
+
+@section Scripts{
+    <script>
+        $("#create-user-form").submit(function (event) {
+            event.preventDefault();
+            var formData = new FormData();
+            formData.append("Name", $("#create-user-form input[name=Name]").val())
+
+            formData.append("LastName", $("#create-user-form input[name=LastName]").val())
+            $.ajax({
+                type:'POST',
+                url: '@Url.Action("Create")',
+                data: formData,
+                processData: false,
+                contentType: false
+            }).done(function (response) {
+                if (response.created === true) {
+                    $("#create-user-form")[0].reset()
+                    PopulateUsersList();
+                } else {
+                    $("#create-form-container").html(response);
+                }
+            });
+        })
+
+        function PopulateUsersList() {
+             $.ajax({
+                type:'GET',
+                url: '@Url.Action("Filter")',
+                processData: false,
+                contentType: false
+             }).done(function (response) {
+                 $("#user-list").html(response);
+            });
+        }
+    </script>
+}

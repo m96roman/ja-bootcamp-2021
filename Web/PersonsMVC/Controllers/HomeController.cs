@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Mvc.ViewEngines;
 using Microsoft.Extensions.Logging;
 using PersonsMVC.Models;
 using PersonsMVC.Models.DPA;
@@ -6,6 +8,7 @@ using PersonsMVC.Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -24,18 +27,7 @@ namespace PersonsMVC.Controllers
             this.userRepository = userRepository;
         }
 
-        public IActionResult Index()
-        {
-            return View(userRepository.GetUsers().Select(u => GetViewModel(u)));
-        }
-
-        [HttpGet]
-        public PartialViewResult Filter(FilterUserViewModel filter)
-        {
-            IEnumerable<User> usersList = userRepository.GetUsers(filter);
-
-            return PartialView("UsersList", usersList.Select(u => GetViewModel(u)));
-        }
+        #region UserViewModel helpers
 
         private UserViewModel SetViewModel(string id)
         {
@@ -64,6 +56,25 @@ namespace PersonsMVC.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        #endregion
+
+        #region Index methods
+
+        public IActionResult Index()
+        {
+            return View(userRepository.GetUsers().Select(u => GetViewModel(u)));
+        }
+
+        [HttpGet]
+        public PartialViewResult Filter(FilterUserViewModel filter)
+        {
+            IEnumerable<User> usersList = userRepository.GetUsers(filter);
+
+            return PartialView("UsersList", usersList.Select(u => GetViewModel(u)));
+        }
+
+        #endregion
+
         #region Create
 
         [HttpGet]
@@ -81,10 +92,11 @@ namespace PersonsMVC.Controllers
                 userRepository.Add(user);
                 _logger.LogInformation(user.ToString() + " is created!");
 
-                return Redirect($"/Home/Details/{user.Id}");
+                //201= created
+                return Json(new { created = true });
             }
 
-            return View(userViewModel);
+            return PartialView(userViewModel);
         }
 
         #endregion
