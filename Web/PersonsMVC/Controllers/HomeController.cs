@@ -43,13 +43,13 @@ namespace PersonsMVC.Controllers
             return new UserViewModel { Name = us.Name, LastName = us.LastName, Id = us.Id };
         }
 
-        private IActionResult GetViewOnUser(string id)
+        private IActionResult GetViewOnUser(string id, string view)
         {
             UserViewModel usModel = SetViewModel(id);
 
             if (usModel != null)
             {
-                return View(usModel);
+                return View(view, usModel);
             }
 
             TempData["Error"] = $"Cannot find user with id {id}!";
@@ -80,7 +80,7 @@ namespace PersonsMVC.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            return View(new UserViewModel());
+            return View("UserModify", new UserViewModel());
         }
 
         [HttpPost]
@@ -96,7 +96,7 @@ namespace PersonsMVC.Controllers
                 return Json(new { created = true });
             }
 
-            return PartialView(userViewModel);
+            return PartialView("UserModify", userViewModel);
         }
 
         #endregion
@@ -106,7 +106,7 @@ namespace PersonsMVC.Controllers
         [HttpGet]
         public IActionResult Edit(string id)
         {
-            return GetViewOnUser(id);
+            return GetViewOnUser(id, "UserModify");
         }
 
         [HttpPost]
@@ -127,7 +127,7 @@ namespace PersonsMVC.Controllers
                 ModelState.AddModelError("", "Cannot update this entity!");
             }
 
-            return PartialView(userViewModel);
+            return PartialView("UserModify", userViewModel);
         }
 
         #endregion
@@ -137,7 +137,7 @@ namespace PersonsMVC.Controllers
         [HttpGet]
         public IActionResult Delete(string id)
         {
-            return GetViewOnUser(id);
+            return GetViewOnUser("Delete", id);
         }
 
         [HttpPost]
@@ -147,7 +147,7 @@ namespace PersonsMVC.Controllers
             {
                 ViewData["Error"] = "The user was not deleted!";
 
-                return GetViewOnUser(id);
+                return GetViewOnUser("Delete", id);
             }
 
             _logger.LogInformation($"Succesfullty deleted user with id {id}");
@@ -160,7 +160,7 @@ namespace PersonsMVC.Controllers
 
         public IActionResult Details(string id)
         {
-            return GetViewOnUser(id);
+            return GetViewOnUser("Details", id);
         }
 
         #endregion
