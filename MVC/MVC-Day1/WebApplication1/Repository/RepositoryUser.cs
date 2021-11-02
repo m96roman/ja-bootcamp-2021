@@ -12,7 +12,12 @@ namespace WebApplication1.Repository
 
         public static void Create(User user)
         {
-            users.Users.Add(user);
+            users.Users.Add(new User()
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Id = users.Users.Count()
+            });
         }
 
         public static void Edit(User user)
