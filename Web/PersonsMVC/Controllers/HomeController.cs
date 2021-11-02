@@ -42,6 +42,19 @@ namespace PersonsMVC.Controllers
             return new UserViewModel { Name = us.Name, LastName = us.LastName, Id = us.Id };
         }
 
+        private IActionResult GetViewOnUser(string id)
+        {
+            UserViewModel usModel = SetViewModel(id);
+
+            if (usModel != null)
+            {
+                return View(usModel);
+            }
+
+            TempData["Error"] = $"Cannot find user with id {id}!";
+            return RedirectToAction(nameof(Index));
+        }
+
         #region Create
 
         [HttpGet]
@@ -72,14 +85,7 @@ namespace PersonsMVC.Controllers
         [HttpGet]
         public IActionResult Edit(string id)
         {
-            UserViewModel userViewModel = SetViewModel(id);
-
-            if (userViewModel != null)
-            {
-                return View(userViewModel);
-            }
-
-            return RedirectToAction(nameof(Index));
+            return GetViewOnUser(id);
         }
 
         [HttpPost]
@@ -110,13 +116,16 @@ namespace PersonsMVC.Controllers
         [HttpGet]
         public IActionResult Delete(string id)
         {
-            return View(SetViewModel(id));
+            return GetViewOnUser(id);
         }
 
         [HttpPost]
         public IActionResult Delete(string id, string value)
         {
-            userRepository.Delete(id);
+            if (!userRepository.Delete(id))
+            {
+                TempData["Error"] = "The ";
+            }
 
             return RedirectToAction(nameof(Index));
         }
@@ -127,7 +136,7 @@ namespace PersonsMVC.Controllers
 
         public IActionResult Details(string id)
         {
-            return View(SetViewModel(id));
+            return GetViewOnUser(id);
         }
 
         #endregion

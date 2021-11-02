@@ -11,3 +11,8 @@ Expected message: 123
 Url: value
 Expected message: No value provided
 2. Create a page with a form that will submit users first and last names and page that will show stored names. The last page should have edit and delete buttons for each user.
+
+
+5. Create a page (or reuse existing users page) with a search box that will use ajax calls to retrieve filtered list of users.
+6. Implement custom exception handling.
+7. Configure web site to be accessible via IIS.

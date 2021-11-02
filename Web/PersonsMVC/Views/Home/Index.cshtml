@@ -3,11 +3,23 @@
 @{
     ViewData["Title"] = "List of people";
 }
-
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>
+            @TempData["Error"]
+        </strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
 <h1>View</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#create-form">
+        Create new
+    </button>
 </p>
 <div class="row">
     @foreach (var item in Model)
@@ -23,4 +35,13 @@
             </div>
         </div>
     }
-</div>          
+</div>
+<div class="modal fade" id="create-form" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="form">
+        <div class="modal-content">
+            <div class="modal-body">
+                @await Html.PartialAsync("Create", new UserViewModel())
+            </div>
+        </div>
+    </div>
+</div>   
