@@ -21,14 +21,25 @@ namespace IPlyskaMVCPart1.Controllers
 
         public IActionResult Index()
         {
+           
             return View(_users.GetAllUsers());
         }
 
         [HttpGet]
         public JsonResult GetUsers(string Id)
         {
-            var users = _users.GetAllUsers();
-            return Json(users);
+            Users user;
+            if (Id is not null)
+            {
+                 user = _users.GetAllUsers().FirstOrDefault(x => x.Id == Convert.ToInt32( Id));
+            }
+            else
+            {
+               var users = _users.GetAllUsers();
+                return Json(users);
+            }
+            
+            return Json(user);
         }
 
         [HttpGet]
@@ -38,15 +49,15 @@ namespace IPlyskaMVCPart1.Controllers
         }
 
         [HttpPost]
-        public JsonResult FindUser(Users user)
+        public JsonResult FindUser([FromBody] Users user)
         {
             var findedUser = _users.GetAllUsers().FirstOrDefault(x => x.FirstName == user.FirstName || x.LastName == user.LastName);
-            return Json(findedUser);
+            return Json(user);
         }
 
         [HttpPost]
         [Route("user/add")]
-        public IActionResult Create(Users userEdited)
+        public IActionResult Create([FromBody] Users userEdited)
         {
             if (userEdited is null)
             {
@@ -78,7 +89,7 @@ namespace IPlyskaMVCPart1.Controllers
 
         [HttpPost]
         [Route("user/edit/{id}")]
-        public ActionResult Edit(Users Model)
+        public ActionResult Edit([FromBody] Users Model)
         {
             var data = _users.GetAllUsers().Where(x => x.Id == Model.Id).FirstOrDefault();
             if (data != null)

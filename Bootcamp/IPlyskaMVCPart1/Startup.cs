@@ -32,11 +32,11 @@ namespace IPlyskaMVCPart1
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews().
-                  AddJsonOptions(options =>
-                  {
-                      options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
-                      options.JsonSerializerOptions.PropertyNamingPolicy = null;
-                  });
+            AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
+                options.JsonSerializerOptions.PropertyNamingPolicy = null;
+            });
 
             services.AddSingleton<IUsersProvider, UsersProvider>();
         }
@@ -50,7 +50,7 @@ namespace IPlyskaMVCPart1
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                 app.UseExceptionHandler("/Home/Error");
               
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
@@ -64,7 +64,7 @@ namespace IPlyskaMVCPart1
             {
                 errorApp.Run(async context =>
                 {
-                    context.Response.StatusCode = (int)HttpStatusCode.InternalServerError; ;
+                    context.Response.StatusCode = (int)HttpStatusCode.InternalServerError; 
                     context.Response.ContentType = "text/html";
 
                     await context.Response.WriteAsync("<html lang=\"en\"><body>\r\n");
@@ -72,6 +72,7 @@ namespace IPlyskaMVCPart1
 
                     var exceptionHandlerPathFeature =
                         context.Features.Get<IExceptionHandlerPathFeature>();
+                   
 
                     if (exceptionHandlerPathFeature?.Error is FileNotFoundException)
                     {
@@ -83,7 +84,10 @@ namespace IPlyskaMVCPart1
                                                   "<a href=\"/\">Home</a><br>\r\n");
                     await context.Response.WriteAsync("</body></html>\r\n");
                     await context.Response.WriteAsync(new string(' ', 512));
+
+                    //await File.AppendAllTextAsync("log.txt", DateTime.Now + exceptionHandlerPathFeature.Error.InnerException.Message);
                 });
+                
             });
 
 

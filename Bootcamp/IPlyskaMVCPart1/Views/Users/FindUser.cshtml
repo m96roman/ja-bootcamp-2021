@@ -16,7 +16,7 @@
             <div class="form-group col-md-5">
                 <label>First Name</label>
                 <input type="text" name="StudentName" id="FirstName" class="form-control" placeholder="Enter First Name" required="" />
-            </div>        
+            </div>
             <div class="form-group col-md-1">
                 <div style="float: right; display:inline-block;">
                     <input class="btn btn-primary" name="submitButton" id="btnFilter" value="Find" type="button">
@@ -36,6 +36,7 @@
     </table>
 </div>
 
+
 @section Scripts
 {
     <script type="text/javascript">
@@ -46,19 +47,22 @@
             //alert("");
             var std = {};
             std.FirstName = $("#FirstName").val();
+            console.log(std.FirstName);
             $.ajax({
-                type: "Post",
+                type: "POST",
                 url: '@Url.Action("FindUser")',
-                data: '{std: ' + JSON.stringify(std) + '}',
+                data: '{"FirstName":"' + std.FirstName + '"}',
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
                 success: function () {
                    // alert("Data has been added successfully.");
                     LoadData();
+                    
                 },
                 error: function () {
                     alert("Error while inserting data");
                 }
+                
             });
             return false;
         });
