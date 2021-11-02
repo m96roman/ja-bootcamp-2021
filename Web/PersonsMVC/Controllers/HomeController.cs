@@ -80,7 +80,7 @@ namespace PersonsMVC.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            return View("UserModify", new UserViewModel());
+            return PartialView("UserModify", new UserViewModel());
         }
 
         [HttpPost]
@@ -137,7 +137,7 @@ namespace PersonsMVC.Controllers
         [HttpGet]
         public IActionResult Delete(string id)
         {
-            return GetViewOnUser("Delete", id);
+            return GetViewOnUser(id, "Delete");
         }
 
         [HttpPost]
@@ -147,7 +147,7 @@ namespace PersonsMVC.Controllers
             {
                 ViewData["Error"] = "The user was not deleted!";
 
-                return GetViewOnUser("Delete", id);
+                return GetViewOnUser(id, "Delete");
             }
 
             _logger.LogInformation($"Succesfullty deleted user with id {id}");
@@ -160,7 +160,7 @@ namespace PersonsMVC.Controllers
 
         public IActionResult Details(string id)
         {
-            return GetViewOnUser("Details", id);
+            return GetViewOnUser(id, "Details");
         }
 
         #endregion

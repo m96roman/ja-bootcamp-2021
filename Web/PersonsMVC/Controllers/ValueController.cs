@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace PersonsMVC.Controllers
 {
-    
     public class ValueController : Controller
     {
         [Route("value/{id?}")]

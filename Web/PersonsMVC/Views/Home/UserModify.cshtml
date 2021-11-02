@@ -2,15 +2,20 @@
 
 @{
     ViewData["Title"] = "Edit";
+    string action = "Create";
+    if (Model.Id != null)
+    {
+        action = "Edit";
+    }
 }
 
-<h1>Edit</h1>
+<h1>@action</h1>
 
 <h4>UserViewModel</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="@action" id="@action-user-form">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
@@ -28,10 +33,6 @@
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
