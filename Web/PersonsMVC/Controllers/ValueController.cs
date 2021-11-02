@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace PersonsMVC.Controllers
 {
-    public class ValueController : Controller
+    [ApiController]
+    [Route("value")]
+    public class ValueController : ControllerBase
     {
-        [Route("value/{id?}")]
-        [Route("value/show/{id?}")]
+        [Route("{id?}")]
+        [Route("show/{id?}")]
         public string Index(string id)
         {
             if (string.IsNullOrWhiteSpace(id))
