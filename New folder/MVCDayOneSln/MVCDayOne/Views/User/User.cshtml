@@ -1,0 +1,23 @@
+﻿@using MVCDayOne.Models
+
+@model UserModel
+
+@{
+    ViewBag.Title = "User";
+}
+<div class="item">
+    <h1>@ViewBag.Title</h1>
+    @using (Html.BeginForm("CreateUser", "User", FormMethod.Post))
+    {
+        <div class="item">
+            <label>Name</label>
+            @Html.TextBox("FirstName", Model.FirstName)
+        </div>
+        <div class="item">
+            <label>Surname</label>
+            @Html.TextBox("LastName", Model.LastName)
+
+        </div>
+        <input type="submit" value="Submit" />
+    }
+</div>

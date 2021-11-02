@@ -1,0 +1,47 @@
+﻿@model IEnumerable<MVCDayOne.Models.UserModel>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ShowUsers</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "CreateUser")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("DeleteUsers", "User", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>
+</html>
