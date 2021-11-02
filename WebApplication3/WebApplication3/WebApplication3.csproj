@@ -121,6 +121,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PersonsController.cs" />
     <Compile Include="Controllers\ValueController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -166,9 +167,14 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Value\Index.cshtml" />
     <Content Include="Views\Value\Show.cshtml" />
-    <Content Include="Views\Value\ShowPersons.cshtml" />
     <Content Include="Views\Value\IncorrectValue.cshtml" />
     <Content Include="Views\Value\Create.cshtml" />
+    <Content Include="Views\Persons\ShowPersons.cshtml" />
+    <Content Include="Views\Persons\Create.cshtml" />
+    <Content Include="Views\Persons\AddNewHappy.cshtml" />
+    <Content Include="Views\Persons\ShowPersonsList.cshtml" />
+    <Content Include="Views\Persons\Edit.cshtml" />
+    <Content Include="Views\Persons\SaveHappy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
