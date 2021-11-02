@@ -11,7 +11,11 @@ namespace CreateUser.Controllers
     {
        public static List<User> listOfUsers = new List<User>() {
            new User() { Id = 1, Name = $"User1", LastName = $"LastName1" },
-           new User() { Id = 2, Name = $"User2", LastName = $"LastName2" }
+           new User() { Id = 2, Name = $"User2", LastName = $"LastName2" },
+             new User() { Id = 3, Name = $"User1", LastName = $"LastName1" },
+           new User() { Id = 4, Name = $"User2", LastName = $"LastName2" },
+             new User() { Id = 5, Name = $"User1", LastName = $"LastName1" },
+           new User() { Id = 6, Name = $"User2", LastName = $"LastName2" }
        };
      
     // GET: User
