@@ -4,19 +4,36 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    @using (Html.BeginForm("CreateUser", "Home", FormMethod.Post, new { data_formType = "UserModel" }))
-    {
-        <div class="item">
-            <label>Name</label>
-            @Html.TextBox("UserName", @Model.UserName)
+@using (Html.BeginForm("CreateUser", "Home", FormMethod.Post, new { data_formType = "UserModel"}))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>User</h4>
+        <hr />
+        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UserName, "The Name filed is required", new { @class = "text-danger" })
+            </div>
         </div>
-        <div class="item">
-            <label>Surname</label>
-            @Html.TextBox("UserSurname", @Model.UserSurname)
-           
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserSurname, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UserSurname, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UserSurname, "The Surname filed is required", new { @class = "text-danger" })
+            </div>
         </div>
-        <input type="submit" value="Submit" />
-    }
-</div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-outline-success" />
+            </div>
+        </div>
+    </div>
+}
+

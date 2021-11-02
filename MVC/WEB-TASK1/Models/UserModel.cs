@@ -1,26 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
+
 
 namespace WEB_TASK1.Models
 {
     public class UserModel        
     {
-        private static int Iterator { get; set; } = default;
-
         public int UserId { get; set; }
 
+        [Required]
         public string UserName { get; set; }
 
+        [Required]
         public string UserSurname { get; set; }
-
-        public UserModel() : base()
-        {
-            UserId = Iterator;
-
-            Iterator++;
-        }
-
     }
 }
