@@ -1,12 +1,14 @@
 ﻿@model PersonsMVC.Models.UserViewModel
 
 @{
-    ViewData["Title"] = "Edit";
+
     string action = "Create";
     if (Model.Id != null)
     {
         action = "Edit";
     }
+
+    ViewData["Title"] = action;
 }
 
 <h1>@action</h1>
