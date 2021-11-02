@@ -1,15 +1,16 @@
 ﻿
 @{
     ViewBag.Title = "Show";
+    var value = @Model.Value;
 }
 
-@if (@Model.Value == null)
+@if (value == null)
 {
     <h3>
-        Expected message: No value provided
+        Expected message:No value provided
     </h3>
 }
 else
 {
-    <h3> Expected message: @Model.Value</h3>
+    <h3> Expected message:value</h3>
 }
