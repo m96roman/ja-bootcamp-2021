@@ -1,9 +1,17 @@
 ﻿@model WebApplication1.Models.User
 
+@{
+    Layout = "~/Views/Shared/LayOutForCreateAndEdit.cshtml";
+}
+
+@section Styles {
+    <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.6/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+}
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>User</h4>
         <hr />
@@ -13,7 +21,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" , autocomplete = "off" } })
                 @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -21,7 +29,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", autocomplete = "off" } })
                 @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -34,10 +42,19 @@
     </div>
 }
 
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/gijgo@1.9.6/js/gijgo.min.js" type="text/javascript"></script>
+    <script>
+        $('#BirthDate').datepicker({
+            uiLibrary: 'bootstrap4'
+        });
+    </script>
+}
+
 <div>
-    @Html.ActionLink("Back to List", "Index","User",null,new
+    @Html.ActionLink("Back to List", "Index", "User", null, new
     {
-        @class= "btn btn-primary btn-large"
+        @class = "btn btn-primary btn-large"
 
     })
 </div>

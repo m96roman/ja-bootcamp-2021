@@ -27,14 +27,18 @@ namespace WebApplication1.Controllers
         {
             try
             {
-                RepositoryUser.Create(user);
+                if (ModelState.IsValid)
+                {
+                    RepositoryUser.Create(user);
 
-                return RedirectToAction("Index");
+                    return RedirectToAction("Index");
+                }
+
+                return View();
             }
             catch
             {
                 return View(user);
-
             }
         }
 
@@ -49,9 +53,14 @@ namespace WebApplication1.Controllers
         {
             try
             {
-                RepositoryUser.Edit(user);
+                if (ModelState.IsValid)
+                {
+                    RepositoryUser.Edit(user);
 
-                return RedirectToAction("Index");
+                    return RedirectToAction("Index");
+                }
+
+                return View();
             }
             catch
             {
