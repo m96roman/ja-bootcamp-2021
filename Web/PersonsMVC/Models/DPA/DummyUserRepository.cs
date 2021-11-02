@@ -43,5 +43,10 @@ namespace PersonsMVC.Models.DPA
         public IEnumerable<User> GetUsers() => Users;
 
         public IEnumerable<User> GetUsers(Predicate<User> userFilterPredicate) => Users.Where(u => userFilterPredicate.Invoke(u)).ToList();
+
+        public IEnumerable<User> GetUsers(FilterUserViewModel filter)
+        {
+            return Users.Where(u => filter.IsValid(u)).ToList();
+        }
     }
 }

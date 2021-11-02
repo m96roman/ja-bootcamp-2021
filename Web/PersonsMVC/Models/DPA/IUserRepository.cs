@@ -18,5 +18,6 @@ namespace PersonsMVC.Models.DPA
         IEnumerable<User> GetUsers(Predicate<User> userFilterPredicate);
 
         User GetUser(string id);
+        IEnumerable<User> GetUsers(FilterUserViewModel filter);
     }
 }

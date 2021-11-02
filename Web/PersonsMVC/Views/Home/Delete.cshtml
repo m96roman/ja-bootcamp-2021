@@ -1,8 +1,9 @@
 ﻿@model PersonsMVC.Models.UserViewModel
-
+@using PersonsMVC.Middleware.Helpers;
 @{
     ViewData["Title"] = "Delete";
 }
+@Html.ErrorAlert(ViewData["Error"])
 
 <h1>View</h1>
 

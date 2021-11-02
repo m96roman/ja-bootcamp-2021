@@ -1,41 +1,54 @@
 ﻿@model IEnumerable<PersonsMVC.Models.UserViewModel>
+@using PersonsMVC.Middleware.Helpers;
 
 @{
     ViewData["Title"] = "List of people";
 }
-@if (TempData["Error"] != null)
-{
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong>
-            @TempData["Error"]
-        </strong>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-}
-<h1>View</h1>
 
-<p>
-    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#create-form">
-        Create new
-    </button>
-</p>
+@Html.ErrorAlert(TempData["Error"])
+@Html.ErrorAlert(ViewData["Error"])
+
 <div class="row">
-    @foreach (var item in Model)
-    {
-        <div class="col-md-6 m-3">
+    <div class="col-sm-8 border border-secondary-4">
+        <h1>Set the filter:</h1>
+        <form data-ajax-url="/Home/Filter" data-ajax="true" data-ajax-method="get" data-ajax-mode="replace" data-ajax-update="#user-list">
+            <div class="input-group mb-3">
+                <div class="input-group-append">
+                    <label class="input-group-text" for="#Name">Name:</label>
+                </div>
 
-            @await Html.PartialAsync("UserView", item)
-
-            <div>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                <input id="Name" name="Name" type="text" class="form-control" />
             </div>
-        </div>
-    }
+
+            <div class="input-group mb-3">
+                <div class="input-group-append">
+                    <label class="input-group-text" for="#LastName">Last name:</label>
+                </div>
+
+                <input id="LastName" name="LastName" type="text" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <div class="form-row">
+                    <input type="submit" class="btn btn-success col-sm-6" value="Filter" />
+                    <input type="reset" class="btn btn-danger col-sm-6" value="Clear" />
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-sm-4">
+        <p>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#create-form">
+                Create new
+            </button>
+        </p>
+    </div>
 </div>
+
+<div id="user-list" class="container-fluid">
+    @await Html.PartialAsync("UsersList", Model)
+</div>
+
 <div class="modal fade" id="create-form" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="form">
         <div class="modal-content">

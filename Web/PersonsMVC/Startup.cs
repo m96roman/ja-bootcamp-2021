@@ -35,11 +35,11 @@ namespace PersonsMVC
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                // app.UseDeveloperExceptionPage();
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                // app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
@@ -49,6 +49,19 @@ namespace PersonsMVC
             app.UseRouting();
 
             app.UseAuthorization();
+            //app.Use(async (context, next) =>
+            //{
+            //    await next();
+            //    if (context.Response.StatusCode == 404)
+            //    {
+            //        context.Request.Path = "/Home";
+            //        await next();
+            //    }
+            //});
+            app.UseStatusCodePagesWithRedirects("/error/{0}");
+
+            //app.UseExceptionHandler("/error");
+            //app.UseStatusCodePagesWithReExecute("/HandleError/{0}");
 
             app.UseEndpoints(endpoints =>
             {

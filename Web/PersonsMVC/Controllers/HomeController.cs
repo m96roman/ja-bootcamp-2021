@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace PersonsMVC.Controllers
@@ -26,6 +27,14 @@ namespace PersonsMVC.Controllers
         public IActionResult Index()
         {
             return View(userRepository.GetUsers().Select(u => GetViewModel(u)));
+        }
+
+        [HttpGet]
+        public PartialViewResult Filter(FilterUserViewModel filter)
+        {
+            IEnumerable<User> usersList = userRepository.GetUsers(filter);
+
+            return PartialView("UsersList", usersList.Select(u => GetViewModel(u)));
         }
 
         private UserViewModel SetViewModel(string id)
@@ -124,9 +133,12 @@ namespace PersonsMVC.Controllers
         {
             if (!userRepository.Delete(id))
             {
-                TempData["Error"] = "The ";
+                ViewData["Error"] = "The user was not deleted!";
+
+                return GetViewOnUser(id);
             }
 
+            _logger.LogInformation($"Succesfullty deleted user with id {id}");
             return RedirectToAction(nameof(Index));
         }
 
@@ -140,11 +152,5 @@ namespace PersonsMVC.Controllers
         }
 
         #endregion
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
     }
 }
