@@ -2,6 +2,7 @@
 using IPlyskaMVCPart1.Interfaces;
 using IPlyskaMVCPart1.Models;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,26 @@ namespace IPlyskaMVCPart1.Controllers
         public IActionResult Index()
         {
             return View(_users.GetAllUsers());
+        }
+
+        [HttpGet]
+        public JsonResult GetUsers(string Id)
+        {
+            var users = _users.GetAllUsers();
+            return Json(users);
+        }
+
+        [HttpGet]
+        public IActionResult FindUser()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public JsonResult FindUser(Users user)
+        {
+            var findedUser = _users.GetAllUsers().FirstOrDefault(x => x.FirstName == user.FirstName || x.LastName == user.LastName);
+            return Json(findedUser);
         }
 
         [HttpPost]
@@ -43,6 +64,7 @@ namespace IPlyskaMVCPart1.Controllers
         [Route("user/add")]
         public IActionResult Create()
         {
+            //throw new Exception();
             return View();
         }
 

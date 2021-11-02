@@ -9,11 +9,18 @@ namespace IPlyskaMVCPart1.BLL
 {
     public class UsersProvider : IUsersProvider
     {
-        List<Users> users = new List<Users>(); 
+        List<Users> users = new List<Users>()
+        {
+           new Users(){Id = 0, FirstName = "Tom", LastName = "Fox"},
+           new Users(){Id = 1, FirstName = "Mike", LastName = "DrinkWater"},
+           new Users(){Id = 2, FirstName = "Dunkan", LastName = "Rice"},
+           new Users(){Id = 3, FirstName = "Nick", LastName = "Smith"},
+           new Users(){Id = 4, FirstName = "Aron", LastName = "Hana"}
+        };
         private static object _locker = new object();
         public UsersProvider()
         {
-            users = new List<Users>();
+           
         }
         public bool AddUser(Users user)
         {

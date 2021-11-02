@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Index";
+  
 }
 
 <div>Index</div>
@@ -9,6 +10,8 @@
 <p class="text-right">
     @Html.ActionLink("Create New", "Create")
 </p>
+
+
 
 @if (ViewBag.Message != null)
 {
@@ -19,7 +22,7 @@
 }
 
 
-<table class="table">
+<table id="tblUser" class="table table-bordered  table-hover">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.FirstName)
@@ -58,3 +61,4 @@
 
     }
 </table>
+
