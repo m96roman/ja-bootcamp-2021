@@ -3,6 +3,7 @@ using IPlyskaMVCPart1.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -25,11 +26,6 @@ namespace IPlyskaMVCPart1
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().AddRazorPagesOptions(options =>
-            {
-                options.Conventions.AddPageRoute("/user/get-all", "");
-            });
-
             services.AddControllersWithViews();
             services.AddSingleton<IUsersProvider, UsersProvider>();
         }
@@ -58,8 +54,7 @@ namespace IPlyskaMVCPart1
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-
+                   pattern: "{controller=Users}/{action=Index}/{id?}");
             });
         }
     }

@@ -18,8 +18,6 @@ namespace IPlyskaMVCPart1.Controllers
             _users = users;
         }
 
-        [HttpGet]
-        [Route("user/get-all")]
         public IActionResult Index()
         {
             return View(_users.GetAllUsers());
