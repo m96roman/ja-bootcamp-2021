@@ -9,7 +9,8 @@ namespace PersonsMVC.Models.DPA
     {
         public DummyUserRepository()
         {
-            Users = new() { new("123", "123", "123") };
+            Users = new()
+            { new("1", "1", "1"), new("12", "12", "12"), new("123", "123", "123"), new("1234", "1234", "1234") };
         }
 
         public List<User> Users { get; set; }

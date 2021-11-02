@@ -27,5 +27,10 @@ namespace PersonsMVC.Models.Entities
         {
             return HashCode.Combine(Id);
         }
+
+        public override string ToString()
+        {
+            return (Id, Name, LastName).ToString();
+        }
     }
 }

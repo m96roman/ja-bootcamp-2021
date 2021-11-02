@@ -16,6 +16,7 @@ namespace PersonsMVC.Controllers
         private readonly ILogger<HomeController> _logger;
 
         private readonly IUserRepository userRepository;
+
         public HomeController(ILogger<HomeController> logger, IUserRepository userRepository)
         {
             _logger = logger;
@@ -24,13 +25,18 @@ namespace PersonsMVC.Controllers
 
         public IActionResult Index()
         {
-            return View(userRepository.GetUsers());
+            return View(userRepository.GetUsers().Select(u => GetViewModel(u)));
         }
 
         private UserViewModel SetViewModel(string id)
         {
             var us = userRepository.GetUser(id);
 
+            return GetViewModel(us);
+        }
+
+        private static UserViewModel GetViewModel(User us)
+        {
             if (us == null) { return null; }
 
             return new UserViewModel { Name = us.Name, LastName = us.LastName, Id = us.Id };
@@ -51,6 +57,7 @@ namespace PersonsMVC.Controllers
             {
                 User user = new User(Guid.NewGuid().ToString(), userViewModel.Name, userViewModel.LastName);
                 userRepository.Add(user);
+                _logger.LogInformation(user.ToString() + " is created!");
 
                 return Redirect($"/Home/Details/{user.Id}");
             }
@@ -65,11 +72,11 @@ namespace PersonsMVC.Controllers
         [HttpGet]
         public IActionResult Edit(string id)
         {
-            User user = userRepository.GetUser(id);
+            UserViewModel userViewModel = SetViewModel(id);
 
-            if (user != null)
+            if (userViewModel != null)
             {
-                return View(new UserViewModel { Id = user.Id, LastName = user.LastName, Name = user.Name });
+                return View(userViewModel);
             }
 
             return RedirectToAction(nameof(Index));
@@ -84,10 +91,13 @@ namespace PersonsMVC.Controllers
 
                 if (userRepository.Edit(user))
                 {
+                    _logger.LogInformation(user + " is updated");
+
                     return RedirectToAction("Index");
                 }
 
-                ModelState.AddModelError("", "Cannot edit this entity!");
+                _logger.LogInformation("cannot update following entity " + user);
+                ModelState.AddModelError("", "Cannot update this entity!");
             }
 
             return PartialView(userViewModel);
@@ -103,10 +113,11 @@ namespace PersonsMVC.Controllers
             return View(SetViewModel(id));
         }
 
+        [HttpPost]
         public IActionResult Delete(string id, string value)
         {
-
             userRepository.Delete(id);
+
             return RedirectToAction(nameof(Index));
         }
 
