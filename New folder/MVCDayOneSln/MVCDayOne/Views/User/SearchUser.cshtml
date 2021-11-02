@@ -1,0 +1,60 @@
+﻿@model IEnumerable<MVCDayOne.Models.UserModel>
+
+<div class="container">
+    <b> Search</b>
+    <select id="SearchBy">
+        <option value="FirstName">First Name</option>
+        <option value="LastName">Last Name</option>
+    </select>
+    @Html.TextBox("Search")<input type="button" id="SearchBtn" value="Search" /> <br /> <br />
+    <table class="table table-stripped">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+            <tr>
+        </thead>
+        <tbody id="DataSearching">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.FirstName</td>
+                    <td>@item.LastName</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script>
+    $(function () {
+        $("SearchBtn").click(function () {
+            var SearchBy = $("SearchBy").val();
+            var SearchValue = $("Search").val();
+            var SetData = $("DataSearching");
+            SetData.html("");
+            $.ajax({
+                type: "post",
+                url: '@Url.Action("SearchingData", "User")',
+                contentType: "html",
+                data: {
+                    SearchBy: SearchBy, SearchValue: SearchValue
+                },
+                success: function (result) {
+                    if (result.length == 0) {
+                        SetData.append('<tr style="color:red"><td colspan="3">No data</td></tr>')
+                    }
+                    else {
+                        $.each(result, function (index, value) {
+                            var Data = "<tr>" +
+                                "<td>" + value.FirstName + "</td>" +
+                                "<td>" + value.LastName + "</td>"
+                            "</tr>";
+                            SetData.append(Data);
+                        })
+                    }
+                }
+            })
+        });
+    })
+</script>

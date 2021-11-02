@@ -13,7 +13,7 @@
 </head>
 <body>
     <p>
-        @Html.ActionLink("Create New", "CreateUser")
+        @Html.ActionLink("Create New", "User")
     </p>
     <table class="table">
         <tr>
@@ -37,11 +37,60 @@
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("DeleteUsers", "User", new { /* id=item.PrimaryKey */ })
+                    @Html.ActionLink("Delete user", "DeleteUser", new { /* id=item.PrimaryKey */ })
                 </td>
             </tr>
         }
-
     </table>
 </body>
 </html>
+
+<div class="container">
+    <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+            <input type="text" id="Search" placeholder="Search" class="form-control" />
+        </div>
+    </div>
+</div>
+
+<br />
+<table class="table table-stripped">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+        <tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="Search">
+                <td>@item.FirstName</td>
+                <td>@item.LastName</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script>
+    $(document).ready(function () {
+        function Contains(text_one, text_two) {
+            if (text_one.indexOf(text_two) != -1)
+                return true;
+        }
+        $("#Search").keyup(function () {
+            var searchText = +$("Search").val().toLowerCase();
+            $(".Search").each(function () {
+                if (!Contains($(this).text().toLowerCase(), searchText)) {
+                    $(this).hide();
+                }
+                else {
+                    $(this).show();
+                }
+            });
+        });
+    });
+</script>
