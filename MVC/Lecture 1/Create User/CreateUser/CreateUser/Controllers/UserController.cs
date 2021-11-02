@@ -9,45 +9,39 @@ namespace CreateUser.Controllers
 {
     public class UserController : Controller
     {
-        // GET: User
-        public ActionResult Users()
+       public static List<User> listOfUsers = new List<User>() {
+           new User() { Id = 1, Name = $"User1", LastName = $"LastName1" },
+           new User() { Id = 2, Name = $"User2", LastName = $"LastName2" }
+       };
+     
+    // GET: User
+    public ActionResult Users()
         {
-            var listOfUsers = new List<User>();
-
-
-            for (int i = 0; i < 10; i++)
-            {
-                listOfUsers.Add(new User() { Id = i, Name = $"User{i}", LastName = $"LastName{i}" });
-            }
+         
             return View(listOfUsers);
         }
+
+       
+        public ActionResult Delete(int id)
+        {
+            listOfUsers.Remove(listOfUsers.Where(p=>p.Id==id).FirstOrDefault());
+
+            return  RedirectToAction("Users");
+        }
+
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            return View();  
-        }
-
-        [HttpGet]
-        public ActionResult Delete(int id)
-        {
-            return View(new User() { Id = id });
+            return View(listOfUsers.Where(p=>p.Id == id).FirstOrDefault());
         }
 
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Edit(User user)
         {
-            var listOfUsers = new List<User>();
-
-            for (int i = 0; i < 10; i++)
-            {
-                if (i == id)
-                {
-                    continue;
-                }
-
-                listOfUsers.Add(new User() { Id = i, Name = $"User{i}", LastName = $"LastName{i}" });
-            }
-            return View("Users", listOfUsers);
+            var currentUser = listOfUsers.Where(p => p.Id == user.Id).FirstOrDefault();
+            currentUser.Name = user.Name;
+            currentUser.LastName = user.LastName;
+            return RedirectToAction("Users");
         }
     }
 }
