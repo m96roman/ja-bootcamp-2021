@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using PersonsMVC.Helpers;
 using PersonsMVC.Models.DPA;
 using System;
 using System.Collections.Generic;
@@ -49,15 +50,13 @@ namespace PersonsMVC
             app.UseRouting();
 
             app.UseAuthorization();
-            //app.Use(async (context, next) =>
-            //{
-            //    await next();
-            //    if (context.Response.StatusCode == 404)
-            //    {
-            //        context.Request.Path = "/Home";
-            //        await next();
-            //    }
-            //});
+
+            app.MapWhen(context => context.Request.Path.ToString().EndsWith(".png"),
+                appBranch =>
+                {
+                    appBranch.UseMyHandler();
+                });
+
             app.UseStatusCodePagesWithRedirects("/error/{0}");
 
             //app.UseExceptionHandler("/error");
