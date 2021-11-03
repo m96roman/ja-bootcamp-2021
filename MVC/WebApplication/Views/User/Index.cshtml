@@ -1,0 +1,56 @@
+﻿@model IEnumerable<WebApplication.Models.User>
+
+@{
+    ViewBag.Title = "Users list";
+}
+
+<h3>Create new user: </h3>
+@Html.ActionLink("Create New User", "Insert", "User", null, new
+{
+    @class = "btn btn-primary btn-large"
+})
+<hr />
+<h3>Search user: </h3>
+@Html.ActionLink("Search User", "Search", "User", null, new
+{
+    @class = "btn btn-primary btn-large"
+})
+<p>
+    <h3>List users:</h3>
+    <table id="tblStudent" class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.ActionLink("Update", "Update", new { id = item.Id }, new
+                    {
+                        @class = "btn btn-primary btn-large"
+
+                    }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new
+                    {
+                        @class = "btn btn-primary btn-large"
+
+                    })
+                </td>
+            </tr>
+        }
+    </table>
