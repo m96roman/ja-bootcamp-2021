@@ -26,7 +26,6 @@ namespace WebApplication3.Controllers
         {
             peopleList.Add(person);
             return RedirectToAction("ShowPersonsList");
-
         }
         [HttpGet]
         public ActionResult Edit(int id)
@@ -46,6 +45,7 @@ namespace WebApplication3.Controllers
             }
             return RedirectToAction("ShowPersonsList");        
         }
+
         public ActionResult Delete(int id)
         {
             peopleList.Remove(peopleList.Where(p => p.Id == id).FirstOrDefault());
@@ -54,10 +54,9 @@ namespace WebApplication3.Controllers
 
         [HttpGet]
         public JsonResult getPerson([Required]string name)
-        {
-            
+        {          
             return Json(peopleList.Where(t=>t.Name.Contains(name)), JsonRequestBehavior.AllowGet);
         }
-
+              
     }
 }

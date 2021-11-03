@@ -4,13 +4,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<p></p>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <form>
     <table>
         <th>
-            <input type="text" name="NameFilter" id="NameFilter" />
+            <input type="text" name="NameFilter" id="NameFilter" class="form-control" />
         </th>
         <th class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -18,6 +19,7 @@
             </div>
         </th>
     </table>
+    <p></p>
 </form>
 <table id="PersonsTable" class="table">
     <tr>
