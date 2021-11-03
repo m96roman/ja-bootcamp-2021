@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
-
+using Microsoft.AspNetCore.Http.Extensions;
 
 namespace IPlyskaMVCPart1.BLL
 {
@@ -19,11 +21,28 @@ namespace IPlyskaMVCPart1.BLL
 
         public async Task Invoke(HttpContext context)
         {
-            // Do something with context near the beginning of request processing.
 
+            HttpRequest request = context.Request;
+            HttpResponse response = context.Response;
+            var outputStream = context.Response.Body;
+
+            try
+            {
+                var url = context.Request.GetEncodedUrl();
+                if (url == @"https://localhost:44364/Image/DownloadPicture")
+                {
+                    var photo = File.ReadAllBytes("picture 1.gif");
+                    response.ContentType = "image/gif";
+                    await outputStream.WriteAsync(photo, 0, photo.Length);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
             await _next.Invoke(context);
 
-            // Clean up.
+            // Clean up. 
         }
     }
 

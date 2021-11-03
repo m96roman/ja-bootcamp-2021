@@ -24,5 +24,13 @@ namespace IPlyskaMVCPart1.Controllers
 
             return View(image);
         }
+
+        [HttpGet]
+        public FileResult DownloadPicture()
+        {
+            byte[] fileBytes = System.IO.File.ReadAllBytes(@"C:\Users\Yuriy\source\repos\ja-bootcamp-2021\Bootcamp\IPlyskaMVCPart1\Images\download.gif");
+            string fileName = "download.gif";
+            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
+        }
     }
 }

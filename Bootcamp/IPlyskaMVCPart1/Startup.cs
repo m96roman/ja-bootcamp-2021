@@ -57,7 +57,7 @@ namespace IPlyskaMVCPart1
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
-
+            app.UseMyMiddleware();
             app.UseStaticFiles();
 
             ///added midlwear to handle exception
