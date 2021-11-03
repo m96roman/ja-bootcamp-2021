@@ -10,7 +10,7 @@ namespace PersonsMVC.Models.DPA
         public DummyUserRepository()
         {
             Users = new()
-            { new("1", "1", "1"), new("12", "12", "12"), new("123", "123", "123"), new("1234", "1234", "1234") };
+            { new("1", "1", "1", "1.1"), new("12", "12", "12", "12.12"), new("123", "123", "123", "123.123"), new("1234", "1234", "1234", "1234.1234") };
         }
 
         public List<User> Users { get; set; }
@@ -34,6 +34,7 @@ namespace PersonsMVC.Models.DPA
                 {
                     entity.LastName = user.LastName;
                     entity.Name = user.Name;
+                    entity.ThirdProperty = user.ThirdProperty;
 
                     return true;
                 }

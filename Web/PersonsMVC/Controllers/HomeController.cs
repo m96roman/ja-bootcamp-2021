@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewEngines;
 using Microsoft.Extensions.Logging;
+using PersonsMVC.Helpers;
 using PersonsMVC.Models;
 using PersonsMVC.Models.DPA;
 using PersonsMVC.Models.Entities;
@@ -40,7 +41,7 @@ namespace PersonsMVC.Controllers
         {
             if (us == null) { return null; }
 
-            return new UserViewModel { Name = us.Name, LastName = us.LastName, Id = us.Id };
+            return new UserViewModel { Name = us.Name, LastName = us.LastName, Id = us.Id, ThirdPropertyOfUser = us.ThirdProperty };
         }
 
         private IActionResult GetViewOnUser(string id, string view)
@@ -84,11 +85,11 @@ namespace PersonsMVC.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromForm] UserViewModel userViewModel)
+        public IActionResult Create([ModelBinder(BinderType = typeof(UserThirdPropertyBinder))] UserViewModel userViewModel)
         {
             if (ModelState.IsValid)
             {
-                User user = new User(Guid.NewGuid().ToString(), userViewModel.Name, userViewModel.LastName);
+                User user = new User(Guid.NewGuid().ToString(), userViewModel.Name, userViewModel.LastName, userViewModel.ThirdPropertyOfUser);
                 userRepository.Add(user);
                 _logger.LogInformation(user.ToString() + " is created!");
 
@@ -117,11 +118,11 @@ namespace PersonsMVC.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit([FromForm] UserViewModel userViewModel)
+        public IActionResult Edit([ModelBinder(BinderType = typeof(UserThirdPropertyBinder))] UserViewModel userViewModel)
         {
             if (ModelState.IsValid)
             {
-                User user = new User(userViewModel.Id, userViewModel.Name, userViewModel.LastName);
+                User user = new User(userViewModel.Id, userViewModel.Name, userViewModel.LastName, userViewModel.ThirdPropertyOfUser);
 
                 if (userRepository.Edit(user))
                 {
