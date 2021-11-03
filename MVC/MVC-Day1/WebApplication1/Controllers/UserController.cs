@@ -32,7 +32,7 @@ namespace WebApplication1.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View();
+            return View("CreateEdit");
         }
 
         public ActionResult Edit(int id)
@@ -51,7 +51,7 @@ namespace WebApplication1.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View();
+            return View("CreateEdit");
         }
 
         [HttpPost]
