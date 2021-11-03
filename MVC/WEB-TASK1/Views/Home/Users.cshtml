@@ -5,41 +5,51 @@
 @{
     ViewData["Title"] = "Users";
 }
-<div style="display:flex; flex-direction:row; width:100%; justify-content:space-between" >
+<div style="display:flex; flex-direction:row; width:100%; justify-content:space-between">
     <div style="display: flex; flex-direction: column; width:45%">
+
+        <h1>Find @ViewData["Title"]</h1>
+
+        <div class="form-group">
+            <input type="text" class="form-control" id="UsedIdFind" placeholder="Search" name="id">
+            <small id="passHelp" class="form-text text-muted">Еhis field must be filled</small>
+        </div>
+
+        <button class="btn btn-primary my-2 my-sm-0" type="submit" id="Search_btn">Search</button>
+
+
+
         <h1>@ViewData["Title"] Delete</h1>
-        @using (Html.BeginForm("DeleteUser", "Home", FormMethod.Post, new { data_formType = "string" }))
-        {
-            <div class="form-group">
-                <label for="exampleInputEmail1">ID User</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="id">
-                <small id="emailHelp" class="form-text text-muted">Еhis field must be filled</small>
-            </div>
-            <button type="submit" class="btn btn-danger">Delete</button>
-        }
+
+        <div class="form-group">
+            <label for="UsedIdDelete">ID User</label>
+            <input type="text" class="form-control" id="UsedIdDelete" placeholder="Enter Id" name="id">
+            <small id="passHelp" class="form-text text-muted">Еhis field must be filled</small>
+        </div>
+
+        <button type="submit" class="btn btn-danger" id="Delete_btn_sbmit">Delete</button>
+
     </div>
 
     <div style="display: flex; flex-direction: column; width: 45% ">
         <h1>@ViewData["Title"] Edit</h1>
-        @using (Html.BeginForm("EditUser", "Home", FormMethod.Post, new { data_formType = "UserModel" }))
-        {
-            <div class="form-group">
-                <label for="exampleInputEmail1">User ID</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="userId">               
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Name</label>
-                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Name" name="userName">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Surname</label>
-                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Surname" name="userSurname">
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        }     
+
+        <div class="form-group">
+            <label for="UserId">User ID</label>
+            <input type="text" class="form-control" id="UserId" placeholder="Enter id" name="userId">
+        </div>
+        <div class="form-group">
+            <label for="UserName">Name</label>
+            <input type="text" class="form-control" id="UserName" placeholder="Name" name="userName">
+        </div>
+        <div class="form-group">
+            <label for="UserSurname">Surname</label>
+            <input type="text" class="form-control" id="UserSurname" placeholder="Surname" name="userSurname">
+        </div>
+        <button type="submit" class="btn btn-success" id="Edit_btn_sbmit">Submit</button>
+
     </div>
 </div>
-
 
 <div class="col-md-12" style="margin-top: 50px">
     <table id="tblStudent" class="table table-striped">
@@ -51,17 +61,138 @@
             </tr>
         </thead>
         <tbody>
-            @{
-                foreach (var user in Model)
-                {
-                    <tr>
-                        <th align="left" class=" col-2">@user.UserId </th>
-                        <th align="left" class=" col-5">@user.UserName</th>
-                        <th align="left" class=" col-5">@user.UserSurname</th>
-                    </tr>
-                }
-            }
         </tbody>
     </table>
 </div>
 
+
+@section Scripts
+{
+    <script type="text/javascript">
+        LoadAllUsers();
+    $(function () {
+        $("#Search_btn").click(function () {
+            var name = $("#UsedIdFind").val();
+
+            if (name != null) {
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("FindUser", "Home")',
+                    dataType: 'json',
+                    data: { userName: name },
+                    success: function (user) {
+                        LoadSelectedUsers();
+                    },
+                    error: function () {
+                        alert("Error while inserting data");
+                    }
+                });
+                return false;
+            }
+        });
+     });
+
+    $(function () {
+        $("#Delete_btn_sbmit").click(function () {
+            var userId = $("#UsedIdDelete").val();
+
+            if (userId != null) {
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("DeleteUser", "Home")',
+                    dataType: 'json',
+                    data: { id: userId },
+                    success: function (user) {
+                        LoadAllUsers();
+                    },
+                    error: function () {
+                        alert("Error while inserting data");
+                    }
+                });
+                return false;
+            }
+        });
+    });
+
+    $(function () {
+        $("#Edit_btn_sbmit").click(function () {
+            var user ={
+                userId: $("#UserId").val(),
+                userName: $("#UserName").val(),
+                userSurname: $("#UserSurname").val()
+            };
+
+            if (user.userName != null && user.userSurname != null) {
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("EditUser", "Home")',
+                    dataType: 'json',
+                    data: { userModel: user },
+
+                    success: function (user) {
+                        LoadAllUsers();
+                    },
+                    error: function () {
+                        alert("Error while inserting data");
+                    }
+                });
+                return false;
+            }
+        });
+    });
+
+    function LoadAllUsers() {
+        $("#tblStudent tbody tr").remove();
+        $.ajax({
+            url: '@Url.Action("GetUsers", "Home")',
+            contentType: "application/json; charset=utf-8",
+            dataType: 'json',
+            success: function (data) {
+                var items = '';
+                $.each(data, function (i, item) {
+                    var rows = "<tr>"
+                        + "<td class='prtoducttd'>" + item.userId + "</td>"
+                        + "<td class='prtoducttd'>" + item.userName + "</td>"
+                        + "<td class='prtoducttd'>" + item.userSurname + "</td>"
+                    + "</tr>";
+                    $('#tblStudent tbody').append(rows);
+                });
+            },
+            error: function (ex) {
+                var r = jQuery.parseJSON(response.responseText);
+                alert("Message: " + r.Message);
+                alert("StackTrace: " + r.StackTrace);
+                alert("ExceptionType: " + r.ExceptionType);
+            }
+        });
+        return false;
+        }
+
+        function LoadSelectedUsers() {
+        $("#tblStudent tbody tr").remove();
+        $.ajax({
+            url: '@Url.Action("GetUser", "Home")',
+            contentType: "application/json; charset=utf-8",
+            dataType: 'json',
+            success: function (data) {
+                var items = '';
+                $.each(data, function (i, item) {
+                    var rows = "<tr>"
+                        + "<td class='prtoducttd'>" + item.userId + "</td>"
+                        + "<td class='prtoducttd'>" + item.userName + "</td>"
+                        + "<td class='prtoducttd'>" + item.userSurname + "</td>"
+                    + "</tr>";
+                    $('#tblStudent tbody').append(rows);
+                });
+            },
+            error: function (ex) {
+                var r = jQuery.parseJSON(response.responseText);
+                alert("Message: " + r.Message);
+                alert("StackTrace: " + r.StackTrace);
+                alert("ExceptionType: " + r.ExceptionType);
+            }
+        });
+        return false;
+    }
+    </script>
+}

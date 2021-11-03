@@ -1,11 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
 using WEB_TASK1.Models;
+
 
 namespace WEB_TASK1.Controllers
 {
@@ -55,46 +54,41 @@ namespace WEB_TASK1.Controllers
         public ActionResult DeleteUser(int? id)
         {
             UsersList.Remove(UsersList.Where(u => u.UserId == id).FirstOrDefault());
-            return RedirectToAction("Users");
+            return Json(UsersList);
         }
 
         [HttpPost]
-        public ActionResult EditUser(int userId, string userName, string userSurname)
+        public ActionResult EditUser(UserModel userModel)
         {
-            if (int.TryParse(userId.ToString(), out int ID) && userName != null && userSurname != null)
+            if (userModel.UserName != null && userModel.UserSurname != null) 
             {
-                var editUser = UsersList.Where(u => u.UserId == ID).FirstOrDefault();
-                editUser.UserName = userName;
-                editUser.UserSurname = userSurname;
+                var editUser = UsersList.Where(u => u.UserId == userModel.UserId).FirstOrDefault();
+                editUser.UserName = userModel.UserName;
+                editUser.UserSurname = userModel.UserSurname;
             }
 
-            return RedirectToAction("Users");
+            return Json(userModel);
         }
 
-        /*[HttpPost]
-        public ActionResult postCreateUser(UserModel userModel)
+        public JsonResult GetUsers()
         {
-            UsersList.Add(userModel);
-            string message = "SUCCESS";
-            return Json(new { Message = message, System.Web.Mvc.JsonRequestBehavior.AllowGet });
+            return Json(UsersList);
         }
-
-        public JsonResult getUser()
+        public JsonResult GetUser()
         {
-            return Json(UsersList, System.Web.Mvc.JsonRequestBehavior.AllowGet);
-        }*/
+            return Json(SelectedUsers);
+        }
 
         [HttpPost]
         public ActionResult FindUser(string userName)
         {
+            SelectedUsers.Clear();
             if (userName != null)
             {
-                SelectedUsers = new List<UserModel>();
                 SelectedUsers.AddRange(UsersList.Where(u => userName.Contains(u.UserName) || userName.Contains(u.UserSurname)).ToList<UserModel>());
-
-                return RedirectToAction("Users");
             }
-            return RedirectToAction("Users");
+
+            return Json(SelectedUsers);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
