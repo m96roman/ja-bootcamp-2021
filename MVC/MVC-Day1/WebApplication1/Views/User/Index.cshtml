@@ -24,8 +24,8 @@ else
             <p class="text-muted">
                 You do not have any users yet. Add a new user by clicking the <strong>Add User</strong> button below.
             </p>
+            <input type="button" id="create_submit" class="btn btn-info" value="Create" onclick="location.href='@Url.Action("Create", "User")'" />
 
-            <input type="button" class="btn btn-info" value="Create" onclick="location.href='@Url.Action("Create", "User")'" />
         </div>
     </div>
 }
@@ -47,12 +47,10 @@ else
                 }
             });
         });
-</script>
 
-<script>
     $('#UserList').on('click',
         '.delete',
-        (function () {
+        (function() {
             var container = $(this).closest('.item');
             var id = container.data('id');
             $.ajax({
@@ -64,13 +62,16 @@ else
                 success: successFunc,
                 error: errorFunc
             });
-
-            function successFunc(data, status) {     
+            function successFunc(data, status) {
+                if (id === 0) {
+                    window.location = "https://localhost:44371/User/Index";
+                }
                 container.remove();
             }
-
             function errorFunc() {
                 alert('error');
             }
         }));
+
 </script>
+

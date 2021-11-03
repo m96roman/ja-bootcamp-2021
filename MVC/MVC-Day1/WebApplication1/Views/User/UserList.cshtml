@@ -3,7 +3,7 @@
 
 @model IEnumerable<WebApplication1.Models.User>
 
-<table class="table">
+<table id="UserList" class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.FirstName)
@@ -16,7 +16,7 @@
 
     @foreach (var item in Model)
     {
-        <tr class="item" id="UserList" data-id="@item.Id">
+        <tr class="item" data-id="@item.Id">
             <td>
                 @Html.DisplayFor(modelItem => item.FirstName)
             </td>
@@ -31,3 +31,5 @@
     }
 
 </table>
+
+
