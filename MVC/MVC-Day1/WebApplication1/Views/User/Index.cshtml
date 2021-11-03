@@ -5,9 +5,9 @@
         padding: 10px;
         background: grey;
         color: #fff;
-        border: 1pxsolid#eee;
+        border: #eee;
         border-radius: 20px;
-        box-shadow: 5px5px5px black;
+        box-shadow: black;
         text-shadow: none;
     }
 
@@ -89,7 +89,9 @@ else
                 }
             });
         });
+</script>
 
+<script>
     $('#UserList').on('click',
         '.delete',
         (function () {
@@ -99,9 +101,18 @@ else
                 url: '@Url.Action("Delete", "User")',
                 type: "POST",
                 data: { id: id },
-                dataType: "json",
-                cache: false
+                dataType: "html",
+                cache: false,
+                success: successFunc,
+                error: errorFunc
             });
-            container.remove();
+
+            function successFunc(data, status) {     
+                container.remove();
+            }
+
+            function errorFunc() {
+                alert('error');
+            }
         }));
 </script>
