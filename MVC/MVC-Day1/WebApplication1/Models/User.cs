@@ -18,5 +18,7 @@ namespace WebApplication1.Models
         [Required(ErrorMessage = "Enter last name")]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
+
+        public string ThirdProperty { get; set; }
     }
 }

@@ -63,5 +63,11 @@ namespace WebApplication1.Controllers
 
             return PartialView("UserList", RepositoryUser.GetUsers());
         }
+
+        public ActionResult CustomModelInformation([ModelBinder(typeof(UserModelBinder))] User user)
+        {
+
+            return View("CustomBinder",user);
+        }
     }
 }

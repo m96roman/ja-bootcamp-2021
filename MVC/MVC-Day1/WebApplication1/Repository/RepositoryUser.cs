@@ -16,6 +16,7 @@ namespace WebApplication1.Repository
             {
                 FirstName = user.FirstName,
                 LastName = user.LastName,
+                ThirdProperty = user.ThirdProperty,
                 Id = users.Users.Count()
             });
         }
