@@ -19,6 +19,11 @@ namespace PersonsMVC.Models.DPA
 
         public bool Delete(string id) => Users.RemoveAll(u => u.Id == id) != 0;
 
+        public void Dispose()
+        {
+            Users = null;
+        }
+
         public bool Edit(User user)
         {
             if (Users.Count != 0 && Users.Contains(user))

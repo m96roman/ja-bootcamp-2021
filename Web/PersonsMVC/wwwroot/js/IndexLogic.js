@@ -1,36 +1,7 @@
-﻿$(document).on('click', '.btn-edit', function editBtnClick(event) {
+﻿$(document).on('click', '.btn-edit', function (event) {
     let userId = $(event.target).attr('id').replace("btn-edit-", "");
     setModalToEdit(userId);
 });
-
-$(document).on('click', "#launch-create-form", function () {
-    setModalToCreate();
-    setTimeout(function () {
-        $("#modify-form").modal('show');
-    }, 1)
-});
-
-$(document).on('submit', '#Create-user-form', function (event) {
-    event.preventDefault();
-    SendModifyRequest("#Create-user-form", createRoute)
-});
-
-$(document).on('submit', "#Edit-user-form", function (event) {
-    event.preventDefault();
-    SendModifyRequest("#Edit-user-form", editRoute, true)
-})
-
-function setModalToCreate() {
-    $.ajax({
-        method: "get",
-        url: createRoute,
-        processData: "false",
-        contentType: "false"
-    }).done(function (response) {
-        $("#modify-form-container").html(response);
-    })
-}
-
 function setModalToEdit(Id) {
 
     var link = editPostRoute;
@@ -54,22 +25,52 @@ function setModalToEdit(Id) {
 
 }
 
-function PopulateUsersList() {
-    let filterFormData = new FormData();
-    filterFormData.append("LastName", $("#FilterLastName").val())
-    filterFormData.append("Name", $("#FilterName").val())
+$(document).on('click', '.btn-delete', function (event) {
+    let userId = $(event.target).attr('id').replace("btn-delete-", "");
+    deleteUser(userId);
+})
+function deleteUser(id) {
+    let link = deleteRoute;
+    link = link.replace("-1", id);
 
     $.ajax({
-        type: 'POST',
-        url: filterRoute,
-        data: filterFormData,
-        processData: false,
-        contentType: false
+        url: link,
+        method: 'DELETE',
+
     }).done(function (response) {
-        $("#user-list").html(response);
-    });
+        if (response.success !== true) {
+            alert("Error happend:" + response.error)
+        } else {
+            PopulateUsersList();
+        }
+    })
 }
 
+$(document).on('click', "#launch-create-form", function () {
+    setModalToCreate();
+    setTimeout(function () {
+        $("#modify-form").modal('show');
+    }, 1)
+});
+function setModalToCreate() {
+    $.ajax({
+        method: "get",
+        url: createRoute,
+        processData: "false",
+        contentType: "false"
+    }).done(function (response) {
+        $("#modify-form-container").html(response);
+    })
+}
+
+$(document).on('submit', '#Create-user-form', function (event) {
+    event.preventDefault();
+    SendModifyRequest("#Create-user-form", createRoute)
+});
+$(document).on('submit', "#Edit-user-form", function (event) {
+    event.preventDefault();
+    SendModifyRequest("#Edit-user-form", editRoute, true)
+})
 function SendModifyRequest(form, url, edit = false) {
     let formData = new FormData();
 
@@ -101,6 +102,22 @@ function SendModifyRequest(form, url, edit = false) {
             //if the form has model state errors
             $("#modify-form-container").html(response);
         }
+    });
+}
+
+function PopulateUsersList() {
+    let filterFormData = new FormData();
+    filterFormData.append("LastName", $("#FilterLastName").val())
+    filterFormData.append("Name", $("#FilterName").val())
+
+    $.ajax({
+        type: 'POST',
+        url: filterRoute,
+        data: filterFormData,
+        processData: false,
+        contentType: false
+    }).done(function (response) {
+        $("#user-list").html(response);
     });
 }
 

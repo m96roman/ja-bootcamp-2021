@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace PersonsMVC.Models.DPA
 {
-    public interface IUserRepository
+    public interface IUserRepository : IDisposable
     {
         void Add(User user);
 

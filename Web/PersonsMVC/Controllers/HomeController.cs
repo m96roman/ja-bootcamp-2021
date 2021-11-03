@@ -141,24 +141,16 @@ namespace PersonsMVC.Controllers
 
         #region Delete
 
-        [HttpGet]
-        public IActionResult Delete(string id)
-        {
-            return GetViewOnUser(id, "Delete");
-        }
-
-        [HttpPost]
-        public IActionResult Delete(string id, string value)
+        [HttpDelete]
+        public JsonResult Delete(string id)
         {
             if (!userRepository.Delete(id))
             {
-                ViewData["Error"] = "The user was not deleted!";
-
-                return GetViewOnUser(id, "Delete");
+                return Json(new { error = "The user was not deleted!" });
             }
 
             _logger.LogInformation($"Succesfullty deleted user with id {id}");
-            return RedirectToAction(nameof(Index));
+            return Json(new { success = true });
         }
 
         #endregion
