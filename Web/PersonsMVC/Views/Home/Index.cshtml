@@ -36,21 +36,21 @@
 
     <div class="col-sm-4">
         <p>
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#create-form">
+            <button id="launch-create-form" type="button" class="btn btn-success">
                 Create new
             </button>
         </p>
     </div>
 </div>
 
-<div id="user-list" class="container-fluid">
+<div id="user-list" class="container-fluid mt-2 border border-secondary-4">
     @await Html.PartialAsync("UsersList", Model)
 </div>
 
-<div class="modal fade" id="create-form" tabindex="-1" role="dialog">
+<div class="modal fade" id="modify-form" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="form">
         <div class="modal-content">
-            <div id="create-form-container" class="modal-body">
+            <div id="modify-form-container" class="modal-body">
                 @await Html.PartialAsync("UserModify", new UserViewModel())
             </div>
         </div>
@@ -58,58 +58,11 @@
 </div>
 
 @section Scripts{
-    <script>
-        $("#Create-user-form").submit(function (event) {
-            event.preventDefault();
-            let formData = new FormData();
-            formData.append("Name", $("#Create-user-form input[name=Name]").val())
-
-            formData.append("LastName", $("#Create-user-form input[name=LastName]").val())
-
-            $.ajax({
-                type:'POST',
-                url: '@Url.Action("Create")',
-                data: formData,
-                processData: false,
-                contentType: false
-            }).done(function (response) {
-                if (response.created === true) {
-                    $("#Create-user-form")[0].reset()
-                    PopulateUsersList();
-                } else {
-                    $("#Create-form-container").html(response);
-                }
-            });
-        })
-
-        $("#FilterName").keyup(function () {
-            PopulateUsersList();
-        })
-
-        $("#FilterLastName").keyup(function () {
-            PopulateUsersList();
-        })
-
-        $("#FilterForm").on('reset', function () {
-            setTimeout(function () {
-                PopulateUsersList();
-            });
-        });
-
-        function PopulateUsersList() {
-            let filterFormData = new FormData();
-            filterFormData.append("LastName", $("#FilterLastName").val())
-            filterFormData.append("Name", $("#FilterName").val())
-
-             $.ajax({
-                type:'POST',
-                url: '@Url.Action("Filter")',
-                data: filterFormData,
-                processData: false,
-                contentType: false
-             }).done(function (response) {
-                 $("#user-list").html(response);
-            });
-        }
+    <script type="text/javascript">
+        var editPostRoute = '@Url.Action("Edit", "Home", new { id = "-1" })';
+        var editRoute = '@Url.Action("Edit")';
+        var createRoute = '@Url.Action("Create")';
+        var filterRoute = '@Url.Action("Filter")';
     </script>
+    <script src='@Url.Content("~/js/indexLogic.js")' type="text/javascript"></script>
 }

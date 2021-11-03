@@ -12,9 +12,9 @@
                 @await Html.PartialAsync("UserView", item)
 
                 <div>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-warning" })
+                    <a class="btn btn-warning btn-edit" id="btn-edit-@item.Id">Edit</a>
                     @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-primary" })
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-delete", id = $"btn-delete-{item.Id}" })
                 </div>
             </div>
         }

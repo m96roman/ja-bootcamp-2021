@@ -93,7 +93,7 @@ namespace PersonsMVC.Controllers
                 _logger.LogInformation(user.ToString() + " is created!");
 
                 //201= created
-                return Json(new { created = true });
+                return Json(new { success = true });
             }
 
             return PartialView("UserModify", userViewModel);
@@ -106,11 +106,18 @@ namespace PersonsMVC.Controllers
         [HttpGet]
         public IActionResult Edit(string id)
         {
-            return GetViewOnUser(id, "UserModify");
+            UserViewModel usModel = SetViewModel(id);
+
+            if (usModel != null)
+            {
+                return PartialView("UserModify", usModel);
+            }
+
+            return Json(new { failure = true });
         }
 
         [HttpPost]
-        public IActionResult Edit(UserViewModel userViewModel)
+        public IActionResult Edit([FromForm] UserViewModel userViewModel)
         {
             if (ModelState.IsValid)
             {
@@ -120,7 +127,7 @@ namespace PersonsMVC.Controllers
                 {
                     _logger.LogInformation(user + " is updated");
 
-                    return RedirectToAction("Index");
+                    return Json(new { success = true });
                 }
 
                 _logger.LogInformation("cannot update following entity " + user);
