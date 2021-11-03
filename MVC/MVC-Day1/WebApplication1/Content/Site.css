@@ -22,3 +22,69 @@ select,
 textarea {
     max-width: 280px;
 }
+input[type=button] {
+    padding: 10px;
+    background: grey;
+    color: #fff;
+    border: #eee;
+    border-radius: 20px;
+    box-shadow: black;
+    text-shadow: none;
+}
+
+input[type=text] {
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('searchicon.png');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+    width: 100%;
+}
+
+span {
+    width: 50px;
+    height: 50px;
+    background: black;
+}
+
+form {
+    padding: 10px;
+}
+input[type=submit] {
+    padding: 10px;
+    background: grey;
+    color: #fff;
+    border: 1pxsolid#eee;
+    border-radius: 20px;
+    box-shadow: 5px5px5px black;
+    text-shadow: none;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 5px;
+    padding: 10px;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2
+}
+
+th {
+    background-color: dimgrey;
+    color: white;
+}

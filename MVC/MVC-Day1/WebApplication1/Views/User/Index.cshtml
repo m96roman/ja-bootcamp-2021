@@ -1,49 +1,7 @@
 ﻿@model IEnumerable<WebApplication1.Models.User>
 
-<style>
-    input[type=button] {
-        padding: 10px;
-        background: grey;
-        color: #fff;
-        border: #eee;
-        border-radius: 20px;
-        box-shadow: black;
-        text-shadow: none;
-    }
-
-    input[type=text] {
-        width: 130px;
-        box-sizing: border-box;
-        border: 2px solid #ccc;
-        border-radius: 4px;
-        font-size: 16px;
-        background-color: white;
-        background-image: url('searchicon.png');
-        background-position: 10px 10px;
-        background-repeat: no-repeat;
-        padding: 12px 20px 12px 40px;
-        transition: width 0.4s ease-in-out;
-    }
-
-        input[type=text]:focus {
-            width: 100%;
-        }
-
-    span {
-        width: 50px;
-        height: 50px;
-        background: black;
-    }
-
-    form {
-        padding: 10px;
-    }
-</style>
-
-
 @if (Model.Count() > 0)
 {
-
     <form>
         <input type="text" id="txtsearch" placeholder="Enter user LastName.." />
     </form>
@@ -51,7 +9,6 @@
     <div id="UserList">
         @Html.Partial("UserList")
     </div>
-
 }
 else
 {
@@ -74,6 +31,7 @@ else
 }
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 <script>
     $("#txtsearch").on("keyup",
         function () {

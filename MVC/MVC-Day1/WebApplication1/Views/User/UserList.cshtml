@@ -3,69 +3,31 @@
 
 @model IEnumerable<WebApplication1.Models.User>
 
-<style>
-    input[type=button] {
-        padding: 10px;
-        background: grey;
-        color: #fff;
-        border: #eee;
-        border-radius: 20px;
-        box-shadow: black;
-        text-shadow: none;
-    }
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th></th>
+    </tr>
 
-    table {
-        border-collapse: collapse;
-        width: 100%;
-        margin: 5px;
-        padding: 10px;
-    }
-
-    th, td {
-        text-align: left;
-        padding: 8px;
-    }
-
-    tr:nth-child(even) {
-        background-color: #f2f2f2
-    }
-
-    th {
-        background-color: dimgrey;
-        color: white;
-    }
-</style>
-
-
-
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LastName)
-            </th>
-            <th></th>
+    @foreach (var item in Model)
+    {
+        <tr class="item" id="UserList" data-id="@item.Id">
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                <input type="button" class="btn btn-info" value="Edit" onclick="location.href='@Url.Action("Edit", "User",new {id = item.Id})'" />
+                <input type="button" data-id="@item.Id" value="Delete" class="delete" />
+            </td>
         </tr>
+    }
 
-        @foreach (var item in Model)
-        {
-            <tr class="item" id="UserList" data-id="@item.Id">
-                <td>
-                    @Html.DisplayFor(modelItem => item.FirstName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LastName)
-                </td>
-                <td>
-                    <input type="button" class="btn btn-info" value="Edit" onclick="location.href='@Url.Action("Edit", "User",new {id = item.Id})'" />
-                    <input type="button" data-id="@item.Id" value="Delete" class="delete" />
-                </td>
-            </tr>
-        }
-
-    </table>
-
-
-
+</table>
