@@ -63,7 +63,7 @@ namespace IPlyskaMVCPart1.Controllers
 
         [HttpPost]
         [Route("user/add")]
-        public IActionResult Create([FromBody] Users userEdited)
+        public IActionResult Create(Users userEdited)
         {
             if (userEdited is null)
             {
@@ -95,7 +95,7 @@ namespace IPlyskaMVCPart1.Controllers
 
         [HttpPost]
         [Route("user/edit/{id}")]
-        public ActionResult Edit([FromBody] Users Model)
+        public ActionResult Edit(Users Model)
         {
             var data = _users.GetAllUsers().Where(x => x.Id == Model.Id).FirstOrDefault();
             if (data != null)
