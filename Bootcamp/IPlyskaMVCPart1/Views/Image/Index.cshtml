@@ -1,0 +1,18 @@
+﻿@model IPlyskaMVCPart1.Models.Image
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<h4>@Model.Name</h4>
+
+<fieldset>
+    <legend>Product</legend>
+    <div>
+        <img scr ="~/Images/download.jfif" alt="@Model.Name" height="100" />
+    </div>
+
+    <div>
+        @Html.DisplayFor(model => model.Description)
+    </div>
+</fieldset>
