@@ -8,6 +8,7 @@ namespace WebApplication1.Models
 {
     public class User
     {
+        [Key]
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Enter first name")]

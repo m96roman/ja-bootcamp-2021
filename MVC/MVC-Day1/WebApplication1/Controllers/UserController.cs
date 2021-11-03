@@ -19,7 +19,7 @@ namespace WebApplication1.Controllers
         public ActionResult Create()
         {
 
-            return View(new User());
+            return View("CreateEdit",new User());
         }
 
         [HttpPost]
@@ -38,7 +38,7 @@ namespace WebApplication1.Controllers
         public ActionResult Edit(int id)
         {
             User user = RepositoryUser.GetById(id);
-            return View(user);
+            return View("CreateEdit",user);
         }
 
         [HttpPost]
