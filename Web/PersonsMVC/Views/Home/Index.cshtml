@@ -11,31 +11,29 @@
 <div class="row">
     <div class="col-sm-8 border border-secondary-4">
         <h1>Set the filter:</h1>
-        <form data-ajax-url="/Home/Filter" data-ajax="true" data-ajax-method="get" data-ajax-mode="replace" data-ajax-update="#user-list">
+        <form id="FilterForm" class="container-fluid">
             <div class="input-group mb-3">
                 <div class="input-group-append">
-                    <label class="input-group-text" for="#Name">Name:</label>
+                    <label class="input-group-text" for="#FilterName">Name:</label>
                 </div>
 
-                <input id="Name" name="Name" type="text" class="form-control" />
+                <input id="FilterName" name="FilterName" type="text" class="form-control" />
             </div>
 
             <div class="input-group mb-3">
                 <div class="input-group-append">
-                    <label class="input-group-text" for="#LastName">Last name:</label>
+                    <label class="input-group-text" for="#FilterLastName">Last name:</label>
                 </div>
 
-                <input id="LastName" name="LastName" type="text" class="form-control" />
+                <input id="FilterLastName" name="FilterLastName" type="text" class="form-control" />
             </div>
 
-            <div class="form-group">
-                <div class="form-row">
-                    <input type="submit" class="btn btn-success col-sm-6" value="Filter" />
-                    <input type="reset" class="btn btn-danger col-sm-6" value="Clear" />
-                </div>
+            <div class="form-group p-3">
+                <input id="ResetFilterForm_btn" type="reset" class="btn btn-danger" value="Clear" />
             </div>
         </form>
     </div>
+
     <div class="col-sm-4">
         <p>
             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#create-form">
@@ -63,7 +61,7 @@
     <script>
         $("#Create-user-form").submit(function (event) {
             event.preventDefault();
-            var formData = new FormData();
+            let formData = new FormData();
             formData.append("Name", $("#Create-user-form input[name=Name]").val())
 
             formData.append("LastName", $("#Create-user-form input[name=LastName]").val())
@@ -84,10 +82,29 @@
             });
         })
 
+        $("#FilterName").keyup(function () {
+            PopulateUsersList();
+        })
+
+        $("#FilterLastName").keyup(function () {
+            PopulateUsersList();
+        })
+
+        $("#FilterForm").on('reset', function () {
+            setTimeout(function () {
+                PopulateUsersList();
+            });
+        });
+
         function PopulateUsersList() {
+            let filterFormData = new FormData();
+            filterFormData.append("LastName", $("#FilterLastName").val())
+            filterFormData.append("Name", $("#FilterName").val())
+
              $.ajax({
-                type:'GET',
+                type:'POST',
                 url: '@Url.Action("Filter")',
+                data: filterFormData,
                 processData: false,
                 contentType: false
              }).done(function (response) {

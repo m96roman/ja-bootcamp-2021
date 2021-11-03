@@ -65,7 +65,7 @@ namespace PersonsMVC.Controllers
             return View(userRepository.GetUsers().Select(u => GetViewModel(u)));
         }
 
-        [HttpGet]
+        [HttpPost]
         public PartialViewResult Filter(FilterUserViewModel filter)
         {
             IEnumerable<User> usersList = userRepository.GetUsers(filter);
