@@ -23,7 +23,8 @@
 <script>
     let searchInput = document.getElementById('searchInput');
     console.log(searchInput);
-    searchInput.addEventListener('blur', LoadData);
+    searchInput.addEventListener('keyup', LoadData);
+
     function LoadData() {
         console.log('blur');
         $("#tblUsers tbody tr").remove();
@@ -41,6 +42,12 @@
                         + "</tr>";
                     $('#tblUsers tbody').append(rows);
                 });
+            },
+            error: function (error) {
+                if (error.status == 404) {
+                    console.log("ERROR: Url is not righr")
+                    console.log(error.status)
+                }
             }
         });
     }
