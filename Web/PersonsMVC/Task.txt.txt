@@ -1,3 +1,4 @@
+########## DAY1
 1. Create MVC project and investigate it structure.
 2. Investigate page view and requests in Web inspector.
 2. Add a page that will show provided value in the url and satisfy the following test cases:
@@ -12,7 +13,11 @@ Url: value
 Expected message: No value provided
 2. Create a page with a form that will submit users first and last names and page that will show stored names. The last page should have edit and delete buttons for each user.
 
-
+####### DAY 2
 5. Create a page (or reuse existing users page) with a search box that will use ajax calls to retrieve filtered list of users.
 6. Implement custom exception handling.
 7. Configure web site to be accessible via IIS.
+
+####### DAY 3
+8. Implement custom model binder that will generate user name and set it to a third property of User object as "LastName.FirstName" skipping all non-letter characters.
+9. Implement HttpHandler that will return custome image instead of the requested one.
