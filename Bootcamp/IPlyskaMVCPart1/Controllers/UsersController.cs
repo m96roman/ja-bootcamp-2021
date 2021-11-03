@@ -26,12 +26,12 @@ namespace IPlyskaMVCPart1.Controllers
         }
 
         [HttpGet]
-        public JsonResult GetUsers(string Id)
+        public JsonResult GetUsers(int? Id)
         {
             Users user;
             if (Id is not null)
             {
-                 user = _users.GetAllUsers().FirstOrDefault(x => x.Id == Convert.ToInt32( Id));
+                 user = _users.GetAllUsers().FirstOrDefault(x => x.Id ==Id);
             }
             else
             {
@@ -51,8 +51,14 @@ namespace IPlyskaMVCPart1.Controllers
         [HttpPost]
         public JsonResult FindUser([FromBody] Users user)
         {
-            var findedUser = _users.GetAllUsers().FirstOrDefault(x => x.FirstName == user.FirstName || x.LastName == user.LastName);
-            return Json(user);
+            var findedUser = _users.GetAllUsers().Where(x => x.FirstName == user.FirstName || x.LastName == user.LastName).ToList();
+
+            if (findedUser.Count == 0)
+            {
+                return null;
+            }
+
+            return Json(findedUser);
         }
 
         [HttpPost]

@@ -32,6 +32,7 @@ namespace IPlyskaMVCPart1
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews().
+
             AddJsonOptions(options =>
             {
                 options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
@@ -85,7 +86,7 @@ namespace IPlyskaMVCPart1
                     await context.Response.WriteAsync("</body></html>\r\n");
                     await context.Response.WriteAsync(new string(' ', 512));
 
-                    //await File.AppendAllTextAsync("log.txt", DateTime.Now + exceptionHandlerPathFeature.Error.InnerException.Message);
+                    await File.AppendAllTextAsync("log.txt", DateTime.Now + exceptionHandlerPathFeature.Error.Message);
                 });
                 
             });

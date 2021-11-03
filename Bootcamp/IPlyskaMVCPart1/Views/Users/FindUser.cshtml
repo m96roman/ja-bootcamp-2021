@@ -42,7 +42,7 @@
     <script type="text/javascript">
 
         $(function () {
-          LoadData();
+          
         $("#btnFilter").click(function () {
             //alert("");
             var std = {};
@@ -54,13 +54,20 @@
                 data: '{"FirstName":"' + std.FirstName + '"}',
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
-                success: function () {
-                   // alert("Data has been added successfully.");
-                    LoadData();
-                    
+                success: function (data) {
+                    var items = '';
+                    $.each(data, function (i, item) {
+                        var rows = "<tr>"
+                            + "<td class='prtoducttd'>" + item.Id + "</td>"
+                            + "<td class='prtoducttd'>" + item.FirstName + "</td>"
+                            + "<td class='prtoducttd'>" + item.LastName + "</td>"
+                            + "</tr>";
+                        $('#tblStudent tbody').append(rows);
+
+                    });
                 },
                 error: function () {
-                    alert("Error while inserting data");
+                    alert("There is no user with that name " + std.FirstName);;
                 }
                 
             });
@@ -68,33 +75,5 @@
         });
     });
 
-    function LoadData() {
-        $("#tblStudent tbody tr").remove();
-        $.ajax({
-            type: 'GET',
-            url: '@Url.Action("GetUsers")',
-            dataType: 'json',
-            data: { Id: '' },
-            success: function (data) {
-                var items = '';
-                $.each(data, function (i, item) {
-                    var rows = "<tr>"
-                    + "<td class='prtoducttd'>" + item.Id + "</td>"
-                    + "<td class='prtoducttd'>" + item.FirstName + "</td>"
-                    + "<td class='prtoducttd'>" + item.LastName + "</td>"
-                    + "</tr>";
-                    $('#tblStudent tbody').append(rows);
-                });
-            },
-            error: function (ex) {
-                var r = jQuery.parseJSON(response.responseText);
-                alert("Message: " + r.Message);
-                alert("StackTrace: " + r.StackTrace);
-                alert("ExceptionType: " + r.ExceptionType);
-                log.Message("Bla");
-            }
-        });
-        return false;
-    }
     </script>
 }  
