@@ -9,15 +9,17 @@
     <h1>@ViewBag.Title</h1>
     @using (Html.BeginForm("CreateUser", "User", FormMethod.Post))
     {
-        <div class="item">
-            <label>Name</label>
-            @Html.TextBox("FirstName", Model.FirstName)
-        </div>
-        <div class="item">
-            <label>Surname</label>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <label for="floatingInput">Email address</label>
             @Html.TextBox("LastName", Model.LastName)
-
         </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <label for="floatingInput">Email address</label>
+            @Html.TextBox("LastName", Model.LastName)
+        </div>
+
         <input type="submit" value="Submit" />
     }
 </div>

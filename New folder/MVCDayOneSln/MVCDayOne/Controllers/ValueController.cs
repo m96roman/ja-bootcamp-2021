@@ -4,22 +4,17 @@ namespace MVCDayOne.Controllers
 {
     public class ValueController : Controller
     {
-        public ActionResult Show()
+        [Route("/value/{id}")]
+        [Route("/value/show/{id}")]
+        public ActionResult Show(int id)
         {
-            return View();
+            return View(id);
         }
 
-        [Route("/111")]
+        [Route("/value")]
         public ActionResult WithoutValue()
         {
             return View();
-        }
-
-        [HttpGet]
-        [Route("/Value/{id}")]
-        public ActionResult ValueId(int id)
-        {
-            return View(id);
         }
     }
 }

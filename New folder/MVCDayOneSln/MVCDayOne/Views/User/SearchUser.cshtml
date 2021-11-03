@@ -7,7 +7,7 @@
         <option value="LastName">Last Name</option>
     </select>
     @Html.TextBox("Search")<input type="button" id="SearchBtn" value="Search" /> <br /> <br />
-    <table class="table table-stripped">
+    <table id="userTable" class="table table-stripped">
         <thead>
             <tr>
                 <th>First Name</th>
@@ -24,37 +24,37 @@
             }
         </tbody>
     </table>
-</div>
-<script src="~/lib/jquery/dist/jquery.js"></script>
-<script>
+    @section Scripts
+{
+        <script type="text/javascript">
     $(function () {
-        $("SearchBtn").click(function () {
-            var SearchBy = $("SearchBy").val();
-            var SearchValue = $("Search").val();
+        $("#SearchBtn").click(function () {
+            var SearchBy = $("#SearchBy").val();
+            var SearchValue1 = $("#Search").val();
             var SetData = $("DataSearching");
-            SetData.html("");
+            $("#userTable tr").remove();
             $.ajax({
                 type: "post",
                 url: '@Url.Action("SearchingData", "User")',
-                contentType: "html",
+                dataType: 'json',
                 data: {
-                    SearchBy: SearchBy, SearchValue: SearchValue
+                    SearchBy: SearchBy, SearchValue: SearchValue1
                 },
-                success: function (result) {
-                    if (result.length == 0) {
-                        SetData.append('<tr style="color:red"><td colspan="3">No data</td></tr>')
-                    }
-                    else {
-                        $.each(result, function (index, value) {
+                success: function (data) {
+                    console.log("a")
+                        $.each(data, function (index, value) {
                             var Data = "<tr>" +
                                 "<td>" + value.FirstName + "</td>" +
                                 "<td>" + value.LastName + "</td>"
                             "</tr>";
-                            SetData.append(Data);
+                            $("#userTable").append(Data);
                         })
-                    }
+                    
                 }
             })
         });
     })
-</script>
+        </script>
+    }
+</div>
+
