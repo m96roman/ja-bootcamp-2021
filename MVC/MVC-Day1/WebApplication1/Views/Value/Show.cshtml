@@ -4,13 +4,6 @@
     var value = @Model.Value;
 }
 
-@if (value == null)
-{
-    <h3>
-        Expected message:No value provided
-    </h3>
-}
-else
-{
-    <h3> Expected message:value</h3>
-}
+<h3>
+     @(value = Model.Value ?? "No value provided")
+</h3>
