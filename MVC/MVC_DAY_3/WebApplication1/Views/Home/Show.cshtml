@@ -1,0 +1,16 @@
+﻿@Model WebApplication1.Models.Data
+
+@{
+    ViewBag.Title = "Show";
+}
+
+@if (@Model.Value == null)
+{
+    <h3>
+        Expected message: No value provided
+    </h3>
+}
+else
+{
+    <h3> Expected message: @Model.Value</h3>
+}
