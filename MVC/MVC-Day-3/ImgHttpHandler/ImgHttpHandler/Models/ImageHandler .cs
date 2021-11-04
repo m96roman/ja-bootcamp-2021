@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -29,7 +31,15 @@ namespace ImgHttpHandler.Models
                 }
             }
             response.ContentType = "image/" + Path.GetExtension(imageURL).ToLower();
-            response.WriteFile(imageURL);
+            response.BinaryWrite(ImageToByteArray(Image.FromFile(imageURL)));
+            response.Flush();
+        }
+        public byte[] ImageToByteArray(Image img)
+        {
+            MemoryStream ms = new MemoryStream();
+            img.Save(ms, img.RawFormat);
+            
+            return ms.ToArray();
         }
         public bool IsReusable
         {
