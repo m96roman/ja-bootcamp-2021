@@ -21,44 +21,25 @@ namespace WebApplication3.Handler
         {
             HttpRequest request = context.Request;
             HttpResponse response = context.Response;
-            string imageURL = null;
-            if (request.UrlReferrer != null)
-            {
-                if (String.Compare(request.Url.Host, request.UrlReferrer.Host, true, CultureInfo.InvariantCulture) == 0)
-                {
-                    // The requesting host is correct.  
-                    // Allow the image (if it exists).  
-                    imageURL = request.PhysicalPath;
-                    if (!File.Exists(imageURL))
-                    {
-                        response.Status = "Image Not Found";
-                        response.StatusCode = 404;
-                    }
-                    else
-                    {
 
-                    }
+            string imageURL = null;
+            var nameOfFile = request.FilePath.Replace("/", "");
+            var listOfFile = Directory.GetFiles(request.PhysicalApplicationPath, $"*{request.CurrentExecutionFilePathExtension}");
+
+            foreach (string file in listOfFile)
+            {
+                if (Path.GetFileName(file) == nameOfFile)
+                {
+                    imageURL = request.PhysicalPath;                  
+                    break;
+                }
+                else
+                {
+                    imageURL = context.Server.MapPath("~/notallowed.jpeg");
                 }
             }
-            if (imageURL == null)
-            {
-                // No valid image was allowed.  
-                // Use the warning image instead.  
-                // Rather than hard-code this image, you could  
-                // retrieve it from the web.config file  
-                // (using the <appSettings> section or a custom  
-                // section).   
-                imageURL = context.Server.MapPath("~/Handler/notallowed.jfif");
-            }
-            else
-            {
-                imageURL = context.Server.MapPath("~/Handler/noimage.png");
-            }
-            // Serve the image  
-            // Set the content type to the appropriate image type.  
-            response.ContentType = "Handler/" + Path.GetExtension(imageURL).ToLower();
-            response.WriteFile(imageURL);
+            response.ContentType = "image/" + Path.GetExtension(imageURL).ToLower();
+            response.WriteFile(imageURL);              
        }
-
     }
 }

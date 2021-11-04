@@ -13,9 +13,8 @@ namespace WebApplication3
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            routes.IgnoreRoute("{file}.jpg");
-            routes.IgnoreRoute("{file}.gif");
-
+            routes.IgnoreRoute("{file}.jpeg");
+            routes.IgnoreRoute("{file}.png");
 
             routes.MapRoute(
                 name: "Default",
