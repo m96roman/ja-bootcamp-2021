@@ -7,32 +7,37 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
+using Microsoft.Extensions.Configuration;
 
 namespace IPlyskaMVCPart1.BLL
 {
     public class MyMiddleware
     {
         private readonly RequestDelegate _next;
-
+       
         public MyMiddleware(RequestDelegate next)
         {
-            _next = next;
+            _next = next;   
         }
 
         public async Task Invoke(HttpContext context)
         {
-
             HttpRequest request = context.Request;
             HttpResponse response = context.Response;
             var outputStream = context.Response.Body;
-
+           
             try
             {
                 var url = context.Request.GetEncodedUrl();
-                if (url == @"https://localhost:44364/Image/DownloadPicture")
+                if (url == @$"{Startup.ControllerName}")
                 {
-                    var photo = File.ReadAllBytes("picture 1.gif");
-                    response.ContentType = "image/gif";
+                    if (!File.Exists(Startup.PictureName))
+                    {
+                       response.ContentType = "text/html";
+                       await response.WriteAsync("<h3>Page not found</h3>");  
+                    }
+                    var photo = File.ReadAllBytes(Startup.PictureName);
+                    response.ContentType = "image/" + Startup.PictureExt;
                     await outputStream.WriteAsync(photo, 0, photo.Length);
                 }
             }
@@ -41,7 +46,7 @@ namespace IPlyskaMVCPart1.BLL
 
             }
             await _next.Invoke(context);
-
+            
             // Clean up. 
         }
     }

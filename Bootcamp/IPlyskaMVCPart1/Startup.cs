@@ -21,16 +21,21 @@ namespace IPlyskaMVCPart1
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; }
+        public static string ControllerName { get; set; }
+        public static string PictureName { get; set; }
+        public static string PictureExt { get; set; }
+        public static string PictureNameForController { get; set; }
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
-
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc(config => config.ModelBinderProviders.Insert(0, new ClientModelBinderProvider()));
             services.AddControllersWithViews().
 
             AddJsonOptions(options =>
@@ -40,6 +45,11 @@ namespace IPlyskaMVCPart1
             });
 
             services.AddSingleton<IUsersProvider, UsersProvider>();
+
+             ControllerName = Configuration.GetSection("Puth").GetSection("PuthForUrl").Value;
+             PictureName = Configuration.GetSection("Puth").GetSection("PuthFroMiddlWear").Value;
+             PictureExt = Configuration.GetSection("Puth").GetSection("ExtentionForFile").Value;
+             PictureNameForController = Configuration.GetSection("Puth").GetSection("PuthForController").Value;
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

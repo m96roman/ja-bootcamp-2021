@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.IO;
+using Microsoft.Extensions.Configuration;
+
 
 namespace IPlyskaMVCPart1.Controllers
 {
@@ -28,8 +30,13 @@ namespace IPlyskaMVCPart1.Controllers
         [HttpGet]
         public FileResult DownloadPicture()
         {
-            byte[] fileBytes = System.IO.File.ReadAllBytes(@"C:\Users\Yuriy\source\repos\ja-bootcamp-2021\Bootcamp\IPlyskaMVCPart1\Images\download.gif");
-            string fileName = "download.gif";
+            if (!System.IO.File.Exists(Startup.PictureName))
+            {
+                throw new FileNotFoundException();
+            }
+
+            byte[] fileBytes = System.IO.File.ReadAllBytes(@$"{Startup.PictureNameForController}");
+            string fileName = @$"{Startup.PictureNameForController}";
             return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
         }
     }
