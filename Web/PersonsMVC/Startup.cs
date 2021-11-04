@@ -51,7 +51,7 @@ namespace PersonsMVC
 
             app.UseAuthorization();
 
-            app.MapWhen(context => context.Request.Path.ToString().EndsWith(".png"),
+            app.MapWhen(context => context.Request.Path.ToString().EndsWith(".png") || context.Request.Path.ToString().EndsWith(".jpg") || context.Request.Path.ToString().EndsWith(".jpeg") || context.Request.Path.ToString().EndsWith(".gif"),
                 appBranch =>
                 {
                     appBranch.UseMyHandler();

@@ -25,9 +25,16 @@ namespace PersonsMVC.Helpers
 
         private byte[] GenerateResponse(HttpContext context)
         {
-            var path = Path.GetFullPath("./wwwroot/images/3.jpg");
-            Debug.WriteLine(path);
-            return File.ReadAllBytes(path);
+            var pathToImage = context.Request.Path.ToString();
+            pathToImage = Path.GetFullPath("./wwwroot/images/" + pathToImage);
+
+            if (!File.Exists(pathToImage))
+            {
+                pathToImage = Path.GetFullPath("./wwwroot/images/3.jpg");
+            }
+
+            Debug.WriteLine(pathToImage);
+            return File.ReadAllBytes(pathToImage);
         }
 
         private string GetContentType()
