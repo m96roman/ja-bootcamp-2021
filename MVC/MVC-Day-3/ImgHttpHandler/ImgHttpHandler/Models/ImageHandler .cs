@@ -18,18 +18,16 @@ namespace ImgHttpHandler.Models
 
             string imageURL = null;
             var nameOfFile = request.FilePath.Replace("/", "");
-            var listOfFile = Directory.GetFiles(request.PhysicalApplicationPath, $"*{request.CurrentExecutionFilePathExtension}");
-            foreach (string file in listOfFile)
+            var listOfFile = Directory.GetFiles(request.PhysicalApplicationPath, $"*{request.CurrentExecutionFilePathExtension}").Select(Path.GetFileName).ToArray();
+            if (listOfFile.Contains(nameOfFile))
             {
-                if (Path.GetFileName(file)==nameOfFile)
-                {
-                    imageURL = request.PhysicalPath;
-                }
-                else
-                {
-                    imageURL = context.Server.MapPath("~/images/delete-icon.gif");
-                }
+                imageURL = request.PhysicalPath;
             }
+            else
+            {
+                imageURL = context.Server.MapPath("~/images/delete-icon.gif");
+            }
+
             response.ContentType = "image/" + Path.GetExtension(imageURL).ToLower();
             response.BinaryWrite(ImageToByteArray(Image.FromFile(imageURL)));
             response.Flush();
@@ -38,7 +36,7 @@ namespace ImgHttpHandler.Models
         {
             MemoryStream ms = new MemoryStream();
             img.Save(ms, img.RawFormat);
-            
+
             return ms.ToArray();
         }
         public bool IsReusable
