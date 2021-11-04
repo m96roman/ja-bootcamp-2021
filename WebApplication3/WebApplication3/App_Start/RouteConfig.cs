@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using WebApplication3.Handler;
 
 namespace WebApplication3
 {
@@ -12,9 +13,10 @@ namespace WebApplication3
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            
-           
-           
+            routes.IgnoreRoute("{file}.jpg");
+            routes.IgnoreRoute("{file}.gif");
+
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
@@ -22,6 +24,13 @@ namespace WebApplication3
             );
           //  routes.MapMvcAttributeRoutes();
 
+        }
+        class CustomRouteHandler : IRouteHandler
+        {
+            public IHttpHandler GetHttpHandler(RequestContext requestContext)
+            {
+                return new ImageHandler();
+            }
         }
     }
 }

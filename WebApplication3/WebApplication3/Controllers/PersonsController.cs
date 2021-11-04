@@ -57,6 +57,28 @@ namespace WebApplication3.Controllers
         {          
             return Json(peopleList.Where(t=>t.Name.Contains(name)), JsonRequestBehavior.AllowGet);
         }
-              
+        
+      
+        public ActionResult PersonInfoNew()
+        {
+            return View(new Person());
+        }
+
+        [HttpPost]
+        public ActionResult CreateInDB([ModelBinder(typeof(PersonModelBinder))] Person person)
+        {
+            try
+            {
+               
+                BootcampTrainingEntities bootcampTrainingEntities = new BootcampTrainingEntities();
+                bootcampTrainingEntities.InsertPersonInfo(person.Name, person.Message);
+                ViewBag.InsertMessage = "Record Inserted";
+            }
+            catch (Exception ex)
+            {
+            }
+
+            return RedirectToAction("ShowPersonsList");
+        }
     }
 }
