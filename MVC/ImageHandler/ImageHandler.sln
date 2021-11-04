@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageHandler", "ImageHandler\ImageHandler.csproj", "{30E03EF1-8702-43E0-A1C0-ED12FC2FBA44}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{30E03EF1-8702-43E0-A1C0-ED12FC2FBA44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30E03EF1-8702-43E0-A1C0-ED12FC2FBA44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30E03EF1-8702-43E0-A1C0-ED12FC2FBA44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30E03EF1-8702-43E0-A1C0-ED12FC2FBA44}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DE5998C9-A5AA-484F-A475-2AC370078E24}
+	EndGlobalSection
+EndGlobal
