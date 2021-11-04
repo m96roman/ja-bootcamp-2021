@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ImageHandler.Handlers;
+using ImageHandler.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -24,6 +26,18 @@ namespace ImageHandler.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddUserToList([ModelBinder(typeof(UserModelBinder))] UserModel userModel)
+        {
+            return View();
+        }
+        
+        [HttpGet]
+        public ActionResult AddUserToList()
+        {
             return View();
         }
     }
