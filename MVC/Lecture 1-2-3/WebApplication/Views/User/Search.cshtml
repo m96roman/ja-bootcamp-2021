@@ -1,0 +1,117 @@
+﻿@model IEnumerable<WebApplication.Models.User>
+
+<div class="col-md-12">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Searching</h3>
+        </div>
+        <div class="panel-body">
+            <div class="form-group col-md-5">
+                <label>Tap first name or last name to search user</label>
+                <input type="Text" name="textSearch" id="textSearch" class="form-control" placeholder="Enter text" required="" />
+            </div>
+
+            <div class="form-group col-md-1">
+                <div style="float: right; display:inline-block;">
+                    <input class="btn btn-primary" name="btnSearch" id="btnSearch" value="Search" type="button">
+                </div>
+            </div>
+        </div>
+    </div><hr />
+
+    <h3>Search result:</h3>
+    <table id="tblUser" class="table table-bordered table-striped table-responsive table-hover">
+        <thead>
+            <tr>
+                <th align="left" class="productth">First Name</th>
+                <th align="left" class="productth">Last Name</th>
+                <th align="left" class="productth">LastNameFirstName</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <p>
+        <h3>List users:</h3>
+        <table id="tblStudent" class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FirstName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LastName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LastNameFirstName)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastNameFirstName)
+                    </td>
+                </tr>
+            }
+        </table>
+</div>
+
+<div>
+    @Html.ActionLink("Back to List", "Index", "User", null, new
+    {
+        @class = "btn btn-primary btn-large"
+    })
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+
+    $(function () {
+        LoadData();
+        $("#btnSearch").click(function () {
+            LoadData();
+        });
+        return false;
+    });
+
+    function LoadData() {
+        $("#tblUser tbody tr").remove();
+        var str = $("#textSearch").val();
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("SearchText")',
+            dataType: 'json',
+            data: { "str": str },
+            success: function (data) {
+                var items = '';
+                $.each(data, function (i, item) {
+                    var rows = "<tr>"
+                        + "<td class='prtoducttd'>" + item.FirstName + "</td>"
+                        + "<td class='prtoducttd'>" + item.LastName + "</td>"
+                        + "<td class='prtoducttd'>" + item.LastNameFirstName + "</td>"
+                    + "</tr>";
+                    $('#tblUser tbody').append(rows);
+                });
+            },
+            error: function (ex) {
+                var r = jQuery.parseJSON(response.responseText);
+                alert("Message: " + r.Message);
+                alert("StackTrace: " + r.StackTrace);
+                alert("ExceptionType: " + r.ExceptionType);
+            }
+        });
+        return false;
+    }
+    </script>
+}  

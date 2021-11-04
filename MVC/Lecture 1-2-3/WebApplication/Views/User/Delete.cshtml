@@ -1,0 +1,40 @@
+﻿@model WebApplication.Models.User
+
+@using (Html.BeginForm())
+{
+
+<div class="form-horizontal">
+    <hr />
+    <div>
+        <h3>Deleting user</h3>
+    </div>
+    <div class="form-group">
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.FirstName)
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.LastName)
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.LastNameFirstName)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Delete" class="btn btn-primary btn-large" />
+        </div>
+    </div>
+</div>
+
+        }
+        <div>
+            @Html.ActionLink("Back to List", "Index", "User", null, new
+            {
+                @class = "btn btn-primary btn-large"
+            })
+        </div>
