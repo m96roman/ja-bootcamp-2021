@@ -121,7 +121,7 @@ function PopulateUsersList() {
     });
 }
 
-$().ready(function () {
+$(document).ready(function () {
 
     //filter handlers
 
