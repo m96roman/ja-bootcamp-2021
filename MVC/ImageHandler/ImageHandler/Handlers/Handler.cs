@@ -16,22 +16,19 @@ namespace ImageHandler.Handlers
 
             string image = null;
 
-            if (request.UrlReferrer != null)
-            {
-                if(String.Compare(request.Url.Host, request.UrlReferrer.Host, true, CultureInfo.InvariantCulture) == 0)
-                {
-                    image = request.PhysicalPath;
-                    if (File.Exists(image))
-                    {
-                        response.Status = "Not Found";
-                        response.StatusCode = 404;
-                    }
-                }
-            }
+            string[] fileCollection = Directory.GetFiles(request.PhysicalApplicationPath, $"*{request.CurrentExecutionFilePathExtension}");
+            string fileName = request.FilePath.Replace("/", "");
 
-            if(image == null)
+            foreach (var item in fileCollection)
             {
-                image = context.Server.MapPath("~images/danger.jpg");
+                if (Path.GetFileName(item) == fileName)
+                {
+                    image = request.FilePath;
+                }
+                else
+                {
+                    image = context.Server.MapPath("~/images/danger.jpg");
+                }
             }
 
             response.ContentType = "image/" + Path.GetExtension(image).ToLower();
