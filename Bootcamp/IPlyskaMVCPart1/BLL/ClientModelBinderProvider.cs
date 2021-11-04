@@ -13,8 +13,10 @@ namespace IPlyskaMVCPart1.BLL
         public IModelBinder GetBinder(ModelBinderProviderContext context)
         {
             if (context.Metadata.ModelType == typeof(Client))
+            {
                 return new ClientBinder();
-
+            }
+               
             return null;
         }
     }

@@ -13,6 +13,7 @@ namespace IPlyskaMVCPart1.Controllers
         [HttpGet]
         public IActionResult Index()
         {
+            ViewBag.Message = Startup.Url;
             return View();
         }
 

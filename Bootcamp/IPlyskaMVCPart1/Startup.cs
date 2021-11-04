@@ -26,6 +26,7 @@ namespace IPlyskaMVCPart1
         public static string PictureName { get; set; }
         public static string PictureExt { get; set; }
         public static string PictureNameForController { get; set; }
+        public static string Url { get; set; }
 
         public Startup(IConfiguration configuration)
         {
@@ -35,14 +36,12 @@ namespace IPlyskaMVCPart1
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc(config => config.ModelBinderProviders.Insert(0, new ClientModelBinderProvider()));
-            services.AddControllersWithViews().
-
-            AddJsonOptions(options =>
-            {
-                options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
-                options.JsonSerializerOptions.PropertyNamingPolicy = null;
-            });
+            services.AddControllersWithViews(config => config.ModelBinderProviders.Insert(0, new ClientModelBinderProvider()))
+                    .AddJsonOptions(options =>
+                    {
+                        options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
+                        options.JsonSerializerOptions.PropertyNamingPolicy = null;
+                    });
 
             services.AddSingleton<IUsersProvider, UsersProvider>();
 
@@ -50,6 +49,7 @@ namespace IPlyskaMVCPart1
              PictureName = Configuration.GetSection("Puth").GetSection("PuthFroMiddlWear").Value;
              PictureExt = Configuration.GetSection("Puth").GetSection("ExtentionForFile").Value;
              PictureNameForController = Configuration.GetSection("Puth").GetSection("PuthForController").Value;
+             Url = Configuration.GetSection("Puth").GetSection("Url").Value;
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -100,7 +100,6 @@ namespace IPlyskaMVCPart1
                 });
                 
             });
-
 
             app.UseRouting();
 
