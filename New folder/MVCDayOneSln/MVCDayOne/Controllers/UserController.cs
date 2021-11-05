@@ -34,9 +34,25 @@ namespace MVCDayOne.Controllers
             return View(Users);
         }
 
-        public ActionResult DeleteUser(UserModel user)
+        [HttpPost]
+        public ActionResult Edit(UserModel editUser)
         {
-            Users.Remove(user);
+            UserModel userData = Users.Where(x => x.Id == editUser.Id).FirstOrDefault();
+
+            if (userData != null)
+            {
+                userData.FirstName = editUser.FirstName;
+                userData.LastName = editUser.LastName;
+            }
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult DeleteUser(int id)
+        {
+            Users.Remove(Users.Where(x => x.Id == id).FirstOrDefault());
+
             return RedirectToAction("ShowUsers");
         }
 
