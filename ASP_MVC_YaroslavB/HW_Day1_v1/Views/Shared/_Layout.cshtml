@@ -23,9 +23,15 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Value: test 1", "Show/123", "Value")</li>
-                    <li>@Html.ActionLink("Value: test 2", "123", "Value")</li>
-                    <li>@Html.ActionLink("Value: test 3", "", "Value")</li>
+                    <ul>
+                        <li>@Html.ActionLink("Simulate exception", "GenerateException", "Home")</li>
+                    </ul>
+                    <li>Value:</li>
+                    <ul style="list-style-type: circle;">
+                        <li>@Html.ActionLink("Test 1", "Show/123", "Value")</li>
+                        <li>@Html.ActionLink("Test 2", "123", "Value")</li>
+                        <li>@Html.ActionLink("Test 3", "", "Value")</li>
+                    </ul>
                     <li>@Html.ActionLink("Users", "Index", "User")</li>
                 </ul>
             </div>

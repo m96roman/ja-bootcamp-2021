@@ -12,5 +12,20 @@ namespace HW_Day1_v1.Controllers
         {
             return View();
         }
+
+        public void GenerateException()
+        {
+            string msg = null;
+            var a = msg.Length;
+        }
+
+        protected override void OnException(ExceptionContext filterContext)
+        {
+            filterContext.ExceptionHandled = true;
+
+            //log error
+            ViewBag.ErrorText = filterContext.Exception.Message;
+            filterContext.Result = View("Error");
+        }
     }
 }
