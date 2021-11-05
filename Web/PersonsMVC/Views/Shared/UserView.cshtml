@@ -1,0 +1,28 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model PersonsMVC.Models.UserViewModel
+<div class="container-fluid">
+    <h4>User with id @Model.Id</h4>
+    <hr />
+    <div class="row">
+        <div class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Name)
+        </div>
+        <div class="col-sm-8">
+            @Html.DisplayFor(model => model.Name)
+        </div>
+        <div class="col-sm-4">
+            @Html.DisplayNameFor(model => model.LastName)
+        </div>
+        <div class="col-sm-8">
+            @Html.DisplayFor(model => model.LastName)
+        </div>
+        <div class="col-sm-4">
+            @Html.DisplayNameFor(model => model.ThirdPropertyOfUser)
+        </div>
+        <div class="col-sm-8">
+            @Html.DisplayFor(model => model.ThirdPropertyOfUser)
+        </div>
+    </div>
+</div>
