@@ -1,0 +1,12 @@
+﻿@model IEnumerable<HW_Day1_v1.Models.User>
+
+<div id="filterusers">
+    <h3>All users with first name: @Model.First().FirstName</h3>
+    <ol>
+        @foreach (var item in Model)
+        {
+            <li>@item.FirstName - @item.LastName</li>
+        }
+    </ol>
+</div>
+

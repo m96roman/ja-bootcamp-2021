@@ -58,6 +58,18 @@ namespace HW_Day1_v1.Controllers
             return View("Index", _usersHolder);
         }
 
+        [HttpPost]
+        public ActionResult FilterUsers(string firstName)
+        {
+            var users = _usersHolder.Where(u => u.FirstName.Contains(firstName)).ToList();
+            if (users.Count == 0)
+            {
+                return HttpNotFound();
+            }
+
+            return PartialView(users);
+        }
+
         private User GetUserByID(int id)
         {
             return _usersHolder.First(u => u.Id == id);
