@@ -36,8 +36,16 @@
                     @Html.DisplayFor(modelItem => item.LastName)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete User", "DeleteUser", new { firstName = item.FirstName})
+                    @using (Html.BeginForm("Edit", "User", FormMethod.Post))
+                    {
+                        @Html.Hidden("id", item.Id);
+                        <input type="submit" name="Edit" value="Edit">
+                    }
+                    @using (Html.BeginForm("DeleteUser", "User", FormMethod.Post))
+                    {
+                        @Html.Hidden("id", item.Id);
+                        <input type="submit" name="FirstName" value="Delete" class="btn btn-default" />
+                    }
                 </td>
             </tr>
         }

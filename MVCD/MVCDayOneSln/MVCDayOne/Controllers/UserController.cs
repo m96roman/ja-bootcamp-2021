@@ -8,7 +8,9 @@ namespace MVCDayOne.Controllers
     public class UserController : Controller
     {
         public static List<UserModel> Users = new List<UserModel>() {
-            new UserModel {Id = 1, FirstName = "Piter", LastName = "Pan"} }; 
+            new UserModel {Id = 1, FirstName = "Piter", LastName = "Pan"},
+            new UserModel {Id = 2, FirstName = "Jack", LastName = "Sparrow"},
+            new UserModel {Id = 3, FirstName = "Pit", LastName = "Bonk"} };
 
         public ActionResult User()
         {
@@ -29,9 +31,10 @@ namespace MVCDayOne.Controllers
             return View(Users);
         }
 
-        public ActionResult DeleteUser(string firstName)
+        [HttpPost]
+        public ActionResult DeleteUser(int id)
         {
-            Users.Remove(Users.Where(x => x.FirstName == firstName).FirstOrDefault());
+            Users.Remove(Users.Where(x => x.Id == id).FirstOrDefault());
 
             return RedirectToAction("ShowUsers");
         }

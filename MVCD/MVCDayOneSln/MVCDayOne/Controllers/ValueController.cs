@@ -8,7 +8,7 @@ namespace MVCDayOne.Controllers
         [Route("/value/show/{id}")]
         public ActionResult Show(int id)
         {
-            return View();
+            return View(id);
         }
 
         [Route("/value")]
