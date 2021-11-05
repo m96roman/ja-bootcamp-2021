@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SimpleHTTPHanlder;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,13 +14,12 @@ namespace Lecture_2_MVC
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.IgnoreRoute("{file}.jpg");
-
-
+            
             routes.MapRoute(
-                name: "SearchText",
-                url: "{controller}/{action}/{searchText}",
-                defaults: new { controller = "User", action = "FilterUsers", searchText = UrlParameter.Optional }
-            );
+                 name: "SearchText",
+                 url: "{controller}/{action}/{searchText}",
+                 defaults: new { controller = "User", action = "FilterUsers", searchText = UrlParameter.Optional }
+             );
 
             routes.MapRoute(
                 name: "Default",
@@ -28,6 +28,14 @@ namespace Lecture_2_MVC
             );
 
 
+
+        }
+        class CustomRouteHandler : IRouteHandler
+        {
+            public IHttpHandler GetHttpHandler(RequestContext requestContext)
+            {
+                return new ImageHandler();
+            }
         }
     }
 }
