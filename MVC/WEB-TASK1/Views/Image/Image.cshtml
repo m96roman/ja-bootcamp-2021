@@ -16,17 +16,32 @@
                 <div class="file-drop-area">
                     <span class="choose-file-button">Choose files</span>
                     <span class="file-message">or drag and drop files here</span>
-                    <input class="file-input" type="file" multiple asp-for="MyImage">
+                    <input class="file-input" type="file" multiple asp-for="MyImage" required>
                 </div>
                 <div class="file-submit-bnt-wrapper">
                     <input class="btn btn-outline-light file-submit-bnt" type="submit" value="Upload" />
-                </div>               
+                </div>
             </form>
-            
         </div>
     </div>
 </div>
 
+<div class="container d-flex justify-content-center ">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>FIND YOUR FILE</h2>
+            <form  method="post" asp-action="GetImage" asp-controller="Image">
+
+                <input type="text" class="form-control" id="" placeholder="Search" required name="name">
+
+                <div class="file-submit-bnt-wrapper">
+                    <input class="btn btn-outline-light file-submit-bnt" type="submit" value="Find" style="margin-top:30px;"/>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
 
 @section Scripts{
     <script type="text/javascript">

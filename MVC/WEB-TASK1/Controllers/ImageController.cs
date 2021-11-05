@@ -10,7 +10,7 @@ namespace WEB_TASK1.Controllers
 {
     public class ImageController : Controller
     {
-        private static string Path { get; } = $@"{Directory.GetCurrentDirectory()}\Images\Img1.png";
+        private static string Path { get; } = $@"{Directory.GetCurrentDirectory()}\Images";
 
         public string Name { get; set; }
 
@@ -22,7 +22,6 @@ namespace WEB_TASK1.Controllers
         [HttpPost]
         public IActionResult AddNewImage(FileUploadModel model)
         {
-            //Getting file meta data
             var fileName = Path;
 
             using (FileStream fs = System.IO.File.Create($@"{Directory.GetCurrentDirectory()}\Images\{model.MyImage.FileName}.png"))
@@ -31,15 +30,24 @@ namespace WEB_TASK1.Controllers
                 model.MyImage.CopyTo(fs);
             }
 
-            // do something with the above data
             return Redirect("Image");
         }
 
-        public ActionResult GetImage()
+        [HttpPost]
+        public ActionResult GetImage(string name)
         {
+            if (System.IO.File.Exists($@"{Path}\{name}.png"))
+            {
+                byte[] imageArray = System.IO.File.ReadAllBytes($@"{Path}\{name}.png");
 
-            byte[] imageArray = System.IO.File.ReadAllBytes(Path);
-            return new FileContentResult(imageArray, "image/png");
+                return new FileContentResult(imageArray, "image/png");
+            }
+            else 
+            {
+                byte[] imageArray = System.IO.File.ReadAllBytes($@"{Path}\Image1.png");
+
+                return new FileContentResult(imageArray, "image/png");
+            }                      
         }
         
     }

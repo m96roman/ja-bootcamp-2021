@@ -73,3 +73,23 @@ h2 {
 .mt-100 {
     margin-top: 100px
 }
+
+.search-window {
+    display:flex;
+    flex-direction:row;
+}
+#FindImageFile {
+    display: flex;
+    width: 40%;
+    margin-right:40px;
+}
+.search-wrapper {
+    padding-top:2%;
+    align-content:center;
+    width:70%;
+    display:inline-flex;    
+}
+.search-wrapper input :first-child{
+ 
+    display: inline-flex;
+}
