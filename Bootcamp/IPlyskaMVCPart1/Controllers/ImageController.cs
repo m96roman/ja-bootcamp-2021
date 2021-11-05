@@ -30,7 +30,7 @@ namespace IPlyskaMVCPart1.Controllers
         [HttpGet]
         public FileResult DownloadPicture()
         {
-            if (!System.IO.File.Exists(Startup.PictureName))
+            if (!System.IO.File.Exists(Startup.PictureNameForController))
             {
                 throw new FileNotFoundException();
             }

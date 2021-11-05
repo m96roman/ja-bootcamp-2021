@@ -18,7 +18,7 @@ namespace IPlyskaMVCPart1.Controllers
         }
 
         [HttpPost]
-        public IActionResult Index([ModelBinder(BinderType = typeof(ClientBinder))] Client client)
+        public IActionResult Index(Client client)
         {
             return View("Client", client);
         }

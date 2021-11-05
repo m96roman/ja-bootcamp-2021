@@ -20,8 +20,7 @@ namespace IPlyskaMVCPart1.Controllers
         }
 
         public IActionResult Index()
-        {
-           
+        { 
             return View(_users.GetAllUsers());
         }
 
@@ -29,7 +28,7 @@ namespace IPlyskaMVCPart1.Controllers
         public JsonResult GetUsers(int? Id)
         {
             Users user;
-            if (Id is not null)
+            if (Id.HasValue)
             {
                  user = _users.GetAllUsers().FirstOrDefault(x => x.Id ==Id);
             }
@@ -122,6 +121,5 @@ namespace IPlyskaMVCPart1.Controllers
             ViewBag.Messsage = "Record Delete Successfully";
             return RedirectToAction("index");
         }
-
     }
 }

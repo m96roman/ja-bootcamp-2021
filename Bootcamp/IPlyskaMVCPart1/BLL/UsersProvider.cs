@@ -17,11 +17,9 @@ namespace IPlyskaMVCPart1.BLL
            new Users(){Id = 3, FirstName = "Nick", LastName = "Smith"},
            new Users(){Id = 4, FirstName = "Aron", LastName = "Hana"}
         };
+
         private static object _locker = new object();
-        public UsersProvider()
-        {
-           
-        }
+
         public bool AddUser(Users user)
         {
            lock (_locker)
@@ -58,7 +56,10 @@ namespace IPlyskaMVCPart1.BLL
 
         public List<Users> GetAllUsers()
         {
-           return users;
+            lock (_locker)
+            {
+                return users;
+            }
         }
 
         public bool RemoveUser(Users user)
