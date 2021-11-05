@@ -83,7 +83,9 @@ namespace PersonsMVC.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            return PartialView("UserModify", new UserViewModel());
+            var partialView = PartialView("UserModify", new UserViewModel());
+            var viewAsString = ConvertViewToString(ControllerContext, partialView, _viewEngine);
+            return Json(viewAsString);
         }
 
         [HttpPost]
@@ -98,8 +100,9 @@ namespace PersonsMVC.Controllers
                 //201= created
                 return Json(new { success = true });
             }
-
-            return PartialView("UserModify", userViewModel);
+            var partialView = PartialView("UserModify", userViewModel);
+            var viewAsString = ConvertViewToString(ControllerContext, partialView, _viewEngine);
+            return Json(viewAsString);
         }
 
         #endregion
@@ -126,7 +129,9 @@ namespace PersonsMVC.Controllers
 
             if (usModel != null)
             {
-                return PartialView("UserModify", usModel);
+                var partialView = PartialView("UserModify", usModel);
+                var viewAsString = ConvertViewToString(ControllerContext, partialView, _viewEngine);
+                return Json(viewAsString);
             }
 
             return Json(new { failure = true });
@@ -150,7 +155,9 @@ namespace PersonsMVC.Controllers
                 ModelState.AddModelError("", "Cannot update this entity!");
             }
 
-            return PartialView("UserModify", userViewModel);
+            var partialView = PartialView("UserModify", userViewModel);
+            var viewAsString = ConvertViewToString(ControllerContext, partialView, _viewEngine);
+            return Json(viewAsString);
         }
 
         #endregion

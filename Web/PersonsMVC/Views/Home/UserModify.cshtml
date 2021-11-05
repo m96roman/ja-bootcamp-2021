@@ -3,7 +3,7 @@
 @{
 
     string action = "Create";
-    if (Model.Id != null)
+    if (!string.IsNullOrWhiteSpace(Model.Id))
     {
         action = "Edit";
     }
