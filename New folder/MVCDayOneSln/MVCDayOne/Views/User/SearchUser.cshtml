@@ -1,0 +1,60 @@
+﻿@model IEnumerable<MVCDayOne.Models.UserModel>
+
+<div class="container">
+    <b> Search</b>
+    <select id="SearchBy">
+        <option value="FirstName">First Name</option>
+        <option value="LastName">Last Name</option>
+    </select>
+    @Html.TextBox("Search")<input type="button" id="SearchBtn" value="Search" /> <br /> <br />
+    <table id="userTable" class="table table-stripped">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+            <tr>
+        </thead>
+        <tbody id="DataSearching">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.FirstName</td>
+                    <td>@item.LastName</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @section Scripts
+{
+        <script type="text/javascript">
+    $(function () {
+        $("#SearchBtn").click(function () {
+            var SearchBy = $("#SearchBy").val();
+            var SearchValue1 = $("#Search").val();
+            var SetData = $("DataSearching");
+            $("#userTable tr").remove();
+            $.ajax({
+                type: "post",
+                url: '@Url.Action("SearchingData", "User")',
+                dataType: 'json',
+                data: {
+                    SearchBy: SearchBy, SearchValue: SearchValue1
+                },
+                success: function (data) {
+                    console.log("a")
+                        $.each(data, function (index, value) {
+                            var Data = "<tr>" +
+                                "<td>" + value.FirstName + "</td>" +
+                                "<td>" + value.LastName + "</td>"
+                            "</tr>";
+                            $("#userTable").append(Data);
+                        })
+                    
+                }
+            })
+        });
+    })
+        </script>
+    }
+</div>
+
