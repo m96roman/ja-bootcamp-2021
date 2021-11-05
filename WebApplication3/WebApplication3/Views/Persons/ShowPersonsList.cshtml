@@ -1,0 +1,94 @@
+﻿@model IEnumerable<WebApplication3.Models.Person>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p></p>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<form>
+    <table>
+        <th>
+            <input type="text" name="NameFilter" id="NameFilter" class="form-control" />
+        </th>
+        <th class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" value="FILTER" class="btn btn-default" id="btnFilter" />
+            </div>
+        </th>
+    </table>
+    <p></p>
+</form>
+<table id="PersonsTable" class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Message)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Message)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+
+              @using (Html.BeginForm("Delete", "Persons", FormMethod.Post))
+                {
+            
+                @Html.Hidden("id",item.Id);
+                <input type="submit" name="name" value="Delete" class="btn btn-default" />
+                }
+            </td>
+        </tr>
+    }
+
+</table>
+@section scripts
+    {
+    <script type="text/javascript">
+        $(function () {
+
+            $("#btnFilter").click(function () {
+                let pers = $("#NameFilter").val();
+                LoadData(pers);
+
+            });
+        });
+        function LoadData(value) {
+            $("#PersonsTable tr").remove();
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("getPerson","Persons")',
+                dataType: 'json',
+                data: { name: value },
+                success: function (data) {
+                    var items = '';
+                    $.each(data, function (i, item) {
+                            var rows = "<tr>"
+                                + "<td>" + item.Name + "</td>"
+                                + "<td>" + item.Message + "</td>"
+                                + "</tr>";
+                            $('#PersonsTable').append(rows);
+                    });
+                }
+            });
+            return false;
+        }
+
+    </script>
+}
+
+
+
