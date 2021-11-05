@@ -13,28 +13,22 @@ namespace Lecture_1_MVC
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.MapRoute(
-             name: "Value",
+             name: "EmptyUrl",
              url: "",
              defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
          );
 
             routes.MapRoute(
-              name: "Value1",
+              name: "Value/Id",
               url: "{controller}/{id}",
               defaults: new { controller = "Value", action = "Show", id = UrlParameter.Optional }
           );
 
             routes.MapRoute(
-            name: "Value2",
+            name: "Value/Show/Id",
             url: "{controller}/{action}/{id}",
             defaults: new { controller = "Value", action = "Show", id = UrlParameter.Optional }
         );
-
-            routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
         }
     }
 }
