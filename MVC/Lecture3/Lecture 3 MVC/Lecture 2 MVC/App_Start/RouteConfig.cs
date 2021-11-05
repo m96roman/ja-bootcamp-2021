@@ -12,6 +12,8 @@ namespace Lecture_2_MVC
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.IgnoreRoute("{file}.jpg");
+
 
             routes.MapRoute(
                 name: "SearchText",
