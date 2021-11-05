@@ -1,0 +1,48 @@
+﻿@model WEB_TASK1.Models.FileUploadModel
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "Image";
+}
+
+<link rel="stylesheet" href="~/css/Image.css" />
+
+<div class="container d-flex justify-content-center mt-100">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>UPLOAD YOUR FILE</h2>
+            <form enctype="multipart/form-data" method="post" asp-action="AddNewImage" asp-controller="Image">
+                <div class="file-drop-area">
+                    <span class="choose-file-button">Choose files</span>
+                    <span class="file-message">or drag and drop files here</span>
+                    <input class="file-input" type="file" multiple asp-for="MyImage">
+                </div>
+                <div class="file-submit-bnt-wrapper">
+                    <input class="btn btn-outline-light file-submit-bnt" type="submit" value="Upload" />
+                </div>               
+            </form>
+            
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script type="text/javascript">
+        $(document).on('change', '.file-input', function () {
+
+
+            var filesCount = $(this)[0].files.length;
+
+            var textbox = $(this).prev();
+
+            if (filesCount === 1) {
+                var fileName = $(this).val().split('\\').pop();
+                textbox.text(fileName);
+            } else {
+                textbox.text(filesCount + ' files selected');
+            }
+        });
+    </script>
+}

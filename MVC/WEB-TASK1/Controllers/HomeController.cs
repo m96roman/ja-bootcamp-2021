@@ -82,11 +82,7 @@ namespace WEB_TASK1.Controllers
         public JsonResult GetUsers()
         {
             return Json(UsersList);
-        }
-        public JsonResult GetUser()
-        {
-            return Json(SelectedUsers);
-        }
+        }       
 
         [HttpPost]
         public ActionResult FindUser(string userName)

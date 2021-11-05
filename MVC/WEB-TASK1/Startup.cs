@@ -44,7 +44,7 @@ namespace WEB_TASK1
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            
             ///added midlwear to handle exception
             app.UseExceptionHandler(errorApp =>
             {
