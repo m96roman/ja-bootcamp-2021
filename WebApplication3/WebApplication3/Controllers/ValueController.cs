@@ -10,21 +10,12 @@ namespace WebApplication3.Controllers
    
     public class ValueController : Controller
     {
+        [Route("Value")]
         [Route("Value/{id}")]
         [Route("Value/Show/{id}")]
-        public ActionResult Show()
-        {
-            if (true)
-            {
-
-            }
-            return View(123);
+        public ActionResult Show(int? id)
+        {         
+            return View(id);
         }
-        [Route("Value")]
-        public ActionResult IncorrectValue()
-        {
-            return View();
-        }
-      
     }
 }

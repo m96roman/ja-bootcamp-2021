@@ -9,10 +9,18 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Show</title>
-    <h1>@Model</h1>
+    @if (@Model != null)
+    {
+        <h1>@Model</h1>
+    }
+    else
+    {
+        <h1>No value provided</h1>
+   
+    }
 </head>
 <body>
-    <div> 
+    <div>
     </div>
 </body>
 </html>

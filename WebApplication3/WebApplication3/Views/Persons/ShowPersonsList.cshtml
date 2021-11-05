@@ -44,7 +44,12 @@
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
 
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+              @using (Html.BeginForm("Delete", "Persons", FormMethod.Post))
+                {
+            
+                @Html.Hidden("id",item.Id);
+                <input type="submit" name="name" value="Delete" class="btn btn-default" />
+                }
             </td>
         </tr>
     }

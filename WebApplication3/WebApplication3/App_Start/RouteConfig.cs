@@ -16,20 +16,12 @@ namespace WebApplication3
             routes.IgnoreRoute("{file}.jpeg");
             routes.IgnoreRoute("{file}.png");
 
+            routes.MapMvcAttributeRoutes();
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Persons", action = "ShowPersonsList", id = UrlParameter.Optional }
             );
-          //  routes.MapMvcAttributeRoutes();
-
-        }
-        class CustomRouteHandler : IRouteHandler
-        {
-            public IHttpHandler GetHttpHandler(RequestContext requestContext)
-            {
-                return new ImageHandler();
-            }
         }
     }
 }
