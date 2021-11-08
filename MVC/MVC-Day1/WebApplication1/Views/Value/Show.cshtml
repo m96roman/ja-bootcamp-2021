@@ -1,9 +1,8 @@
 ﻿
 @{
     ViewBag.Title = "Show";
-    var value = @Model.Value;
 }
 
 <h3>
-     @(value = Model.Value ?? "No value provided")
+     @(@Model.Value ?? "No value provided")
 </h3>
