@@ -35,6 +35,17 @@ namespace WebApplication1.Controllers
             return View("CreateEdit");
         }
 
+        public ActionResult LiveSearch(string search)
+        {
+            List<User> res = (
+                from t in RepositoryUser.GetUsers()
+                where t.LastName.ToLower().Contains(search.ToLower())
+                select t
+            ).ToList();
+
+            return PartialView("UserList",res);
+        }
+
         public ActionResult Edit(int id)
         {
             User user = RepositoryUser.GetById(id);

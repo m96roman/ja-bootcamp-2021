@@ -3,7 +3,7 @@
 @if (Model.Count() > 0)
 {
     <form>
-        <input type="text" id="txtsearch" placeholder="Enter user LastName.." />
+        <input id="livesearchtags" name="livesearchtags"  placeholder="Search" autocomplete="off" />
     </form>
     <span></span>
     <div id="UserList">
@@ -33,20 +33,23 @@ else
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script>
-    $("#txtsearch").on("keyup",
-        function () {
-            var txtenter = $(this).val();
-            $("table tr").each(function (results) {
-                if (results !== 0) {
-                    var id = $(this).find("td:nth-child(2)").text();
-                    if (id.indexOf(txtenter) !== 0 && id.toLowerCase().indexOf(txtenter.toLowerCase()) < 0) {
-                        $(this).hide();
-                    } else {
-                        $(this).show();
-                    }
-                }
-            });
+    document.getElementById('livesearchtags').addEventListener('keyup', function (e) {
+        LiveSearch()
+    });
+
+    function LiveSearch() {
+        let value = document.getElementById('livesearchtags').value;
+
+        $.ajax({
+            type: "POST",
+            url:  '@Url.Action("LiveSearch", "User")',
+            data: { search: value },
+            datatype: "html",
+            success: function (data) {
+                $('#UserList').html(data);
+            }
         });
+    }
 
     $('#UserList').on('click',
         '.delete',
@@ -64,7 +67,7 @@ else
             });
             function successFunc(data, status) {
                 if (id === 0) {
-                    window.location = "https://localhost:44371/User/Index";
+                    window.location ='@Url.Action("Index", "User")';
                 }
                 container.remove();
             }
