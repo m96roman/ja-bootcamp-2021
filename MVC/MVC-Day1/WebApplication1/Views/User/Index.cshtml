@@ -1,0 +1,80 @@
+﻿@model IEnumerable<WebApplication1.Models.User>
+
+@if (Model.Count() > 0)
+{
+    <form>
+        <input id="livesearchtags" name="livesearchtags"  placeholder="Search" autocomplete="off" />
+    </form>
+    <span></span>
+    <div id="UserList">
+        @Html.Partial("UserList")
+    </div>
+}
+else
+{
+    <div class="row justify-content-center text-center">
+        <div class="col-12 col-md-10 mt-5">
+
+            <i class="fa fa-user fa-5x mb-5"></i>
+
+            <h2>
+                No Users
+            </h2>
+
+            <p class="text-muted">
+                You do not have any users yet. Add a new user by clicking the <strong>Add User</strong> button below.
+            </p>
+            <input type="button" id="create_submit" class="btn btn-info" value="Create" onclick="location.href='@Url.Action("Create", "User")'" />
+
+        </div>
+    </div>
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script>
+    document.getElementById('livesearchtags').addEventListener('keyup', function (e) {
+        LiveSearch()
+    });
+
+    function LiveSearch() {
+        let value = document.getElementById('livesearchtags').value;
+
+        $.ajax({
+            type: "POST",
+            url:  '@Url.Action("LiveSearch", "User")',
+            data: { search: value },
+            datatype: "html",
+            success: function (data) {
+                $('#UserList').html(data);
+            }
+        });
+    }
+
+    $('#UserList').on('click',
+        '.delete',
+        (function() {
+            var container = $(this).closest('.item');
+            var id = container.data('id');
+            $.ajax({
+                url: '@Url.Action("Delete", "User")',
+                type: "POST",
+                data: { id: id },
+                dataType: "html",
+                cache: false,
+                success: successFunc,
+                error: errorFunc
+            });
+            function successFunc(data, status) {
+                if (id === 0) {
+                    window.location ='@Url.Action("Index", "User")';
+                }
+                container.remove();
+            }
+            function errorFunc() {
+                alert('error');
+            }
+        }));
+
+</script>
+
