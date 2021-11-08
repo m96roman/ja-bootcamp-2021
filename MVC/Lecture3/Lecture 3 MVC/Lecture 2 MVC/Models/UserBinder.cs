@@ -20,9 +20,9 @@ namespace Lecture_2_MVC.Models
                 return new User()
                 {
                     Id = id,
-                    Name =  Regex.Replace(Name, "[^a-zA-Z0-9_.]+", "", RegexOptions.Compiled),
-                    LastName = Regex.Replace(LastName, "[^a-zA-Z0-9_.]+", "", RegexOptions.Compiled),
-                    NameAndLastName = $"{Regex.Replace(Name, "[^a-zA-Z0-9_.]+", "", RegexOptions.Compiled)}.{Regex.Replace(LastName, "[^a-zA-Z0-9_.]+", "", RegexOptions.Compiled)}"
+                    Name = Regex.Replace(Name, "[^a-zA-Z]+", "", RegexOptions.Compiled),
+                    LastName = Regex.Replace(LastName, "[^a-zA-Z]+", "", RegexOptions.Compiled),
+                    NameAndLastName = $"{Regex.Replace(Name, "[^a-zA-Z]+", "", RegexOptions.Compiled)   }.{ Regex.Replace(LastName, "[^a-zA-Z]+", "", RegexOptions.Compiled)}"
 
                 };
             }
@@ -30,8 +30,6 @@ namespace Lecture_2_MVC.Models
             {
                 return base.BindModel(controllerContext, bindingContext);
             }
-
-
         }
     }
 }
