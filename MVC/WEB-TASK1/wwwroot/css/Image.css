@@ -1,0 +1,95 @@
+﻿body {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(to right, #f5f7f6, #5ca0f2);
+    color: #D7D7EF;
+    font-family: 'Lato', sans-serif
+}
+
+h2 {
+    display: flex;
+    margin: 50px 0;
+    color: #fff;
+    align-items: center;
+}
+
+.file-submit-bnt {
+    display:inline-flex;
+    position: relative;
+}
+
+.file-submit-bnt-wrapper {
+    width: 450px;
+    display:flex;
+    justify-content:end;
+}
+
+.file-drop-area {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 450px;
+    max-width: 100%;
+    padding: 25px;
+    border: 1px dashed #fff;
+    border-radius: 3px;
+    transition: 0.2s;
+    margin-bottom: 50px;
+}
+
+.choose-file-button {
+    flex-shrink: 0;
+    background-color: #fff;
+    border: 1px solid #fff;
+    border-radius: 3px;
+    padding: 8px 15px;
+    margin-right: 10px;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #5ca0f2;
+}
+
+.file-message {
+    color: #fff;
+    font-size: small;
+    font-weight: 300;
+    line-height: 1.4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+
+.file-input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    opacity: 0
+}
+
+.mt-100 {
+    margin-top: 100px
+}
+
+.search-window {
+    display:flex;
+    flex-direction:row;
+}
+#FindImageFile {
+    display: flex;
+    width: 40%;
+    margin-right:40px;
+}
+.search-wrapper {
+    padding-top:2%;
+    align-content:center;
+    width:70%;
+    display:inline-flex;    
+}
+.search-wrapper input :first-child{
+ 
+    display: inline-flex;
+}
