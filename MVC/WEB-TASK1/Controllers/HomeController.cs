@@ -11,29 +11,14 @@ using WEB_TASK1.Models.Binders;
 namespace WEB_TASK1.Controllers
 {
     public class HomeController : Controller
-    {
-        private static int iterator = 0;
-
-        private static int Iterator()
-        {
-            
-            return iterator++;
-        }
+    {       
+       
 
         private readonly ILogger<HomeController> _logger;
 
         private static List<UserModel> SelectedUsers = new List<UserModel>();
 
-        private static List<UserModel> UsersList = new List<UserModel>(){
-                    new UserModel{UserId = Iterator(), UserName = "Jhon", UserSurname = "Doe" },
-                    new UserModel{UserId = Iterator(), UserName = "Martin", UserSurname = "Roshko" },
-                    new UserModel{UserId = Iterator(), UserName = "Nick", UserSurname = "Doe" },
-                    new UserModel{UserId = Iterator(), UserName = "Justin", UserSurname = "Timberlake" },
-                    new UserModel{UserId = Iterator(), UserName = "Jason", UserSurname = "Stathem" },
-                    new UserModel{UserId = Iterator(), UserName = "Jon", UserSurname = "Sina" },
-                    new UserModel{UserId = Iterator(), UserName = "Piter", UserSurname = "Pen" },
-                    new UserModel{UserId = Iterator(), UserName = "Martin", UserSurname = "Garix" },
-                };
+        private static List<UserModel> UsersList = new List<UserModel>();
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -54,7 +39,6 @@ namespace WEB_TASK1.Controllers
         [HttpPost]
         public ActionResult CreateUser([ModelBinder(BinderType = typeof(UserModelBinder))] UserModel userModel)
         {
-            userModel.UserId = Iterator();
             UsersList.Add(userModel);
             return RedirectToAction("Index");
         }

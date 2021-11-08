@@ -5,7 +5,13 @@ using System.Threading.Tasks;
 namespace WEB_TASK1.Models.Binders
 {
     public class UserModelBinder : IModelBinder
-    { 
+    {
+        private static int iterator = 0;
+        private static int Iterator()
+        {
+            return iterator++;
+        }
+
         public Task BindModelAsync(ModelBindingContext bindingContext)
         {
             if (bindingContext == null)
@@ -21,7 +27,7 @@ namespace WEB_TASK1.Models.Binders
             
             var result = new UserModel
             {
-               /* UserId = int.Parse(id),*/
+                UserId = Iterator(),
                 UserName = name,
                 UserSurname = surname,
             };

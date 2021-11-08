@@ -24,7 +24,7 @@ namespace WEB_TASK1.Controllers
         {
             var fileName = Path;
 
-            using (FileStream fs = System.IO.File.Create($@"{Directory.GetCurrentDirectory()}\Images\{model.MyImage.FileName}.png"))
+            using (FileStream fs = System.IO.File.Create($@"{Directory.GetCurrentDirectory()}\Images\{model.MyImage.FileName}"))
 
             {
                 model.MyImage.CopyTo(fs);
@@ -44,7 +44,7 @@ namespace WEB_TASK1.Controllers
             }
             else 
             {
-                byte[] imageArray = System.IO.File.ReadAllBytes($@"{Path}\Image1.png");
+                byte[] imageArray = System.IO.File.ReadAllBytes($@"{Path}\Default.png");
 
                 return new FileContentResult(imageArray, "image/png");
             }                      

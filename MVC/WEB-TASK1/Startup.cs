@@ -25,7 +25,11 @@ namespace WEB_TASK1
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-          
+
+            services.AddControllers(options =>
+            {
+                options.ModelBinderProviders.Insert(0, new UserModelBinderProvider());
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

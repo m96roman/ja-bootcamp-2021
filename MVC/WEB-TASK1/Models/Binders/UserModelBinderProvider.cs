@@ -13,7 +13,7 @@ namespace WEB_TASK1.Models.Binders
     {
         public IModelBinder GetBinder(ModelBinderProviderContext context)
         {                    
-            if (context.Metadata.ModelType == typeof(UserModel)) 
+            if (context.Metadata.ModelType == typeof(UserModelBinder)) 
             {
                 return new UserModelBinder();
             }
