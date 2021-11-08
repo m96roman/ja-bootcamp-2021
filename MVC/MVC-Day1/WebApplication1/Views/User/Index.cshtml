@@ -1,0 +1,77 @@
+﻿@model IEnumerable<WebApplication1.Models.User>
+
+@if (Model.Count() > 0)
+{
+    <form>
+        <input type="text" id="txtsearch" placeholder="Enter user LastName.." />
+    </form>
+    <span></span>
+    <div id="UserList">
+        @Html.Partial("UserList")
+    </div>
+}
+else
+{
+    <div class="row justify-content-center text-center">
+        <div class="col-12 col-md-10 mt-5">
+
+            <i class="fa fa-user fa-5x mb-5"></i>
+
+            <h2>
+                No Users
+            </h2>
+
+            <p class="text-muted">
+                You do not have any users yet. Add a new user by clicking the <strong>Add User</strong> button below.
+            </p>
+            <input type="button" id="create_submit" class="btn btn-info" value="Create" onclick="location.href='@Url.Action("Create", "User")'" />
+
+        </div>
+    </div>
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script>
+    $("#txtsearch").on("keyup",
+        function () {
+            var txtenter = $(this).val();
+            $("table tr").each(function (results) {
+                if (results !== 0) {
+                    var id = $(this).find("td:nth-child(2)").text();
+                    if (id.indexOf(txtenter) !== 0 && id.toLowerCase().indexOf(txtenter.toLowerCase()) < 0) {
+                        $(this).hide();
+                    } else {
+                        $(this).show();
+                    }
+                }
+            });
+        });
+
+    $('#UserList').on('click',
+        '.delete',
+        (function() {
+            var container = $(this).closest('.item');
+            var id = container.data('id');
+            $.ajax({
+                url: '@Url.Action("Delete", "User")',
+                type: "POST",
+                data: { id: id },
+                dataType: "html",
+                cache: false,
+                success: successFunc,
+                error: errorFunc
+            });
+            function successFunc(data, status) {
+                if (id === 0) {
+                    window.location = "https://localhost:44371/User/Index";
+                }
+                container.remove();
+            }
+            function errorFunc() {
+                alert('error');
+            }
+        }));
+
+</script>
+
