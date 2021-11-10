@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewData["Title"] = "Search";
+}
+
+<h1>Search</h1>
+
+<h4>Enter a word to serch for:</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form>
+            <div class="form-group">
+                <input name="SearchWord" id="SearchWord" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="button" name="submitButton" value="Search" id="btn-search" class="btn btn-primary btn btn-lg" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<table id="tblNames" class="table table-bordered table-striped table-responsive table-hover">
+    <thead>
+        <tr>
+            <th align="left" class="productth">ID</th>
+            <th align="left" class="productth">First name</th>
+            <th align="left" class="productth">Last name</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+@section Scripts
+{
+    <script type="text/javascript">
+
+    $(function () {
+        $("#btn-search").click(function () {
+           $("#tblNames tbody").remove();
+            var std = {};
+            std.FirstName = $("#SearchWord").val();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("FindSearched")',
+                data: '{"FirstName":"' + std.FirstName + '"}',
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    $.each(data, function (i, item) {
+                               var rows = "<tr>"
+                                   + "<td class='prtoducttd'>" + item.id + "</td>"
+                                   + "<td class='prtoducttd'>" + item.firstName + "</td>"
+                                   + "<td class='prtoducttd'>" + item.lastName + "</td>"
+                                   + "</tr>";
+                        $('#tblNames').append(rows);
+                    });
+                },
+                error: function () {
+                    alert("There is no user that matches search request`s name!");
+                }
+            });
+            return false;
+        });
+    });
+    </script>
+} 
