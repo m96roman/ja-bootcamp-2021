@@ -1,0 +1,119 @@
+@import "add.less";
+
+@height: 120px;
+@grey: #333;
+@blue:rgb(73, 136, 230);
+
+
+body{
+    margin: 0;
+   background-color: rgb(193, 212, 243);
+}
+header{
+    position: relative;
+    background-color: @blue;
+    height: @height;
+
+    .header_title{
+        position: absolute;
+        left: 20px;
+        top:calc(@height/2 - 30px);
+        font-size: 30px;
+        color: @grey;
+    }
+    
+    .basket{
+        position: absolute;
+        top:calc(@height/2);
+        right: 20px;  
+       
+        & a{
+           text-decoration: none;
+           color:@grey;
+           font-size: 1.5em;
+        } 
+      
+        & a:hover {
+            background-color: @blue;
+          }
+    }
+}
+  ul{
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: @grey;
+        }
+        li {
+            float: left;
+          }
+          li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+          }
+          li a:hover {
+            background-color: #111;
+          }
+
+      footer{ 
+        position: absolute;
+        border-top: 3px solid @grey;
+        display: inline-block;
+        width: 100%;
+        background-color: rgb(114, 175, 245);
+        bottom: 0;
+       
+        p{  
+            color: @grey;
+            font-size: 2em;
+            text-align: center;
+        }
+    }
+
+    h1{
+        text-align: center;
+        color: white;
+     }
+   
+     .product_form{
+        border-radius: 10px 10px;
+        position: absolute;
+        top:calc(50% - 250px);
+        left:calc(50% - 200px);
+        width: 400px;
+        background-color: @grey;
+        padding: 10px;
+        color:white;
+        & form{
+            padding: 10px 5px;
+            display: flex;  
+            flex-direction: column;
+        & input{
+            margin: 0px 10px 10px 10px; 
+            float: right;
+            width: 250px;    
+        }
+        & button{
+            margin: 0px  10px 10px 0; 
+            background-color:  @blue;
+        }
+        } 
+        & a{
+            color: white;
+            text-decoration: none;
+        }
+    }
+  
+    .product_form--product_description{
+        height: 50px;
+    }
+
+    .product_form--product_cathegory{
+        float: right;
+        width: 260px;
+        margin: 0px  10px 10px 0; 
+    }
