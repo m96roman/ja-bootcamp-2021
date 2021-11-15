@@ -1,0 +1,169 @@
+* 
+{
+  box-sizing: border-box; 
+}
+   body {
+     margin: 0;
+   }
+   #container {
+     display: flex;
+     min-height: calc(100vh - 40vh);
+   }
+   #container > main {
+     flex: 1;
+   }
+   #container > nav 
+   {
+     flex: 0 0 20vw;
+     background: beige;
+   }
+   #container > nav {
+     order: -1;
+   }
+   header, footer, main, nav {
+     padding: 1em;
+   }
+   header, footer {
+       display: flex;
+     background: yellowgreen;
+     height: 20vh;
+   }
+
+   #img{
+       width: 100px;
+       height: 100px;
+   }
+
+   #header-shop{
+    position: absolute;
+    display: flex;
+    right: 20px;
+    float: right;
+   }
+
+   .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+  }
+  
+  .price {
+    color: grey;
+    font-size: 22px;
+  }
+  
+  .card button {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+  
+  .card button:hover {
+    opacity: 0.7;
+  }
+
+  #shop-image
+  {
+    width: 250px;
+    height: auto;
+  }
+
+  /*8888888888888888888888888888888888888888888888888888888888888888888*/
+
+.sidebar {
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 16px;
+}
+
+.vertical-menu {
+  width: 200px; 
+}
+
+.vertical-menu a {
+  background-color: #eee; 
+  color: black; 
+  display: block; 
+  padding: 12px; 
+  text-decoration: none; 
+}
+
+.vertical-menu a:hover {
+  background-color: #ccc;
+}
+
+.vertical-menu a.active {
+  background-color: #04AA6D; 
+  color: white;
+}
+
+
+/*88888888888888888888888888888888888888888888888888888888888*/
+
+.card{
+  width: 20%;
+  display: inline-block;
+  box-shadow: 2px 2px 20px black;
+  border-radius: 5px; 
+  margin: 2%;
+ }
+
+.image img{
+width: 100%;
+border-top-right-radius: 5px;
+border-top-left-radius: 5px;
+
+
+
+}
+
+.title{
+
+text-align: center;
+padding: 10px;
+
+}
+
+h1{
+font-size: 20px;
+}
+
+.des{
+padding: 3px;
+text-align: center;
+
+padding-top: 10px;
+     border-bottom-right-radius: 5px;
+border-bottom-left-radius: 5px;
+}
+button{
+margin-top: 40px;
+margin-bottom: 10px;
+background-color: white;
+border: 1px solid black;
+border-radius: 5px;
+padding:10px;
+}
+button:hover{
+background-color: black;
+color: white;
+transition: .5s;
+cursor: pointer;
+}
+
+
+
