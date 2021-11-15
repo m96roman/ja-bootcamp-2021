@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet/less" href="css/style.less" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/less@4.1.1"></script>
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
+    <title>Add Product</title>
+</head>
+
+<body>
+   
+    <div class="product_form">
+        <h1>Add product</h1>
+        <form type="submit">
+          <div >Product title <input class="product_form--product_title" type="text" /></div>  
+          <div > Description<input class="product_form--product_description"  type="text" /> </div> 
+          <div > Price<input class="product_form--product_price" type="number" /> </div> 
+          <div > Add image<input class="product_form--product_image" type="url" placeholder="Add image path" /> </div> 
+          <button>Download</button>
+          <div > Cathegory<select class="product_form--product_cathegory">
+            <option value="volvo">Muffins</option>
+            <option value="saab">Cackes</option>
+            <option value="mercedes">Candies</option>
+          </select> </div>
+          
+          <button type="submit">Save</button>
+          <button type="reset">Clear</button>
+        </form>
+        <a href="Index.html">Back to main page</a>
+    </div>
+</body>
+
+</html>
