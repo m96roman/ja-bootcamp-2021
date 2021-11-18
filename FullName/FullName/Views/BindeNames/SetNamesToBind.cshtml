@@ -1,0 +1,36 @@
+﻿@model FullName.Models.SetNameToBind
+
+@{
+    ViewData["Title"] = "SetNamesToBind";
+}
+
+<h1>Names to bind</h1>
+<hr />
+<h4>Enter a name with special symbols to test binder:</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        @using (Html.BeginForm("SetNamesToBind", "BindeNames", FormMethod.Post))
+        {
+            <form asp-action="SetNamesToBind">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="FirstName" class="control-label"></label>
+                    <input asp-for="FirstName" class="form-control" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LastName" class="control-label"></label>
+                    <input asp-for="LastName" class="form-control" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        }
+        </div>
+</div>
+
+
+

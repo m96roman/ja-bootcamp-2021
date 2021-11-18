@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css" type="text/css" />
+    <title>Add Product</title>
+</head>
+
+<body>
+    <header class="header">
+        <p class="header_title">Bakery shop</p>
+        <div class="basket-link"><a href="basket.html">Basket</a>
+            <div class="basket-counter"> </div>
+        </div>
+        <nav>
+            <ul class="nav-container">
+                <li class="nav-link"><a href="Index.html">All sweets</a></li>
+                <li class="nav-link"><a href="muffins.html">Muffins</a></li>
+                <li class="nav-link"><a href="cakes.html">Cakes</a></li>
+                <li class="nav-link"><a href="cookies.html">Cookies</a></li>
+                <li class="nav-link"><a href="addProduct.html">Add new product</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="main-container">
+    <div class="product-create-form-container">
+        <h1 class="add-form-title">Add product</h1>
+        <form>
+            <div>Product title <input class="product_form--product_title" title="product_title" type="text" /></div>
+            <div> Description<input class="product_form--product_description" type="text" /> </div>
+            <div> Price<input class="product_form--product_price" type="number" /> </div>
+            <div> Add image<input class="product_form--product_image" type="file" placeholder="Add image path" /> </div>
+            <div> Category<select class="product_form--product_category">
+                    <option value="muffins">Muffins</option>
+                    <option value="cake">Cake</option>
+                    <option value="cookies">Cookies</option>
+                </select> </div>
+            <input type="button" value="Save" onclick="getFormData()" />
+            <button type="reset">Clear</button>
+        </form>
+        <a href="Index.html">Back to main page</a>
+    </div>
+</div>
+    <footer>
+        <div>
+            <p>I am very simple footer</p>
+        </div>
+    </footer>
+    <script src="main.js" text="javascript/text"></script>
+</body>
+
+</html>

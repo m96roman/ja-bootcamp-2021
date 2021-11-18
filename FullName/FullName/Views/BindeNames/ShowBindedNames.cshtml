@@ -1,0 +1,38 @@
+﻿@model IEnumerable<FullName.Models.BindedName>
+
+@{
+    ViewData["Title"] = "ShowBindedNames";
+}
+
+<h1>Binded names</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BindedFirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BindedLastName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BindedFirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BindedLastName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
