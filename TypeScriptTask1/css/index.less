@@ -1,0 +1,193 @@
+//compress: false , out : ../dist/index.css
+
+@height: 120px;
+@grey: #333;
+@blue:rgb(73, 136, 230);
+
+//out: "./dist/main.css"
+
+body {
+   margin: 0;
+   background-color: rgb(195, 212, 250);
+   display: flex;
+   flex-direction: column;
+   height: 100vh;
+}
+
+.header{
+    flex: 0 0 @height;
+    position: relative;
+    background-color: @blue;
+    border-bottom: 2px solid @grey;  
+}
+
+.header_title{
+    position: absolute;
+    left: 20px;
+    top:calc(@height/2 - 30px);
+    font-size: 30px;
+    color: @grey;
+}
+ 
+.basket-link{
+    position: absolute;
+    top:calc(@height/2);
+    right: 20px;    
+    & a{
+       text-decoration: none;
+       color:@grey;
+       font-size: 1.5em;
+    } 
+    & a:hover {
+        background-color: @blue;
+    }
+}
+ 
+.nav-container{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: @grey;
+}
+
+.nav-link {
+    float: left;
+    & a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    }
+    & a:hover {
+    background-color: #111;
+  }
+}
+
+footer{ 
+    flex: 0 0 100px;
+    border-top: 3px solid @grey;
+    display: inline-block;
+    width: 100%;
+    background-color: rgb(114, 175, 245);
+
+    & p{  
+        color: @grey;
+        font-size: 2em;
+        text-align: center;
+    }
+}
+
+.main-container{
+    flex: 1 1 auto;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: auto;
+}
+      
+.product-container{
+    border: 2px solid white;
+    flex: 0 0 22%;
+    border-radius: 5px 5px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    background-color:@grey;
+    margin: 10px;
+    max-height: 350px;
+    color: white;
+}
+
+.product-create-form-container{
+    border-radius: 10px 10px;
+    position: absolute;
+    top:calc(50% - 250px);
+    left:calc(50% - 200px);
+    width: 400px;
+    background-color: @grey;
+    padding: 10px;
+    color:white;
+    & form{
+        padding: 10px 5px;
+        display: flex;  
+        flex-direction: column;
+    & input{
+        margin: 0px 10px 10px 10px; 
+        float: right;
+        width: 250px;    
+    }
+    & button{
+        margin: 0px  10px 10px 0; 
+        background-color:  @blue;
+    }
+    } 
+    & a{
+        color: white;
+        text-decoration: none;
+    }
+}
+.product-image{
+    margin: 0 auto;
+    padding: 8px;
+    width: 120px;
+    height: 120px;
+    border: 1px solid white;
+
+}
+.product-description, .product-price, .product-category {
+    text-align: center;
+    padding: 8px;
+}
+
+.product-button{
+    margin-top: 5px;
+    color: white;
+    background-color: @blue;
+}
+
+.add-form-title{
+    text-align: center;
+    color: white;
+}   
+
+ .product_form--product_description{
+    height: 50px;
+}
+
+.product_form--product_category{
+    float: right;
+    width: 260px;
+    margin: 0px  10px 10px 0; 
+}
+
+
+.basket-table {
+    max-height: 60%;
+    width:50%;
+    margin: 50px auto ;
+    color: white;
+    background-color: #333;
+    border: 2px solid white;
+}
+
+.table-image{
+    border: 2px solid white;
+    width: 40px;
+    height: 40px;
+}
+
+.basket-title{
+    text-align: center;
+    padding: 3px;
+    font-size: 1.5rem;
+}
+
+td, th{
+   text-align: center;
+   padding: 3px;
+   border: 0.5px solid white;
+}
+
+   
