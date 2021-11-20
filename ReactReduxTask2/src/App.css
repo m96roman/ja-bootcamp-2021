@@ -1,0 +1,59 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-float infinite 3s ease-in-out;
+  }
+}
+
+.App-header {
+  background-color: rgb(247, 128, 73);
+  color:2px solid rgb(87, 37, 2) ;
+  height: 100px;
+  border-bottom: 2px solid rgb(87, 37, 2);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  font-size: calc(10px + 1vmin);
+}
+
+.navbar{
+  border-top: 1px dotted rgb(87, 37, 2) ;
+  border-bottom: 2px solid rgb(87, 37, 2);
+  font-size: 20px;
+  padding: 10px 0;
+  width: 100%;
+  display: inline;
+  background-color: rgb(236, 104, 43);
+}
+.App-title{
+  margin: 8px;;
+  color:rgb(87, 37, 2)
+}
+.App-link {
+  color: rgb(112, 76, 182);
+}
+
+.main-container{
+  display: flex;
+  flex-direction: row;
+}
+@keyframes App-logo-float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
