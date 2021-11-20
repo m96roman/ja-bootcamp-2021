@@ -1,0 +1,94 @@
+.main_container{
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap; 
+}
+
+.product_container{
+  background-color: rgb(243, 136, 74);
+  border-radius: 5px 5px;
+  height: 300px;
+  width: 200px;
+  border: 1px solid black;
+  margin: 20px;
+}
+
+.product_image{
+  border: 1px dotted rgb(87, 37, 2);
+  width: 80px;
+  height: 80px;
+}
+
+.name{
+  width:150px;
+}
+
+.create_product_form{
+  margin:  50px;
+  height: 300px;
+  width: 200px;
+  background-color: rgb(235, 101, 12);
+  border: 2px solid black;
+  border-radius: 5px 5px;
+}
+
+.text_box {
+  background-color: rgb(247, 232, 211);
+  color: black;
+  padding: 2px;
+  width: 150px;
+  text-align: center;
+  margin: 4px 10px 0 10px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.row > button {
+  margin-left: 4px;
+  margin-right: 8px;
+}
+
+.row:not(:last-child) {
+  margin-bottom: 16px;
+}
+
+.value {
+  font-size: 78px;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-top: 2px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.button {
+  font-size: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
+  outline: none;
+  border: 2px solid transparent;
+  color: rgb(87, 37, 2);
+  margin-top: 5px;
+  padding-bottom: 4px;
+  cursor: pointer;
+  background-color: rgba(19, 11, 3, 0.1);
+  border-radius: 2px;
+  transition: all 0.15s;
+}
+
+.button:hover,
+.button:focus {
+  border: 2px solid rgba(27, 11, 2, 0.4);
+}
+
+.button:active {
+  background-color: rgba(112, 76, 182, 0.2);
+}
+
+
+
