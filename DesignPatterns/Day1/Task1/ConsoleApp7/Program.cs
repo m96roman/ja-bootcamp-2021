@@ -10,15 +10,20 @@ namespace ConsoleApp7
     {
         static void Main(string[] args)
         {
+            //open-closed principle
             MsSqlOtpBankDB db = new MsSqlOtpBankDB();
             List<Client> clients = db.GetClients();
-            Bank otp = new Bank
+            var otp = new Bank
             {
                 Name = "Otp",
                 Clients = clients
             };
-            Console.WriteLine(otp.GetReport("html"));
-            Console.WriteLine(otp.GetReport("pdf"));
+
+            IReportGenerator htmlReport = new HtmlReportGenerator();
+            Console.WriteLine(htmlReport.Get(otp.Clients));
+            IReportGenerator pdfReport = new PdfReportGenerator();
+            Console.WriteLine(pdfReport.Get(otp.Clients));
+            Console.ReadKey();
         }
     }
 }
