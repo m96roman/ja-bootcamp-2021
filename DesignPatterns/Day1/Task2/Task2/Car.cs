@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Task2
 {
-    public class Car : IDrivable
+    public class Car : IMasterDrivable
     {
         public void GoForward()
         {
