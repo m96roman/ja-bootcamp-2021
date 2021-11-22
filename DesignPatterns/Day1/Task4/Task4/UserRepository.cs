@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace Task4
 {
-    public class UserRepository
+    public class UserRepository : IRepository<User>
     {
-        private MySqlDb _db;
+        private readonly IDbContext<User> _db;
 
-        public UserRepository(MySqlDb db)
+        public UserRepository(IDbContext<User> db)
         {
             _db = db;
         }
 
-        public List<User> GetUsers()
+        public List<User> GetEntities()
         {
-            return _db.ExecuteSql<User>("select * from user");
+            return _db.ExecuteSql("select * from user");
         }
     }
 }
