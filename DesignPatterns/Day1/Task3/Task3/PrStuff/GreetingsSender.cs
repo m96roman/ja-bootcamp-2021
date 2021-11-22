@@ -4,13 +4,13 @@ namespace Task3
 {
     public class GreetingsSender : IGreetingSender
     {
-        public string PostIndex { get; private set; }
+        public string PostIndex { get; set; }
 
-        public string Street { get; private set; }
+        public string Street { get; set; }
 
-        public string City { get; private set; }
+        public string City { get; set; }
 
-        public string Country { get; private set; }
+        public string Country { get; set; }
 
         public void SendGreeting(string text)
         {
