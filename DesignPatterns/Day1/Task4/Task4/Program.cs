@@ -6,8 +6,13 @@ namespace Task4
     {
         static void Main(string[] args)
         {
-            UserRepository repo = new UserRepository(new MySqlDb(new MySqlConnection()));
-            Console.WriteLine($"Users count {repo.GetUsers().Count}");
+            //First of all, the mysqlConnnection/mysqlContext has to be passed as absctracts, not realizations
+            //So instead we pass ISqlConnection/IDbContext
+            //And IRepository is here just for usability
+            IRepository<User> repo = new UserRepository(
+                    new MySqlContext<User>(new MySqlConnection()));
+
+            Console.WriteLine($"Users count {repo.GetEntities().Count}");
             Console.ReadLine();
         }
     }
