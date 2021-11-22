@@ -2,7 +2,7 @@
 
 namespace Task3
 {
-    public interface IFinancicReporter : IWorker
+    public interface IFinancicReporter
     {
         decimal Balance { get; set; }
 
@@ -11,5 +11,8 @@ namespace Task3
         DateTime LastTimeAddedFundsToBalance { get; set; }
 
         void PaySalary();
+
+        string GetFullName();
+        void IncreaseSalary(decimal diff);
     }
 }
