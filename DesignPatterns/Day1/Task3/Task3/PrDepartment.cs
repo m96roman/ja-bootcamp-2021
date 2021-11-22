@@ -8,7 +8,7 @@ namespace Task3
 {
     public class PrDepartment
     {
-        public void SendNewYearGreeting(IEmployee employee)
+        public void SendNewYearGreeting(Employee employee)
         {
             if (employee is null)
             {

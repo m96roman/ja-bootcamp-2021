@@ -8,7 +8,7 @@ namespace Task3
 {
     public class HrDepartment
     {
-        public void IncreaseSalary(IEmployee employ, decimal diff)
+        public void IncreaseSalary(Employee employ, decimal diff)
         {
             if (employ is null)
             {
