@@ -8,20 +8,21 @@ namespace Task2
 {
     public class AutoPilot
     {
-        private IDrivable _transport;
 
-        public AutoPilot(IDrivable transport)
-        {
-            _transport = transport;
-        }
-
-        public void Navigate(string destination)
+        public void Navigate(string destination, IDrivable _transport)
         {
             Console.WriteLine($"Navigate to destination {destination}");
             _transport.GoForward();
             _transport.TurnLeft();
             _transport.GoBackward();
             _transport.TurnRight();
+        }
+
+        public void Navigate(string destination, IRailable _transport)
+        {
+            Console.WriteLine($"Navigate to destination {destination}");
+            _transport.GoForward();
+            _transport.GoBackward();
         }
     }
 }
