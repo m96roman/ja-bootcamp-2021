@@ -43,13 +43,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HrDepartment.cs" />
-    <Compile Include="PrDepartment.cs" />
-    <Compile Include="FinancialDepartment.cs" />
-    <Compile Include="Gender.cs" />
-    <Compile Include="Hero.cs" />
+    <Compile Include="FinancicalStuff\FinancialReporter.cs" />
+    <Compile Include="IFinanceBalance.cs" />
+    <Compile Include="PersonsFinance.cs" />
+    <Compile Include="PrStuff\GreetingsSender.cs" />
+    <Compile Include="HrStuff\HrDepartment.cs" />
+    <Compile Include="FinancicalStuff\IFinancialReporter.cs" />
+    <Compile Include="PrStuff\IGreetingSender.cs" />
+    <Compile Include="General stuff\IPerson.cs" />
+    <Compile Include="HrStuff\IWorker.cs" />
+    <Compile Include="PrStuff\PrDepartment.cs" />
+    <Compile Include="FinancicalStuff\FinancialDepartment.cs" />
+    <Compile Include="General stuff\Gender.cs" />
+    <Compile Include="General stuff\Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="HrStuff\Worker.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

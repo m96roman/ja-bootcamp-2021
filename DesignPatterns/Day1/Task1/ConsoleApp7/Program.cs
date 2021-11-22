@@ -17,8 +17,12 @@ namespace ConsoleApp7
                 Name = "Otp",
                 Clients = clients
             };
-            Console.WriteLine(otp.GetReport("html"));
-            Console.WriteLine(otp.GetReport("pdf"));
+
+            //Problem solved?
+            Console.WriteLine(otp.GetReport(new HtmlReportGenerator()));
+            Console.WriteLine(otp.GetReport(new PdfReportGenerator()));
+
+            Console.ReadKey();
         }
     }
 }

@@ -11,20 +11,13 @@ namespace ConsoleApp7
         public string Name { get; set; }
         public List<Client> Clients { get; set; }
 
-        public string GetReport(string type)
+        //Problem with this method is it depends on 'magic' string type
+        //But if we want to implement the new report type?
+        //Here where problem starting
+        //And here it being solved
+        public string GetReport(IReportGenerator reportGenerator)
         {
-            if (type == "html")
-            {
-                var htmlReport = new HtmlReportGenerator();
-                return htmlReport.Get(Clients);
-            }
-            else if (type == "pdf")
-            {
-                var pdfReport = new PdfReportGenerator();
-                return pdfReport.Get(Clients);
-            }
-
-            throw new ArgumentException();
+            return reportGenerator.Get(Clients);
         }
     }
 }

@@ -10,30 +10,49 @@ namespace Task3
     {
         static void Main(string[] args)
         {
-            Hero luckyMan = new Hero
+            //so, following SRP the finance/hr/pr stuff has to be one class/interface per department
+            //But as i think Person with his basic fields has to be the same for all departments
+            Person luckyMan = new Person
             {
                 Alias = "Luckyman",
-                Balance = 5.0M,
-                City = "NY",
-                Country = "US",
-                CurrencyCode = 124,
                 FirstName = "John",
                 LastName = "Smith",
                 Gender = Gender.Male,
-                LastTimeAddedFundsToBalance = DateTime.MinValue,
-                PostIndex = "PO 90555",
                 Power = "Luck",
-                Salary = 15.0M,
-                Street = "1st ave"                
             };
 
+            PersonsFinance personsFinance = new PersonsFinance
+            {
+                Balance = 5.0M,
+                CurrencyCode = 124,
+                Salary = 15.0M
+            };
+
+            FinancialReporter luckyFinanceMan = new FinancialReporter
+            {
+                Person = luckyMan,
+                FinanceBalance = personsFinance,
+                LastTimeAddedFundsToBalance = DateTime.MinValue
+            };
             var financialDepartment = new FinancialDepartment();
-            financialDepartment.ShowBalance(luckyMan);
-            financialDepartment.IncreaseSalary(luckyMan, 1M);
+            financialDepartment.ShowBalance(luckyFinanceMan);
+            financialDepartment.IncreaseSalary(luckyFinanceMan, 1M);
+
+
+            Worker luckyWorker = new Worker { Person = luckyMan, FinanceBalance = personsFinance };
             var hrDepartment = new HrDepartment();
-            hrDepartment.IncreaseSalary(luckyMan, 0.5M);
+            hrDepartment.IncreaseSalary(luckyWorker, 0.5M);
+
+            GreetingsSender luckyGreetingsSender = new GreetingsSender
+            {
+                PostIndex = "PO 90555",
+                Street = "1st ave",
+                City = "NY",
+                Country = "US",
+            };
             var prDepartment = new PrDepartment();
-            prDepartment.SendNewYearGreeting(luckyMan);
+            prDepartment.SendNewYearGreeting(luckyGreetingsSender);
+
             Console.ReadLine();
         }
     }
