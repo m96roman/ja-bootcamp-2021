@@ -6,8 +6,8 @@ namespace Task4
     {
         static void Main(string[] args)
         {
-            UserRepository repo = new UserRepository(new MySqlDb(new MySqlConnection()));
-            Console.WriteLine($"Users count {repo.GetUsers().Count}");
+            IRepository<User> repo = new UserRepository(new MySqlDb<User>(new MySqlConnection()));
+            Console.WriteLine($"Users count {repo.getList().Count}");
             Console.ReadLine();
         }
     }

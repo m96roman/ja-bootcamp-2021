@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace Task4
 {
-    public class MySqlDb
+    public class MySqlDb<T>: ApplicationContext<T>
     {
-        MySqlConnection _connection;
+        ISQLConnection _connection;
 
         public MySqlDb(MySqlConnection connection)
         {
             _connection = connection;
         }
 
-        public List<T> ExecuteSql<T>(string sql)
+        public List<T> ExecuteSql(string sql)
         {
             _connection.Connect();
             Console.WriteLine($"Exec SQL Script: {sql}");
