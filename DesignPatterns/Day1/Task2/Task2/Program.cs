@@ -12,6 +12,12 @@ namespace Task2
         {
             //Problem is with interface segregation
             //which i belive think i fixed
+
+            //The train does not have left, and right
+            //so its logical to fix some interface
+
+            //The autopilot cannot operate with two types ICommonDriver and IMasterDriver
+            //So its logically to divide it too
             try
             {
                 string marsLocation = "Mars";
