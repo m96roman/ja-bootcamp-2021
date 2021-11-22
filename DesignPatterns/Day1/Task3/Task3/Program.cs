@@ -21,7 +21,7 @@ namespace Task3
                 Power = "Luck",
             };
 
-            FinanceReporter luckyFinanceMan = new FinanceReporter
+            FinancialReporter luckyFinanceMan = new FinancialReporter
             {
                 Person = luckyMan,
                 Balance = 5.0M,

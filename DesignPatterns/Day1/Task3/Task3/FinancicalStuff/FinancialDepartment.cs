@@ -8,12 +8,12 @@ namespace Task3
 {
     public class FinancialDepartment
     {
-        public void ShowBalance(IFinancicReporter hero)
+        public void ShowBalance(IFinancialReporter hero)
         {
             Console.WriteLine($"{hero.GetFullName()} has {hero.Balance} on balnace");
         }
 
-        public void IncreaseSalary(IFinancicReporter hero, decimal diff)
+        public void IncreaseSalary(IFinancialReporter hero, decimal diff)
         {
             Console.WriteLine($"Increasing salary on {diff} for {hero.GetFullName()}");
             hero.IncreaseSalary(diff);

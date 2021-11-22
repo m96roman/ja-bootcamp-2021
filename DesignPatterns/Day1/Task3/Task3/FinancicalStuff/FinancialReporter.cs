@@ -2,7 +2,7 @@
 
 namespace Task3
 {
-    public class FinanceReporter : IFinancicReporter
+    public class FinancialReporter : IFinancialReporter
     {
         public DateTime LastTimeAddedFundsToBalance { get; set; }
 

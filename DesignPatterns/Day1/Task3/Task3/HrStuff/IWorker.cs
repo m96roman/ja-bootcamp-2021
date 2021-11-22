@@ -8,8 +8,6 @@
 
         void IncreaseSalary(decimal diff);
 
-        void FullName();
-
-        object GetFullName();
+        string GetFullName();
     }
 }

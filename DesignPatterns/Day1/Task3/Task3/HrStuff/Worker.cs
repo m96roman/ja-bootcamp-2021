@@ -2,7 +2,7 @@
 {
     public class Worker : IWorker
     {
-        public Person Person { get; set; }
+        public IPerson Person { get; set; }
 
         public decimal Salary { get; set; }
 
@@ -16,8 +16,6 @@
             Salary -= amount;
         }
 
-        public void FullName() => Person.GetFullName();
-
-        public object GetFullName() => Person.GetFullName();
+        public string GetFullName() => Person.GetFullName();
     }
 }

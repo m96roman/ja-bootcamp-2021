@@ -43,10 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FinancicalStuff\FinanceReporter.cs" />
+    <Compile Include="FinancicalStuff\FinancialReporter.cs" />
     <Compile Include="PrStuff\GreetingsSender.cs" />
     <Compile Include="HrStuff\HrDepartment.cs" />
-    <Compile Include="FinancicalStuff\IFinancicReporter.cs" />
+    <Compile Include="FinancicalStuff\IFinancialReporter.cs" />
     <Compile Include="PrStuff\IGreetingSender.cs" />
     <Compile Include="General stuff\IPerson.cs" />
     <Compile Include="HrStuff\IWorker.cs" />
