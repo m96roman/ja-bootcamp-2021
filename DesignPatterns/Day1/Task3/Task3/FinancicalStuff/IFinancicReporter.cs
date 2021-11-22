@@ -7,6 +7,7 @@ namespace Task3
         decimal Balance { get; set; }
 
         int CurrencyCode { get; set; }
+
         DateTime LastTimeAddedFundsToBalance { get; set; }
 
         void PaySalary();

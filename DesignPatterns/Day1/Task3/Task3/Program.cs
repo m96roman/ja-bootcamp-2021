@@ -10,6 +10,7 @@ namespace Task3
     {
         static void Main(string[] args)
         {
+           
             Person luckyMan = new Person
             {
                 Alias = "Luckyman",
@@ -31,16 +32,19 @@ namespace Task3
             //    Country = "US",
 
             //    Salary = 15.0M,
-            
 
-            var financialDepartment = new FinancialDepartment();
-            financialDepartment.ShowBalance(luckyMan);
-            financialDepartment.IncreaseSalary(luckyMan, 1M);
-            var hrDepartment = new HrDepartment();
-            hrDepartment.IncreaseSalary(luckyMan, 0.5M);
-            var prDepartment = new PrDepartment();
-            prDepartment.SendNewYearGreeting(luckyMan);
-            Console.ReadLine();
+            //FinanceReporter financeReporter=new FinanceReporter
+            //{
+            //    Alias=
+            //}
+            //var financialDepartment = new FinancialDepartment();
+            //financialDepartment.ShowBalance(luckyMan);
+            //financialDepartment.IncreaseSalary(luckyMan, 1M);
+            //var hrDepartment = new HrDepartment();
+            //hrDepartment.IncreaseSalary(luckyMan, 0.5M);
+            //var prDepartment = new PrDepartment();
+            //prDepartment.SendNewYearGreeting(luckyMan);
+            //Console.ReadLine();
         }
     }
 }
