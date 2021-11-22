@@ -18,9 +18,6 @@
 
         public void FullName() => Person.GetFullName();
 
-        public object GetFullName()
-        {
-            throw new System.NotImplementedException();
-        }
+        public object GetFullName() => Person.GetFullName();
     }
 }
