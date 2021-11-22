@@ -12,6 +12,9 @@ namespace ConsoleApp7
         public List<Client> Clients { get; set; }
 
         //Problem with this method is it depends on 'magic' string type
+        //But if we want to implement the new report type?
+        //Here where problem starting
+        //And here it being solved
         public string GetReport(IReportGenerator reportGenerator)
         {
             return reportGenerator.Get(Clients);
