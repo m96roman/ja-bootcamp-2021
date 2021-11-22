@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-//the principle of sole responsibility
+// the principle of interface separation
+//
 
 namespace Task3
 {
