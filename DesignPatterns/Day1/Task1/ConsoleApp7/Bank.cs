@@ -6,25 +6,20 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp7
 {
-    public class Bank
+    public class Bank:IBank
     {
         public string Name { get; set; }
         public List<Client> Clients { get; set; }
      
-        public string GetReport(string type)
+        public string GetHtmlReport()
         {
-            if (type == "html")
-            {
-                var htmlReport = new HtmlReportGenerator();
-                return htmlReport.Get(Clients);
-            }
-            else if (type == "pdf")
-            {
-                var pdfReport = new PdfReportGenerator();
-                return pdfReport.Get(Clients);
-            }
-
-            throw new ArgumentException();
+            var htmlReport = new HtmlReportGenerator();
+            return htmlReport.Get(Clients);
         }
+        public string GetPdfReport()
+        {
+            var pdfReport = new PdfReportGenerator();
+            return pdfReport.Get(Clients);
+        }    
     }
 }

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+//violated Principle of openness/closeness
+
 namespace ConsoleApp7
 {
     class Program
@@ -17,9 +19,10 @@ namespace ConsoleApp7
                 Name = "Otp",
                 Clients = clients
             };
-            Console.WriteLine(otp.GetReport("html"));
-            Console.WriteLine(otp.GetReport("pdf"));
+            Console.WriteLine(otp.GetHtmlReport());
+            Console.WriteLine(otp.GetPdfReport());
             Console.ReadLine();
+
         }
     }
 }
