@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsoleApp7.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,23 +9,23 @@ namespace ConsoleApp7
 {
     public class Bank
     {
+        private IReporter _reporter;
+        public Bank(IReporter reporter)
+        {
+            _reporter = reporter;
+        }
+
         public string Name { get; set; }
         public List<Client> Clients { get; set; }
 
-        public string GetReport(string type)
+        public string GetReport()
         {
-            if (type == "html")
+            if (Clients is null || Clients.Count == 0)
             {
-                var htmlReport = new HtmlReportGenerator();
-                return htmlReport.Get(Clients);
-            }
-            else if (type == "pdf")
-            {
-                var pdfReport = new PdfReportGenerator();
-                return pdfReport.Get(Clients);
+                throw new ArgumentException();
             }
 
-            throw new ArgumentException();
+           return _reporter.GetReport(Clients);
         }
     }
 }
