@@ -17,6 +17,10 @@ namespace Task3
         public int CurrencyCode { get; set; }
         public decimal Balance { get; set; }
         public DateTime LastTimeAddedFundsToBalance { get; set; }
+        public string GetFullName()
+        {
+            return $"{FirstName} {LastName}";
+        }
 
     }
 }

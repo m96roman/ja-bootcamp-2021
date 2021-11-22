@@ -6,16 +6,21 @@ using System.Threading.Tasks;
 
 namespace Task3
 {
-    public class FinancAction : Action
+    public abstract class FinancAction : BaseAction
     {
-        public void IncreaseBalance(decimal amount)
+
+        public FinancAction(Employee employee) : base(employee)
         {
-            Balance += amount;
         }
 
-        public void PaySalary()
+        protected void IncreaseBalance(decimal amount)
         {
-            Balance += Salary;
+            employee.Balance += amount;
+        }
+
+        protected void PaySalary()
+        {
+            employee.Balance += employee.Salary;
         }
     }
 }

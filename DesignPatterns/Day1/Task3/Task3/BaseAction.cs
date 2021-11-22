@@ -6,16 +6,13 @@ using System.Threading.Tasks;
 
 namespace Task3
 {
-   public 
-       class Model
+   public class BaseAction
     {
         public Employee employee;
-        public Action action;
-
-        public Model(Employee employee,Action action)
+        public BaseAction(Employee employee)
         {
             this.employee = employee;
-            this.action = action;
         }
+
     }
 }

@@ -6,16 +6,21 @@ using System.Threading.Tasks;
 
 namespace Task3
 {
-    public class HRAction 
+    public abstract class HRAction:BaseAction {
 
-        public void IncreaseSalary(decimal amount)
+        public HRAction(Employee employee) : base(employee)
         {
-            Salary += amount;
         }
 
-        public void DecreaseSalary(decimal amount)
+        protected void IncreaseSalary(decimal amount)
         {
-            Salary -= amount;
+          employee.Salary += amount;
+            
+        }
+
+        protected void DecreaseSalary(decimal amount)
+        {
+            employee.Salary -= amount;
         }
     }
 }
