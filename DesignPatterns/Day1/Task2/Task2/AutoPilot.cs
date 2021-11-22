@@ -1,27 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Task2
 {
-    public class AutoPilot
+     class AutoPilot:IAutoPilot
     {
-        private IDrivable _transport;
+        private IAvto _transport;
 
-        public AutoPilot(IDrivable transport)
+        public AutoPilot(IAvto transport)
         {
+
             _transport = transport;
         }
 
         public void Navigate(string destination)
         {
             Console.WriteLine($"Navigate to destination {destination}");
-            _transport.GoForward();
+           
             _transport.TurnLeft();
-            _transport.GoBackward();
             _transport.TurnRight();
+            _transport.GoForward();
+            _transport.GoBackward();
+
+
         }
     }
 }

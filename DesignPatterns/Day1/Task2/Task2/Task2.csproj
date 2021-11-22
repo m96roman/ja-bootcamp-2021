@@ -43,8 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoPilotBase.cs" />
     <Compile Include="AutoPilot.cs" />
-    <Compile Include="IDrivable.cs" />
+    <Compile Include="IAutoPilot.cs" />
+    <Compile Include="IAvto.cs" />
+    <Compile Include="IMoveStraight.cs" />
+    <Compile Include="ITurnable.cs" />
     <Compile Include="Train.cs" />
     <Compile Include="Car.cs" />
     <Compile Include="Program.cs" />

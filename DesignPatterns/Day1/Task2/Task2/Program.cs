@@ -10,20 +10,29 @@ namespace Task2
     {
         static void Main(string[] args)
         {
+            //Liskov substitute principle is violated, so we need to use code segregation principle
             try
             {
                 string marsLocation = "Mars";
                 string sunLocation = "Sun";
                 
                 Console.WriteLine($"Lets navigate to {marsLocation}");
+                AutoPilotBase autoPilotBase = new AutoPilotBase(new Train());
+                autoPilotBase.Navigate(marsLocation);
+                Console.WriteLine($"We are on {marsLocation} \r\n");
+
+
+
+                Console.WriteLine($"Lets navigate to {marsLocation}");
                 AutoPilot autoPilot = new AutoPilot(new Car());
                 autoPilot.Navigate(marsLocation);
                 Console.WriteLine($"We are on {marsLocation} \r\n");
 
-                Console.WriteLine($"Lets navigate to {sunLocation}");
-                autoPilot = new AutoPilot(new Train());
-                autoPilot.Navigate(sunLocation);
-                Console.WriteLine($"We are on {sunLocation} \r\n");
+
+                Console.WriteLine($"Lets navigate to {marsLocation}");
+                autoPilot = new AutoPilot(new Truck());
+                autoPilot.Navigate(marsLocation);
+                Console.WriteLine($"We are on {marsLocation} \r\n");
             }
             catch (Exception ex)
             {
