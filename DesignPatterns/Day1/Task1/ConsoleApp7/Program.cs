@@ -23,7 +23,7 @@ namespace ConsoleApp7
 
             Console.ReadLine();
 
-            // Task violets OCP, in case if we need to add report of different type we would have to modify getReport() method
+            // Task violates Open-closed principle, in case if we need to add report of different type we would have to modify getReport() method
         }
     }
 }
