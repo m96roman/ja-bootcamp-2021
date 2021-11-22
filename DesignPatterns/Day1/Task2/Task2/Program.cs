@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+//Interface separation principle
+//Principle of openness/closeness
+
 namespace Task2
 {
     class Program
@@ -16,12 +19,12 @@ namespace Task2
                 string sunLocation = "Sun";
                 
                 Console.WriteLine($"Lets navigate to {marsLocation}");
-                AutoPilot autoPilot = new AutoPilot(new Car());
+                IAutoPilot autoPilot = new AutoPilotForWheels(new Car());
                 autoPilot.Navigate(marsLocation);
                 Console.WriteLine($"We are on {marsLocation} \r\n");
 
                 Console.WriteLine($"Lets navigate to {sunLocation}");
-                autoPilot = new AutoPilot(new Train());
+                autoPilot = new AutoPilotForRail(new Train());
                 autoPilot.Navigate(sunLocation);
                 Console.WriteLine($"We are on {sunLocation} \r\n");
             }
