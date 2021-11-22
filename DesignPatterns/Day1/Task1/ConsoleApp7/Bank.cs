@@ -10,7 +10,7 @@ namespace ConsoleApp7
     {
         public string Name { get; set; }
         public List<Client> Clients { get; set; }
-
+     
         public string GetReport(string type)
         {
             if (type == "html")

@@ -19,6 +19,7 @@ namespace ConsoleApp7
             };
             Console.WriteLine(otp.GetReport("html"));
             Console.WriteLine(otp.GetReport("pdf"));
+            Console.ReadLine();
         }
     }
 }
