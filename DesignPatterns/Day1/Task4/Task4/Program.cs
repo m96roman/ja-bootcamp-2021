@@ -6,7 +6,9 @@ namespace Task4
     {
         static void Main(string[] args)
         {
-            UserRepository repo = new UserRepository(new MySqlDb(new MySqlConnection()));
+            // Dependency Inversion Principle (DIP)
+
+            IUserRepository repo = new UserRepository(new MySqlDb(new MySqlConnection()));
             Console.WriteLine($"Users count {repo.GetUsers().Count}");
             Console.ReadLine();
         }

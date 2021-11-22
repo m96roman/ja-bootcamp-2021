@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Task4
 {
-    public class UserRepository
+    public class UserRepository: IUserRepository
     {
-        private MySqlDb _db;
+        private IDatabase _db;
 
-        public UserRepository(MySqlDb db)
+        public UserRepository(IDatabase db)
         {
             _db = db;
         }

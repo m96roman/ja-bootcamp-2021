@@ -43,6 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IDatabase.cs" />
+    <Compile Include="IDbConnection.cs" />
+    <Compile Include="IUserRepository.cs" />
     <Compile Include="MySqlDb.cs" />
     <Compile Include="MySqlConnection.cs" />
     <Compile Include="User.cs" />
