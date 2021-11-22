@@ -10,18 +10,25 @@ namespace ConsoleApp7
     {
         public string Name { get; set; }
         public List<Client> Clients { get; set; }
+        private IReport _report;
 
-        public string GetReport(string type)
+        public string GetReportHtml(string type)
         {
             if (type == "html")
             {
-                var htmlReport = new HtmlReportGenerator();
-                return htmlReport.Get(Clients);
+                _report = new HtmlReportGenerator();
+                return _report.Get(Clients);
             }
-            else if (type == "pdf")
+
+            throw new ArgumentException();
+        }
+
+        public string GetReportPdf(string type)
+        {
+            if (type == "pdf")
             {
-                var pdfReport = new PdfReportGenerator();
-                return pdfReport.Get(Clients);
+                _report = new PdfReportGenerator();
+                return _report.Get(Clients);
             }
 
             throw new ArgumentException();

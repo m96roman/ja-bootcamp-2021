@@ -2,7 +2,7 @@
 
 namespace ConsoleApp7
 {
-    public class PdfReportGenerator
+    public class PdfReportGenerator : IReport
     {
         public string Get(List<Client> clients)
         {

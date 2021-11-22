@@ -15,10 +15,15 @@ namespace ConsoleApp7
             Bank otp = new Bank
             {
                 Name = "Otp",
-                Clients = clients
+                Clients = clients, 
+                
             };
-            Console.WriteLine(otp.GetReport("html"));
-            Console.WriteLine(otp.GetReport("pdf"));
+            Console.WriteLine(otp.GetReportHtml("html"));
+            Console.WriteLine(otp.GetReportPdf("pdf"));
+
+            Console.ReadLine();
+
+            // Task violets OCP, in case if we need to add report of different type we would have to modify getReport() method
         }
     }
 }
