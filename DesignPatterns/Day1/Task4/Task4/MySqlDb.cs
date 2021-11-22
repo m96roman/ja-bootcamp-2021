@@ -8,9 +8,9 @@ namespace Task4
 {
     public class MySqlDb
     {
-        MySqlConnection _connection;
+        IMysqlconnection _connection;
 
-        public MySqlDb(MySqlConnection connection)
+        public MySqlDb(IMysqlconnection connection)
         {
             _connection = connection;
         }
