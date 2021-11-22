@@ -43,7 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Electric.cs" />
     <Compile Include="HrDepartment.cs" />
+    <Compile Include="HumanBase.cs" />
+    <Compile Include="IIncreaseSalary.cs" />
+    <Compile Include="IPerson.cs" />
     <Compile Include="PrDepartment.cs" />
     <Compile Include="FinancialDepartment.cs" />
     <Compile Include="Gender.cs" />

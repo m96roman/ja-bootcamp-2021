@@ -10,19 +10,22 @@ namespace Task2
     {
         static void Main(string[] args)
         {
+
+            // Interface Segregation Principle (ISP)
+            // Open closed Principle (OCP)
             try
             {
                 string marsLocation = "Mars";
                 string sunLocation = "Sun";
                 
                 Console.WriteLine($"Lets navigate to {marsLocation}");
-                AutoPilot autoPilot = new AutoPilot(new Car());
+                AutoPilotCar autoPilot = new AutoPilotCar(new Car());
                 autoPilot.Navigate(marsLocation);
                 Console.WriteLine($"We are on {marsLocation} \r\n");
 
                 Console.WriteLine($"Lets navigate to {sunLocation}");
-                autoPilot = new AutoPilot(new Train());
-                autoPilot.Navigate(sunLocation);
+                 AutoPilotTrain autoPilotTrain= new AutoPilotTrain(new Train());
+                autoPilotTrain.Navigate(sunLocation);
                 Console.WriteLine($"We are on {sunLocation} \r\n");
             }
             catch (Exception ex)

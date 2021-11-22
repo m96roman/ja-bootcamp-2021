@@ -45,8 +45,9 @@
   <ItemGroup>
     <Compile Include="Bank.cs" />
     <Compile Include="Client.cs" />
-    <Compile Include="MsSqlOtpBankDB.cs" />
     <Compile Include="HtmlReportGenerator.cs" />
+    <Compile Include="IReportGenerator.cs" />
+    <Compile Include="MsSqlOtpBankDB.cs" />
     <Compile Include="PdfReportGenerator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

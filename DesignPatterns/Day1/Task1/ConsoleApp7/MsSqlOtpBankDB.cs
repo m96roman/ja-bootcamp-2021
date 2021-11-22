@@ -37,6 +37,16 @@ namespace ConsoleApp7
                     Name = "Joe",
                     Balance = 40.1M
                 },
+                  new Client
+                {
+                    Name = "Joe",
+                    Balance = 40.1M
+                },
+                    new Client
+                {
+                    Name = "Joe",
+                    Balance = 40.1M
+                }
             };
         }
     }
