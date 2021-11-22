@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ISqlConnection.cs" />
+    <Compile Include="ISqlDb.cs" />
     <Compile Include="MySqlDb.cs" />
     <Compile Include="MySqlConnection.cs" />
     <Compile Include="User.cs" />

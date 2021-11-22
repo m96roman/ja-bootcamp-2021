@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Task4
 {
-    interface ISqlConnection
+    public interface ISqlConnection
     {
+        void Connect();
+    
     }
 }
