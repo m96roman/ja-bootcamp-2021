@@ -10,22 +10,28 @@ namespace Task3
     {
         static void Main(string[] args)
         {
-            Hero luckyMan = new Hero
+            Person luckyMan = new Person
             {
                 Alias = "Luckyman",
-                Balance = 5.0M,
-                City = "NY",
-                Country = "US",
-                CurrencyCode = 124,
                 FirstName = "John",
                 LastName = "Smith",
                 Gender = Gender.Male,
-                LastTimeAddedFundsToBalance = DateTime.MinValue,
-                PostIndex = "PO 90555",
                 Power = "Luck",
-                Salary = 15.0M,
-                Street = "1st ave"                
             };
+
+            //    Balance = 5.0M,
+
+            //    CurrencyCode = 124,
+            //   
+            //    LastTimeAddedFundsToBalance = DateTime.MinValue,
+
+            //    PostIndex = "PO 90555",
+            //    Street = "1st ave"   
+            //    City = "NY",
+            //    Country = "US",
+
+            //    Salary = 15.0M,
+            
 
             var financialDepartment = new FinancialDepartment();
             financialDepartment.ShowBalance(luckyMan);
