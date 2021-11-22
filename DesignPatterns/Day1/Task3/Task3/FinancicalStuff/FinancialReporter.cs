@@ -6,36 +6,27 @@ namespace Task3
     {
         public DateTime LastTimeAddedFundsToBalance { get; set; }
 
-        public int CurrencyCode { get; set; }
-
-        public decimal Balance { get; set; }
-
-        public decimal Salary { get; set; }
+        public IFinanceBalance FinanceBalance { get; set; }
 
         public IPerson Person { get; set; }
-
-        public void DecreaseSalary(decimal amount)
-        {
-            throw new NotImplementedException();
-        }
 
         public string GetFullName() => Person.GetFullName();
 
         public void IncreaseBalance(decimal amount)
         {
-            Balance += amount;
+            FinanceBalance.Balance += amount;
 
             LastTimeAddedFundsToBalance = new DateTime();
         }
 
         public void IncreaseSalary(decimal diff)
         {
-            Salary += diff;
+            FinanceBalance.Salary += diff;
         }
 
         public void PaySalary()
         {
-            Balance += Salary;
+            FinanceBalance.Balance += FinanceBalance.Salary;
         }
     }
 }

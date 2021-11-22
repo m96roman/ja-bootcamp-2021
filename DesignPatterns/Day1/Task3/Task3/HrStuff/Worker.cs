@@ -4,16 +4,16 @@
     {
         public IPerson Person { get; set; }
 
-        public decimal Salary { get; set; }
+        public IFinanceBalance FinanceBalance { get; set; }
 
         public void IncreaseSalary(decimal amount)
         {
-            Salary += amount;
+            FinanceBalance.Salary += amount;
         }
 
         public void DecreaseSalary(decimal amount)
         {
-            Salary -= amount;
+            FinanceBalance.Salary -= amount;
         }
 
         public string GetFullName() => Person.GetFullName();

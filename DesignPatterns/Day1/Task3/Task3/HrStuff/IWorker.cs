@@ -2,7 +2,7 @@
 {
     public interface IWorker
     {
-        decimal Salary { get; }
+        IFinanceBalance FinanceBalance { get; set; }
 
         void DecreaseSalary(decimal amount);
 

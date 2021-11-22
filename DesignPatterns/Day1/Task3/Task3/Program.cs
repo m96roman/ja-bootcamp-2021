@@ -21,11 +21,17 @@ namespace Task3
                 Power = "Luck",
             };
 
+            PersonsFinance personsFinance = new PersonsFinance
+            {
+                Balance = 5.0M,
+                CurrencyCode = 124,
+                Salary = 15.0M
+            };
+
             FinancialReporter luckyFinanceMan = new FinancialReporter
             {
                 Person = luckyMan,
-                Balance = 5.0M,
-                CurrencyCode = 124,
+                FinanceBalance = personsFinance,
                 LastTimeAddedFundsToBalance = DateTime.MinValue
             };
             var financialDepartment = new FinancialDepartment();
@@ -33,7 +39,7 @@ namespace Task3
             financialDepartment.IncreaseSalary(luckyFinanceMan, 1M);
 
 
-            Worker luckyWorker = new Worker { Person = luckyMan, Salary = 15.0M };
+            Worker luckyWorker = new Worker { Person = luckyMan, FinanceBalance = personsFinance };
             var hrDepartment = new HrDepartment();
             hrDepartment.IncreaseSalary(luckyWorker, 0.5M);
 

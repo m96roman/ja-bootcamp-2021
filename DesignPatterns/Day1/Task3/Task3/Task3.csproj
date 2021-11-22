@@ -44,6 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FinancicalStuff\FinancialReporter.cs" />
+    <Compile Include="IFinanceBalance.cs" />
+    <Compile Include="PersonsFinance.cs" />
     <Compile Include="PrStuff\GreetingsSender.cs" />
     <Compile Include="HrStuff\HrDepartment.cs" />
     <Compile Include="FinancicalStuff\IFinancialReporter.cs" />
