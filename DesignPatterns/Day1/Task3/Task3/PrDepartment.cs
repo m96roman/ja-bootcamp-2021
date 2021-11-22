@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Task3
 {
-    public class PrDepartment
+    public class PrDepartment:PrAction
     {
-        public void SendNewYearGreeting(Hero hero)
+        public void SendNewYearGreeting(Employee hero)
         {
-            hero.SendGreeting("Happy New Year!");
+            SendGreeting("Happy New Year!");
         }
     }
 }

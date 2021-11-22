@@ -8,9 +8,10 @@ namespace Task3
 {
     class Program
     {
+        //single resposibility
         static void Main(string[] args)
         {
-            Hero luckyMan = new Hero
+            Employee luckyMan = new Employee
             {
                 Alias = "Luckyman",
                 Balance = 5.0M,
@@ -27,13 +28,17 @@ namespace Task3
                 Street = "1st ave"                
             };
 
-            var financialDepartment = new FinancialDepartment();
-            financialDepartment.ShowBalance(luckyMan);
-            financialDepartment.IncreaseSalary(luckyMan, 1M);
-            var hrDepartment = new HrDepartment();
-            hrDepartment.IncreaseSalary(luckyMan, 0.5M);
-            var prDepartment = new PrDepartment();
-            prDepartment.SendNewYearGreeting(luckyMan);
+            var hrDepartment = new HRAction();
+            var model = new Model(luckyMan, hrDepartment);
+            model.action.GetFullName();
+
+
+            //var financialDepartment = new FinancialDepartment();
+            //financialDepartment.ShowBalance(luckyMan);
+            
+            //hrDepartment.IncreaseSalary(luckyMan, 0.5M);
+            //var prDepartment = new PrDepartment();
+            //prDepartment.SendNewYearGreeting(luckyMan);
             Console.ReadLine();
         }
     }
