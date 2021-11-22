@@ -8,5 +8,6 @@ namespace Task4
 {
     interface IMysqlconnection
     {
+        void Connect();
     }
 }
