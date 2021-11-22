@@ -48,5 +48,10 @@ namespace Task3
             string destination = $"{PostIndex} {Street}, {City}, {Country}";
             Console.WriteLine($"Sending letter with context '{text}' to destination {destination}");
         }
+        public void IncreaseSalaryAndMessage( decimal diff)
+        {
+            Console.WriteLine($"Increasing salary on {diff} for {this.GetFullName()}");
+            IncreaseSalary(diff);
+        }
     }
 }

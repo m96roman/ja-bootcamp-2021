@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+//the principle of sole responsibility
+
 namespace Task3
 {
     class Program
@@ -29,9 +31,9 @@ namespace Task3
 
             var financialDepartment = new FinancialDepartment();
             financialDepartment.ShowBalance(luckyMan);
-            financialDepartment.IncreaseSalary(luckyMan, 1M);
+            luckyMan.IncreaseSalaryAndMessage( 1M);
             var hrDepartment = new HrDepartment();
-            hrDepartment.IncreaseSalary(luckyMan, 0.5M);
+            luckyMan.IncreaseSalaryAndMessage( 0.5M);
             var prDepartment = new PrDepartment();
             prDepartment.SendNewYearGreeting(luckyMan);
             Console.ReadLine();
