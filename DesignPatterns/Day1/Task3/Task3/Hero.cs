@@ -2,24 +2,17 @@
 
 namespace Task3
 {
-    public class Hero
+    public class Hero : Employee, IEmployee
     {
-        public string Alias { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Power { get; set; }
-        public string City { get; set; }
-        public string Street { get; set; }
-        public string PostIndex { get; set; }
-        public string Country { get; set; }
-        public Gender Gender { get; set; }
-        public decimal Salary { get; set; }
-        public int CurrencyCode { get; set; }
-        public decimal Balance { get; set; }
-        public DateTime LastTimeAddedFundsToBalance { get; set; }
+
+        public decimal EmployeeBalance { get => base.Balance; }
 
         public string GetFullName()
         {
+            if (string.IsNullOrEmpty(FirstName) || string.IsNullOrEmpty(LastName))
+            {
+                throw new ArgumentNullException();
+            }
             return $"{FirstName} {LastName}";
         }
 
@@ -35,6 +28,12 @@ namespace Task3
 
         public void DecreaseSalary(decimal amount)
         {
+            if (Salary < amount)
+            {
+                Console.WriteLine("Salary can to be negative ");
+                return;
+            }
+
             Salary -= amount;
         }
 
@@ -45,6 +44,11 @@ namespace Task3
 
         public void SendGreeting(string text)
         {
+            if (string.IsNullOrEmpty(PostIndex) || string.IsNullOrEmpty(PostIndex) || string.IsNullOrEmpty(Country) || string.IsNullOrEmpty(text))
+            {
+                throw new ArgumentNullException();
+            }
+
             string destination = $"{PostIndex} {Street}, {City}, {Country}";
             Console.WriteLine($"Sending letter with context '{text}' to destination {destination}");
         }

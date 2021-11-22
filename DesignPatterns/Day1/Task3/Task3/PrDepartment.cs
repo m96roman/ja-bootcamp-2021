@@ -8,9 +8,14 @@ namespace Task3
 {
     public class PrDepartment
     {
-        public void SendNewYearGreeting(Hero hero)
+        public void SendNewYearGreeting(IEmployee employee)
         {
-            hero.SendGreeting("Happy New Year!");
+            if (employee is null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            employee.SendGreeting("Happy New Year!");
         }
     }
 }

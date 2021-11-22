@@ -6,11 +6,16 @@ using System.Threading.Tasks;
 
 namespace Task3
 {
+    //Порушений принцип Dependency injection - в нас всі департменти напряму звязані з Hero,
+    // якщо звявляється новий персонал - фінансист, hr ... то треба писати окремий метод IncreaseSalary в класі HrDepartment для кожного  нового типу працівника..
+    // Плюс нарушаєсться - DRY - краще всі проперті - Alias, Balance.. винести в батьківський клас щоб не дублювати - Employee наприклад. Можна 
+    // в принципі зробити батьківський клас Employee для всіх сущностей і зробити всі методи віртуальними в кожньому дочірньому оверрайдити
+
     class Program
     {
         static void Main(string[] args)
         {
-            Hero luckyMan = new Hero
+            IEmployee luckyMan = new Hero
             {
                 Alias = "Luckyman",
                 Balance = 5.0M,

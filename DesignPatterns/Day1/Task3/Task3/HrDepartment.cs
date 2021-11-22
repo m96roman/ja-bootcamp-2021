@@ -8,10 +8,15 @@ namespace Task3
 {
     public class HrDepartment
     {
-        public void IncreaseSalary(Hero hero, decimal diff)
+        public void IncreaseSalary(IEmployee employ, decimal diff)
         {
-            Console.WriteLine($"Increasing salary on {diff} for {hero.GetFullName()}");
-            hero.IncreaseSalary(diff);
+            if (employ is null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            Console.WriteLine($"Increasing salary on {diff} for {employ.GetFullName()}");
+            employ.IncreaseSalary(diff);
         }
     }
 }
