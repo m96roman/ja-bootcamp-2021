@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Task4
 {
-    public interface IMysqlconnection
-    {
-        void Connect();
+   public  interface IMySqlDb
+    {    
+        List<T> ExecuteSql<T>(string sql);
     }
 }
