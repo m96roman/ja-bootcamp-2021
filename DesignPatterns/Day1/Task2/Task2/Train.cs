@@ -2,21 +2,11 @@
 
 namespace Task2
 {
-    public class Train : IDrivable
+    public class Train : IDrivableLinear
     {
         public void GoForward()
         {
             Console.WriteLine("Train going forward.");
-        }
-
-        public void TurnLeft()
-        {
-            throw new NotSupportedException();
-        }
-
-        public void TurnRight()
-        {
-            throw new NotSupportedException();
         }
 
         public void GoBackward()

@@ -44,7 +44,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutoPilot.cs" />
+    <Compile Include="AutoPilotTrain.cs" />
     <Compile Include="IDrivable.cs" />
+    <Compile Include="IDrivableLinear.cs" />
+    <Compile Include="ILogger.cs" />
+    <Compile Include="LoggerToConsole.cs" />
     <Compile Include="Train.cs" />
     <Compile Include="Car.cs" />
     <Compile Include="Program.cs" />
