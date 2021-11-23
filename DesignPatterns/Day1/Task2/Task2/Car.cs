@@ -10,7 +10,7 @@ namespace Task2
     {
         public void GoForward()
         {
-            Console.WriteLine("Car going forward.");
+            Console.WriteLine("Car is going forward.");
         }
 
         public void TurnLeft()
@@ -25,7 +25,15 @@ namespace Task2
 
         public void GoBackward()
         {
-            Console.WriteLine("Car backing up.");
+            Console.WriteLine("Car is backing up.");
+        }
+        public void Navigate(string destination)
+        {
+            Console.WriteLine($"Navigate to destination {destination}");
+            GoForward();
+            TurnLeft();
+            TurnRight();
+            GoBackward();
         }
     }
 }

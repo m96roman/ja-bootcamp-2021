@@ -2,26 +2,23 @@
 
 namespace Task2
 {
-    public class Train : IDrivable
+    public class Train : IDrivableTrain
     {
         public void GoForward()
         {
-            Console.WriteLine("Train going forward.");
-        }
-
-        public void TurnLeft()
-        {
-            throw new NotSupportedException();
-        }
-
-        public void TurnRight()
-        {
-            throw new NotSupportedException();
+            Console.WriteLine("Train is going forward.");
         }
 
         public void GoBackward()
         {
-            Console.WriteLine("Train backing up.");
+            Console.WriteLine("Train is backing up.");
+        }
+
+        public void Navigate(string destination)
+        {
+            Console.WriteLine($"Navigate to destination {destination}");
+            GoForward();
+            GoBackward();
         }
     }
 }

@@ -17,8 +17,12 @@ namespace ConsoleApp7
                 Name = "Otp",
                 Clients = clients
             };
-            Console.WriteLine(otp.GetReport("html"));
-            Console.WriteLine(otp.GetReport("pdf"));
+           
+            Console.WriteLine(otp.GetReport(new HtmlReportGenerator()));
+            Console.WriteLine(otp.GetReport(new PdfReportGenerator()));
+            Console.ReadLine();  
         }
     }
 }
+// Open Close method has been aplied for this program. GetReport method of Bank class has been changed such,
+// that now it can be extended by creating new class which applies IReport iterface.

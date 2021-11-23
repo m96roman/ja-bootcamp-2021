@@ -8,7 +8,7 @@ namespace Task3
 {
     public class PrDepartment
     {
-        public void SendNewYearGreeting(Hero hero)
+        public void SendNewYearGreeting(IHeroPrInfo hero)
         {
             hero.SendGreeting("Happy New Year!");
         }

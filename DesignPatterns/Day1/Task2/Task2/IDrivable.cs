@@ -12,5 +12,6 @@ namespace Task2
         void TurnLeft();
         void TurnRight();
         void GoBackward();
+        void Navigate(string destination);
     }
 }

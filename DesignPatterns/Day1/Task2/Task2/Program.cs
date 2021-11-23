@@ -10,26 +10,30 @@ namespace Task2
     {
         static void Main(string[] args)
         {
-            try
-            {
-                string marsLocation = "Mars";
-                string sunLocation = "Sun";
-                
-                Console.WriteLine($"Lets navigate to {marsLocation}");
-                AutoPilot autoPilot = new AutoPilot(new Car());
-                autoPilot.Navigate(marsLocation);
-                Console.WriteLine($"We are on {marsLocation} \r\n");
 
-                Console.WriteLine($"Lets navigate to {sunLocation}");
-                autoPilot = new AutoPilot(new Train());
-                autoPilot.Navigate(sunLocation);
-                Console.WriteLine($"We are on {sunLocation} \r\n");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Navigation failed, because {ex}");
-            }
+            string marsLocation = "Mars";
+            string sunLocation = "Sun";
+
+            Console.WriteLine($"Lets navigate to {marsLocation}");
+            Car universeCar = new Car();
+            universeCar.Navigate(marsLocation);
+            Console.WriteLine($"We are on {marsLocation} \r\n");
+
+            Console.WriteLine($"Lets navigate to {sunLocation}");
+            Train interPlanet = new Train();
+            interPlanet.Navigate(sunLocation);
+            Console.WriteLine($"We are on {sunLocation} \r\n");
+
             Console.ReadLine();
         }
     }
 }
+//       Interface segregation principle
+// In the given example previously there were a Train class which extended
+// IDravable interface, but did not implemented all it`s methods.
+//
+//       Liskov substitute principle
+// After creating classes which extend two different interfaces, there became impossible to
+// use AutoPilot class without the checking of class type. That`s why method Navigete was
+// moved from AutoPilot to interfaces for it`s proper implementation in classes that extend
+// different Interfaces.

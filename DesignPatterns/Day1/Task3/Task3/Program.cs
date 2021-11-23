@@ -10,31 +10,41 @@ namespace Task3
     {
         static void Main(string[] args)
         {
-            Hero luckyMan = new Hero
+            var financialDepartmentsHero = new FinancialDepartment();
+            HeroFinancialInfo heroFinancial = new HeroFinancialInfo
             {
-                Alias = "Luckyman",
-                Balance = 5.0M,
-                City = "NY",
-                Country = "US",
-                CurrencyCode = 124,
-                FirstName = "John",
+                FirstName = "Anna",
                 LastName = "Smith",
-                Gender = Gender.Male,
-                LastTimeAddedFundsToBalance = DateTime.MinValue,
-                PostIndex = "PO 90555",
-                Power = "Luck",
-                Salary = 15.0M,
-                Street = "1st ave"                
+                Salary = 15.0m,
+                Balance = 5.0M
             };
 
-            var financialDepartment = new FinancialDepartment();
-            financialDepartment.ShowBalance(luckyMan);
-            financialDepartment.IncreaseSalary(luckyMan, 1M);
+            financialDepartmentsHero.ShowBalance(heroFinancial);
+            financialDepartmentsHero.IncreaseSalary(heroFinancial, 1M);
+           
+            
+            HeroHrInfo hrsHero = new HeroHrInfo
+            {
+                FirstName = "Anna",
+                LastName = "Smith",
+                Salary = 15.0m
+            };
+           
             var hrDepartment = new HrDepartment();
-            hrDepartment.IncreaseSalary(luckyMan, 0.5M);
+            hrDepartment.IncreaseSalary(hrsHero, 0.5M);
+
+            HeroPrInfo prsHero = new HeroPrInfo
+            {
+                City = "Uzhgorod",
+                Street = "Minayska",
+                PostIndex = "88000",
+                Country = "Ukraine"
+            };
+           
             var prDepartment = new PrDepartment();
-            prDepartment.SendNewYearGreeting(luckyMan);
+            prDepartment.SendNewYearGreeting(prsHero);
             Console.ReadLine();
         }
     }
 }
+// In this program there were inmplemented Single responsibility principle.

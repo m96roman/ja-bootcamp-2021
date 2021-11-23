@@ -2,11 +2,12 @@
 
 namespace ConsoleApp7
 {
-    public class HtmlReportGenerator
+    public class HtmlReportGenerator : IReport
     {
-        public string Get(List<Client> clients)
+        public string GenerateReport(List<Client> clients)
         {
             return $"html report for {clients.Count}";
-        }
+        }    
     }
 }
+ 

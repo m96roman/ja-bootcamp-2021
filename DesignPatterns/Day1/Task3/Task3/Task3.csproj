@@ -43,11 +43,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HeroFinancialInfo.cs" />
+    <Compile Include="HeroHrInfo.cs" />
+    <Compile Include="HeroPrInfo.cs" />
     <Compile Include="HrDepartment.cs" />
+    <Compile Include="IHeroFinancialInfo.cs" />
+    <Compile Include="IHeroHrInfo.cs" />
+    <Compile Include="IHeroPrInfo.cs" />
     <Compile Include="PrDepartment.cs" />
     <Compile Include="FinancialDepartment.cs" />
     <Compile Include="Gender.cs" />
-    <Compile Include="Hero.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
