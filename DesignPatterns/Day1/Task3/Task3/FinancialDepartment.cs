@@ -13,8 +13,7 @@ namespace Task3
         }
         public void IncreaseSalary(Hero hero, decimal diff)
         {
-            Console.WriteLine($"Increasing salary on {diff} for {hero.GetFullName()}");
-           
+            Console.WriteLine($"Increasing salary on {diff} for {hero.GetFullName()}");           
         }
     }
 }

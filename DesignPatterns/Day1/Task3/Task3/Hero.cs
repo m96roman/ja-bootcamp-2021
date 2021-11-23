@@ -2,7 +2,7 @@
 
 namespace Task3
 {
-    public class Hero
+    public class Hero: IPerson
     {
         public string Alias { get; set; }
         public string FirstName { get; set; }

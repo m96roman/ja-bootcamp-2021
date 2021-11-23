@@ -46,6 +46,7 @@
     <Compile Include="FinancePerson.cs" />
     <Compile Include="HrDepartment.cs" />
     <Compile Include="IIncreaseSalary.cs" />
+    <Compile Include="IPerson.cs" />
     <Compile Include="PrDepartment.cs" />
     <Compile Include="FinancialDepartment.cs" />
     <Compile Include="Gender.cs" />
