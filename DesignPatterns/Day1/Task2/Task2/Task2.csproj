@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="AutoPilot.cs" />
     <Compile Include="IDrivable.cs" />
+    <Compile Include="ITrain.cs" />
     <Compile Include="Train.cs" />
     <Compile Include="Car.cs" />
     <Compile Include="Program.cs" />

@@ -1,27 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Task2
 {
     public class AutoPilot
     {
-        private IDrivable _transport;
-
-        public AutoPilot(IDrivable transport)
-        {
-            _transport = transport;
-        }
-
-        public void Navigate(string destination)
+        public void Navigate(string destination, IDrivable transport)
         {
             Console.WriteLine($"Navigate to destination {destination}");
-            _transport.GoForward();
-            _transport.TurnLeft();
-            _transport.GoBackward();
-            _transport.TurnRight();
+            transport.GoForward();
+            transport.TurnLeft();
+            transport.GoBackward();
+            transport.TurnRight();
+        }
+
+        public void Navigate(string destination, ITrain train)
+        {
+            Console.WriteLine($"Navigate to destination {destination}");
+            train.GoForward();
+            train.GoBackward();
         }
     }
 }
