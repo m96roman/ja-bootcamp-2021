@@ -17,8 +17,17 @@ namespace ConsoleApp7
                 Name = "Otp",
                 Clients = clients
             };
-            Console.WriteLine(otp.GetReport("html"));
-            Console.WriteLine(otp.GetReport("pdf"));
+
+            //"Open-closed" principle was violated — in order to add new report, you had to change the class 'Bank' that uses this report.
+            //after refactoring:
+
+            //both objects implement the interface IReportGenerator
+            var htmlReport = new HtmlReportGenerator();
+            var pdfReport = new PdfReportGenerator();
+
+            //for 'Bank' class it does not matter which report object was passed in the parameter 
+            Console.WriteLine(otp.GetReport(htmlReport));
+            Console.WriteLine(otp.GetReport(pdfReport));
         }
     }
 }
