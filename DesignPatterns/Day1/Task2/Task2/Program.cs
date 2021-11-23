@@ -34,8 +34,8 @@ namespace Task2
             }
             Console.ReadLine();
 
-            // Task violates Interface segragation principle since Train doesn't have to implement methods it's not using
-            // Also, after segragating Navigate method to make it mutable so we can satisfy Liskove Substitution Principle, 
+            // Task violates Interface segragation principle since Train doesn't have to implement methods it's not using, 
+            // this also violates SRP principle
         }
     }
 }

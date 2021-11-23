@@ -10,9 +10,8 @@ namespace Task3
     {
         static void Main(string[] args)
         {
-            Hero luckyMan = new Hero
+            Security luckyMan = new Security
             {
-                Alias = "Luckyman",
                 Balance = 5.0M,
                 City = "NY",
                 Country = "US",
@@ -22,9 +21,9 @@ namespace Task3
                 Gender = Gender.Male,
                 LastTimeAddedFundsToBalance = DateTime.MinValue,
                 PostIndex = "PO 90555",
-                Power = "Luck",
                 Salary = 15.0M,
-                Street = "1st ave"                
+                Street = "1st ave",
+                Weapon = "shocker"
             };
 
             var financialDepartment = new FinancialDepartment();
@@ -34,7 +33,11 @@ namespace Task3
             hrDepartment.IncreaseSalary(luckyMan, 0.5M);
             var prDepartment = new PrDepartment();
             prDepartment.SendNewYearGreeting(luckyMan);
+            var security = new Security();
+            security.Check(luckyMan, luckyMan.Weapon);
             Console.ReadLine();
+
+            // Liskov substitution principle - Hero or Security should be able to replace Person
         }
     }
 }
