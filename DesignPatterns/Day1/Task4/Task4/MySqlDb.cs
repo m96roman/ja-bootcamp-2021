@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Task4
 {
-    public class MySqlDb
+    public class MySqlDb : IDataBase
     {
         MySqlConnection _connection;
 
@@ -15,7 +15,18 @@ namespace Task4
             _connection = connection;
         }
 
-        public List<T> ExecuteSql<T>(string sql)
+
+        public List<T> GetModel<T>()
+        {
+            //here is some code to get sql query (or using some ORM)
+            //...
+
+            string sqlQuery = $"select * from user";
+
+            return ExecuteSql<T>(sqlQuery);
+        }
+
+        private List<T> ExecuteSql<T>(string sql)
         {
             _connection.Connect();
             Console.WriteLine($"Exec SQL Script: {sql}");

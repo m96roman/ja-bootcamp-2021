@@ -8,16 +8,16 @@ namespace Task4
 {
     public class UserRepository
     {
-        private MySqlDb _db;
+        private IDataBase _db;
 
-        public UserRepository(MySqlDb db)
+        public UserRepository(IDataBase db)
         {
             _db = db;
         }
 
         public List<User> GetUsers()
         {
-            return _db.ExecuteSql<User>("select * from user");
+            return _db.GetModel<User>();
         }
     }
 }
