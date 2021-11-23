@@ -8,19 +8,12 @@ namespace Task2_v1
 {
     class Client
     {
-        public void CreatejacketA()
+        public void Createjacket(IJacket jaket)
         {
-            IJacket jacket = new JacketA();
+            IJacket jacket = jaket;
             IHood hood = jacket.Hood();
             ISleev sleev = jacket.Sleev();
             Console.WriteLine(hood.Name + " " + sleev.Name);
-
-            IJacket jacketB = new JacketB();
-            IHood hoodB = jacketB.Hood();
-            ISleev sleevB = jacketB.Sleev();
-            Console.WriteLine(hoodB.Name + " " + sleevB.Name);
-
-
         }
     }
 }
