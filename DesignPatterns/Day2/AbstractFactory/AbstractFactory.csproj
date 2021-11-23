@@ -43,8 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbstractFactory\ClothesFactorycs.cs" />
+    <Compile Include="AbstractFactory\LongJacketFactorycs.cs" />
     <Compile Include="AbstractFactory\IClothesFactory.cs" />
+    <Compile Include="AbstractFactory\MiddleJacketFactory.cs" />
+    <Compile Include="AbstractFactory\ShortJacketFactory.cs" />
     <Compile Include="Product\IJacket.cs" />
     <Compile Include="Product\LongJacket.cs" />
     <Compile Include="Product\MiddleJacket.cs" />

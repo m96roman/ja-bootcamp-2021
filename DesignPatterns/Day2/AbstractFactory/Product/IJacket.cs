@@ -8,10 +8,5 @@ namespace AbstractFactory
 {
     public interface IJacket
     {
-        string SewingBack();
-        string SewingFront();
-        string SewingHood();
-        string SewingSleeves();
-        string SewingCollar();
     }
 }

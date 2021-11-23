@@ -8,11 +8,13 @@ namespace AbstractFactory
 {
     public interface IClothesFactory
     {
-        IJacket CreateLongJacket();
-
-        IJacket CreateMiddleJacket();
-
-        IJacket CreateShortJacket();
-
+        IJacket CreateJacket();
+        string SewingBack();
+        string SewingFront();
+        string SewingHood();
+        string SewingSleeves();
+        string SewingCollar();
     }
+
 }
+
