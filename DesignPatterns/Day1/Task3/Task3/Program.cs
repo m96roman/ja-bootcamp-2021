@@ -8,32 +8,45 @@ namespace Task3
 {
     class Program
     {
+        //Single responsibility principle was violated,
+        //Open-closed principle was violated,
+        //Refactoring for restructurization.
+
+
         static void Main(string[] args)
         {
-            Hero luckyMan = new Hero
+            Adderess adderess = new Adderess
             {
-                Alias = "Luckyman",
-                Balance = 5.0M,
                 City = "NY",
                 Country = "US",
-                CurrencyCode = 124,
+                PostIndex = "PO 90555",
+                Street = "1st ave"
+            };
+
+            Hero luckyMan = new Hero(adderess)
+            {
+                Alias = "Luckyman",         
                 FirstName = "John",
                 LastName = "Smith",
-                Gender = Gender.Male,
-                LastTimeAddedFundsToBalance = DateTime.MinValue,
-                PostIndex = "PO 90555",
+                Gender = Gender.Male,      
                 Power = "Luck",
                 Salary = 15.0M,
-                Street = "1st ave"                
+                
+                FinAccount = new Account
+                {
+                    Balance = 5.0M,
+                    CurrencyCode = 124,
+                    LastTimeAddedFundsToBalance = DateTime.MinValue,
+                }
             };
 
             var financialDepartment = new FinancialDepartment();
             financialDepartment.ShowBalance(luckyMan);
-            financialDepartment.IncreaseSalary(luckyMan, 1M);
+            //financialDepartment.IncreaseSalary(luckyMan, 1M); //FinancialDepartment is not responsible for increasing Salary
             var hrDepartment = new HrDepartment();
             hrDepartment.IncreaseSalary(luckyMan, 0.5M);
             var prDepartment = new PrDepartment();
-            prDepartment.SendNewYearGreeting(luckyMan);
+            prDepartment.SendNewYearGreeting(luckyMan.Adderess);
             Console.ReadLine();
         }
     }

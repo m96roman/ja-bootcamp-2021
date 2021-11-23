@@ -8,9 +8,15 @@ namespace Task3
 {
     public class PrDepartment
     {
-        public void SendNewYearGreeting(Hero hero)
+        public void SendNewYearGreeting(Adderess heroAdderess)
         {
-            hero.SendGreeting("Happy New Year!");
+            SendGreeting("Happy New Year!", heroAdderess);
+        }
+
+        public void SendGreeting(string text, Adderess heroAdderess)
+        {
+            string destination = $"{heroAdderess.PostIndex} {heroAdderess.Street}, {heroAdderess.City}, {heroAdderess.Country}";
+            Console.WriteLine($"Sending letter with context '{text}' to destination {destination}");
         }
     }
 }
