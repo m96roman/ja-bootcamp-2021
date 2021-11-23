@@ -1,0 +1,15 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Task2
+{
+    public interface IDrivableTrain
+    {
+        void GoForward();
+        void GoBackward();
+        void Navigate(string destination);
+    }
+}
