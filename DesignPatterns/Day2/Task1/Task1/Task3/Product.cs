@@ -8,11 +8,11 @@ namespace Task3
 {
     class Product
     {
-        private List<string> _parts = new List<string>();
+        private List<string> CarPart = new List<string>();
 
         public void Add(string part)
         {
-            this._parts.Add(part);
+            this.CarPart.Add(part);
         }    
     }
 }

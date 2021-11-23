@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Task3
 {
-    class A1 : ICarComponents
+    class CarModelA1 : ICarComponents
     {
         private Product _product = new Product();
 
@@ -28,6 +28,11 @@ namespace Task3
         {
             Product result = this._product;
             return result;
-        }     
+        }
+
+        public string GetModelCar()
+        {
+            return "Its A1 ";
+        }
     }
 }

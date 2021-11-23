@@ -10,6 +10,7 @@ namespace Task3
     {
         void Engine(double engine);
         void DiametrWheels(int diametr);
-        void heatedSeats(bool value);      
+        void heatedSeats(bool value);
+        string GetModelCar();
     }
 }
