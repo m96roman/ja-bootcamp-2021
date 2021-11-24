@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/*
+ *   Open Closed Prinsiple (OCP)
+ */
 namespace ConsoleApp7
 {
     public class Bank
@@ -13,18 +16,22 @@ namespace ConsoleApp7
 
         public string GetReport(string type)
         {
+            IReportGenerator report;
+
             if (type == "html")
             {
-                var htmlReport = new HtmlReportGenerator();
-                return htmlReport.Get(Clients);
+                report = new HtmlReportGenerator();                
             }
             else if (type == "pdf")
             {
-                var pdfReport = new PdfReportGenerator();
-                return pdfReport.Get(Clients);
+                report = new PdfReportGenerator();               
+            }
+            else 
+            {
+                throw new ArgumentException();
             }
 
-            throw new ArgumentException();
+            return report.Get(Clients);
         }
     }
 }

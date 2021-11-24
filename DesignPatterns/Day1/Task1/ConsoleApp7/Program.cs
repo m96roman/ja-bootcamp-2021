@@ -12,13 +12,17 @@ namespace ConsoleApp7
         {
             MsSqlOtpBankDB db = new MsSqlOtpBankDB();
             List<Client> clients = db.GetClients();
+
             Bank otp = new Bank
             {
                 Name = "Otp",
                 Clients = clients
             };
+
             Console.WriteLine(otp.GetReport("html"));
             Console.WriteLine(otp.GetReport("pdf"));
+
+            Console.ReadLine();
         }
     }
 }
