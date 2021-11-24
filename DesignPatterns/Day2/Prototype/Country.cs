@@ -13,73 +13,51 @@ namespace Prototype
     {
         private string Name { get; set; }
 
-        public List<City> cities =new List<City>();
-        public List<Region> regions= new List<Region>();
+        public List<City> Cities =new List<City>();
+        public List<Region> Regions= new List<Region>();
 
         public Country(string name,City city,Region region )
         {
             Name = name;
-            cities.Add(city);
-            regions.Add(region);
+            Cities.Add(city);
+            Regions.Add(region);
         }
 
         public override Prototype Copy()
         {
             Country clone = (Country)this.MemberwiseClone();
-            clone.Name = String.Copy(Name);
-            var newCity = new List<City>();
-            var newRegion = new List<Region>();
-            foreach (var city in cities)
-            {
-                newCity.Add(city.Copy() as City);
-            }
-            foreach (var region in regions)
-            {
-                newRegion.Add(region.Copy() as Region);
-            }
-            clone.cities = newCity;
-            clone.regions = newRegion;
+            clone.Name = string.Copy(Name);
+            clone.Cities = Cities.Select(city => city.Copy() as City).ToList();
+            clone.Regions = Regions.Select(region => region.Copy() as Region).ToList();
             return clone;
         }
 
         public void ChangePopulation(string name, int population)
         {
-            cities.Find(s => s.Name == name).Population = population;
+            Cities.Find(s => s.Name == name).Population = population;
         }
 
         public void ChangeRegionName(string oldName, string newName)
         {
-            regions.Find(s => s.Name == oldName).Name = newName;
-        }
-
-        public static T DeepClone<T>(T obj)
-        {
-           
-            using (var stream = new MemoryStream())
-            {
-                var formatter = new BinaryFormatter();
-                formatter.Serialize(stream, obj);
-                stream.Position = 0;
-                return (T)formatter.Deserialize(stream);
-            }
+            Regions.Find(s => s.Name == oldName).Name = newName;
         }
 
         public void Print()
         {
-            Console.WriteLine($"County : {Name} contains:");
+            Console.WriteLine($"Country : {Name}:");
            
             Console.WriteLine("Cities :");
 
-            foreach (var city in cities)
+            foreach (var city in Cities)
             {
                 Console.WriteLine($"City: {city.Name} Population: {city.Population}");
             }
 
             Console.WriteLine("Regions :");
 
-            foreach (var region in regions)
+            foreach (var region in Regions)
             {
-                Console.WriteLine($"City: {region.Name} Square: {region.Square}");
+                Console.WriteLine($"Region: {region.Name} Square: {region.Square}");
             }
         }
 

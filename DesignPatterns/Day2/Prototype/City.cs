@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace Prototype
 {
-    [Serializable]
     public class City :Prototype
     {
         public string Name { get; set; }
@@ -20,8 +19,8 @@ namespace Prototype
 
         public override Prototype Copy()
         {
-            City clone = (City)this.MemberwiseClone();
-            clone.Name = String.Copy(Name);
+            var clone = (City)this.MemberwiseClone();
+            clone.Name = string.Copy(Name);
             return clone;
         }
     }
