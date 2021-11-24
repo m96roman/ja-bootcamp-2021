@@ -23,8 +23,6 @@ namespace Task4
 
             ukraine.GetInformation();
 
-
-
             Country poland = ukraine.CountryClone();
 
             poland.GetInformation();
