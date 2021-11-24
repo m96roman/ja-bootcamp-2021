@@ -46,8 +46,8 @@ namespace Task4
         {
             Country clone = (Country)this.MemberwiseClone();
             clone.Name = Name;
-            clone._CityNames =new List<City>( this._CityNames.Count);           
-            clone._RegionNames = new List<Region>( this._RegionNames.Count);
+            clone._CityNames =new List<City>();           
+            clone._RegionNames = new List<Region>( );
            
             for (int i = 0; i < _RegionNames.Count; i++)
             {
