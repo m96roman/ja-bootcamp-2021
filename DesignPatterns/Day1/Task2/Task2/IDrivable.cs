@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Task2
 {
-    public interface IDrivable // extracted interface from Car class
+    public abstract class IDrivable 
     {
-        void GoForward();
-        void TurnLeft();
-        void TurnRight();
-        void GoBackward();
+        public virtual void GoForward() { }
+        public virtual void TurnLeft() { }
+        public virtual void TurnRight() { }
+        public virtual void GoBackward() { }
     }
 }

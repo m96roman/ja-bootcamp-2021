@@ -4,6 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/*  
+ *  - Open closed Principle (OCP)
+ *  
+ *  - Interface Segregation Principle (ISP)
+ *  
+ *  - Liskov Substitution Principle (LSP)
+ *       
+ */
 namespace Task2
 {
     class Program

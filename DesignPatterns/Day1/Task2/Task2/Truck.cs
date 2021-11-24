@@ -8,22 +8,22 @@ namespace Task2
 {
     public class Truck : IDrivable
     {
-        public void GoForward()
+        public override void GoForward()
         {
             Console.WriteLine("Truck going forward.");
         }
 
-        public void TurnLeft()
+        public override void TurnLeft()
         {
             Console.WriteLine("Truck turns left.");
         }
 
-        public void TurnRight()
+        public override void TurnRight()
         {
             Console.WriteLine("Truck turns right.");
         }
 
-        public void GoBackward()
+        public override void GoBackward()
         {
             Console.WriteLine("Truck backing up.");
         }
