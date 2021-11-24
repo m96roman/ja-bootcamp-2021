@@ -1,5 +1,8 @@
 ﻿using System;
 
+/*
+ * Dependency Inversion Principle (DIP) 
+ */
 namespace Task4
 {
     class Program
@@ -8,6 +11,7 @@ namespace Task4
         {
             UserRepository repo = new UserRepository(new MySqlDb(new MySqlConnection()));
             Console.WriteLine($"Users count {repo.GetUsers().Count}");
+
             Console.ReadLine();
         }
     }

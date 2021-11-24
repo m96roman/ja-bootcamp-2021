@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Task4
 {
-    public class MySqlDb
+    public class MySqlDb : IMySqlDb
     {
-        MySqlConnection _connection;
+        private MySqlConnection _connection { get; set; }
 
         public MySqlDb(MySqlConnection connection)
         {
