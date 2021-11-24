@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="City.cs" />
     <Compile Include="Country.cs" />
+    <Compile Include="ICopy.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Region.cs" />

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Prototype
 {
     [Serializable]
-    public class Region
+    public class Region : Prototype
     {
         public string Name { get; set; }
         public int Square { get; set; }
@@ -16,5 +16,13 @@ namespace Prototype
             Name = name;
             Square = square;
         }
+
+        public override Prototype Copy()
+        {
+            Region clone = (Region)this.MemberwiseClone();
+            clone.Name = String.Copy(Name);
+            return clone;
+        }
+
     }
 }

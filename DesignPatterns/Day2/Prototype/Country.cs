@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Prototype
 {
-    public class Country
+    public class Country:Prototype
     {
         private string Name { get; set; }
 
@@ -22,12 +23,22 @@ namespace Prototype
             regions.Add(region);
         }
 
-        public Country Copy()
+        public override Prototype Copy()
         {
             Country clone = (Country)this.MemberwiseClone();
-            clone.cities = DeepClone(cities);
-            clone.regions = DeepClone(regions);
             clone.Name = String.Copy(Name);
+            var newCity = new List<City>();
+            var newRegion = new List<Region>();
+            foreach (var city in cities)
+            {
+                newCity.Add(city.Copy() as City);
+            }
+            foreach (var region in regions)
+            {
+                newRegion.Add(region.Copy() as Region);
+            }
+            clone.cities = newCity;
+            clone.regions = newRegion;
             return clone;
         }
 
@@ -39,10 +50,11 @@ namespace Prototype
         public void ChangeRegionName(string oldName, string newName)
         {
             regions.Find(s => s.Name == oldName).Name = newName;
-        } 
+        }
 
         public static T DeepClone<T>(T obj)
         {
+           
             using (var stream = new MemoryStream())
             {
                 var formatter = new BinaryFormatter();
@@ -51,6 +63,7 @@ namespace Prototype
                 return (T)formatter.Deserialize(stream);
             }
         }
+
         public void Print()
         {
             Console.WriteLine($"County : {Name} contains:");
@@ -70,6 +83,6 @@ namespace Prototype
             }
         }
 
-
+   
     }
 }
