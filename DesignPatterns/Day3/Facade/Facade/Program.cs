@@ -6,7 +6,13 @@ namespace Facade
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Collector collector = new Collector();
+            Compiler compiler = new Compiler();
+            TextEditor textEditor = new TextEditor();
+
+            FacadeForTool facade = new FacadeForTool(collector, compiler, textEditor);
+
+            facade.CompileAndGetFinialOutput();
         }
     }
 }
