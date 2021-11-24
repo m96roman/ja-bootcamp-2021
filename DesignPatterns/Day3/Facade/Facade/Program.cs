@@ -15,7 +15,9 @@ namespace Facade
 
             IBuilderCompiler builderCompiler = new BuilderCompiler(new CSharpCompiler(), new Assembly());
 
-            builderCompiler.RunDebug();
+            var libraries = builderCompiler.RunDebug();
+
+            Console.WriteLine($"Total libraries count: {libraries.Length}");
         }
     }
 }

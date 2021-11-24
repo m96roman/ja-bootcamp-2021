@@ -8,7 +8,9 @@ namespace Facade.HightMatery.Compiler
         {
             Console.WriteLine("Your code is a burning pile of garbage!");
 
-            return false;
+            Random random = new Random();
+
+            return random.Next() % 2 == 0;
         }
 
         public void Compile()

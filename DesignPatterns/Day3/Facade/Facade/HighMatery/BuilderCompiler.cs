@@ -18,11 +18,11 @@ namespace HighMatery
             this.assembly = assembly;
         }
 
-        public void RunDebug()
+        public Library[] RunDebug()
         {
             compiler.Compile();
 
-            assembly.BuildAssembly(compiler.Validate());
+            return assembly.BuildAssembly(compiler.Validate());
         }
     }
 }

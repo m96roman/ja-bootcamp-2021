@@ -2,6 +2,6 @@
 {
     internal interface IBuilderCompiler
     {
-        void RunDebug();
+        Library[] RunDebug();
     }
 }

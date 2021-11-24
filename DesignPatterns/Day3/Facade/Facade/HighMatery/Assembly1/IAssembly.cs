@@ -1,7 +1,9 @@
-﻿namespace Facade.HightMatery.Assemblies1
+﻿using HighMatery;
+
+namespace Facade.HightMatery.Assemblies1
 {
     internal interface IAssembly
     {
-        void BuildAssembly(bool canBuild);
+        Library[] BuildAssembly(bool canBuild);
     }
 }
