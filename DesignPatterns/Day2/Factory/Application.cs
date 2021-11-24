@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace Factory
 {
-    class Application
+    internal class Application
     {
-        public string Adress { get; set; }
+        public string Address { get; set; }
         public string Product { get; set; }
         public ITransport Transport { get; set; }
 
-        public Application(string adress,string product,ITransport transport)
+        public Application(string address, string product,ITransport transport)
         {
-            this.Adress = adress;
+            this.Address = address;
             this.Product = product;
             this.Transport = transport;
         }

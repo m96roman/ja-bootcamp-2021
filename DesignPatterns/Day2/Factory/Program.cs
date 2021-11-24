@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Factory
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Logistics logisticsSea = new SeaLogistics();
             logisticsSea.PlanDelivery("Pyshkina 6");

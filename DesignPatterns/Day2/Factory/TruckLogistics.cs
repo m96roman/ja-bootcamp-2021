@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Factory
 {
-    class TruckLogistics : Logistics
+    internal class TruckLogistics : Logistics
     {
         public override ITransport GetTransport()
         {

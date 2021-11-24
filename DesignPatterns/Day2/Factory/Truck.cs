@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Factory
 {
-    class Truck:ITransport
+    internal class Truck:ITransport
     {
         public string Delivery()
         {

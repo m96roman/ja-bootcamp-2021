@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace Factory
 {
-    abstract class Logistics
+    internal abstract class Logistics
     {
-        public List<Application> applications = new List<Application>();
-        public void PlanDelivery(string adressa)
+        public List<Application> Applications = new List<Application>();
+        public void PlanDelivery(string address)
         {
             
-            applications.Add(new Application(adressa, "Stone", GetTransport()));
+            Applications.Add(new Application(address, "Stone", GetTransport()));
         }
 
         public void CompleteApplication()
         {
-            foreach( var application in applications)
+            foreach( var application in Applications)
             {
-                Console.WriteLine($"{application.Product} was {application.Transport.Delivery()} to {application.Adress}");
+                Console.WriteLine($"{application.Product} was {application.Transport.Delivery()} to {application.Address}");
 
             }
         }

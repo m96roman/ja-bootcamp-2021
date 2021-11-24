@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Factory
 {
-    interface ITransport
+    internal interface ITransport
     {
         string Delivery();
     }
