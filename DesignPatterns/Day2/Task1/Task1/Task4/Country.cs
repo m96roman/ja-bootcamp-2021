@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Task4
 {
-    class Country
+    class Country: IClone
     {    
         private string Name { get; set; }
         private List<City> _CityNames { get; set; }
@@ -42,12 +42,23 @@ namespace Task4
         {
             Console.WriteLine(this.Name + " population = " +this._CityNames.Sum(x => x.Population)+" square="+this._RegionNames.Sum(s=>s.SquareRegion));
         }
-        public Country CloneCountry()
+        public object clone()
         {
             Country clone = (Country)this.MemberwiseClone();
-            clone._CityNames = _CityNames;
-            clone._RegionNames = _RegionNames;
             clone.Name = Name;
+            clone._CityNames =new List<City>( this._CityNames.Count);           
+            clone._RegionNames = new List<Region>( this._RegionNames.Count);
+           
+            for (int i = 0; i < _RegionNames.Count; i++)
+            {
+                clone._RegionNames.Add((Region)_RegionNames[i].clone());
+            }
+
+            for (int i = 0; i < _CityNames.Count; i++)
+            {
+                clone._CityNames.Add((City)_CityNames[i].clone());
+            }
+                 
             return clone;
         }
     }

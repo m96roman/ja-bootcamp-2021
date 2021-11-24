@@ -6,9 +6,14 @@ using System.Threading.Tasks;
 
 namespace Task4
 {
-    class City
+    class City: IClone
     {
         public string NameCity { get; set; }
         public int Population { get; set; }
+
+        public object clone()
+        {
+            return this.MemberwiseClone();
+        }
     }
 }
