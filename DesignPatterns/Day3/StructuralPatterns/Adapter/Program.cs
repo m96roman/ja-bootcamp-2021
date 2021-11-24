@@ -2,11 +2,23 @@
 
 namespace Adapter
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main()
         {
-            Console.WriteLine("Hello World!");
+            var text = " Hi, I am Adapter!";
+
+            var messageService = new MessageService();
+
+            var email = new Email();
+
+            messageService.SendMessage(email,text);
+
+            var dove = new Dove();
+
+            IMessage messageDove = new MessageAdapter(dove);
+
+            messageService.SendMessage(messageDove,text);
         }
     }
 }
