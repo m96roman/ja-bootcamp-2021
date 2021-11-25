@@ -6,7 +6,15 @@ namespace TemplateMethod
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Client client = new Client();
+            Console.WriteLine("Go to by items");
+            client.Simulate(new ByItems());
+            Console.WriteLine();
+            Console.WriteLine("Go to by presents");
+            client.Simulate(new ByPresent());
+            Console.WriteLine();
+            Console.WriteLine("Go to by items to by furniture");
+            client.Simulate(new ByFurniture());
         }
     }
 }
