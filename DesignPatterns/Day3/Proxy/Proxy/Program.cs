@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Proxy
 {
@@ -6,7 +7,22 @@ namespace Proxy
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            IUserRepository userRepository = new UserProxy();
+            VodafoneUserRepository vodafone = new VodafoneUserRepository();
+
+            List<string> proxyUsers = userRepository.GetUserList();
+
+            foreach (var item in proxyUsers)
+            {
+                Console.WriteLine($"{item}");
+            }
+
+            proxyUsers = userRepository.GetUserList();
+
+            foreach (var item in proxyUsers)
+            {
+                Console.WriteLine($"{item}");
+            }
         }
     }
 }
