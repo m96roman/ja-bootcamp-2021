@@ -1,4 +1,4 @@
-﻿namespace ConsoleApp2.Parts
+﻿namespace ConsoleApp2
 {
     public abstract class JacketPart
     {

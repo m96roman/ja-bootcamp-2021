@@ -1,32 +1,32 @@
-﻿using ConsoleApp2.Parts;
+﻿using ConsoleApp2.PartsJacketB;
 
 namespace ConsoleApp2
 {
     public class JacketFactoryB : JacketFactory
     {
-        public override Back CreateBack()
+        public override JacketPart CreateBack()
         {
-            return new Back();
+            return new Back() as JacketPart;
         }
 
-        public override Before CreateBefore()
+        public override JacketPart CreateBefore()
         {
-            return new Before();
+            return new Before() as JacketPart;
         }
 
-        public override Collar CreateCollar()
+        public override JacketPart CreateCollar()
         {
-            return new Collar();
+            return new Collar() as JacketPart;
         }
 
-        public override Hood CreateHood()
+        public override JacketPart CreateHood()
         {
-            return new Hood();
+            return new Hood() as JacketPart;
         }
 
-        public override Sleeve CreateSleeve()
+        public override JacketPart CreateSleeve()
         {
-            return new Sleeve();
+            return new Sleeve() as JacketPart;
         }
     }
 }

@@ -1,14 +1,12 @@
-﻿using ConsoleApp2.Parts;
-
-namespace ConsoleApp2
+﻿namespace ConsoleApp2
 {
     public class Jacket
     {
-        private Back back;
-        private Before before;
-        private Collar collar;
-        private Hood hood;
-        private Sleeve sleeve;
+        private JacketPart back;
+        private JacketPart before;
+        private JacketPart collar;
+        private JacketPart hood;
+        private JacketPart sleeve;
 
         public Jacket(JacketFactory factory)
         {

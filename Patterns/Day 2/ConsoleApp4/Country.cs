@@ -36,13 +36,13 @@ namespace ConsoleApp4
             countryClone.BigCities = new List<City>();
             foreach (var city in BigCities)
             {
-                countryClone.BigCities.Add(city.Clone());
+                countryClone.BigCities.Add(city.Clone() as City);
             }
 
             countryClone.Regions = new List<Region>();
             foreach (var region in Regions)
             {
-                countryClone.Regions.Add(region.Clone());
+                countryClone.Regions.Add(region.Clone() as Region);
             }
 
             return countryClone;

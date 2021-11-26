@@ -2,13 +2,11 @@
 {
     public abstract class LogicalCompany
     {
-        public string Name { get; set; }
-        public string Address { get; set; }
+        protected Stone _stone;
 
-        public LogicalCompany(string name, string address)
+        public LogicalCompany(Stone stone)
         {
-            Name = name;
-            Address = address;
+            _stone = stone;
         }
 
         abstract public Stone Carry();

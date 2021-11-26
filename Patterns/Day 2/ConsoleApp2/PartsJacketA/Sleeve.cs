@@ -1,12 +1,12 @@
 ﻿using System;
 
-namespace ConsoleApp2.Parts
+namespace ConsoleApp2.PartsJacketA
 {
     public class Sleeve : JacketPart
     {
         public override void Sew()
         {
-            Console.Write("sew sleeves of model *, ");
+            Console.Write("sew sleeves of model A, ");
         }
     }
 }

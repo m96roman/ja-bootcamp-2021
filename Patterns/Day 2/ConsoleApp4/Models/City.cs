@@ -1,13 +1,15 @@
-﻿namespace ConsoleApp4.Models
+﻿using ConsoleApp4.Interfaces;
+
+namespace ConsoleApp4.Models
 {
-    public class City
+    public class City : IClonable
     {
         public string Name { get; set; }
         public int AmountCitizens { get; set; }
 
-        public City Clone()
+        public object Clone()
         {
-            return this.MemberwiseClone() as City;
+            return this.MemberwiseClone();
         }
     }
 }
