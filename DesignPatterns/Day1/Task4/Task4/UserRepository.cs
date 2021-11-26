@@ -10,9 +10,9 @@ namespace Task4
 {
     public class UserRepository
     {
-        private MySqlDb _db;
+        private IMySqlDb _db;
 
-        public UserRepository(MySqlDb db)
+        public UserRepository(IMySqlDb db)
         {
             _db = db;
         }
