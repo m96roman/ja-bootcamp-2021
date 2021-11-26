@@ -1,4 +1,5 @@
 ﻿using System;
+using Tailor_AbstractFactory.Department_2;
 
 namespace Tailor_AbstractFactory
 {
@@ -30,7 +31,10 @@ namespace Tailor_AbstractFactory
 
         static void Execute(ITailorDepartment tailorDepartment)
         {
-            Console.WriteLine(tailorDepartment.CreateClothes().GetType());
+            Console.WriteLine(tailorDepartment.SewBack().GetType());
+            Console.WriteLine(tailorDepartment.SewFront().GetType());
+            Console.WriteLine(tailorDepartment.SewRight().GetType());
+            Console.WriteLine(tailorDepartment.SewLeft().GetType());
             Console.WriteLine();
         }
     }

@@ -1,6 +1,6 @@
 ﻿namespace Tailor_AbstractFactory
 {
-    public interface IClothes
+    internal class Left3 : ILeft
     {
     }
 }
