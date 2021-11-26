@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Task2
 {
-    interface IDriveableLeftAndRight
+   public interface IDriveableLeftAndRight:IDrivableForwardAndBackward
     {
         void TurnLeft();
         void TurnRight();

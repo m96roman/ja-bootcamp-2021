@@ -8,9 +8,9 @@ namespace Task2
 {
     public class AutoPilotForWheels: IAutoPilot
     {
-        private ICarAndTruck _transport;
+        private IDriveableLeftAndRight _transport;
 
-        public AutoPilotForWheels(ICarAndTruck transport)
+        public AutoPilotForWheels(IDriveableLeftAndRight transport)
         {
             _transport = transport;
         }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Task2
 {
-    public class Truck : ICarAndTruck,IDrivableForwardAndBackward, IDriveableLeftAndRight
+    public class Truck :  IDriveableLeftAndRight
     {
         public void GoForward()
         {

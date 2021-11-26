@@ -45,7 +45,6 @@
   <ItemGroup>
     <Compile Include="AutoPilotForWheels.cs" />
     <Compile Include="AutoPilotForRail.cs" />
-    <Compile Include="ICarAndTruck.cs" />
     <Compile Include="IAutoPilot.cs" />
     <Compile Include="IDrivableForwardAndBackward.cs" />
     <Compile Include="IDriveableLeftAndRight.cs" />

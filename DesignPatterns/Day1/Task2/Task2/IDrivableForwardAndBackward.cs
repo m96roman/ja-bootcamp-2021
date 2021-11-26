@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Task2
 {
-    public interface IDrivableForwardAndBackward // extracted interface from Car class
+    public interface IDrivableForwardAndBackward
     {
         void GoForward();
       
