@@ -9,10 +9,5 @@ namespace ConsoleApp7
         {
             return $"html report for {clients.Count}";
         }
-
-        public string GetReport(List<Client> clients)
-        {
-           return Get(clients);
-        }
     }
 }

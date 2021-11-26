@@ -20,12 +20,7 @@ namespace ConsoleApp7
 
         public string GetReport()
         {
-            if (Clients is null || Clients.Count == 0)
-            {
-                throw new ArgumentException();
-            }
-
-           return _reporter.GetReport(Clients);
+           return _reporter.Get(Clients);
         }
     }
 }

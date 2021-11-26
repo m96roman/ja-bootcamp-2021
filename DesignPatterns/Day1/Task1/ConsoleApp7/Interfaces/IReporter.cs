@@ -8,6 +8,6 @@ namespace ConsoleApp7.Interfaces
 {
     public interface IReporter
     {
-         string GetReport(List<Client> clients);
+         string Get(List<Client> clients);
     }
 }

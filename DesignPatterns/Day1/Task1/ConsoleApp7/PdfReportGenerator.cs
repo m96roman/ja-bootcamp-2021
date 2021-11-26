@@ -8,11 +8,6 @@ namespace ConsoleApp7
         public string Get(List<Client> clients)
         {
             return $"pdf report for {clients.Count}";
-        }
-
-        public string GetReport(List<Client> clients)
-        {
-            return Get(clients);
-        }
+        }     
     }
 }
