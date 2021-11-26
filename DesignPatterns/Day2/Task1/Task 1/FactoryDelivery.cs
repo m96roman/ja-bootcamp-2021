@@ -26,14 +26,16 @@ namespace Task_1
             return adress;
         }
 
-        public static string GetGoogs(Stone stone)
+        public static Stone GetGoogs(Stone stone)
         {
-            return stone.GetName();
+            Console.WriteLine(stone.GetName());
+            return stone;
         }
 
-        public static void sendTheGoods(string GetTransport, string GetAdrerss,string GetGoogs)
+        public static Stone sendTheGoods(string GetTransport, string GetAdrerss,Stone GetGoogs)
         {
-           Console.WriteLine(@$"{GetGoogs} were sent by {GetTransport} at the adress: {GetAdrerss}");
+           Console.WriteLine(@$"{GetGoogs.GetName()} were sent by {GetTransport} at the adress: {GetAdrerss}");
+            return GetGoogs;
         }
 
         public enum TransportType
