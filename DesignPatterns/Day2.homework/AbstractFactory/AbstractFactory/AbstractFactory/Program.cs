@@ -6,14 +6,11 @@ namespace AbstractFactory
     {
         static void Main(string[] args)
         {
-            var productA = new ModelA();
-            productA.addAllPartsTogether();
+            ProductB product = new ProductB();
+            var modelB = new ModelB();
+            modelB.addAllPartsTogether(product);
 
-            var productB = new ModelB();
-            productB.addAllPartsTogether();
-
-            var productC = new ModelC();
-            productC.addAllPartsTogether();
+            Console.WriteLine("s");
         }
     }
 }

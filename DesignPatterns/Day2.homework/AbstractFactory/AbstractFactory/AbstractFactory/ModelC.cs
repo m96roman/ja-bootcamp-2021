@@ -4,38 +4,43 @@ using System.Text;
 
 namespace AbstractFactory
 {
-    class ModelC
+    class ModelC : IFactory
     {
-        public IProduct addAllPartsTogether()
+        public IProduct addAllPartsTogether(IProduct product)
         {
-            addBack();
-            addCollar();
-            addFront();
-            addHood();
+            addBack(product);
+            addCollar(product);
+            addFront(product);
+            addHood(product);
 
-            Console.WriteLine("Product C created\r\n");
+            Console.WriteLine("Product B created\r\n");
 
             return new ProductC();
         }
 
-        public void addBack()
+        public IProduct addBack(IProduct product)
         {
-            Console.WriteLine("Back C created");
+            product.Back = "Back was added for model c";
+            return product;
         }
 
-        public void addCollar()
+        public IProduct addCollar(IProduct product)
         {
-            Console.WriteLine("Collar C created");
+            product.Collar = "Collar was added for model c";
+            return product;
         }
 
-        public void addFront()
+        public IProduct addFront(IProduct product)
         {
-            Console.WriteLine("Front C created");
+            product.Front = "Front was added for model c";
+            return product;
         }
 
-        public void addHood()
+        public IProduct addHood(IProduct product)
         {
-            Console.WriteLine("Hood C created");
+            product.Hood = "Hood was added for model c";
+            return product;
+
         }
     }
 }

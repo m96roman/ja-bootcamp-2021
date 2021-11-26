@@ -6,36 +6,41 @@ namespace AbstractFactory
 {
     class ModelA : IFactory
     {
-        public IProduct addAllPartsTogether()
+        public IProduct addAllPartsTogether(IProduct product)
         {
-            addBack();
-            addCollar();
-            addFront();
-            addHood();
+            addBack(product);
+            addCollar(product);
+            addFront(product);
+            addHood(product);
 
-            Console.WriteLine("Product A created\r\n");
+            Console.WriteLine("Product B created\r\n");
 
             return new ProductA();
         }
 
-        public void addBack()
+        public IProduct addBack(IProduct product)
         {
-            Console.WriteLine("Back A created");
+            product.Back = "Back was added for model a";
+            return product;
         }
 
-        public void addCollar()
+        public IProduct addCollar(IProduct product)
         {
-            Console.WriteLine("Collar A created");
+            product.Collar = "Collar was added for model a";
+            return product;
         }
 
-        public void addFront()
+        public IProduct addFront(IProduct product)
         {
-            Console.WriteLine("Front A created");
+            product.Front = "Front was added for model a";
+            return product;
         }
 
-        public void addHood()
+        public IProduct addHood(IProduct product)
         {
-            Console.WriteLine("Hood A created");
+            product.Hood = "Hood was added for model a";
+            return product;
+
         }
     }
 }

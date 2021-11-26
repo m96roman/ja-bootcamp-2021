@@ -6,10 +6,10 @@ namespace AbstractFactory
 {
     public interface IFactory
     {
-         void addHood();
-         void addCollar();
-         void addFront();
-         void addBack();
-         IProduct addAllPartsTogether();
+        IProduct addHood(IProduct product);
+        IProduct addCollar(IProduct product);
+        IProduct addFront(IProduct product);
+        IProduct addBack(IProduct product);
+        IProduct addAllPartsTogether(IProduct product);
     }
 }
