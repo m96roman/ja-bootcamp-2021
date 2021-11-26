@@ -1,7 +1,4 @@
-﻿using ConsoleApp3.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 using ConsoleApp3.Interfaces;
 
 namespace ConsoleApp3

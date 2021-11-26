@@ -1,7 +1,5 @@
 ﻿using ConsoleApp1.Models;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using ConsoleApp1.Interfaces;
 
 namespace ConsoleApp1
@@ -26,21 +24,3 @@ namespace ConsoleApp1
         }
     }
 }
-
-/*
-public string GetReport(string type)
-{
-    if (type == "html")
-    {
-        var htmlReport = new HtmlReportGenerator();
-        return htmlReport.Get(Clients);
-    }
-    else if (type == "pdf")
-    {
-        var pdfReport = new PdfReportGenerator();
-        return pdfReport.Get(Clients);
-    }
-
-    throw new ArgumentException();
-}
-*/

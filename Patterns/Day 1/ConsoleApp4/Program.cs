@@ -7,12 +7,6 @@ namespace ConsoleApp4
     {
         static void Main(string[] args)
         {
-            /*
-             * 
-             * 
-             * 
-             */
-
             var connection = new MySqlConnection();
 
             IMySqlDb db = new MySqlDb(connection);

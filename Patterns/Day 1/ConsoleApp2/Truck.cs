@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using ConsoleApp2.Interfaces;
 
 namespace ConsoleApp2

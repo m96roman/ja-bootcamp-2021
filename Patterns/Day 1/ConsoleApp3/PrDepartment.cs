@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using ConsoleApp3.Interfaces;
+﻿using ConsoleApp3.Interfaces;
 
 namespace ConsoleApp3
 {

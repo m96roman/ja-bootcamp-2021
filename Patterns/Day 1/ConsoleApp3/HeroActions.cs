@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using ConsoleApp3.Models;
 using ConsoleApp3.Interfaces;
 
