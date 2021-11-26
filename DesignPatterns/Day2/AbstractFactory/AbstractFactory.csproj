@@ -47,12 +47,30 @@
     <Compile Include="AbstractFactory\IClothesFactory.cs" />
     <Compile Include="AbstractFactory\MiddleJacketFactory.cs" />
     <Compile Include="AbstractFactory\ShortJacketFactory.cs" />
+    <Compile Include="Inteface\ISleeves.cs" />
+    <Compile Include="Inteface\ICollar.cs" />
+    <Compile Include="Inteface\IHood.cs" />
+    <Compile Include="Inteface\IFront.cs" />
+    <Compile Include="Inteface\IBack.cs" />
+    <Compile Include="PartsFactory3\BackShort.cs" />
+    <Compile Include="PartsFactory1\CollarLong.cs" />
+    <Compile Include="PartsFactory1\FrontLong.cs" />
+    <Compile Include="PartsFactory1\HoodLong.cs" />
+    <Compile Include="PartsFactory1\SleevesLong.cs" />
+    <Compile Include="PartsFactory2\BackMiddle.cs" />
+    <Compile Include="PartsFactory2\CollarMiddle.cs" />
+    <Compile Include="PartsFactory2\FrontMiddle.cs" />
+    <Compile Include="PartsFactory2\HoodMiddle.cs" />
+    <Compile Include="PartsFactory2\SleevesMiddle.cs" />
+    <Compile Include="PartsFactory3\CollarShort.cs" />
+    <Compile Include="PartsFactory3\FrontShort.cs" />
+    <Compile Include="PartsFactory3\HoodShort.cs" />
+    <Compile Include="PartsFactory3\SleevesShort.cs" />
     <Compile Include="Product\IJacket.cs" />
-    <Compile Include="Product\LongJacket.cs" />
-    <Compile Include="Product\MiddleJacket.cs" />
+    <Compile Include="PartsFactory1\BackLong.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Product\ShortJacket.cs" />
+    <Compile Include="Product\Jacket.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

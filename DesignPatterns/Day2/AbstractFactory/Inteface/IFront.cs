@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AbstractFactory
+namespace AbstractFactory.Inteface
 {
-    class MiddleJacket:IJacket
-    {
-        public string Name => "MiddleJacket";
+    interface IFront
 
+    {
     }
 }

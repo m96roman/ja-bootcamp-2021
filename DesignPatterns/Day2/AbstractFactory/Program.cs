@@ -12,25 +12,24 @@ namespace AbstractFactory
     {
         static void Main(string[] args)
         {
+
             Console.WriteLine("Create LongJacket");
 
-            IClothesFactory longJacket = new LongJacketFactory();
-
-            longJacket.CreateJacket();
-
-
-            Console.WriteLine("Create ShortJacket");
-
-            IClothesFactory shortJacket = new ShortJacketFactory();
-
-            shortJacket.CreateJacket();
+            IClothesFactory longJacketFactory = new LongJacketFactory();
+            var longJacket = new Jacket(longJacketFactory);
+            longJacket.Print();
 
             Console.WriteLine("Create MiddleJacket");
 
-            IClothesFactory middleJacket = new MiddleJacketFactory();
+            IClothesFactory middleJacketFactory = new MiddleJacketFactory();
+            var middleJacket = new Jacket(middleJacketFactory);
+            middleJacket.Print();
 
-            middleJacket.CreateJacket();
+            Console.WriteLine("Create ShortJacket");
 
+            IClothesFactory shortJacketFactory = new ShortJacketFactory();
+            var shortJacket = new Jacket(shortJacketFactory);
+            middleJacket.Print();
 
             Console.ReadKey();
         }

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using AbstractFactory.Inteface;
+using AbstractFactory.PartsFactory1;
+using AbstractFactory.PartsFactory3;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,44 +9,31 @@ using System.Threading.Tasks;
 
 namespace AbstractFactory.AbstractFactory
 {
-    class ShortJacketFactory:IClothesFactory
+    class ShortJacketFactory : IClothesFactory
     {
-        public IJacket CreateJacket()
+        public IBack SewingBack()
         {
-            var jacket = new ShortJacket();
-            Console.WriteLine($"{SewingBack()}{jacket.Name}," +
-               $"{SewingCollar()}{jacket.Name}," +
-               $"{SewingFront()}{jacket.Name}," +
-               $"{SewingHood()}{jacket.Name}," +
-               $"{SewingSleeves()}{jacket.Name}");
-            return jacket;
+            return new BackShort();
         }
 
-        public string SewingBack()
+        public ICollar SewingCollar()
         {
-            return "sewing a back  for ";
+            return new CollarShort();
         }
 
-        public string SewingCollar()
+        public IFront SewingFront()
         {
-            return "sewing a collar for ";
+            return new FrontShort();
         }
 
-        public string SewingFront()
+        public IHood SewingHood()
         {
-            return "sewing a front for ";
+            return new HoodShort();
         }
 
-        public string SewingHood()
+        public ISleeves SewingSleeves()
         {
-            return "sewing a hood for ";
+            return new SleevesShort();
         }
-
-        public string SewingSleeves()
-        {
-            return "sewing a sleeves for ";
-
-        }
-
     }
 }

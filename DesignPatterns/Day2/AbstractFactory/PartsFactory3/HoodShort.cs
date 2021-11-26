@@ -1,14 +1,13 @@
-﻿using System;
+﻿using AbstractFactory.Inteface;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AbstractFactory
+namespace AbstractFactory.PartsFactory3
 {
-    class ShortJacket:IJacket
+    class HoodShort:IHood
     {
-        public string Name => "ShortJacket";
-
     }
 }

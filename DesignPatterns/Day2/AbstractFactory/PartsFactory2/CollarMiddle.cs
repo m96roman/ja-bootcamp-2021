@@ -5,10 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AbstractFactory
+namespace AbstractFactory.PartsFactory1
 {
-    interface IJacket
+    class CollarMiddle :ICollar
     {
-         void Print();
     }
 }
