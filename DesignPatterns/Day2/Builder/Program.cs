@@ -10,22 +10,21 @@ namespace Builder
     {
         static void Main(string[] args)
         {
-            var director = new Director();
+            var distributor = new Distributor();
 
-            var builder = new Builder("A2");
+            CarBuilder builder = new BasicCarBuilder();
 
-            director.builder = builder;
-            director.BuildPremium();
-            Console.WriteLine(builder.GetCar().ListParts());
+            Car basicCar = distributor.Make(builder,"A1");
+            
+            Console.WriteLine(basicCar.ListParts());
 
-            var builder2 = new Builder("A1");
-            director.builder = builder2;
-            director.BuildLuxury();
-            Console.WriteLine(builder2.GetCar().ListParts());
+            builder = new PremiumCarBuilder();
+
+            Car premiumCar = distributor.Make(builder, "A2");
+
+            Console.WriteLine(premiumCar.ListParts());
 
             Console.ReadKey();
-
-
         }
     }
 }

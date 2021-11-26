@@ -10,29 +10,16 @@ namespace Builder
     {
         public string Name { get; set; }
 
-        private List<object> parts = new List<object>();
+        public string Chair { get; set; }
 
-        public Car(string name)
-        {
-            Name = name;
-        }
+        public string Wheels { get; set; }
 
-        public void Add(string part)
-        {
-            parts.Add(part);
-        }
+        public string Engine { get; set; }
+
         public string ListParts()
         {
-            string str = string.Empty;
 
-            for (int i = 0; i < parts.Count; i++)
-            {
-                str += parts[i] + ", ";
-            }
-
-            str = str.Remove(str.Length - 2);
-
-            return $"Car {Name} parts: " + str + "\n";
+            return $"Car {this.Name} parts: " + $"chair: {this.Chair} "+$"wheels: {this.Wheels}  "+$"engine: {this.Engine}" + "\n";
         }
     }
 }
