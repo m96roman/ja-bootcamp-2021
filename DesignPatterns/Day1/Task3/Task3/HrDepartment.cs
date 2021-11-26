@@ -7,16 +7,6 @@ using System.Threading.Tasks;
 namespace Task3
 {
     public class HrDepartment
-    {
-        public void IncreaseSalary(Employee employ, decimal diff)
-        {
-            if (employ is null)
-            {
-                throw new ArgumentNullException();
-            }
-
-            Console.WriteLine($"Increasing salary on {diff} for {employ.GetFullName()}");
-            employ.IncreaseSalary(diff);
-        }
+    {  
     }
 }

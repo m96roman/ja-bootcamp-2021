@@ -38,7 +38,6 @@ namespace Task3
             financialDepartment.ShowBalance(luckyMan);
             financialDepartment.IncreaseSalary(luckyMan, 1M);
             var hrDepartment = new HrDepartment();
-            hrDepartment.IncreaseSalary(luckyMan, 0.5M);
             var prDepartment = new PrDepartment();
             prDepartment.SendNewYearGreeting(luckyMan);
             Console.ReadLine();
