@@ -14,7 +14,7 @@ namespace Task2
 
         public override void Display()
         {
-            Console.WriteLine("Home PC");
+            Console.WriteLine(this.name);
         }
     }
 }
