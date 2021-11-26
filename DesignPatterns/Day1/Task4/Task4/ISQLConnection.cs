@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Task4
 {
-    interface ISQLConnection
+ internal   interface ISQLConnection
     {
         void Connect();
     }

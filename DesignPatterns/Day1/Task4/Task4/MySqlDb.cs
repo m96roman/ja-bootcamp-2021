@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Task4
 {
-    public class MySqlDb<T>: ApplicationContext<T>
+    internal class MySqlDb<T>: ApplicationContext<T>
     {
         ISQLConnection _connection;
 
-        public MySqlDb(MySqlConnection connection)
+        public MySqlDb(ISQLConnection connection)
         {
             _connection = connection;
         }
