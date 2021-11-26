@@ -9,10 +9,10 @@ namespace Factory
     internal abstract class Logistics
     {
         public List<Application> Applications = new List<Application>();
-        public void PlanDelivery(string address)
+        public void PlanDelivery(string address,ITransport transport)
         {
             
-            Applications.Add(new Application(address, "Stone", GetTransport()));
+            Applications.Add(new Application(address, "Stone",transport));
         }
 
         public void CompleteApplication()

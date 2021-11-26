@@ -11,17 +11,20 @@ namespace Factory
         private static void Main(string[] args)
         {
             Logistics logisticsSea = new SeaLogistics();
-            logisticsSea.PlanDelivery("Pyshkina 6");
-            logisticsSea.PlanDelivery("Pyshkina 10");
+            var ship=logisticsSea.GetTransport();
+            logisticsSea.PlanDelivery("Pyshkina 6",ship);
+            logisticsSea.PlanDelivery("Pyshkina 10",ship);
 
             Logistics logisticsTruck = new TruckLogistics();
-            logisticsTruck.PlanDelivery("Pyshkina 6");
-            logisticsTruck.PlanDelivery("Pyshkina 8");
-            logisticsTruck.PlanDelivery("Pyshkina 10");
-            logisticsTruck.PlanDelivery("Pyshkina 12");
+            var truck = logisticsTruck.GetTransport();
+            logisticsTruck.PlanDelivery("Pyshkina 6",truck);
+            logisticsTruck.PlanDelivery("Pyshkina 8",truck);
+            logisticsTruck.PlanDelivery("Pyshkina 10",truck);
+            logisticsTruck.PlanDelivery("Pyshkina 12",truck);
 
             Logistics logisticsAirPlane= new AirplaneLogistics();
-            logisticsAirPlane.PlanDelivery("Pyshkina 6");
+            var aitPlane = logisticsAirPlane.GetTransport();
+            logisticsAirPlane.PlanDelivery("Pyshkina 6",aitPlane);
 
             logisticsSea.CompleteApplication();
             logisticsTruck.CompleteApplication();
