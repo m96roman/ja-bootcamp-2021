@@ -8,7 +8,8 @@ namespace Task3
 {
     public class PrDepartment:PrAction
     {
-        public void SendNewYearGreeting(Employee hero)
+        public PrDepartment(Employee employee) : base(employee) { }
+        public void SendNewYearGreeting()
         {
             SendGreeting("Happy New Year!");
         }

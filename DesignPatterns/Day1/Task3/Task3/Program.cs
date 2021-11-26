@@ -28,17 +28,14 @@ namespace Task3
                 Street = "1st ave"                
             };
 
-            var hrDepartment = new HRAction();
-            var model = new Model(luckyMan, hrDepartment);
-            model.action.GetFullName();
+            var hrAction = new HrDepartment(luckyMan);
+            hrAction.IncreaseSalaryHr(10);
 
+            var finAction = new FinancialDepartment(luckyMan);
+            finAction.ShowBalance();
 
-            //var financialDepartment = new FinancialDepartment();
-            //financialDepartment.ShowBalance(luckyMan);
-            
-            //hrDepartment.IncreaseSalary(luckyMan, 0.5M);
-            //var prDepartment = new PrDepartment();
-            //prDepartment.SendNewYearGreeting(luckyMan);
+            var prAction = new PrDepartment(luckyMan);
+            prAction.SendNewYearGreeting();
             Console.ReadLine();
         }
     }

@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace Task3
 {
-    public class HrDepartment:HRAction
+    public class HrDepartment : HRAction
     {
-        public void IncreaseSalary(Employee hero, decimal diff)
+        public HrDepartment(Employee employee) : base(employee) { }
+        public void IncreaseSalaryHr(decimal diff)
         {
-            Console.WriteLine($"Increasing salary on {diff} for {GetFullName()}");
+            Console.WriteLine($"Increasing salary on {diff} for {employee.GetFullName()}");
             IncreaseSalary(diff);
         }
     }

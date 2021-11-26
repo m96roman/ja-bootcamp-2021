@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 namespace Task3
 {
-    public class PrAction : Action
+    public class PrAction : BaseAction
     {
-        public void SendGreeting(string text)
+        public PrAction(Employee employee) : base(employee)
         {
-            string destination = $"{PostIndex} {Street}, {City}, {Country}";
+        }
+        protected void SendGreeting(string text)
+        {
+            string destination = $"{employee.PostIndex} {employee.Street}, {employee.City}, {employee.Country}";
             Console.WriteLine($"Sending letter with context '{text}' to destination {destination}");
         }
     }
