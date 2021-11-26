@@ -8,12 +8,7 @@ namespace Builder
 {
   public  class Director
     {
-        private IBuilder builder;
-
-        public IBuilder Builders
-        {
-            set { builder = value; }
-        }
+        public IBuilder builder {  set; get; }
 
         public void BuildBasic()
         {

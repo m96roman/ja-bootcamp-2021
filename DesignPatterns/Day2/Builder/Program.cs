@@ -14,12 +14,12 @@ namespace Builder
 
             var builder = new Builder("A2");
 
-            director.Builders = builder;
+            director.builder = builder;
             director.BuildPremium();
             Console.WriteLine(builder.GetCar().ListParts());
 
             var builder2 = new Builder("A1");
-            director.Builders = builder2;
+            director.builder = builder2;
             director.BuildLuxury();
             Console.WriteLine(builder2.GetCar().ListParts());
 
