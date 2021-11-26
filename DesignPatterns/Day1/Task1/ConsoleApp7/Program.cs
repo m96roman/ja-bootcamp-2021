@@ -20,9 +20,9 @@ namespace ConsoleApp7
             };
 
             IReportGenerator htmlReport = new HtmlReportGenerator();
-            Console.WriteLine(htmlReport.Get(otp.Clients));
+            Console.WriteLine(otp.GetReport(htmlReport));
             IReportGenerator pdfReport = new PdfReportGenerator();
-            Console.WriteLine(pdfReport.Get(otp.Clients));
+            Console.WriteLine(otp.GetReport(pdfReport));
             Console.ReadKey();
         }
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp7
 {
-    interface IReportGenerator
+    internal interface IReportGenerator
     {
         string Get(List<Client> clients);
     }
