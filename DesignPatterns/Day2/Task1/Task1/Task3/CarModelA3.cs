@@ -25,9 +25,8 @@ namespace Task3
             _product.Add(value.ToString());
         }
         public Product GetProduct()
-        {
-            Product result = this._product;
-            return result;
+        {           
+            return _product;
         }
 
         public string GetModelCar()
