@@ -9,10 +9,6 @@ namespace Mediator
     internal class Desptcher : Mediator
     {
         public List<Ship> Ships = new List<Ship>();
-       // public Ship LvivShip { get; set; }
-     ///   public Ship KievShip { get; set; }
-       // public Ship UzhhorodShip { get; set; }
-
 
         public override void Send(string msg, Ship ship, string nameTo)
         {
