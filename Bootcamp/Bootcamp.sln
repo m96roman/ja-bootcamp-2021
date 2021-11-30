@@ -240,8 +240,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VDedenok-Task8", "Lecture8\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VDedenok-Task9", "VDedenok-Task9", "{0826ECB5-CCE6-4B89-B60E-39F937EDD9E1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VDedenok_Task9", "Lecture9\Homework\VDedenok_Task9\VDedenok_Task9\VDedenok_Task9.csproj", "{F65BD6C7-31D6-46B5-B15C-8B89FAAC23D4}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VDedenok-Task10", "VDedenok-Task10", "{8D337CF6-CAC6-4AE8-A99E-A1E9A077633F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VDedenok-Task10", "LectureF10\Homework\VDedenok-task10\VDedenok-Task10\VDedenok-Task10.csproj", "{B117EB38-BE96-4A74-84B7-F08DA6AB06C4}"

@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Text.Json.Serialization;
 
 namespace VDedenok_Task9
 {
@@ -8,6 +10,7 @@ namespace VDedenok_Task9
         static void Main(string[] args)
         {
             Console.WriteLine("-----Task1-----");
+
             using (StreamWriter sw = new StreamWriter("TextToCountLinesFrom.txt"))
             {
                 sw.WriteLine("This is line 1");
@@ -19,53 +22,113 @@ namespace VDedenok_Task9
 
             int linesCount = File.ReadAllLines("TextToCountLinesFrom.txt").Length;
             Console.WriteLine($"Number of lines in file is {linesCount}.");
+            /*
+           Console.WriteLine("------Task2------");
 
-            Console.WriteLine("------Task2------");
-            string newline = "";
-            int counter = 0;
-            int indexOfFile = 0;
-            string resulterText = "";
-            string p = Directory.GetCurrentDirectory();
-            string newFullPath = "";
-          
-            do
-            {
-                newline = Console.ReadLine();
-                resulterText += newline;
-                ++counter;
-               
-                if (counter == 2 )
+           string lintFromInput = "";
+           int counter = 0;
+           int indexOfFile = 0;
+           string resulterText = "";
+           string p = Directory.GetCurrentDirectory();
+           string newFullPath = "";
+           string folderPath = @$"{p}\FolderInputFromVim";
+
+           List<string> pathes= new List<string>();
+
+           do
+           {
+               lintFromInput = Console.ReadLine();
+               resulterText += lintFromInput;
+               ++counter;
+
+               if (counter == 2) 
+               {
+                   ++indexOfFile;
+                   newFullPath = @$"{p}\inputFromVim{indexOfFile}.txt";
+                   File.AppendAllText(newFullPath, resulterText);
+                   resulterText = "";
+                   counter = 0;
+                   pathes.Add(@$"\inputFromVim{indexOfFile}.txt");
+               }
+           } 
+           while (lintFromInput != "stop");
+
+
+           if (File.Exists(newFullPath))
+           {
+               Console.WriteLine("Last file exists!");
+           }
+
+           foreach(var path in pathes)
+           {
+               Directory.CreateDirectory(folderPath); 
+
+               string destinationPath = @$"{p}\FolderInputFromVim\{path}";
+
+               File.Move(@$"{p}\{path}", destinationPath);
+           }
+         */
+             List<Student> students = new List<Student>() 
+             {
+              new Student() { Name = "Vika", LecturesAttended = 11},
+              new Student() { Name = "Olya", LecturesAttended = 12},
+              new Student() { Name = "Nadiya", LecturesAttended = 13},
+              new Student() { Name = "Marina", LecturesAttended = 14},
+              new Student() { Name = "Olexandra", LecturesAttended = 15},
+            };
+
+            SemesterEmulation(students);
+
+
+        }
+        public static void AttendLecture(int lecture)
+        {
+            ++lecture;
+        }
+       
+        
+        public static void SemesterEmulation(List<Student> students)
+        {
+                foreach (var stud in students)
                 {
-                    ++indexOfFile;
-                    newFullPath = @$"{p}\inputFromVim{indexOfFile}.txt";
-                    File.AppendAllText(newFullPath, resulterText);
-                    resulterText = "";
-                    counter = 0;
+                    if (stud.FavoriteNumber == stud.LecturesAttended)
+                    {
+                        Console.WriteLine($"{stud.FavoriteNumber} {stud.LecturesAttended}");
+                    }
+                
                 }
-            } 
-            while (newline != "st");
-
-            if (File.Exists(newFullPath))
-            {
-                Console.WriteLine("Last file exists.");
-            }
-
-
-            string[] files = Directory.GetFiles(@$"{p}", "*inputFromVim");
-          
-            foreach (var item in files)
-            {
-                Console.WriteLine(item);
-            }
         }
 
     }
+
+   
+
+    class Student
+    {
+        public string Name { get; set; }
+
+        [JsonIgnore]
+        public int FavoriteNumber = GetRandom();
+
+
+        public int LecturesAttended { get; set; }
+
+        public static int GetRandom()
+        {
+            Random random = new Random();
+            int randomNumber = random.Next(10, 15);
+            return randomNumber;
+        }
+    }
 }
 /*
-            * 2. Write a program which reads input from Console infinitely long, with minor restrictions:
-   - When user entered 8 lines of text you should write them in the file inputFromVIM{indexOfFile}.txt
-   - For the next 8 lines write them in the next file inputFromVIM{indexOfFile + 1}.txt and so on.
-BUT when user enters a stop word "LET ME OUT"(or anything else you like) you should do the following:
-   - Make sure that last file inputFromVim{indexOfFile}.txt is created
-   - Move all the created files during the user session to folder Session_{DateTime}
+3 Write a program which tracks students attendance:
+    - You have a Student(Name, FavoriteNumber, LecturesAttended), LecturesAttended will increase by one when you call .AttendLecture()
+        - FavoriteNumber should not be serialized, and can't be set, decided randomly(Use Random)
+    - You have a function SemesterEmulation which takes a group of students and calls .AttendLecture() on each student
+        - BUT if FavoriteNumber is the same as lecture number - student skips the lecture
+    - Semester ends in 8 iterations
+    - After semester simulation is done, serialize all students in one snapshot.json
+    - Next time you run your .exe you should check if such file exists, if so read students and proceed to next semester emulation.
+
             */
