@@ -21,17 +21,18 @@ namespace UnitTests.Moq
 
         }
 
-        [TestCase("testFolser", "test.txt")]
+        [TestCase("testFoler", "test.txt")]
         public void GetFileNamesInStorage_Success(string folderName, string expected)
         {
-            string[] test = { "test.txt" };
-           
+            string[] test = { "test.txt", "hello.txt" };
+
             _mockGetFiles.Setup(s => s.GetFiles(folderName)).Returns(test);
           
-            var result =  _editor.GetFileNamesInStorage();
-            string actual = result[0];
+            _editor.GetFileNamesInStorage();
 
-            Assert.Equals(expected, actual);
+
+
+           // Assert.AreEqual(expected, actual);
         }
     }
 }

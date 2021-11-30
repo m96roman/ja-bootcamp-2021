@@ -61,19 +61,7 @@ namespace Editor.dll
 
         public string[] GetFileNamesInStorage()
         {
-            string[] files = _getter.GetFiles(targetFolder);
-           
-            if (!Directory.Exists(targetFolder))
-            {
-                throw new Exception("Can`t GetFileNamesInStorage, directory does not exist yet.");
-            }
-
-            if (files.Length == 0)
-            {
-                throw new Exception("Can`t GetFileNamesInStorage, current folder contains no files.");
-            }
-
-            return files;
+           return  _getter.GetFiles("folderName");
         }
 
         public int FindAndReplace(string fileName, string searchText, string replaceText)
@@ -134,7 +122,20 @@ namespace Editor.dll
     {
         public string[] GetFiles(string folderName)
         {
-            return new DirectoryInfo(folderName).GetFiles().Select(f => f.Name).ToArray();
+
+           // if (!Directory.Exists(targetFolder))
+           // {
+            //    throw new Exception("Can`t GetFileNamesInStorage, directory does not exist yet.");
+           // }
+          
+            string[] files = new DirectoryInfo(folderName).GetFiles().Select(f => f.Name).ToArray();
+           
+            if (files.Length == 0)
+            {
+                throw new Exception("Can`t GetFileNamesInStorage, current folder contains no files.");
+            }
+
+            return files;
         }
     }
 }
