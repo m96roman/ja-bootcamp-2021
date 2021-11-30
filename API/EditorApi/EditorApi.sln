@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebEditorApi", "EditorApi\WebEditorApi.csproj", "{6E5F9318-6CDA-449F-9CE5-4AD02E861ADF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebEditorApiIntegrationTests", "EditorApiIntegrationTests\WebEditorApiIntegrationTests.csproj", "{423BF335-6C89-4FC8-9C2D-6962887B7404}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6E5F9318-6CDA-449F-9CE5-4AD02E861ADF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E5F9318-6CDA-449F-9CE5-4AD02E861ADF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E5F9318-6CDA-449F-9CE5-4AD02E861ADF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E5F9318-6CDA-449F-9CE5-4AD02E861ADF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{423BF335-6C89-4FC8-9C2D-6962887B7404}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{423BF335-6C89-4FC8-9C2D-6962887B7404}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{423BF335-6C89-4FC8-9C2D-6962887B7404}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{423BF335-6C89-4FC8-9C2D-6962887B7404}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A496D7BE-8073-4055-B25F-802850957F93}
+	EndGlobalSection
+EndGlobal
