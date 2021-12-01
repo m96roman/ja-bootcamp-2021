@@ -64,7 +64,7 @@ namespace Editor.dll
         public string[] GetFileNamesInStorage()
         {
             string root = _getter.Folder();
-           return  _getter.GetFiles(root);
+            return  _getter.GetFiles(root);
         }
 
         public int FindAndReplace(string fileName, string searchText, string replaceText)
