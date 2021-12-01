@@ -2,6 +2,7 @@
 {
     public interface IEditorForMoqTests
     {
+       
         void CopyFile(string fileName, string text);
         void CopyFileToStorage(string path);
         int FindAndReplace(string fileName, string searchText, string replaceText);

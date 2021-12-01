@@ -14,6 +14,8 @@ namespace Editor.dll
 
         readonly static string directory = Directory.GetCurrentDirectory();
         readonly string targetFolder = @$"{directory}\Copied";
+
+      
     
         public EditorForMoqTests(IGetFilesNames getter)
         {
@@ -61,7 +63,8 @@ namespace Editor.dll
 
         public string[] GetFileNamesInStorage()
         {
-           return  _getter.GetFiles("folderName");
+            string root = _getter.Folder();
+           return  _getter.GetFiles(root);
         }
 
         public int FindAndReplace(string fileName, string searchText, string replaceText)
@@ -115,11 +118,16 @@ namespace Editor.dll
     public interface IGetFilesNames
     {
       public string[] GetFiles(string folderName);
-
+        string Folder();
     }
 
     public class GetFilesNames: IGetFilesNames
     {
+        readonly static string directory = Directory.GetCurrentDirectory();
+        public string Folder()
+        {
+            return @$"{directory}\Copied";
+        }
         public string[] GetFiles(string folderName)
         {
 
